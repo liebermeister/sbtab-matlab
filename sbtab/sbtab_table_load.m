@@ -30,13 +30,17 @@ for it = 1:size(my_table,2),
   column_header = my_table{1,it};
   if strcmp('!',column_header(1)),
     column_header = column_header(2:end);
-    if strfind(column_header,'ID'),
-      column_header = strrep(column_header,' ','_');
-      column_header = strrep(column_header,'-','_');
-      column_header = strrep(column_header,'','_');
-      column_header = strrep(column_header,':','_');
-      column_header = strrep(column_header,'.','_');
+    column_names{it,1} = column_header;
+    if strfind(column_header,'ID'), % compatibility to older SBtab files
+      column_header = strrep(column_header,'MiriamID::urn:miriam:','Identifiers:');    
+      column_header = strrep(column_header,'SBML::reaction::ID','SBML:reaction:ID');    
+      column_header = strrep(column_header,'SBML::species::ID','SBML:species:ID');    
     end
+    column_header = strrep(column_header,' ','_');
+    column_header = strrep(column_header,'-','_');
+    column_header = strrep(column_header,'','_');
+    column_header = strrep(column_header,':','_');
+    column_header = strrep(column_header,'.','_');
     ind_column = [ind_column it];
     column = setfield(column,column_header,my_table(2:end,it));
   end
@@ -80,6 +84,7 @@ sbtab.filename          = filename;
 sbtab.attributes        = attributes;
 sbtab.rows              = rows;
 sbtab.column.column     = column;
+sbtab.column.column_names     = column_names;
 sbtab.column.attributes = column_attributes;
 sbtab.column.ind        = ind_column;
 sbtab.data.headers      = data_headers;
