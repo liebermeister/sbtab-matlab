@@ -12,8 +12,8 @@ if exist('column_names','var'),
 else
   my_sbtab_table.column.column_names = fieldnames(my_struct);
 end
-my_sbtab_table.column.column= my_struct;
+my_sbtab_table.column.column     = my_struct;
 my_sbtab_table.column.attributes = struct;
 my_sbtab_table.column.ind        = 1:length(fieldnames(my_struct));
-my_sbtab_table.data         = struct('ind',[]);
-my_sbtab_table.uncontrolled = struct('ind',[]);
+my_sbtab_table.data              = struct('ind',[]);
+my_sbtab_table.uncontrolled      = struct('ind',[]);

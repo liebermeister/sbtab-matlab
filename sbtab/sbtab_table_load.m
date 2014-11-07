@@ -1,13 +1,34 @@
-function sbtab = sbtab_table_load(filename)
+function sbtab = sbtab_table_load(filename, my_table)
 
-% sbtab = sbtab_table_load(filename)
+% sbtab = sbtab_table_load(filename, my_table)
+%
+% Either load SBtab table from file [filename]
+% or     (if argument [my_table] is given)
+%        load SBtab table from string list [my_table]
 
-my_table = load_unformatted_table(filename);
+if ~exist('my_table'),
+  try 
+    my_table = load_unformatted_table(filename);
+  catch
+    error(sprintf('Problem in import of file %s If you use non-".csv" files, you need to specify this!',  filename))
+  end
+end
 
 attribute_line = {};
 if strcmp('!!',my_table{1,1}(1:2)), 
- attribute_line = my_table(1,:);
- my_table       = my_table(2:end,:);
+  attribute_line = my_table(1,:);
+  my_table       = my_table(2:end,:);
+end
+
+if length(attribute_line),
+  attr_line = attribute_line{1};
+  for it = 2:length(attribute_line),
+    if length(attribute_line{it}),
+      attr_line = sprintf('%s\t%s',attr_line, attribute_line{it});
+    end
+  end
+  attr_line = strrep(attr_line,''' ',sprintf('\t'));
+  attribute_line = strsplit(sprintf('\t'),attr_line);
 end
 
 rows = struct;
@@ -72,11 +93,18 @@ for it = 1:length(fn);
 end
 
 attributes = struct;
-if length(attribute_line), attribute_line{1}=strrep(attribute_line{1},'!!SBtab ',''); end
+
+if length(attribute_line), 
+  attribute_line{1}=strrep(attribute_line{1},'!!SBtab ',''); 
+  attribute_line{1}=strrep(attribute_line{1},'!!Sbtab ',''); 
+end
+
 for it=1:length(attribute_line),
+ attribute_line{it} = strrep(attribute_line{it}, '= ','=');
  mm = strsplit('=',attribute_line{it});
  if length(mm) ==2,
-   attributes = setfield(attributes,mm{1},mm{2});
+   mm{2} = strrep(mm{2},'''','');
+   attributes = setfield(attributes,strrep(mm{1},'!',''),mm{2});
  end
 end
 

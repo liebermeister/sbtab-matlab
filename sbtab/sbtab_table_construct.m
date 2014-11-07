@@ -1,6 +1,6 @@
 function my_sbtab_table = sbtab_table_construct(attributes, column_names, columns)
 
-% my_sbtab_table = sbtab_table_construct(struct('Type','Wonder'),{'A'},{{1 2 3}'})
+% my_sbtab_table = sbtab_table_construct(struct('TableType','Wonder'),{'A'},{{1 2 3}'})
 
 my_sbtab_table = struct('attributes',{attributes},'column',struct,'rows',struct,'data',struct('ind',[]),'uncontrolled',struct('ind',[]));
 
@@ -14,3 +14,7 @@ if exist('column_names','var'),
   end
   my_sbtab_table.column.ind = 1:length(column_names);
 end
+
+  my_sbtab_table.uncontrolled.headers = {};
+  my_sbtab_table.uncontrolled.data = {};
+  my_sbtab_table.uncontrolled.ind = [];

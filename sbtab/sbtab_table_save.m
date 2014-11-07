@@ -29,8 +29,10 @@ my_table = {'!!SBtab'};
 %   my_table{1,1} = [   my_table{1,1} ' ' fn{it} '="' my_sbtab_table.attributes.(fn{it}) '"'];
 % end
 
-for it = 2:length(my_sbtab_table.attributes),
-  my_table{1,1} = [   my_table{1,1} ' ' my_sbtab_table.attributes{it}];
+attribute_types  = fieldnames(  my_sbtab_table.attributes);
+for it = 1:length(attribute_types),
+ attribute_string = [ attribute_types{it} '=''' getfield(my_sbtab_table.attributes,attribute_types{it}) '''' ];
+ my_table{1,1} = [   my_table{1,1} ' '  attribute_string];
 end
 
 
@@ -49,16 +51,22 @@ for it = 1:n_rows,
       fnn = 'SBML:reaction:ID'; 
     case 'SBML__species__ID',  % compatibility to older SBtab files
       fnn = 'SBML:species:ID'; 
+    case 'Compound_Identifiers_kegg_compound',
+      fnn = 'Compound:Identifiers:kegg.compound'; 
     case 'Identifiers_kegg_compound',
       fnn = 'Identifiers:kegg.compound'; 
+    case 'Reaction_Identifiers_kegg_reaction',
+      fnn = 'Reaction:Identifiers:kegg.reaction'; 
     case 'Identifiers_kegg_reaction',
       fnn = 'Identifiers:kegg.reaction'; 
+    case 'Enzyme_Identifiers_ec_code',
+      fnn = 'Enzyme:Identifiers:ec-code';    
     case 'Identifiers_ec_code',
       fnn = 'Identifiers:ec-code';    
-    case 'SBML_reaction_ID',
-      fnn = 'SBML:reaction::ID'; 
+    case 'SBML_reaction_id',
+      fnn = 'SBML:reaction:id'; 
     case 'SBML_species_ID',
-      fnn = 'SBML:species:ID'; 
+      fnn = 'SBML:species:id'; 
   end
   nc = length(my_sbtab_table.rows.(fn{it}));
   my_table(2+it,1:nc) = my_sbtab_table.rows.(fn{it});
@@ -70,22 +78,11 @@ fn = fieldnames(my_sbtab_table.column.column);
 nr = length(my_sbtab_table.column.column.(fn{1}));
 for it = 1:length(fn),
   fnn = cn{it};
-  %%fnn = fn{it};
-  %%switch fnn,
-  %%  case 'MiriamID__urn_miriam_kegg_compound',
-  %%    fnn = 'MiriamID::urn:miriam:kegg.compound'; 
-  %%  case 'MiriamID__urn_miriam_kegg_reaction',
-  %%    fnn = 'MiriamID::urn:miriam:kegg.reaction'; 
-  %%  case 'MiriamID__urn_miriam_ec_code',
-  %%    fnn = 'MiriamID::urn:miriam:ec-code'; 
-  %%  case 'SBML__reaction__ID',
-  %%    fnn = 'SBML::reaction::ID'; 
-  %%  case 'SBML__species__ID',
-  %%    fnn = 'SBML::species::ID'; 
-  %%end
-  my_table{2,my_sbtab_table.column.ind(it)} = ['!' fnn];
+  is_sbtab_column = sum([it-my_sbtab_table.uncontrolled.ind] ==0)==0;
+  if is_sbtab_column,
+    my_table{2,my_sbtab_table.column.ind(it)} = ['!' fnn];
+  end
   if isnumeric(my_sbtab_table.column.column.(fn{it})),
-%    my_sbtab_table.column.column.(fn{it}) = cellstr(num2str(my_sbtab_table.column.column.(fn{it})));
     my_sbtab_table.column.column.(fn{it}) = num2cell(my_sbtab_table.column.column.(fn{it}));
   end
   my_table(2+n_rows+(1:nr),my_sbtab_table.column.ind(it)) = my_sbtab_table.column.column.(fn{it});
@@ -97,8 +94,8 @@ for it = 1:length(my_sbtab_table.data.ind),
 end
 
 for it = 1:length(my_sbtab_table.uncontrolled.ind),
-  my_table{2,my_sbtab_table.uncontrolled.ind(it)} = my_sbtab_table.uncontrolled.headers{it};
-  my_table(2+n_rows+(1:nr),my_sbtab_table.uncontrolled.ind(it)) = my_sbtab_table.uncontrolled.data(:,it);
+  my_table(2,my_sbtab_table.uncontrolled.ind(it))               = my_sbtab_table.uncontrolled.headers(it);
+  my_table(2+n_rows+(1:nr),my_sbtab_table.uncontrolled.ind(it)) = num2cell(my_sbtab_table.uncontrolled.data{it});
 end
 
 if options.omit_declarations,

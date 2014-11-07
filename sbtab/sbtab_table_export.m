@@ -1,22 +1,23 @@
-function tt = sbtab_table_export(sbtab_struct,filename)
+function tt = sbtab_table_export(sbtab_struct, filename)
 
 % tt = sbtab_table_export(sbtab_struct,filename)
 %
-% turn sbtab structure into flat table
+% Convert SBtab table structure into flat table
 
-columns = fieldnames(sbtab_struct);
+columns = fieldnames(sbtab_struct.column.column);
 
 clear tt
 
 for it = 1:length(columns)
-  val = getfield(sbtab_struct,columns{it});
+  val = getfield(sbtab_struct.column.column,columns{it});
   if isnumeric(val(1));
-      tt(:,it) = cellstr(num2str(val));
-      for itt = 1:length(tt(:,it)),
+    tt(:,it) = cellstr(num2str(val));
+    for itt = 1:length(tt(:,it)),
       tt(itt,it) = strrep(tt(itt,it),' ','');
-      end
-    else,
-      tt(:,it) = val;
+    end
+  else,
+    val
+    tt(:,it) = val;
   end
 end
 

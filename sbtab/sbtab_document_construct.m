@@ -2,6 +2,8 @@ function my_sbtab_document = sbtab_document_construct(attributes,table_names,tab
 
 % my_sbtab_document = sbtab_document_construct(attributes,table_names,tables)
 
+eval(default('attributes','struct'));
+
 my_sbtab_document.attributes = attributes; 
 my_sbtab_document.tables     = struct;
 
