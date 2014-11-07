@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of sbtab_document_load</title>
+  <meta name="keywords" content="sbtab_document_load">
+  <meta name="description" content="my_sbtab_document = sbtab_document_load(table_names,filenames)">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html &copy; 2003 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../index.html">Home</a> &gt;  <a href="#">sbtab</a> &gt; sbtab_document_load.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../index.html"><img alt="<" border="0" src="../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for ./sbtab&nbsp;<img alt=">" border="0" src="../right.png"></a></td></tr></table>-->
+
+<h1>sbtab_document_load
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>my_sbtab_document = sbtab_document_load(table_names,filenames)</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>function my_sbtab_document = sbtab_document_load(table_names,filenames) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> my_sbtab_document = sbtab_document_load(table_names,filenames)
+
+ Load SBtab document from a number of files
+
+ table_names: List of table names (to be inserted as attributes)
+ filenames  : List of file from which to load the tables</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="sbtab_document_construct.html" class="code" title="function my_sbtab_document = sbtab_document_construct(attributes,table_names,tables)">sbtab_document_construct</a>	my_sbtab_document = sbtab_document_construct(attributes,table_names,tables)</li><li><a href="sbtab_table_load.html" class="code" title="function sbtab = sbtab_table_load(filename, my_table)">sbtab_table_load</a>	sbtab = sbtab_table_load(filename, my_table)</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function my_sbtab_document = sbtab_document_load(table_names,filenames)</a>
+0002 
+0003 <span class="comment">% my_sbtab_document = sbtab_document_load(table_names,filenames)</span>
+0004 <span class="comment">%</span>
+0005 <span class="comment">% Load SBtab document from a number of files</span>
+0006 <span class="comment">%</span>
+0007 <span class="comment">% table_names: List of table names (to be inserted as attributes)</span>
+0008 <span class="comment">% filenames  : List of file from which to load the tables</span>
+0009 
+0010 <span class="comment">% USAGE EXAMPLE my_sbtab_document = sbtab_document_load({'Reactions'},{'/home/wolfram/matlab/models/bsu_ccm_regulation/data/bsu_ccm2_regulation_reactions.csv'})</span>
+0011 
+0012 my_sbtab_document = <a href="sbtab_document_construct.html" class="code" title="function my_sbtab_document = sbtab_document_construct(attributes,table_names,tables)">sbtab_document_construct</a>;
+0013 
+0014 <span class="keyword">for</span> it = 1:length(table_names),
+0015   my_sbtab_table = <a href="sbtab_table_load.html" class="code" title="function sbtab = sbtab_table_load(filename, my_table)">sbtab_table_load</a>(filenames{it});
+0016   my_sbtab_document.tables = setfield(my_sbtab_document.tables,table_names{it}, my_sbtab_table);
+0017 <span class="keyword">end</span></pre></div>
+<hr><address>Generated on Fri 07-Nov-2014 11:30:11 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/">m2html</a></strong> &copy; 2003</address>
+</body>
+</html>
