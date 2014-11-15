@@ -24,7 +24,7 @@ end
 tt = [columns'; tt];
 
 if exist('filename','var'), 
-  table(tt,0,filename);
+ mytable(tt,0,filename);
 else
-  table(tt,0);
+ mytable(tt,0);
 end

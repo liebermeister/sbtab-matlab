@@ -105,8 +105,8 @@ end
 if length(options.filename),
   if options.flag_latex,
     for it = 1:size(my_table,2), my_table{1,it} = [ '\bf{' strrep(my_table{1,it},'!','') '}']; end
-    table(my_table,'tex',options.filename);
+   mytable(my_table,'tex',options.filename);
   else,
-    table(my_table,0,options.filename);
+   mytable(my_table,0,options.filename);
   end
 end

@@ -108,6 +108,16 @@ for it=1:length(attribute_line),
  end
 end
 
+if ~isfield(attributes,'TableType'),
+  warning('Table type missing');
+  attributes.TableType = "unknown";
+end
+
+if ~isfield(attributes,'TableName'),
+  warning('Table name missing');
+  attributes.TableName = "unknown";
+end
+
 sbtab.filename          = filename;
 sbtab.attributes        = attributes;
 sbtab.rows              = rows;

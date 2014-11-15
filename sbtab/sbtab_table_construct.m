@@ -1,6 +1,18 @@
 function my_sbtab_table = sbtab_table_construct(attributes, column_names, columns)
 
+% my_sbtab_table = sbtab_table_construct(attributes, column_names, columns)
+
 % my_sbtab_table = sbtab_table_construct(struct('TableType','Wonder'),{'A'},{{1 2 3}'})
+
+if ~isfield(attributes,'TableType'),
+  warning('Table type missing');
+  attributes.TableType = "unknown";
+end
+
+if ~isfield(attributes,'TableName'),
+  warning('Table name missing');
+  attributes.TableName = "unknown";
+end
 
 my_sbtab_table = struct('attributes',{attributes},'column',struct,'rows',struct,'data',struct('ind',[]),'uncontrolled',struct('ind',[]));
 

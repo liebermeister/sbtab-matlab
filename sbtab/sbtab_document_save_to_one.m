@@ -22,4 +22,4 @@ if verbose,
   display(sprintf('Writing SBtab document to file %s', filename));
 end
 
-table(my_table,0,filename);
+mytable(my_table,0,filename);

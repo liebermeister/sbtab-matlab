@@ -4,6 +4,16 @@ function my_sbtab_table = sbtab_table_construct_from_struct(attributes,my_struct
 %
 % construct a table with ONLY controlled columns from a matlab struc containing
 % exactly these controlled columns,
+
+if ~isfield(attributes,'TableType'),
+  warning('Table type missing');
+  attributes.TableType = "unknown";
+end
+
+if ~isfield(attributes,'TableName'),
+  warning('Table name missing');
+  attributes.TableName = "unknown";
+end
     
 my_sbtab_table.attributes   = attributes; 
 my_sbtab_table.rows         = struct;
