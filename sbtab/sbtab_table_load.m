@@ -110,12 +110,12 @@ end
 
 if ~isfield(attributes,'TableType'),
   warning('Table type missing');
-  attributes.TableType = "unknown";
+  attributes.TableType = 'unknown';
 end
 
 if ~isfield(attributes,'TableName'),
   warning('Table name missing');
-  attributes.TableName = "unknown";
+  attributes.TableName = 'unknown';
 end
 
 sbtab.filename          = filename;
