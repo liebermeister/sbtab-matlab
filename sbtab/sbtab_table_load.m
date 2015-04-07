@@ -29,8 +29,12 @@ if length(attribute_line),
   end
   attr_line = strrep(attr_line,'  ',' ');
   attr_line = strrep(attr_line,''' ',sprintf('\t'));
+<<<<<<< HEAD
   attr_line = strrep(attr_line,'" ',sprintf('\t'));
   attribute_line = strsplit(sprintf('\t'),attr_line);
+=======
+  attribute_line = sbtab_strsplit(sprintf('\t'),attr_line);
+>>>>>>> 8835a6c5a5b70abaf43835af99bc8ee754c1fa4f
 end
 
 rows = struct;
@@ -108,9 +112,14 @@ end
 
 for it=1:length(attribute_line),
  attribute_line{it} = strrep(attribute_line{it}, '= ','=');
+<<<<<<< HEAD
  mm = strsplit('=',attribute_line{it});
  if length(mm) == 2,
    mm{1} = deblank(strrep(mm{1},'!',''));
+=======
+ mm = sbtab_strsplit('=',attribute_line{it});
+ if length(mm) ==2,
+>>>>>>> 8835a6c5a5b70abaf43835af99bc8ee754c1fa4f
    mm{2} = strrep(mm{2},'''','');
    mm{2} = deblank(strrep(mm{2},'"',''));
    attributes = setfield(attributes,mm{1},mm{2});
