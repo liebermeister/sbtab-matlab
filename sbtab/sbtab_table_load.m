@@ -27,7 +27,9 @@ if length(attribute_line),
       attr_line = sprintf('%s\t%s',attr_line, attribute_line{it});
     end
   end
+  attr_line = strrep(attr_line,'  ',' ');
   attr_line = strrep(attr_line,''' ',sprintf('\t'));
+  attr_line = strrep(attr_line,'" ',sprintf('\t'));
   attribute_line = strsplit(sprintf('\t'),attr_line);
 end
 
@@ -62,6 +64,11 @@ for it = 1:size(my_table,2),
     column_header = strrep(column_header,'','_');
     column_header = strrep(column_header,':','_');
     column_header = strrep(column_header,'.','_');
+    column_header = strrep(column_header,'[','_');
+    column_header = strrep(column_header,']','_');
+    column_header = strrep(column_header,'(','_');
+    column_header = strrep(column_header,')','_');
+    column_header = strrep(column_header,'/','_');
     ind_column = [ind_column it];
     column = setfield(column,column_header,my_table(2:end,it));
   end
@@ -102,27 +109,29 @@ end
 for it=1:length(attribute_line),
  attribute_line{it} = strrep(attribute_line{it}, '= ','=');
  mm = strsplit('=',attribute_line{it});
- if length(mm) ==2,
+ if length(mm) == 2,
+   mm{1} = deblank(strrep(mm{1},'!',''));
    mm{2} = strrep(mm{2},'''','');
-   attributes = setfield(attributes,strrep(mm{1},'!',''),mm{2});
+   mm{2} = deblank(strrep(mm{2},'"',''));
+   attributes = setfield(attributes,mm{1},mm{2});
  end
 end
 
 if ~isfield(attributes,'TableType'),
-  warning('Table type missing');
+  %warning(sprintf('Table type missing in file %s', filename));
   attributes.TableType = 'unknown';
 end
 
-if ~isfield(attributes,'TableName'),
-  warning('Table name missing');
-  attributes.TableName = 'unknown';
-end
+%if ~isfield(attributes,'TableName'),
+%  warning(sprintf('Table name missing in file %s',filename));
+%  attributes.TableName = 'unknown';
+%end
 
 sbtab.filename          = filename;
 sbtab.attributes        = attributes;
 sbtab.rows              = rows;
 sbtab.column.column     = column;
-sbtab.column.column_names     = column_names;
+sbtab.column.column_names = column_names;
 sbtab.column.attributes = column_attributes;
 sbtab.column.ind        = ind_column;
 sbtab.data.headers      = data_headers;

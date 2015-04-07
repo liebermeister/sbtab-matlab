@@ -1,6 +1,9 @@
 function column = sbtab_table_get_column(my_sbtab_table,column_name,flag_numbers)
 
-% column = sbtab_table_add_column(my_sbtab_table,column_name)
+% column = sbtab_table_get_column(my_sbtab_table,column_name,flag_numbers)
+% 
+% if the column does not exist, an empty element is returned
+% if flag_numbers is set to 1, the table entries are returned as numbers (otherwise as strings)
 
 eval(default('flag_numbers','0'));
 

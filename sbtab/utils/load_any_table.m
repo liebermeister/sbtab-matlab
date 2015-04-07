@@ -7,25 +7,31 @@ function result = load_any_table(filename,delimiter)
 
 if ~exist('delimiter','var'), delimiter = sprintf('\t'); end
 
+% check if file exists
+fid           = fopen(filename);
 try
-
-  A = {};
-  fid         = fopen(filename);
-  line_number = 1; 
-  while 1,
-    tline  = fgetl(fid);
-    if ~ischar(tline), break, end
-    delpos = findstr(tline,delimiter);
-    delpos = [0, delpos, length(tline)+1];
-    for it = 1:length(delpos)-1,
-      result{line_number,it} = tline(delpos(it)+1:delpos(it+1)-1);
-    end
-    line_number = line_number + 1;
+  tabnum = 0;
+  column_titles = 1;
+  while column_titles ~=-1,
+    column_titles = fgets(fid);
+    tabnum = max(tabnum, length(strfind(column_titles,delimiter)));
   end
-  fclose(fid);
-
-  result = result(:,find(sum(cellfun('length',result))>0));
-
-catch 
-  result = [];
+catch
+  error(['File ' filename ' not found.']);
 end
+fclose(fid);
+
+textscanstring = repmat('%s',1,tabnum+1);
+
+fid = fopen(filename);
+A   = textscan(fid,textscanstring,'delimiter',delimiter);
+fclose(fid);
+
+result = {};
+for i =1:length(A),
+  for k = 1:length(A{i}),
+  result{k,i} = A{i}{k};
+  end
+end
+
+result = result(:,find(sum(cellfun('length',result))>0));

@@ -7,6 +7,8 @@ function my_sbtab_document = sbtab_document_load_from_one(filename)
 
 my_sbtab_document = sbtab_document_construct;
 
+flag_remove_comment_lines = 1;
+
 try 
   my_table = load_unformatted_table(filename);
 catch
@@ -21,6 +23,11 @@ for it = 1:length(split_lines)-1,
   my_tables{it} = my_table(split_lines(it):split_lines(it+1)-1,:);
   % remove empty columns
   my_tables{it} = my_tables{it}(:,find(sum(cellfun('length',my_tables{it}))));
+  if flag_remove_comment_lines,
+    dum = char(my_tables{it}(:,1));
+    keep = find(strcmp(cellstr(dum(:,1)),'%')==0);
+    my_tables{it} = my_tables{it}(keep,:);
+  end
 end
 
 for it = 1:length(my_tables),

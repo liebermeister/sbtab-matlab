@@ -13,6 +13,7 @@ end
 column_name = strrep(column_name,' ','_');
 column_name = strrep(column_name,'.','_');
 column_name = strrep(column_name,':','_');
+column_name = strrep(column_name,'-','_');
 
 indices = [my_sbtab_table.column.ind, my_sbtab_table.uncontrolled.ind, my_sbtab_table.data.ind];
 
