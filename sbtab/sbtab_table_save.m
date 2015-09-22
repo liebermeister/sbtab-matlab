@@ -29,12 +29,15 @@ my_table = {'!!SBtab'};
 %   my_table{1,1} = [   my_table{1,1} ' ' fn{it} '="' my_sbtab_table.attributes.(fn{it}) '"'];
 % end
 
-attribute_types  = fieldnames(  my_sbtab_table.attributes);
+if ~isfield(my_sbtab_table.attributes,'SBtabVersion'),
+  my_sbtab_table.attributes.SBtabVersion = '0.8';
+end
+
+attribute_types  = fieldnames(my_sbtab_table.attributes);
 for it = 1:length(attribute_types),
  attribute_string = [ attribute_types{it} '=''' getfield(my_sbtab_table.attributes,attribute_types{it}) '''' ];
  my_table{1,1} = [   my_table{1,1} ' '  attribute_string];
 end
-
 
 fn = fieldnames(my_sbtab_table.rows);
 n_rows = length(fn); 
