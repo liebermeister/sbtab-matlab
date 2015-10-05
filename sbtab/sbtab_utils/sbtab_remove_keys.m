@@ -1,5 +1,7 @@
 function my_table_sub = sbtab_remove_keys(my_table,remove_keys)
 
+% SBTAB_REMOVE_KEYS Remove rows from SBtab table
+%
 % my_table_sub = sbtab_remove_keys(my_table,remove_keys)
 
 if length(remove_keys),
@@ -19,5 +21,5 @@ for itt = 1:length(fn),
 end
 
 else, 
- my_table_sub = my_table;
+  my_table_sub = my_table;
 end

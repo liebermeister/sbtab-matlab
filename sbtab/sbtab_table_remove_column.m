@@ -1,5 +1,7 @@
 function my_sbtab_table = sbtab_table_remove_column(my_sbtab_table,column_name)
 
+% SBTAB_TABLE_REMOVE_COLUMN Remove column from SBtab table
+%
 % my_sbtab_table = sbtab_table_remove_column(my_sbtab_table,column_name)
 
 fn = fieldnames(my_sbtab_table.column.column);

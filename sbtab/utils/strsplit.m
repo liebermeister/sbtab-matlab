@@ -1,11 +1,12 @@
-function parts = sbtab_strsplit(splitstr, str, option)
-%SBTAB_STRSPLIT Split string into pieces.
+function parts = strsplit(splitstr, str, option)
+
+%STRSPLIT Split string into pieces.
 %
-%   SBTAB_STRSPLIT(SPLITSTR, STR, OPTION) splits the string STR at every occurrence
+%   STRSPLIT(SPLITSTR, STR, OPTION) splits the string STR at every occurrence
 %   of SPLITSTR and returns the result as a cell array of strings.  By default,
 %   SPLITSTR is not included in the output.
 %
-%   SBTAB_STRSPLIT(SPLITSTR, STR, OPTION) can be used to control how SPLITSTR is
+%   STRSPLIT(SPLITSTR, STR, OPTION) can be used to control how SPLITSTR is
 %   included in the output.  If OPTION is 'include', SPLITSTR will be included
 %   as a separate string.  If OPTION is 'append', SPLITSTR will be appended to
 %   each output string, as if the input string was split at the position right

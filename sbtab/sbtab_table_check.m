@@ -1,9 +1,8 @@
 function sbtab_table_check(sbtab,type)
 
+% SBTAB_TABLE_CHECK Check table for table type attribute being present
+%
 % sbtab_table_check(sbtab,type)
-
-% test sbtab = sbtab_table_load('/home/wolfram/matlab/models/bsu_ccm_regulation/data/bsu_ccm2_regulation_reactions.csv');
-% sbtab_check(sbtab)
 
 eval(default('type','[]'));
 
@@ -18,5 +17,5 @@ end
 fn = fieldnames(sbtab.columns);
 
 for it = 1:length(fn)
-   fn{it}
-  end
+  fn{it}
+end

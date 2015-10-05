@@ -1,13 +1,11 @@
 function my_sbtab_document = sbtab_document_load(table_names,filenames)
 
-% my_sbtab_document = sbtab_document_load(table_names,filenames)
+% SBTAB_DOCUMENT_LOAD Load SBtab document from a number of files
 %
-% Load SBtab document from a number of files
+% my_sbtab_document = sbtab_document_load(table_names,filenames)
 %
 % table_names: List of table names (to be inserted as attributes)
 % filenames  : List of file from which to load the tables
-
-% USAGE EXAMPLE my_sbtab_document = sbtab_document_load({'Reactions'},{'/home/wolfram/matlab/models/bsu_ccm_regulation/data/bsu_ccm2_regulation_reactions.csv'})
 
 my_sbtab_document = sbtab_document_construct;
 

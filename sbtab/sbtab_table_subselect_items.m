@@ -1,8 +1,10 @@
 function t = sbtab_table_subselect_items(t,column,sbtab_file_out,given_entry)
 
+% SBTAB_SUBSELECT_ITEMS Select rows that have entries for a specific column
+%
 % t = sbtab_subselect_items(t,column,sbtab_file_out,given_entry)
 %
-% reduce table to those rows that have a (non-empty) entry in column [column]
+% reduce table to rows that have a (non-empty) entry in column [column]
 % or, if [given_entry] is provided, row in which the entry of [column] matches [given_entry]
 
 eval(default('sbtab_file_out','[]'));

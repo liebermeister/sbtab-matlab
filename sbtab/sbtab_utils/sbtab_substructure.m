@@ -1,5 +1,7 @@
 function my_table_sub = sbtab_substructure(my_table)
 
+% SBTAB_SUBSTRUCTURE Convert SBtab table into struct (if possible)
+%
 % my_table_sub = sbtab_substructure(my_table)
 
 fn = fieldnames(my_table);

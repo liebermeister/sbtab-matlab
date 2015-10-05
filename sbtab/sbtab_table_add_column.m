@@ -1,5 +1,7 @@
 function my_sbtab_table = sbtab_table_add_column(my_sbtab_table,column_name,column,is_sbtab_column)
 
+% SBTAB_TABLE_ADD_COLUMN Add column to SBtab table.
+%
 % my_sbtab_table = sbtab_table_add_column(my_sbtab_table,column_name,column,is_sbtab_column)
 
 eval(default('is_sbtab_column','1'));

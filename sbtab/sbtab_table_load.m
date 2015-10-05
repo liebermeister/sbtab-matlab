@@ -1,5 +1,7 @@
 function sbtab = sbtab_table_load(filename, my_table)
 
+% SBTAB_TABLE_LOAD Load SBtab table from file, or generate it from a list of strings
+%
 % sbtab = sbtab_table_load(filename, my_table)
 %
 % Either load SBtab table from file [filename]
@@ -15,22 +17,53 @@ if ~exist('my_table'),
 end
 
 attribute_line = {};
-if strcmp('!!',my_table{1,1}(1:2)), 
-  attribute_line = my_table(1,:);
+cont = 1;
+while cont * length(my_table),
+  if strcmp('!!',my_table{1,1}(1:2)), 
+    attribute_line = my_table(1,:);
+    cont = 0;
+  end
   my_table       = my_table(2:end,:);
 end
 
+if isempty(my_table)
+  error('No declaration line (starting with !!SBtab) found');
+end
+
 if length(attribute_line),
+
+for it = 1:length(attribute_line),
+  if length(attribute_line{it}),
+    attribute_line{it} = strrep(attribute_line{it},'''','"');
+    attribute_line{it} = strrep(attribute_line{it},'’','"');
+  end
+end
+
   attr_line = attribute_line{1};
   for it = 2:length(attribute_line),
     if length(attribute_line{it}),
       attr_line = sprintf('%s\t%s',attr_line, attribute_line{it});
     end
   end
+  attr_line = strrep(attr_line,'   ',' ');
   attr_line = strrep(attr_line,'  ',' ');
   attr_line = strrep(attr_line,''' ',sprintf('\t'));
   attr_line = strrep(attr_line,'" ',sprintf('\t'));
-  attribute_line = sbtab_strsplit(sprintf('\t'),attr_line);
+  attribute_line = strsplit(sprintf('\t'),attr_line);
+end
+
+% omit empty columns
+
+for it = 1:size(my_table,2),
+  if prod(double(cellfun('isempty',my_table(:,it)))),
+    my_table = my_table(:, setdiff(1:size(my_table,2),it));
+  end
+end
+
+% detect empty column header 
+
+if sum(double(cellfun('isempty',my_table(1,:))))
+  error('column header missing');
 end
 
 rows = struct;
@@ -49,6 +82,7 @@ ind_rows = setdiff(unique(ind_data),1);
 
 column = struct;
 ind_column = [];
+
 for it = 1:size(my_table,2),
   column_header = my_table{1,it};
   if strcmp('!',column_header(1)),
@@ -108,7 +142,7 @@ end
 
 for it=1:length(attribute_line),
  attribute_line{it} = strrep(attribute_line{it}, '= ','=');
- mm = sbtab_strsplit('=',attribute_line{it});
+ mm = strsplit('=',attribute_line{it});
  if length(mm) == 2,
    mm{1} = deblank(strrep(mm{1},'!',''));
    mm{2} = strrep(mm{2},'''','');

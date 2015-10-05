@@ -1,6 +1,10 @@
 function T = load_unformatted_table(filename)
 
-% load table (not required to have proper column headers; remove empty rows and columns
+% LOAD_UNFORMATTED_TABLE load data table
+%
+% T = load_unformatted_table(filename)
+%
+% loads table (not required to have proper column headers); removes empty rows and columns
 
 fid  = fopen(filename);
 if fid <0, 
@@ -14,7 +18,7 @@ while ~stop,
   if this_line == -1, 
     stop = 1; 
   else,
-    this_line = sbtab_strsplit(sprintf('\t'),this_line,'omit');
+    this_line = strsplit(sprintf('\t'),this_line,'omit');
     T(size(T,1)+1,1:length(this_line)) = this_line;
   end
 end

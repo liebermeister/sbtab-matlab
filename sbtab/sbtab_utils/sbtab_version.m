@@ -1,5 +1,7 @@
 function m = sbtab_version()
 
-% SBtab toolbox version 0.1
+% SBTAB_VERSION SBtab version
+%
+% SBtab toolbox version 0.9
 
-m = '0.1';
+m = '0.9';

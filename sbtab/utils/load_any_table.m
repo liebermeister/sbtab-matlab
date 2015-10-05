@@ -1,14 +1,16 @@
 function result = load_any_table(filename,delimiter)
 
-% list = load_any_table(filename)
+% LOAD_ANY_TABLE load a tab-delimited file and convert it into a cell array
 %
-% loads a tab-delimited file and puts it into a cell array
-% filename: name of tab-delimited file containing strings and numbers
+% list = load_any_table(filename,delimiter)
+% 
+% filename:  name of tab-delimited file containing strings and numbers
+% delimiter: type of delimiter used
 
 if ~exist('delimiter','var'), delimiter = sprintf('\t'); end
 
 % check if file exists
-fid           = fopen(filename);
+fid = fopen(filename);
 try
   tabnum = 0;
   column_titles = 1;
@@ -28,9 +30,9 @@ A   = textscan(fid,textscanstring,'delimiter',delimiter);
 fclose(fid);
 
 result = {};
-for i =1:length(A),
+for i=1:length(A),
   for k = 1:length(A{i}),
-  result{k,i} = A{i}{k};
+    result{k,i} = A{i}{k};
   end
 end
 

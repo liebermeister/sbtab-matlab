@@ -1,5 +1,7 @@
 function my_table = sbtab_table_save(my_sbtab_table, options)
 
+% SBTAB_TABLE_SAVE Save SBtab table
+%
 % my_table = sbtab_table_save(my_sbtab_table, options)
 %
 % options.filename
@@ -30,7 +32,7 @@ my_table = {'!!SBtab'};
 % end
 
 if ~isfield(my_sbtab_table.attributes,'SBtabVersion'),
-  my_sbtab_table.attributes.SBtabVersion = '0.8';
+  my_sbtab_table.attributes.SBtabVersion = num2str(sbtab_version);
 end
 
 attribute_types  = fieldnames(my_sbtab_table.attributes);

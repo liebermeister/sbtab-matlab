@@ -1,9 +1,10 @@
 function my_sbtab_document = sbtab_document_load_from_one(filename)
 
+% SBTAB_DOCUMENT_LOAD_FROM_ONE % Load SBtab document (possibly, several tables) from one file
+%
 % my_sbtab_document = sbtab_document_load_from_one(filename)
 %
-% Load SBtab document (possible several tables) from one file
-% Note that table names must be given as attributes
+% Note that table names must be provided as table attributes
 
 my_sbtab_document = sbtab_document_construct;
 
@@ -36,5 +37,6 @@ for it = 1:length(my_tables),
     error('Attribute TableName is missing in input file');
   end
   table_names{it} = strrep(my_sbtab_table.attributes.TableName,' ','');
+  my_sbtab_document.table_names{it} = my_sbtab_table.attributes.TableName;
   my_sbtab_document.tables = setfield(my_sbtab_document.tables, table_names{it}, my_sbtab_table);
 end

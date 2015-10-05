@@ -1,8 +1,8 @@
 function sbtab_document_show(sbtab_document)
 
-% sbtab_document_show(sbtab_document)
+% SBTAB_DOCUMENT_SHOW Display contents of an SBtab document
 %
-% display contents of an SBtab document
+% sbtab_document_show(sbtab_document)
 
 if isempty(fieldnames(sbtab_document.attributes)),
   display(sprintf('The SBtab document has no document attributes'));
@@ -10,13 +10,19 @@ else,
   sbtab_document.attributes
 end
 
-table_names = fieldnames(sbtab_document.tables);
+tables = fieldnames(sbtab_document.tables);
 
-if isempty(table_names),
+if isfield(sbtab_document,'table_names'),
+  table_names = sbtab_document.table_names;
+else
+  table_names = tables;
+end
+
+if isempty(tables),
   display('The SBtab document contains no tables');
 else,
-  for it = 1:length(table_names);
+  for it = 1:length(tables);
   display(sprintf('\no Table "%s"',table_names{it}))
-  sbtab_table_show(sbtab_document.tables.(table_names{it}))
+  sbtab_table_show(sbtab_document.tables.(tables{it}))
   end
 end

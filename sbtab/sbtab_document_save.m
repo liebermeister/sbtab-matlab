@@ -1,5 +1,7 @@
 function sbtab_document_save(sbtab_document,filename,flag_latex,verbose)
 
+% SBTAB_DOCUMENT_SAVE Save SBtab document to files (one for each table)
+%
 % sbtab_document_save(sbtab_document,filename)
 % 
 % filename has to be without extension

@@ -1,5 +1,7 @@
 function my_sbtab_document = sbtab_document_construct(attributes,table_names,tables)
 
+% SBTAB_DOCUMENT_CONSTRUCT Build SBtab document object.
+%
 % my_sbtab_document = sbtab_document_construct(attributes,table_names,tables)
 
 eval(default('attributes','struct'));

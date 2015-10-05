@@ -1,8 +1,8 @@
 function t = sbtab_table_add_annotation(t,column_old,column_new,item_old,item_new,sbtab_file_out)
 
-% t = sbtab_table_add_annotation(t,column_old,column_new,item_old,item_new,sbtab_file_out)
+% SBTAB_TABLE_ADD_ANNOTATION Insert annotation column into a table.
 %
-% insert an annotation column into a table
+% t = sbtab_table_add_annotation(t,column_old,column_new,item_old,item_new,sbtab_file_out)
 
 if isstr(t),
   t = sbtab_table_load(t);

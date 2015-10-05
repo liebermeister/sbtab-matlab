@@ -1,9 +1,10 @@
 function my_sbtab_table = sbtab_table_construct_from_struct(attributes,my_struct,column_names)
 
+% SBTAB_TABLE_CONSTRUCT_FROM_STRUCT Construct a table with controlled columns
+%
 % my_sbtab_table = sbtab_table_construct_from_struct(attributes,my_struct,column_names)
 %
-% construct a table with ONLY controlled columns from a matlab struc containing
-% exactly these controlled columns,
+% Construct a table with controlled columns from a matlab struc containing exactly these controlled columns,
 
 if ~isfield(attributes,'TableType'),
   warning('Table type missing');

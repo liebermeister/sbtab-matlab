@@ -1,5 +1,7 @@
 function input = sbtab_regulationFormula_parse(formula,name);
 
+% SBTAB_REGULATIONFORMULA_PARSE Parse a biochemical regulation formula
+%
 % input = sbtab_regulationFormula_parse(formula,name);
 
 if isstr(formula),

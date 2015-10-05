@@ -1,8 +1,8 @@
 function tt = sbtab_table_export(sbtab_struct, filename)
 
-% tt = sbtab_table_export(sbtab_struct,filename)
+% SBTAB_TABLE_EXPORT Convert SBtab table structure into flat table
 %
-% Convert SBtab table structure into flat table
+% tt = sbtab_table_export(sbtab_struct,filename)
 
 columns = fieldnames(sbtab_struct.column.column);
 
