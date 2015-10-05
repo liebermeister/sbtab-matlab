@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of sbtab_document_show</title>
+  <meta name="keywords" content="sbtab_document_show">
+  <meta name="description" content="SBTAB_DOCUMENT_SHOW Display contents of an SBtab document">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html &copy; 2003 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../index.html">Home</a> &gt;  <a href="#">sbtab</a> &gt; sbtab_document_show.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../index.html"><img alt="<" border="0" src="../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for ./sbtab&nbsp;<img alt=">" border="0" src="../right.png"></a></td></tr></table>-->
+
+<h1>sbtab_document_show
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>SBTAB_DOCUMENT_SHOW Display contents of an SBtab document</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>function sbtab_document_show(sbtab_document) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> SBTAB_DOCUMENT_SHOW Display contents of an SBtab document
+
+ sbtab_document_show(sbtab_document)</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="sbtab_table_show.html" class="code" title="function sbtab_table_show(sbtab_table)">sbtab_table_show</a>	SBTAB_TABLE_SHOW Show contents of Sbtab table</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function sbtab_document_show(sbtab_document)</a>
+0002 
+0003 <span class="comment">% SBTAB_DOCUMENT_SHOW Display contents of an SBtab document</span>
+0004 <span class="comment">%</span>
+0005 <span class="comment">% sbtab_document_show(sbtab_document)</span>
+0006 
+0007 <span class="keyword">if</span> isempty(fieldnames(sbtab_document.attributes)),
+0008   display(sprintf(<span class="string">'The SBtab document has no document attributes'</span>));
+0009 <span class="keyword">else</span>,
+0010   sbtab_document.attributes
+0011 <span class="keyword">end</span>
+0012 
+0013 tables = fieldnames(sbtab_document.tables);
+0014 
+0015 <span class="keyword">if</span> isfield(sbtab_document,<span class="string">'table_names'</span>),
+0016   table_names = sbtab_document.table_names;
+0017 <span class="keyword">else</span>
+0018   table_names = tables;
+0019 <span class="keyword">end</span>
+0020 
+0021 <span class="keyword">if</span> isempty(tables),
+0022   display(<span class="string">'The SBtab document contains no tables'</span>);
+0023 <span class="keyword">else</span>,
+0024   <span class="keyword">for</span> it = 1:length(tables);
+0025   display(sprintf(<span class="string">'\no Table &quot;%s&quot;'</span>,table_names{it}))
+0026   <a href="sbtab_table_show.html" class="code" title="function sbtab_table_show(sbtab_table)">sbtab_table_show</a>(sbtab_document.tables.(tables{it}))
+0027   <span class="keyword">end</span>
+0028 <span class="keyword">end</span></pre></div>
+<hr><address>Generated on Mon 05-Oct-2015 16:21:21 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/">m2html</a></strong> &copy; 2003</address>
+</body>
+</html>

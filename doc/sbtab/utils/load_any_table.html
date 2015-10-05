@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of load_any_table</title>
+  <meta name="keywords" content="load_any_table">
+  <meta name="description" content="LOAD_ANY_TABLE load a tab-delimited file and convert it into a cell array">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html &copy; 2003 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../../index.html">Home</a> &gt;  <a href="#">sbtab</a> &gt; <a href="#">utils</a> &gt; load_any_table.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../../index.html"><img alt="<" border="0" src="../../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for ./sbtab/utils&nbsp;<img alt=">" border="0" src="../../right.png"></a></td></tr></table>-->
+
+<h1>load_any_table
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="box"><strong>LOAD_ANY_TABLE load a tab-delimited file and convert it into a cell array</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="box"><strong>function result = load_any_table(filename,delimiter) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> LOAD_ANY_TABLE load a tab-delimited file and convert it into a cell array
+
+ list = load_any_table(filename,delimiter)
+ 
+ filename:  name of tab-delimited file containing strings and numbers
+ delimiter: type of delimiter used</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../../matlabicon.gif)">
+</ul>
+This function is called by:
+<ul style="list-style-image:url(../../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function result = load_any_table(filename,delimiter)</a>
+0002 
+0003 <span class="comment">% LOAD_ANY_TABLE load a tab-delimited file and convert it into a cell array</span>
+0004 <span class="comment">%</span>
+0005 <span class="comment">% list = load_any_table(filename,delimiter)</span>
+0006 <span class="comment">%</span>
+0007 <span class="comment">% filename:  name of tab-delimited file containing strings and numbers</span>
+0008 <span class="comment">% delimiter: type of delimiter used</span>
+0009 
+0010 <span class="keyword">if</span> ~exist(<span class="string">'delimiter'</span>,<span class="string">'var'</span>), delimiter = sprintf(<span class="string">'\t'</span>); <span class="keyword">end</span>
+0011 
+0012 <span class="comment">% check if file exists</span>
+0013 fid = fopen(filename);
+0014 <span class="keyword">try</span>
+0015   tabnum = 0;
+0016   column_titles = 1;
+0017   <span class="keyword">while</span> column_titles ~=-1,
+0018     column_titles = fgets(fid);
+0019     tabnum = max(tabnum, length(strfind(column_titles,delimiter)));
+0020   <span class="keyword">end</span>
+0021 <span class="keyword">catch</span>
+0022   error([<span class="string">'File '</span> filename <span class="string">' not found.'</span>]);
+0023 <span class="keyword">end</span>
+0024 fclose(fid);
+0025 
+0026 textscanstring = repmat(<span class="string">'%s'</span>,1,tabnum+1);
+0027 
+0028 fid = fopen(filename);
+0029 A   = textscan(fid,textscanstring,<span class="string">'delimiter'</span>,delimiter);
+0030 fclose(fid);
+0031 
+0032 result = {};
+0033 <span class="keyword">for</span> i=1:length(A),
+0034   <span class="keyword">for</span> k = 1:length(A{i}),
+0035     result{k,i} = A{i}{k};
+0036   <span class="keyword">end</span>
+0037 <span class="keyword">end</span>
+0038 
+0039 result = result(:,find(sum(cellfun(<span class="string">'length'</span>,result))&gt;0));</pre></div>
+<hr><address>Generated on Mon 05-Oct-2015 16:21:21 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/">m2html</a></strong> &copy; 2003</address>
+</body>
+</html>

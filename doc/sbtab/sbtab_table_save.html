@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of sbtab_table_save</title>
+  <meta name="keywords" content="sbtab_table_save">
+  <meta name="description" content="SBTAB_TABLE_SAVE Save SBtab table">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html &copy; 2003 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../index.html">Home</a> &gt;  <a href="#">sbtab</a> &gt; sbtab_table_save.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../index.html"><img alt="<" border="0" src="../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for ./sbtab&nbsp;<img alt=">" border="0" src="../right.png"></a></td></tr></table>-->
+
+<h1>sbtab_table_save
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>SBTAB_TABLE_SAVE Save SBtab table</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>function my_table = sbtab_table_save(my_sbtab_table, options) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> SBTAB_TABLE_SAVE Save SBtab table
+
+ my_table = sbtab_table_save(my_sbtab_table, options)
+
+ options.filename
+ options.omit_declarations
+ options.flag_latex
+
+ OR: options itself contains the filename</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href=".././sbtab/sbtab_utils/sbtab_version.html" class="code" title="function m = sbtab_version()">sbtab_version</a>	SBTAB_VERSION SBtab version</li><li><a href=".././sbtab/utils/default.html" class="code" title="function commandstring = default(varargin)">default</a>	commandstring = default(varname1,defaultvalue1,varname2,defaultvalue2,...)</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="sbtab_document_save.html" class="code" title="function sbtab_document_save(sbtab_document,filename,flag_latex,verbose)">sbtab_document_save</a>	SBTAB_DOCUMENT_SAVE Save SBtab document to files (one for each table)</li><li><a href="sbtab_document_save_to_one.html" class="code" title="function sbtab_document_save_to_one(sbtab_document,filename,verbose)">sbtab_document_save_to_one</a>	SBTAB_DOCUMENT_SAVE Save SBtab document to one file (with concatenated tables)</li><li><a href="sbtab_table_add_annotation.html" class="code" title="function t = sbtab_table_add_annotation(t,column_old,column_new,item_old,item_new,sbtab_file_out)">sbtab_table_add_annotation</a>	SBTAB_TABLE_ADD_ANNOTATION Insert annotation column into a table.</li><li><a href="sbtab_table_subselect_items.html" class="code" title="function t = sbtab_table_subselect_items(t,column,sbtab_file_out,given_entry)">sbtab_table_subselect_items</a>	SBTAB_SUBSELECT_ITEMS Select rows that have entries for a specific column</li></ul>
+<!-- crossreference -->
+
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function my_table = sbtab_table_save(my_sbtab_table, options)</a>
+0002 
+0003 <span class="comment">% SBTAB_TABLE_SAVE Save SBtab table</span>
+0004 <span class="comment">%</span>
+0005 <span class="comment">% my_table = sbtab_table_save(my_sbtab_table, options)</span>
+0006 <span class="comment">%</span>
+0007 <span class="comment">% options.filename</span>
+0008 <span class="comment">% options.omit_declarations</span>
+0009 <span class="comment">% options.flag_latex</span>
+0010 <span class="comment">%</span>
+0011 <span class="comment">% OR: options itself contains the filename</span>
+0012 
+0013 eval(<a href=".././sbtab/utils/default.html" class="code" title="function commandstring = default(varargin)">default</a>(<span class="string">'options'</span>,<span class="string">'struct'</span>));
+0014 
+0015 <span class="keyword">if</span> isstr(options), 
+0016   options = struct(<span class="string">'filename'</span>,options);
+0017 <span class="keyword">end</span>
+0018 
+0019 options_default = struct(<span class="string">'filename'</span>,[],<span class="string">'omit_declarations'</span>,0,<span class="string">'flag_latex'</span>,0);
+0020 options         = join_struct(options_default,options);
+0021 
+0022 <span class="keyword">if</span> options.flag_latex,
+0023  options.omit_declarations = 1; 
+0024 <span class="keyword">end</span>
+0025 
+0026 <span class="comment">% example_file filename = '~/matlab/wolf_packages/sbtab/data/sbtab_omics_row_example.tsv';</span>
+0027 
+0028 my_table = {<span class="string">'!!SBtab'</span>};
+0029 <span class="comment">% fn = fieldnames(my_sbtab_table.attributes);</span>
+0030 <span class="comment">% for it = 1:length(fn),</span>
+0031 <span class="comment">%   my_table{1,1} = [   my_table{1,1} ' ' fn{it} '=&quot;' my_sbtab_table.attributes.(fn{it}) '&quot;'];</span>
+0032 <span class="comment">% end</span>
+0033 
+0034 <span class="keyword">if</span> ~isfield(my_sbtab_table.attributes,<span class="string">'SBtabVersion'</span>),
+0035   my_sbtab_table.attributes.SBtabVersion = num2str(<a href=".././sbtab/sbtab_utils/sbtab_version.html" class="code" title="function m = sbtab_version()">sbtab_version</a>);
+0036 <span class="keyword">end</span>
+0037 
+0038 attribute_types  = fieldnames(my_sbtab_table.attributes);
+0039 <span class="keyword">for</span> it = 1:length(attribute_types),
+0040  attribute_string = [ attribute_types{it} <span class="string">'='''</span> getfield(my_sbtab_table.attributes,attribute_types{it}) <span class="string">''''</span> ];
+0041  my_table{1,1} = [   my_table{1,1} <span class="string">' '</span>  attribute_string];
+0042 <span class="keyword">end</span>
+0043 
+0044 fn = fieldnames(my_sbtab_table.rows);
+0045 n_rows = length(fn); 
+0046 <span class="keyword">for</span> it = 1:n_rows,
+0047   fnn = fn{it};
+0048   <span class="keyword">switch</span> fnn,
+0049     <span class="keyword">case</span> <span class="string">'MiriamID__urn_miriam_kegg_compound'</span>,  <span class="comment">% compatibility to older SBtab files</span>
+0050       fnn = <span class="string">'Identifiers:kegg.compound'</span>; 
+0051     <span class="keyword">case</span> <span class="string">'MiriamID__urn_miriam_kegg_reaction'</span>,  <span class="comment">% compatibility to older SBtab files</span>
+0052       fnn = <span class="string">'Identifiers:kegg.reaction'</span>; 
+0053     <span class="keyword">case</span> <span class="string">'MiriamID__urn_miriam_ec_code'</span>,  <span class="comment">% compatibility to older SBtab files</span>
+0054       fnn = <span class="string">'Identifiers:ec-code'</span>;     
+0055     <span class="keyword">case</span> <span class="string">'SBML__reaction__ID'</span>,  <span class="comment">% compatibility to older SBtab files</span>
+0056       fnn = <span class="string">'SBML:reaction:ID'</span>; 
+0057     <span class="keyword">case</span> <span class="string">'SBML__species__ID'</span>,  <span class="comment">% compatibility to older SBtab files</span>
+0058       fnn = <span class="string">'SBML:species:ID'</span>; 
+0059     <span class="keyword">case</span> <span class="string">'Compound_Identifiers_kegg_compound'</span>,
+0060       fnn = <span class="string">'Compound:Identifiers:kegg.compound'</span>; 
+0061     <span class="keyword">case</span> <span class="string">'Identifiers_kegg_compound'</span>,
+0062       fnn = <span class="string">'Identifiers:kegg.compound'</span>; 
+0063     <span class="keyword">case</span> <span class="string">'Reaction_Identifiers_kegg_reaction'</span>,
+0064       fnn = <span class="string">'Reaction:Identifiers:kegg.reaction'</span>; 
+0065     <span class="keyword">case</span> <span class="string">'Identifiers_kegg_reaction'</span>,
+0066       fnn = <span class="string">'Identifiers:kegg.reaction'</span>; 
+0067     <span class="keyword">case</span> <span class="string">'Enzyme_Identifiers_ec_code'</span>,
+0068       fnn = <span class="string">'Enzyme:Identifiers:ec-code'</span>;    
+0069     <span class="keyword">case</span> <span class="string">'Identifiers_ec_code'</span>,
+0070       fnn = <span class="string">'Identifiers:ec-code'</span>;    
+0071     <span class="keyword">case</span> <span class="string">'SBML_reaction_id'</span>,
+0072       fnn = <span class="string">'SBML:reaction:id'</span>; 
+0073     <span class="keyword">case</span> <span class="string">'SBML_species_ID'</span>,
+0074       fnn = <span class="string">'SBML:species:id'</span>; 
+0075   <span class="keyword">end</span>
+0076   nc = length(my_sbtab_table.rows.(fn{it}));
+0077   my_table(2+it,1:nc) = my_sbtab_table.rows.(fn{it});
+0078   my_table{2+it,1}    = [<span class="string">'!'</span> fnn];
+0079 <span class="keyword">end</span>
+0080 
+0081 cn = my_sbtab_table.column.column_names;
+0082 fn = fieldnames(my_sbtab_table.column.column);
+0083 nr = length(my_sbtab_table.column.column.(fn{1}));
+0084 <span class="keyword">for</span> it = 1:length(fn),
+0085   fnn = cn{it};
+0086   is_sbtab_column = sum([it-my_sbtab_table.uncontrolled.ind] ==0)==0;
+0087   <span class="keyword">if</span> is_sbtab_column,
+0088     my_table{2,my_sbtab_table.column.ind(it)} = [<span class="string">'!'</span> fnn];
+0089   <span class="keyword">end</span>
+0090   <span class="keyword">if</span> isnumeric(my_sbtab_table.column.column.(fn{it})),
+0091     my_sbtab_table.column.column.(fn{it}) = num2cell(my_sbtab_table.column.column.(fn{it}));
+0092   <span class="keyword">end</span>
+0093   <span class="keyword">if</span> length(my_sbtab_table.column.column.(fn{it})),
+0094     my_table(2+n_rows+(1:nr),my_sbtab_table.column.ind(it)) = my_sbtab_table.column.column.(fn{it});
+0095   <span class="keyword">end</span>
+0096 <span class="keyword">end</span>
+0097 
+0098 <span class="keyword">for</span> it = 1:length(my_sbtab_table.data.ind),
+0099   my_table{2,my_sbtab_table.data.ind(it)} = my_sbtab_table.data.headers{it};
+0100   my_table(2+n_rows+(1:nr),my_sbtab_table.data.ind(it)) = my_sbtab_table.data.data(:,it);
+0101 <span class="keyword">end</span>
+0102 
+0103 <span class="keyword">for</span> it = 1:length(my_sbtab_table.uncontrolled.ind),
+0104   my_table(2,my_sbtab_table.uncontrolled.ind(it))               = my_sbtab_table.uncontrolled.headers(it);
+0105   my_table(2+n_rows+(1:nr),my_sbtab_table.uncontrolled.ind(it)) = num2cell(my_sbtab_table.uncontrolled.data{it});
+0106 <span class="keyword">end</span>
+0107 
+0108 <span class="keyword">if</span> options.omit_declarations,
+0109  my_table = my_table(2:<span class="keyword">end</span>,:);
+0110 <span class="keyword">end</span>
+0111 
+0112 <span class="keyword">if</span> length(options.filename),
+0113   <span class="keyword">if</span> options.flag_latex,
+0114     <span class="keyword">for</span> it = 1:size(my_table,2), my_table{1,it} = [ <span class="string">'\bf{'</span> strrep(my_table{1,it},<span class="string">'!'</span>,<span class="string">''</span>) <span class="string">'}'</span>]; <span class="keyword">end</span>
+0115    mytable(my_table,<span class="string">'tex'</span>,options.filename);
+0116   <span class="keyword">else</span>,
+0117    mytable(my_table,0,options.filename);
+0118   <span class="keyword">end</span>
+0119 <span class="keyword">end</span></pre></div>
+<hr><address>Generated on Mon 05-Oct-2015 16:21:21 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/">m2html</a></strong> &copy; 2003</address>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of sbtab_document_load_from_one</title>
+  <meta name="keywords" content="sbtab_document_load_from_one">
+  <meta name="description" content="SBTAB_DOCUMENT_LOAD_FROM_ONE % Load SBtab document (possibly, several tables) from one file">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html &copy; 2003 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../index.html">Home</a> &gt;  <a href="#">sbtab</a> &gt; sbtab_document_load_from_one.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../index.html"><img alt="<" border="0" src="../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for ./sbtab&nbsp;<img alt=">" border="0" src="../right.png"></a></td></tr></table>-->
+
+<h1>sbtab_document_load_from_one
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>SBTAB_DOCUMENT_LOAD_FROM_ONE % Load SBtab document (possibly, several tables) from one file</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>function my_sbtab_document = sbtab_document_load_from_one(filename) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> SBTAB_DOCUMENT_LOAD_FROM_ONE % Load SBtab document (possibly, several tables) from one file
+
+ my_sbtab_document = sbtab_document_load_from_one(filename)
+
+ Note that table names must be provided as table attributes</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="sbtab_document_construct.html" class="code" title="function my_sbtab_document = sbtab_document_construct(attributes,table_names,tables)">sbtab_document_construct</a>	SBTAB_DOCUMENT_CONSTRUCT Build SBtab document object.</li><li><a href="sbtab_table_load.html" class="code" title="function sbtab = sbtab_table_load(filename, my_table)">sbtab_table_load</a>	SBTAB_TABLE_LOAD Load SBtab table from file, or generate it from a list of strings</li><li><a href=".././sbtab/utils/load_unformatted_table.html" class="code" title="function T = load_unformatted_table(filename)">load_unformatted_table</a>	LOAD_UNFORMATTED_TABLE load data table</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function my_sbtab_document = sbtab_document_load_from_one(filename)</a>
+0002 
+0003 <span class="comment">% SBTAB_DOCUMENT_LOAD_FROM_ONE % Load SBtab document (possibly, several tables) from one file</span>
+0004 <span class="comment">%</span>
+0005 <span class="comment">% my_sbtab_document = sbtab_document_load_from_one(filename)</span>
+0006 <span class="comment">%</span>
+0007 <span class="comment">% Note that table names must be provided as table attributes</span>
+0008 
+0009 my_sbtab_document = <a href="sbtab_document_construct.html" class="code" title="function my_sbtab_document = sbtab_document_construct(attributes,table_names,tables)">sbtab_document_construct</a>;
+0010 
+0011 flag_remove_comment_lines = 1;
+0012 
+0013 <span class="keyword">try</span> 
+0014   my_table = <a href=".././sbtab/utils/load_unformatted_table.html" class="code" title="function T = load_unformatted_table(filename)">load_unformatted_table</a>(filename);
+0015 <span class="keyword">catch</span>
+0016   error(sprintf(<span class="string">'Problem in import of file %s If you use non-&quot;.csv&quot; files, you need to specify this!'</span>,  filename))
+0017 <span class="keyword">end</span>
+0018 
+0019 split_lines = [find(cellfun(<span class="string">'length'</span>,strfind(my_table,<span class="string">'!!'</span>))); length(my_table)+1];
+0020 
+0021 my_tables = {};
+0022 
+0023 <span class="keyword">for</span> it = 1:length(split_lines)-1,
+0024   my_tables{it} = my_table(split_lines(it):split_lines(it+1)-1,:);
+0025   <span class="comment">% remove empty columns</span>
+0026   my_tables{it} = my_tables{it}(:,find(sum(cellfun(<span class="string">'length'</span>,my_tables{it}))));
+0027   <span class="keyword">if</span> flag_remove_comment_lines,
+0028     dum = char(my_tables{it}(:,1));
+0029     keep = find(strcmp(cellstr(dum(:,1)),<span class="string">'%'</span>)==0);
+0030     my_tables{it} = my_tables{it}(keep,:);
+0031   <span class="keyword">end</span>
+0032 <span class="keyword">end</span>
+0033 
+0034 <span class="keyword">for</span> it = 1:length(my_tables),
+0035   my_sbtab_table = <a href="sbtab_table_load.html" class="code" title="function sbtab = sbtab_table_load(filename, my_table)">sbtab_table_load</a>([],my_tables{it});
+0036   <span class="keyword">if</span> ~isfield(my_sbtab_table.attributes,<span class="string">'TableName'</span>),
+0037     error(<span class="string">'Attribute TableName is missing in input file'</span>);
+0038   <span class="keyword">end</span>
+0039   table_names{it} = strrep(my_sbtab_table.attributes.TableName,<span class="string">' '</span>,<span class="string">''</span>);
+0040   my_sbtab_document.table_names{it} = my_sbtab_table.attributes.TableName;
+0041   my_sbtab_document.tables = setfield(my_sbtab_document.tables, table_names{it}, my_sbtab_table);
+0042 <span class="keyword">end</span></pre></div>
+<hr><address>Generated on Mon 05-Oct-2015 16:21:21 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/">m2html</a></strong> &copy; 2003</address>
+</body>
+</html>
