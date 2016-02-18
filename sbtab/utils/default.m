@@ -1,8 +1,11 @@
 function commandstring = default(varargin)
 
+% DEFAULT Generate matlab command string for initialising variables
+%
 % commandstring = default(varname1,defaultvalue1,varname2,defaultvalue2,...)
 %
-% usage eval(default('a','1','name','''Gonzo'''));
+% USAGE:
+% eval(default('a','1','name','''cat'''));
 
 commandstring = '';
 

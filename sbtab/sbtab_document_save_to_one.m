@@ -1,4 +1,4 @@
-function sbtab_document_save_to_one(sbtab_document,filename,verbose)
+function sbtab_document_save_to_one(sbtab_document,filename,verbose,flag_latex)
 
 % SBTAB_DOCUMENT_SAVE Save SBtab document to one file (with concatenated tables)
 %

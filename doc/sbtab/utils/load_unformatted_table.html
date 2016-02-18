@@ -37,44 +37,14 @@
 <h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
 This function calls:
 <ul style="list-style-image:url(../../matlabicon.gif)">
-<li><a href="strsplit.html" class="code" title="function parts = strsplit(splitstr, str, option)">strsplit</a>	STRSPLIT Split string into pieces.</li></ul>
+<li><a href="Strsplit.html" class="code" title="function parts = Strsplit(splitstr, str, option)">Strsplit</a>	STRSPLIT Split string into pieces.</li></ul>
 This function is called by:
 <ul style="list-style-image:url(../../matlabicon.gif)">
 <li><a href="../.././sbtab/sbtab_document_load_from_one.html" class="code" title="function my_sbtab_document = sbtab_document_load_from_one(filename)">sbtab_document_load_from_one</a>	SBTAB_DOCUMENT_LOAD_FROM_ONE % Load SBtab document (possibly, several tables) from one file</li><li><a href="../.././sbtab/sbtab_table_load.html" class="code" title="function sbtab = sbtab_table_load(filename, my_table)">sbtab_table_load</a>	SBTAB_TABLE_LOAD Load SBtab table from file, or generate it from a list of strings</li></ul>
 <!-- crossreference -->
 
 
-<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
-<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function T = load_unformatted_table(filename)</a>
-0002 
-0003 <span class="comment">% LOAD_UNFORMATTED_TABLE load data table</span>
-0004 <span class="comment">%</span>
-0005 <span class="comment">% T = load_unformatted_table(filename)</span>
-0006 <span class="comment">%</span>
-0007 <span class="comment">% loads table (not required to have proper column headers); removes empty rows and columns</span>
-0008 
-0009 fid  = fopen(filename);
-0010 <span class="keyword">if</span> fid &lt;0, 
-0011   error(sprintf(<span class="string">'File %s cannot be found'</span>,filename));
-0012 <span class="keyword">end</span>
-0013 
-0014 stop = 0; 
-0015 T = {};
-0016 <span class="keyword">while</span> ~stop,
-0017   this_line = fgetl(fid);
-0018   <span class="keyword">if</span> this_line == -1, 
-0019     stop = 1; 
-0020   <span class="keyword">else</span>,
-0021     this_line = <a href="strsplit.html" class="code" title="function parts = strsplit(splitstr, str, option)">strsplit</a>(sprintf(<span class="string">'\t'</span>),this_line,<span class="string">'omit'</span>);
-0022     T(size(T,1)+1,1:length(this_line)) = this_line;
-0023   <span class="keyword">end</span>
-0024 <span class="keyword">end</span>
-0025 fclose(fid);
-0026 
-0027 <span class="comment">% remove empty rows and columns</span>
-0028 keep_row = find(sum(cellfun(<span class="string">'length'</span>,T),2));
-0029 keep_col = find(sum(cellfun(<span class="string">'length'</span>,T),1));
-0030 T= T(keep_row,keep_col);</pre></div>
-<hr><address>Generated on Mon 05-Oct-2015 16:21:21 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/">m2html</a></strong> &copy; 2003</address>
+
+<hr><address>Generated on Thu 18-Feb-2016 11:05:39 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/">m2html</a></strong> &copy; 2003</address>
 </body>
 </html>

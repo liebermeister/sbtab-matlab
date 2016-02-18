@@ -24,7 +24,7 @@
 <div class="box"><strong>SBTAB_DOCUMENT_SAVE Save SBtab document to files (one for each table)</strong></div>
 
 <h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
-<div class="box"><strong>function sbtab_document_save(sbtab_document,filename,flag_latex,verbose) </strong></div>
+<div class="box"><strong>function sbtab_document_save(sbtab_document,filename,flag_latex,verbose,to_one_file) </strong></div>
 
 <h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
 <div class="fragment"><pre class="comment"> SBTAB_DOCUMENT_SAVE Save SBtab document to files (one for each table)
@@ -37,37 +37,14 @@
 <h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
 This function calls:
 <ul style="list-style-image:url(../matlabicon.gif)">
-<li><a href="sbtab_table_save.html" class="code" title="function my_table = sbtab_table_save(my_sbtab_table, options)">sbtab_table_save</a>	SBTAB_TABLE_SAVE Save SBtab table</li><li><a href=".././sbtab/utils/default.html" class="code" title="function commandstring = default(varargin)">default</a>	commandstring = default(varname1,defaultvalue1,varname2,defaultvalue2,...)</li></ul>
+<li><a href="sbtab_document_save_to_one.html" class="code" title="function sbtab_document_save_to_one(sbtab_document,filename,verbose,flag_latex)">sbtab_document_save_to_one</a>	SBTAB_DOCUMENT_SAVE Save SBtab document to one file (with concatenated tables)</li><li><a href="sbtab_table_save.html" class="code" title="function my_table = sbtab_table_save(my_sbtab_table, options)">sbtab_table_save</a>	SBTAB_TABLE_SAVE Save SBtab table</li><li><a href=".././sbtab/utils/default.html" class="code" title="function commandstring = default(varargin)">default</a>	DEFAULT Generate matlab command string for initialising variables</li></ul>
 This function is called by:
 <ul style="list-style-image:url(../matlabicon.gif)">
 </ul>
 <!-- crossreference -->
 
 
-<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
-<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function sbtab_document_save(sbtab_document,filename,flag_latex,verbose)</a>
-0002 
-0003 <span class="comment">% SBTAB_DOCUMENT_SAVE Save SBtab document to files (one for each table)</span>
-0004 <span class="comment">%</span>
-0005 <span class="comment">% sbtab_document_save(sbtab_document,filename)</span>
-0006 <span class="comment">%</span>
-0007 <span class="comment">% filename has to be without extension</span>
-0008 
-0009 eval(<a href=".././sbtab/utils/default.html" class="code" title="function commandstring = default(varargin)">default</a>(<span class="string">'flag_latex'</span>,<span class="string">'0'</span>,<span class="string">'verbose'</span>,<span class="string">'1'</span>));
-0010 
-0011 fn = fieldnames(sbtab_document.tables);
-0012 
-0013 <span class="keyword">for</span> it = 1:length(fn),
-0014   my_sbtab_table = sbtab_document.tables.(fn{it});
-0015   <span class="keyword">switch</span> flag_latex,
-0016     <span class="keyword">case</span> 0,  my_filename = [filename <span class="string">'_'</span> fn{it} <span class="string">'.csv'</span>];
-0017     <span class="keyword">case</span> 1,  my_filename = [filename <span class="string">'_'</span> fn{it} <span class="string">'.tex'</span>];
-0018   <span class="keyword">end</span>
-0019   <span class="keyword">if</span> verbose,
-0020     display(sprintf(<span class="string">'Writing table %s to file %s'</span>, fn{it}, my_filename));
-0021   <span class="keyword">end</span>
-0022   <a href="sbtab_table_save.html" class="code" title="function my_table = sbtab_table_save(my_sbtab_table, options)">sbtab_table_save</a>(my_sbtab_table,struct(<span class="string">'filename'</span>,my_filename,<span class="string">'flag_latex'</span>,flag_latex));
-0023 <span class="keyword">end</span></pre></div>
-<hr><address>Generated on Mon 05-Oct-2015 16:21:21 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/">m2html</a></strong> &copy; 2003</address>
+
+<hr><address>Generated on Thu 18-Feb-2016 11:05:39 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/">m2html</a></strong> &copy; 2003</address>
 </body>
 </html>

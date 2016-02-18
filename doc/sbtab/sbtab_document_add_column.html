@@ -2,9 +2,9 @@
                 "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html>
 <head>
-  <title>Description of sbtab_document_save_to_one</title>
-  <meta name="keywords" content="sbtab_document_save_to_one">
-  <meta name="description" content="SBTAB_DOCUMENT_SAVE Save SBtab document to one file (with concatenated tables)">
+  <title>Description of sbtab_document_add_column</title>
+  <meta name="keywords" content="sbtab_document_add_column">
+  <meta name="description" content="SBTAB_DOCUMENT_ADD_TABLE Add column to existing table in SBtab document.">
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
   <meta name="generator" content="m2html &copy; 2003 Guillaume Flandin">
   <meta name="robots" content="index, follow">
@@ -12,33 +12,33 @@
 </head>
 <body>
 <a name="_top"></a>
-<div><a href="../index.html">Home</a> &gt;  <a href="#">sbtab</a> &gt; sbtab_document_save_to_one.m</div>
+<div><a href="../index.html">Home</a> &gt;  <a href="#">sbtab</a> &gt; sbtab_document_add_column.m</div>
 
 <!--<table width="100%"><tr><td align="left"><a href="../index.html"><img alt="<" border="0" src="../left.png">&nbsp;Master index</a></td>
 <td align="right"><a href="index.html">Index for ./sbtab&nbsp;<img alt=">" border="0" src="../right.png"></a></td></tr></table>-->
 
-<h1>sbtab_document_save_to_one
+<h1>sbtab_document_add_column
 </h1>
 
 <h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
-<div class="box"><strong>SBTAB_DOCUMENT_SAVE Save SBtab document to one file (with concatenated tables)</strong></div>
+<div class="box"><strong>SBTAB_DOCUMENT_ADD_TABLE Add column to existing table in SBtab document.</strong></div>
 
 <h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
-<div class="box"><strong>function sbtab_document_save_to_one(sbtab_document,filename,verbose,flag_latex) </strong></div>
+<div class="box"><strong>function my_sbtab_document = sbtab_document_add_column(my_sbtab_document,table_name,column_name,column,is_sbtab_column) </strong></div>
 
 <h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
-<div class="fragment"><pre class="comment"> SBTAB_DOCUMENT_SAVE Save SBtab document to one file (with concatenated tables)
+<div class="fragment"><pre class="comment"> SBTAB_DOCUMENT_ADD_TABLE Add column to existing table in SBtab document.
 
- sbtab_document_save(sbtab_document,filename)</pre></div>
+ my_sbtab_document = sbtab_document_add_column(my_sbtab_document,table_name,column_name,column,is_sbtab_column)</pre></div>
 
 <!-- crossreference -->
 <h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
 This function calls:
 <ul style="list-style-image:url(../matlabicon.gif)">
-<li><a href="sbtab_table_save.html" class="code" title="function my_table = sbtab_table_save(my_sbtab_table, options)">sbtab_table_save</a>	SBTAB_TABLE_SAVE Save SBtab table</li><li><a href=".././sbtab/utils/default.html" class="code" title="function commandstring = default(varargin)">default</a>	DEFAULT Generate matlab command string for initialising variables</li></ul>
+<li><a href="sbtab_table_add_column.html" class="code" title="function my_sbtab_table = sbtab_table_add_column(my_sbtab_table,column_name,column,is_sbtab_column)">sbtab_table_add_column</a>	SBTAB_TABLE_ADD_COLUMN Add column to SBtab table.</li><li><a href=".././sbtab/utils/default.html" class="code" title="function commandstring = default(varargin)">default</a>	DEFAULT Generate matlab command string for initialising variables</li></ul>
 This function is called by:
 <ul style="list-style-image:url(../matlabicon.gif)">
-<li><a href="sbtab_document_save.html" class="code" title="function sbtab_document_save(sbtab_document,filename,flag_latex,verbose,to_one_file)">sbtab_document_save</a>	SBTAB_DOCUMENT_SAVE Save SBtab document to files (one for each table)</li></ul>
+</ul>
 <!-- crossreference -->
 
 

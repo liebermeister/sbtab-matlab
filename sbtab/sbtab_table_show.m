@@ -32,5 +32,7 @@ else,
     display(sprintf('    %s',uncontrolled_column_names{it}));
   end
   end
+  display(sprintf('- Number of rows: %d',length(sbtab_table.column.column.(column_names{1}))));
+  
 end
 

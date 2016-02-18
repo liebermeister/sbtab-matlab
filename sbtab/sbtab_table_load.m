@@ -12,7 +12,7 @@ if ~exist('my_table'),
   try 
     my_table = load_unformatted_table(filename);
   catch
-    error(sprintf('Problem in import of file %s If you use non-".csv" files, you need to specify this!',  filename))
+    error(sprintf('I could not import the file %s',  filename))
   end
 end
 
@@ -49,7 +49,7 @@ end
   attr_line = strrep(attr_line,'  ',' ');
   attr_line = strrep(attr_line,''' ',sprintf('\t'));
   attr_line = strrep(attr_line,'" ',sprintf('\t'));
-  attribute_line = strsplit(sprintf('\t'),attr_line);
+  attribute_line = Strsplit(sprintf('\t'),attr_line);
 end
 
 % omit empty columns
@@ -142,9 +142,10 @@ end
 
 for it=1:length(attribute_line),
  attribute_line{it} = strrep(attribute_line{it}, '= ','=');
- mm = strsplit('=',attribute_line{it});
+ mm = Strsplit('=',attribute_line{it});
  if length(mm) == 2,
    mm{1} = deblank(strrep(mm{1},'!',''));
+   mm{1} = strrep(mm{1},':','');
    mm{2} = strrep(mm{2},'''','');
    mm{2} = deblank(strrep(mm{2},'"',''));
    attributes = setfield(attributes,mm{1},mm{2});

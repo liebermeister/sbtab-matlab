@@ -35,30 +35,14 @@
 <h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
 This function calls:
 <ul style="list-style-image:url(../matlabicon.gif)">
-<li><a href="sbtab_document_add_table.html" class="code" title="function my_sbtab_document = sbtab_document_add_table(my_sbtab_document,table_name,table)">sbtab_document_add_table</a>	SBTAB_DOCUMENT_ADD_TABLE Add table to SBtab document.</li><li><a href=".././sbtab/utils/default.html" class="code" title="function commandstring = default(varargin)">default</a>	commandstring = default(varname1,defaultvalue1,varname2,defaultvalue2,...)</li></ul>
+<li><a href="sbtab_document_add_table.html" class="code" title="function my_sbtab_document = sbtab_document_add_table(my_sbtab_document,table_name,table)">sbtab_document_add_table</a>	SBTAB_DOCUMENT_ADD_TABLE Add table to SBtab document.</li><li><a href=".././sbtab/utils/default.html" class="code" title="function commandstring = default(varargin)">default</a>	DEFAULT Generate matlab command string for initialising variables</li></ul>
 This function is called by:
 <ul style="list-style-image:url(../matlabicon.gif)">
 <li><a href="sbtab_document_load.html" class="code" title="function my_sbtab_document = sbtab_document_load(table_names,filenames)">sbtab_document_load</a>	SBTAB_DOCUMENT_LOAD Load SBtab document from a number of files</li><li><a href="sbtab_document_load_from_one.html" class="code" title="function my_sbtab_document = sbtab_document_load_from_one(filename)">sbtab_document_load_from_one</a>	SBTAB_DOCUMENT_LOAD_FROM_ONE % Load SBtab document (possibly, several tables) from one file</li></ul>
 <!-- crossreference -->
 
 
-<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
-<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function my_sbtab_document = sbtab_document_construct(attributes,table_names,tables)</a>
-0002 
-0003 <span class="comment">% SBTAB_DOCUMENT_CONSTRUCT Build SBtab document object.</span>
-0004 <span class="comment">%</span>
-0005 <span class="comment">% my_sbtab_document = sbtab_document_construct(attributes,table_names,tables)</span>
-0006 
-0007 eval(<a href=".././sbtab/utils/default.html" class="code" title="function commandstring = default(varargin)">default</a>(<span class="string">'attributes'</span>,<span class="string">'struct'</span>));
-0008 
-0009 my_sbtab_document.attributes = attributes; 
-0010 my_sbtab_document.tables     = struct;
-0011 
-0012 <span class="keyword">if</span> exist(<span class="string">'table_names'</span>,<span class="string">'var'</span>),
-0013  <span class="keyword">for</span> it = 1:length(table_names),
-0014     my_sbtab_document = <a href="sbtab_document_add_table.html" class="code" title="function my_sbtab_document = sbtab_document_add_table(my_sbtab_document,table_name,table)">sbtab_document_add_table</a>(my_sbtab_document,table_names{it},tables{it});
-0015  <span class="keyword">end</span>
-0016 <span class="keyword">end</span></pre></div>
-<hr><address>Generated on Mon 05-Oct-2015 16:21:21 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/">m2html</a></strong> &copy; 2003</address>
+
+<hr><address>Generated on Thu 18-Feb-2016 11:05:39 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/">m2html</a></strong> &copy; 2003</address>
 </body>
 </html>

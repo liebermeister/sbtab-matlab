@@ -38,44 +38,14 @@
 <h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
 This function calls:
 <ul style="list-style-image:url(../matlabicon.gif)">
-<li><a href="sbtab_table_load.html" class="code" title="function sbtab = sbtab_table_load(filename, my_table)">sbtab_table_load</a>	SBTAB_TABLE_LOAD Load SBtab table from file, or generate it from a list of strings</li><li><a href="sbtab_table_save.html" class="code" title="function my_table = sbtab_table_save(my_sbtab_table, options)">sbtab_table_save</a>	SBTAB_TABLE_SAVE Save SBtab table</li><li><a href=".././sbtab/utils/default.html" class="code" title="function commandstring = default(varargin)">default</a>	commandstring = default(varname1,defaultvalue1,varname2,defaultvalue2,...)</li></ul>
+<li><a href="sbtab_table_load.html" class="code" title="function sbtab = sbtab_table_load(filename, my_table)">sbtab_table_load</a>	SBTAB_TABLE_LOAD Load SBtab table from file, or generate it from a list of strings</li><li><a href="sbtab_table_save.html" class="code" title="function my_table = sbtab_table_save(my_sbtab_table, options)">sbtab_table_save</a>	SBTAB_TABLE_SAVE Save SBtab table</li><li><a href=".././sbtab/utils/default.html" class="code" title="function commandstring = default(varargin)">default</a>	DEFAULT Generate matlab command string for initialising variables</li></ul>
 This function is called by:
 <ul style="list-style-image:url(../matlabicon.gif)">
 </ul>
 <!-- crossreference -->
 
 
-<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
-<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function t = sbtab_table_subselect_items(t,column,sbtab_file_out,given_entry)</a>
-0002 
-0003 <span class="comment">% SBTAB_SUBSELECT_ITEMS Select rows that have entries for a specific column</span>
-0004 <span class="comment">%</span>
-0005 <span class="comment">% t = sbtab_subselect_items(t,column,sbtab_file_out,given_entry)</span>
-0006 <span class="comment">%</span>
-0007 <span class="comment">% reduce table to rows that have a (non-empty) entry in column [column]</span>
-0008 <span class="comment">% or, if [given_entry] is provided, row in which the entry of [column] matches [given_entry]</span>
-0009 
-0010 eval(<a href=".././sbtab/utils/default.html" class="code" title="function commandstring = default(varargin)">default</a>(<span class="string">'sbtab_file_out'</span>,<span class="string">'[]'</span>));
-0011 
-0012 <span class="keyword">if</span> isstr(t),
-0013   t = <a href="sbtab_table_load.html" class="code" title="function sbtab = sbtab_table_load(filename, my_table)">sbtab_table_load</a>(t);
-0014 <span class="keyword">end</span>
-0015 
-0016 <span class="keyword">if</span> exist(<span class="string">'given_entry'</span>,<span class="string">'var'</span>),
-0017   ind_remove = find(strcmp(given_entry,t.column.column.(column))==0);
-0018   t.column.column.(column)(ind_remove) = repmat({<span class="string">''</span>},length(ind_remove),1);
-0019 <span class="keyword">end</span>
-0020 
-0021 ind = find(cellfun(<span class="string">'length'</span>,t.column.column.(column)));
-0022 
-0023 fn = fieldnames(t.column.column);
-0024 <span class="keyword">for</span> it = 1:length(fn),
-0025   t.column.column.(fn{it}) = t.column.column.(fn{it})(ind);
-0026 <span class="keyword">end</span>
-0027 
-0028 <span class="keyword">if</span> length(sbtab_file_out),
-0029   <a href="sbtab_table_save.html" class="code" title="function my_table = sbtab_table_save(my_sbtab_table, options)">sbtab_table_save</a>(t,struct(<span class="string">'filename'</span>,sbtab_file_out));
-0030 <span class="keyword">end</span></pre></div>
-<hr><address>Generated on Mon 05-Oct-2015 16:21:21 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/">m2html</a></strong> &copy; 2003</address>
+
+<hr><address>Generated on Thu 18-Feb-2016 11:05:39 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/">m2html</a></strong> &copy; 2003</address>
 </body>
 </html>

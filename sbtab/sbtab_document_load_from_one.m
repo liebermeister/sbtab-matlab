@@ -13,7 +13,7 @@ flag_remove_comment_lines = 1;
 try 
   my_table = load_unformatted_table(filename);
 catch
-  error(sprintf('Problem in import of file %s If you use non-".csv" files, you need to specify this!',  filename))
+  error(sprintf('Problem in import of file %s If you use non-".tsv" files, you need to specify this!',  filename))
 end
 
 split_lines = [find(cellfun('length',strfind(my_table,'!!'))); length(my_table)+1];

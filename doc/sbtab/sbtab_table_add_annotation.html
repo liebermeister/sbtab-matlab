@@ -42,36 +42,7 @@ This function is called by:
 <!-- crossreference -->
 
 
-<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
-<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function t = sbtab_table_add_annotation(t,column_old,column_new,item_old,item_new,sbtab_file_out)</a>
-0002 
-0003 <span class="comment">% SBTAB_TABLE_ADD_ANNOTATION Insert annotation column into a table.</span>
-0004 <span class="comment">%</span>
-0005 <span class="comment">% t = sbtab_table_add_annotation(t,column_old,column_new,item_old,item_new,sbtab_file_out)</span>
-0006 
-0007 <span class="keyword">if</span> isstr(t),
-0008   t = <a href="sbtab_table_load.html" class="code" title="function sbtab = sbtab_table_load(filename, my_table)">sbtab_table_load</a>(t);
-0009 <span class="keyword">end</span>
-0010 
-0011 t.column.column_names = [t.column.column_names; column_new];
-0012 
-0013 column_old = strrep(column_old,<span class="string">' '</span>,<span class="string">'_'</span>);
-0014 column_old = strrep(column_old,<span class="string">'.'</span>,<span class="string">'_'</span>);
-0015 column_old = strrep(column_old,<span class="string">':'</span>,<span class="string">'_'</span>);
-0016 
-0017 column_new = strrep(column_new,<span class="string">' '</span>,<span class="string">'_'</span>);
-0018 column_new = strrep(column_new,<span class="string">'.'</span>,<span class="string">'_'</span>);
-0019 column_new = strrep(column_new,<span class="string">':'</span>,<span class="string">'_'</span>);
-0020 
-0021 ind = label_names(item_old,t.column.column.(column_old));
-0022 t.column.column.(column_new) = repmat({<span class="string">''</span>},length(t.column.column.(column_old)),1);
-0023 t.column.ind = [t.column.ind, max([t.column.ind, t.data.ind, t.uncontrolled.ind])+1];
-0024 
-0025 t.column.column.(column_new)(ind(find(ind))) = item_new(find(ind));
-0026 
-0027 <span class="keyword">if</span> exist(<span class="string">'sbtab_file_out'</span>,<span class="string">'var'</span>),
-0028   <a href="sbtab_table_save.html" class="code" title="function my_table = sbtab_table_save(my_sbtab_table, options)">sbtab_table_save</a>(t,sbtab_file_out);
-0029 <span class="keyword">end</span></pre></div>
-<hr><address>Generated on Mon 05-Oct-2015 16:21:21 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/">m2html</a></strong> &copy; 2003</address>
+
+<hr><address>Generated on Thu 18-Feb-2016 11:05:39 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/">m2html</a></strong> &copy; 2003</address>
 </body>
 </html>

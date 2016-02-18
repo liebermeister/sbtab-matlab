@@ -42,37 +42,7 @@ This function is called by:
 <!-- crossreference -->
 
 
-<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
-<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function tt = sbtab_table_export(sbtab_struct, filename)</a>
-0002 
-0003 <span class="comment">% SBTAB_TABLE_EXPORT Convert SBtab table structure into flat table</span>
-0004 <span class="comment">%</span>
-0005 <span class="comment">% tt = sbtab_table_export(sbtab_struct,filename)</span>
-0006 
-0007 columns = fieldnames(sbtab_struct.column.column);
-0008 
-0009 clear tt
-0010 
-0011 <span class="keyword">for</span> it = 1:length(columns)
-0012   val = getfield(sbtab_struct.column.column,columns{it});
-0013   <span class="keyword">if</span> isnumeric(val(1));
-0014     tt(:,it) = cellstr(num2str(val));
-0015     <span class="keyword">for</span> itt = 1:length(tt(:,it)),
-0016       tt(itt,it) = strrep(tt(itt,it),<span class="string">' '</span>,<span class="string">''</span>);
-0017     <span class="keyword">end</span>
-0018   <span class="keyword">else</span>,
-0019     val
-0020     tt(:,it) = val;
-0021   <span class="keyword">end</span>
-0022 <span class="keyword">end</span>
-0023 
-0024 tt = [columns'; tt];
-0025 
-0026 <span class="keyword">if</span> exist(<span class="string">'filename'</span>,<span class="string">'var'</span>), 
-0027  mytable(tt,0,filename);
-0028 <span class="keyword">else</span>
-0029  mytable(tt,0);
-0030 <span class="keyword">end</span></pre></div>
-<hr><address>Generated on Mon 05-Oct-2015 16:21:21 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/">m2html</a></strong> &copy; 2003</address>
+
+<hr><address>Generated on Thu 18-Feb-2016 11:05:39 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/">m2html</a></strong> &copy; 2003</address>
 </body>
 </html>

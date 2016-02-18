@@ -1,4 +1,4 @@
-function parts = strsplit(splitstr, str, option)
+function parts = Strsplit(splitstr, str, option)
 
 %STRSPLIT Split string into pieces.
 %
@@ -17,6 +17,8 @@ function parts = strsplit(splitstr, str, option)
 %   Time-stamp:  2004-09-22 08:48:01 +0200
 %   E-mail:      pjacklam@online.no
 %   URL:         http://home.online.no/~pjacklam
+
+% This function was included into the SBtab package with kind permission of the author
 
    nargsin = nargin;
    error(nargchk(2, 3, nargsin));
