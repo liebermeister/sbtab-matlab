@@ -24,12 +24,12 @@
 <div class="box"><strong>SBTAB_TABLE_GET_COLUMN Get column from an SBtab table</strong></div>
 
 <h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
-<div class="box"><strong>function column = sbtab_table_get_column(my_sbtab_table,column_name,flag_numbers) </strong></div>
+<div class="box"><strong>function my_column = sbtab_table_get_column(my_sbtab_table,column_name,flag_numbers,verbose) </strong></div>
 
 <h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
 <div class="fragment"><pre class="comment"> SBTAB_TABLE_GET_COLUMN Get column from an SBtab table
 
- column = sbtab_table_get_column(my_sbtab_table,column_name,flag_numbers)
+ my_column = sbtab_table_get_column(my_sbtab_table,column_name,flag_numbers)
  
  If the column does not exist, an empty element is returned
  If flag_numbers is set to 1, the table entries are returned as numbers (otherwise as strings)</pre></div>
@@ -41,11 +41,11 @@ This function calls:
 <li><a href=".././sbtab/utils/default.html" class="code" title="function commandstring = default(varargin)">default</a>	DEFAULT Generate matlab command string for initialising variables</li></ul>
 This function is called by:
 <ul style="list-style-image:url(../matlabicon.gif)">
-</ul>
+<li><a href="sbtab_2_dynamic_data.html" class="code" title="function d = sbtab_2_dynamic_data(filename)">sbtab_2_dynamic_data</a>	d = dynamic_data_2_sbtab(dynamic_data,experiment_name)</li></ul>
 <!-- crossreference -->
 
 
 
-<hr><address>Generated on Thu 18-Feb-2016 11:05:39 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/">m2html</a></strong> &copy; 2003</address>
+<hr><address>Generated on Mon 30-Jan-2017 18:21:44 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/">m2html</a></strong> &copy; 2003</address>
 </body>
 </html>

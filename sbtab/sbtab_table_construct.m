@@ -31,9 +31,7 @@ my_sbtab_table = struct('attributes',{attributes},'column',struct,'rows',struct,
 
 my_sbtab_table.column.column_names = column_names;
 if length(column_names),
-  column_names = strrep(column_names,' ','_');
-  column_names = strrep(column_names,'.','_');
-  column_names = strrep(column_names,':','_');
+  column_names = sbtab_clean_column_headers(  column_names);
   for it = 1:length(column_names),
     my_sbtab_table.column.column.(column_names{it}) = columns{it};
   end

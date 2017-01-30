@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of biotable_data_consistency</title>
+  <meta name="keywords" content="biotable_data_consistency">
+  <meta name="description" content="[C,V,U,E_un_signs,pval,cc] = biotable_data_consistency(network,network_CoHid,metabolite_data,flux_data,transcript_data,v_sign,pars)">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html &copy; 2003 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../../index.html">Home</a> &gt;  <a href="#">sbtab</a> &gt; <a href="#">biotable</a> &gt; biotable_data_consistency.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../../index.html"><img alt="<" border="0" src="../../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for ./sbtab/biotable&nbsp;<img alt=">" border="0" src="../../right.png"></a></td></tr></table>-->
+
+<h1>biotable_data_consistency
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="box"><strong>[C,V,U,E_un_signs,pval,cc] = biotable_data_consistency(network,network_CoHid,metabolite_data,flux_data,transcript_data,v_sign,pars)</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="box"><strong>function [C,V,U,E_un_signs,cc,pval] = biotable_data_consistency(network,network_CoHid,metabolite_data,flux_data,transcript_data,v_sign,pars) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> [C,V,U,E_un_signs,pval,cc] = biotable_data_consistency(network,network_CoHid,metabolite_data,flux_data,transcript_data,v_sign,pars)
+
+ find out to what extent flux data can be explained be metabolite and expression data
+ C,V,U: matrices of log concentrations, fluxes, and enzyme levels extracted from biotable data
+ E_un_signs: signs of unscaled elasticities guessed from the network structure
+ cc, pval: rank correlation coefficients (and their p values) between measured and predicted flux changes,
+ for each reaction</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../../matlabicon.gif)">
+<li><a href="biotable_network_interpolate.html" class="code" title="function data = biotable_network_interpolate(data, network, type,recursive)">biotable_network_interpolate</a>	</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+
+
+<hr><address>Generated on Mon 30-Jan-2017 18:21:44 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/">m2html</a></strong> &copy; 2003</address>
+</body>
+</html>

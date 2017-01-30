@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of biotable_combine_replicates</title>
+  <meta name="keywords" content="biotable_combine_replicates">
+  <meta name="description" content="[data_central, data_average, data_replicates, statistics, options, data_combined, data_collected] = biotable_combine_replicates(data, options)">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html &copy; 2003 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../../index.html">Home</a> &gt;  <a href="#">sbtab</a> &gt; <a href="#">biotable</a> &gt; biotable_combine_replicates.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../../index.html"><img alt="<" border="0" src="../../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for ./sbtab/biotable&nbsp;<img alt=">" border="0" src="../../right.png"></a></td></tr></table>-->
+
+<h1>biotable_combine_replicates
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="box"><strong>[data_central, data_average, data_replicates, statistics, options, data_combined, data_collected] = biotable_combine_replicates(data, options)</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="box"><strong>function [data_average, data_replicates, data_central, statistics, options_complete, data_combined, data_collected, options_update] = biotable_combine_replicates(data, options) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> [data_central, data_average, data_replicates, statistics, options, data_combined, data_collected] = biotable_combine_replicates(data, options)
+
+ Combine and interpolate data from multiple replicate experiments
+
+ 'data' is a cell array of data sets (all in biotable format, same form!!)
+ The entries of the first field are used as unique identifiers
+ The data entries are reordered in the combined data set.
+
+ data_average, data_replicates, 
+ data_central (struct arrays):   regression results
+ statistics:                     additional information about the regression procedure
+ data_collected (struct arrays): data structure from intermediate processing steps
+ data_combined (struct arrays) : data structure from intermediate processing steps
+                                 field 'SampleName' contains replicate labels (as numbers)
+ options:                        options for multi-curve regression (see script replicate_regression)
+   with optional additional fields .prior_updating
+     and .updating_factor</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../../matlabicon.gif)">
+<li><a href="biotable_join_replicates.html" class="code" title="function [combined,collected] = biotable_join_replicates(data,p)">biotable_join_replicates</a>	[combined,collected] = biotable_join_replicates(data,p)</li><li><a href="../.././sbtab/utils/default.html" class="code" title="function commandstring = default(varargin)">default</a>	DEFAULT Generate matlab command string for initialising variables</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+
+
+<hr><address>Generated on Mon 30-Jan-2017 18:21:44 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/">m2html</a></strong> &copy; 2003</address>
+</body>
+</html>

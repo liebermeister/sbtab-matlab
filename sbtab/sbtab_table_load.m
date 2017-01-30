@@ -6,7 +6,7 @@ function sbtab = sbtab_table_load(filename, my_table)
 %
 % Either load SBtab table from file [filename]
 % or     (if argument [my_table] is given)
-%        load SBtab table from string list [my_table]
+%        load SBtab table from string cell array [my_table]
 
 if ~exist('my_table'),
   try 
@@ -27,7 +27,7 @@ while cont * length(my_table),
 end
 
 if isempty(my_table)
-  error('No declaration line (starting with !!SBtab) found');
+  error(sprintf('No declaration line (starting with !!SBtab) found in file %s',filename));
 end
 
 if length(attribute_line),
@@ -51,6 +51,51 @@ end
   attr_line = strrep(attr_line,'" ',sprintf('\t'));
   attribute_line = Strsplit(sprintf('\t'),attr_line);
 end
+
+% -------------------------------------------------------
+% Attributes
+
+attributes = struct;
+
+if length(attribute_line), 
+  attribute_line{1}=strrep(attribute_line{1},'!!SBtab ',''); 
+  attribute_line{1}=strrep(attribute_line{1},'!!Sbtab ',''); 
+end
+
+for it=1:length(attribute_line),
+ attribute_line{it} = strrep(attribute_line{it}, '= ','=');
+ mm = Strsplit('=',attribute_line{it});
+ if length(mm) == 2,
+   mm{1} = deblank(strrep(mm{1},'!',''));
+   mm{1} = strrep(mm{1},':','');
+   mm{2} = strrep(mm{2},'''','');
+   mm{2} = deblank(strrep(mm{2},'"',''));
+   attributes = setfield(attributes,mm{1},mm{2});
+ end
+end
+
+if ~isfield(attributes,'TableType'),
+  %warning(sprintf('Table type missing in file %s', filename));
+  attributes.TableType = 'unknown';
+end
+
+%if ~isfield(attributes,'TableName'),
+%  warning(sprintf('Table name missing in file %s',filename));
+%  attributes.TableName = 'unknown';
+%end
+
+% -------------------------------------------------------
+% If desired transpose the table
+
+if isfield(attributes,'TableOrientation'),
+ switch attributes.TableOrientation,
+   case 'Transposed',
+     my_table =  my_table';
+ end
+end
+
+% -------------------------------------------------------
+% Table columns
 
 % omit empty columns
 
@@ -78,9 +123,8 @@ if size(my_table,1)>1,
   end
 end
 
-ind_rows = setdiff(unique(ind_data),1);
-
-column = struct;
+ind_rows   = setdiff(unique(ind_data),1);
+column     = struct;
 ind_column = [];
 
 for it = 1:size(my_table,2),
@@ -112,7 +156,6 @@ ind_data         = setdiff(ind_rows,ind_column);
 data_headers     = my_table(1,ind_data);
 data             = my_table(2:end,ind_data);
 
-
 ind_uncontrolled = setdiff(1:size(my_table,2),[ind_column,ind_data]);
 if length(ind_uncontrolled),
   uncontrolled_headers = my_table(1,ind_uncontrolled);
@@ -133,34 +176,9 @@ for it = 1:length(fn);
   column_attributes.(fn{it}) = rows.(fn{it})(ind_column);
 end
 
-attributes = struct;
 
-if length(attribute_line), 
-  attribute_line{1}=strrep(attribute_line{1},'!!SBtab ',''); 
-  attribute_line{1}=strrep(attribute_line{1},'!!Sbtab ',''); 
-end
-
-for it=1:length(attribute_line),
- attribute_line{it} = strrep(attribute_line{it}, '= ','=');
- mm = Strsplit('=',attribute_line{it});
- if length(mm) == 2,
-   mm{1} = deblank(strrep(mm{1},'!',''));
-   mm{1} = strrep(mm{1},':','');
-   mm{2} = strrep(mm{2},'''','');
-   mm{2} = deblank(strrep(mm{2},'"',''));
-   attributes = setfield(attributes,mm{1},mm{2});
- end
-end
-
-if ~isfield(attributes,'TableType'),
-  %warning(sprintf('Table type missing in file %s', filename));
-  attributes.TableType = 'unknown';
-end
-
-%if ~isfield(attributes,'TableName'),
-%  warning(sprintf('Table name missing in file %s',filename));
-%  attributes.TableName = 'unknown';
-%end
+% -------------------------------------------------------
+% Generate SBtab struct
 
 sbtab.filename          = filename;
 sbtab.attributes        = attributes;
