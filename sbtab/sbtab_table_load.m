@@ -1,14 +1,16 @@
-function sbtab = sbtab_table_load(filename, my_table)
+function sbtab = sbtab_table_load(filename, my_table, flag_remove_comments)
 
 % SBTAB_TABLE_LOAD Load SBtab table from file, or generate it from a list of strings
 %
-% sbtab = sbtab_table_load(filename, my_table)
+% sbtab = sbtab_table_load(filename, my_table, flag_remove_comments)
 %
 % Either load SBtab table from file [filename]
 % or     (if argument [my_table] is given)
 %        load SBtab table from string cell array [my_table]
 
-if ~exist('my_table'),
+eval(default('my_table', '[]', 'flag_remove_comments', '0'));
+  
+if isempty(my_table),
   try 
     my_table = load_unformatted_table(filename);
   catch
@@ -194,3 +196,7 @@ sbtab.data.ind          = ind_data;
 sbtab.uncontrolled.headers = uncontrolled_headers;
 sbtab.uncontrolled.data = uncontrolled;
 sbtab.uncontrolled.ind  = ind_uncontrolled;
+
+if flag_remove_comments, 
+  sbtab = sbtab_table_remove_comment_lines(sbtab);
+end

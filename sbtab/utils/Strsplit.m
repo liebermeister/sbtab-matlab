@@ -1,5 +1,4 @@
 function parts = Strsplit(splitstr, str, option)
-
 %STRSPLIT Split string into pieces.
 %
 %   STRSPLIT(SPLITSTR, STR, OPTION) splits the string STR at every occurrence
@@ -18,10 +17,12 @@ function parts = Strsplit(splitstr, str, option)
 %   E-mail:      pjacklam@online.no
 %   URL:         http://home.online.no/~pjacklam
 
-% This function was included into the SBtab package with kind permission of the author
-
    nargsin = nargin;
-   error(nargchk(2, 3, nargsin));
+   if exist('narginchk','builtin'), 
+     narginchk(2, 3);
+   else
+     error(nargchk(2, 3,nargsin));
+   end
    if nargsin < 3
       option = 'omit';
    else

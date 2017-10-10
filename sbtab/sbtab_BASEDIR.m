@@ -4,4 +4,4 @@
 
 function d = sbtab_BASEDIR()
 
-d = [fileparts(which(mfilename)) filesep '..' filesep];
+d = [fileparts(which(mfilename)) filesep ];

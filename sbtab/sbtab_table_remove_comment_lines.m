@@ -1,6 +1,6 @@
-function my_sbtab_table = sbtab_table_remove_coment_lines(my_sbtab_table)
+function my_sbtab_table = sbtab_table_remove_comment_lines(my_sbtab_table)
 
-% SBTAB_TABLE_REMOVE_COMENT_LINES remove all comment lines from a table
+% SBTAB_TABLE_REMOVE_COMMENT_LINES remove all comment lines from a table
 %
 % my_sbtab_table = sbtab_table_remove_coment_lines(my_sbtab_table)
 
