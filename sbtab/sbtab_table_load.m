@@ -149,6 +149,7 @@ for it = 1:size(my_table,2),
     column_header = strrep(column_header,'(','_');
     column_header = strrep(column_header,')','_');
     column_header = strrep(column_header,'/','_');
+    column_header = strrep(column_header,'>','SAMPLE_');
     ind_column = [ind_column it];
     column = setfield(column,column_header,my_table(2:end,it));
   end

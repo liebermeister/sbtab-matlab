@@ -18,6 +18,7 @@ column_name = strrep(column_name,'.','_');
 column_name = strrep(column_name,':','_');
 column_name = strrep(column_name,'[','_');
 column_name = strrep(column_name,']','_');
+column_name = strrep(column_name,'>','SAMPLE_');
 
 if isfield(my_sbtab_table.column.column,column_name),
   my_column = my_sbtab_table.column.column.(column_name);
@@ -30,5 +31,13 @@ else
 end
 
 if flag_numbers,
-  my_column = cell_string2num(my_column);
+  if sum(strcmp('true',lower(my_column))+strcmp('false',lower(my_column))),
+    %% Convert Boolean values to numbers 0 or 1
+    dum = nan*ones(size(my_column));
+    dum(find(strcmp('true',lower(my_column)))) = 1;
+    dum(find(strcmp('false',lower(my_column)))) = 0;
+    my_column = dum;
+  else,
+    my_column = cell_string2num(my_column);
+  end
 end

@@ -10,7 +10,6 @@ if ~isstr(filename),
    my_sbtab_document = filename; 
   return
 end
-
   
 my_sbtab_document = sbtab_document_construct;
 

@@ -31,6 +31,8 @@ my_table = {'!!SBtab'};
 %   my_table{1,1} = [   my_table{1,1} ' ' fn{it} '="' my_sbtab_table.attributes.(fn{it}) '"'];
 % end
 
+my_sbtab_table.attributes.Date = datestr(date,29);
+
 if ~isfield(my_sbtab_table.attributes,'SBtabVersion'),
   my_sbtab_table.attributes.SBtabVersion = num2str(sbtab_version);
 end

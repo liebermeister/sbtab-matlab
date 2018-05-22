@@ -15,7 +15,7 @@ stop = 0;
 T = {};
 while ~stop,
   this_line = fgetl(fid);
-  if this_line == -1, 
+  if this_line == -1,
     stop = 1; 
   else,
     this_line = Strsplit(sprintf('\t'),this_line,'omit');

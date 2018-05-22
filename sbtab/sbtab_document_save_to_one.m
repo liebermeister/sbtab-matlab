@@ -22,6 +22,6 @@ for it = 1:length(fn),
 end
 
 if verbose,
-  display(sprintf('\nWriting SBtab document to file %s', filename));
+  display(sprintf('\nWriting SBtab file %s', filename));
 end
 mytable(my_table,0,filename);
