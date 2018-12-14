@@ -16,7 +16,7 @@ if isstr(options),
   options = struct('filename',options);
 end
 
-options_default = struct('filename',[],'omit_declarations',0,'flag_latex',0);
+options_default = struct('filename',[],'omit_declarations',0,'flag_latex',0,'verbose',0);
 options         = join_struct(options_default,options);
 
 if options.flag_latex,
@@ -31,6 +31,7 @@ my_table = {'!!SBtab'};
 %   my_table{1,1} = [   my_table{1,1} ' ' fn{it} '="' my_sbtab_table.attributes.(fn{it}) '"'];
 % end
 
+my_sbtab_table.attributes.SBtabVersion = num2str(sbtab_version);
 my_sbtab_table.attributes.Date = datestr(date,29);
 
 if ~isfield(my_sbtab_table.attributes,'SBtabVersion'),
@@ -85,7 +86,7 @@ fn = fieldnames(my_sbtab_table.column.column);
 nr = length(my_sbtab_table.column.column.(fn{1}));
 for it = 1:length(fn),
   fnn = cn{it};
-  is_sbtab_column = sum([it-my_sbtab_table.uncontrolled.ind] ==0)==0;
+  is_sbtab_column = sum([my_sbtab_table.column.ind(it)-my_sbtab_table.uncontrolled.ind] ==0)==0;
   if is_sbtab_column,
     my_table{2,my_sbtab_table.column.ind(it)} = ['!' fnn];
   end
@@ -104,7 +105,7 @@ end
 
 for it = 1:length(my_sbtab_table.uncontrolled.ind),
   my_table(2,my_sbtab_table.uncontrolled.ind(it))               = my_sbtab_table.uncontrolled.headers(it);
-  my_table(2+n_rows+(1:nr),my_sbtab_table.uncontrolled.ind(it)) = num2cell(my_sbtab_table.uncontrolled.data{it});
+  my_table(2+n_rows+(1:nr),my_sbtab_table.uncontrolled.ind(it)) = num2cell(my_sbtab_table.uncontrolled.data(:,it));
 end
 
 if options.omit_declarations,
@@ -128,4 +129,8 @@ if length(options.filename),
   else,
    mytable(my_table,0,options.filename);
   end
+end
+
+if options.verbose,
+  display(sprintf('Writing file %s', options.filename));
 end

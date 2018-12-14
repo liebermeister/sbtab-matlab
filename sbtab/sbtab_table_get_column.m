@@ -24,10 +24,17 @@ if isfield(my_sbtab_table.column.column,column_name),
   my_column = my_sbtab_table.column.column.(column_name);
   my_column = column(my_column);
 else
-  if verbose,
+  my_headers = my_sbtab_table.uncontrolled.headers;
+  my_headers = strrep(my_headers,':','_');
+  ll = find(strcmp(my_headers,column_name));
+  if length(ll),
+    my_column = my_sbtab_table.uncontrolled.data(:,ll);
+  else
+    if verbose,
     warning(sprintf('Column %s not found in table',column_name));
+    end
+    my_column = [];
   end
-  my_column = [];
 end
 
 if flag_numbers,

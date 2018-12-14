@@ -13,6 +13,7 @@ eval(default('my_table', '[]', 'flag_remove_comments', '0'));
 if isempty(my_table),
   try 
     my_table = load_unformatted_table(filename);
+    my_table = remove_comment_lines(my_table); 
   catch
     error(sprintf('I could not import the file %s',  filename))
   end
@@ -110,7 +111,7 @@ end
 % detect empty column header 
 
 if sum(double(cellfun('isempty',my_table(1,:))))
-  error('column header missing');
+  error(sprintf('Column header missing in file %s',filename));
 end
 
 rows = struct;
@@ -201,3 +202,19 @@ sbtab.uncontrolled.ind  = ind_uncontrolled;
 if flag_remove_comments, 
   sbtab = sbtab_table_remove_comment_lines(sbtab);
 end
+
+
+% -----------------------------------------------------
+
+function my_table = remove_comment_lines(my_table)
+  
+  dum = my_table(:,1); 
+  ind = [];  
+  for it = 1:length(dum), 
+    if isempty(dum(it)), 
+      ind=[ind; it]; 
+    elseif strcmp('%',dum{it}(1)), 
+      ind=[ind; it]; 
+    end
+  end
+  my_table = my_table(setdiff(1:size(my_table,1),ind),:);

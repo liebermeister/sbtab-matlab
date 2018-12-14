@@ -1,7 +1,7 @@
-function [M, ids_out, data_columns_out] = sbtab_load_quantity_data(data_file, table_name, quantity_type, id_column, ids, data_columns,as_numbers,match_column_pattern)
+function [M, ids_out, data_columns_out, unit] = sbtab_load_quantity_data(data_file, table_name, quantity_type, id_column, ids, data_columns,as_numbers,match_column_pattern)
 
-% M = sbtab_load_quantity_data(data_file, table_name, quantity_type, id_column, ids, data_columns,as_numbers)
-  
+% [M, ids_out, data_columns_out] = sbtab_load_quantity_data(data_file, table_name, quantity_type, id_column, ids, data_columns,as_numbers,match_column_pattern)
+
 eval(default('table_name', '[]', 'as_numbers', '0', 'match_column_pattern', '0'));
 
 if isempty(table_name),
@@ -13,17 +13,22 @@ end
 
 data = {};
 data_columns_out = {};
-my_data_columns  = strrep(data_columns,'>','SAMPLE_');
+my_data_columns  = strrep(data_columns,'>','_');
 my_data_columns  = strrep(my_data_columns,'!','');
 my_data_columns  = strrep(my_data_columns,':','_');
-all_data_columns = fieldnames(sbtab_table_get_all_columns(T));
+
+all_data_columns(T.column.ind,1)       = T.column.column_names(T.column.ind,1);
+all_data_columns(T.uncontrolled.ind,1) = T.uncontrolled.headers';
+all_data_columns = strrep(all_data_columns,':','_');
+all_data_columns = strrep(all_data_columns,'!','_');
+all_data_columns = strrep(all_data_columns,'>','');
 z = 1;
 
 for it = 1:length(my_data_columns),
   for itt = 1:length(all_data_columns),
     match = 0;
     if match_column_pattern,
-      if sum(strfind( all_data_columns{itt},my_data_columns{it})==1), match = 1; end
+      if sum(strfind(all_data_columns{itt},my_data_columns{it})==1), match = 1; end
     else 
       if strcmp(my_data_columns{it}, all_data_columns{itt}), match = 1; end
     end
@@ -36,7 +41,6 @@ for it = 1:length(my_data_columns),
 end
 
 data_columns_out = strrep(data_columns_out,'SAMPLE_','');
-
 
 %  error(sprintf('Column %s not found in data file %s',data_columns{it},data_file));
 
@@ -61,11 +65,27 @@ if length(ids),
       end
     end
   end
+  ids_out = ids;
 else,
   M = data;
   ids_out = id_list;
 end
-  
+
 if as_numbers,
   M = cell_string2num(M);
+end
+
+A = sbtab_table_get_attributes(T);
+if isfield(A,'Unit'),
+  unit = A.Unit;
+elseif sbtab_table_has_column(T,'Unit'),
+  unit_column = sbtab_table_get_column(T,'Unit');
+  unit = unique(unit_column(row_indices));
+  if length(unit)==1,
+    unit = unit{1};
+  else
+    error(sprintf('Inconsistent units in file %s',data_file));
+  end
+else
+  error(sprintf('No units found in file %s',data_file));
 end
