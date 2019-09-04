@@ -1,7 +1,7 @@
 ---------------------------------------------------------------------
 SBtab Toolbox for Matlab
 
-Wolfram Liebermeister (2014)
+Wolfram Liebermeister (2019)
 ---------------------------------------------------------------------
 
 
@@ -13,7 +13,7 @@ INSTALLATION
 
 REQUIREMENTS
 
-  The functions were developed and tested with matlab6
+  The functions were developed and tested with matlab R2016b on Ubuntu GNU/Linux
 
 
 STATE OF THE SOFTWARE.
