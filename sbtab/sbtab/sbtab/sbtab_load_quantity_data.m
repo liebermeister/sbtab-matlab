@@ -1,13 +1,18 @@
 function [M, ids_out, data_columns_out, unit] = sbtab_load_quantity_data(data_file, table_name, quantity_type, id_column, ids, data_columns,as_numbers,match_column_pattern)
 
-% [M, ids_out, data_columns_out] = sbtab_load_quantity_data(data_file, table_name, quantity_type, id_column, ids, data_columns,as_numbers,match_column_pattern)
+% [M, ids_out, data_columns_out] = sbtab_load_quantity_data(data_file, table_name, quantity_type, id_column, ids, data_columns,as_numbers, match_column_pattern)
 
 eval(default('table_name', '[]', 'as_numbers', '0', 'match_column_pattern', '0'));
 
-if isempty(table_name),
-  T = sbtab_table_load(data_file);
-else
+if isstr(data_file),
   S = sbtab_document_load(data_file);
+else
+  S = data_file;
+end
+
+if isempty(table_name),
+  T = S;%sbtab_table_load(data_file);
+else
   T = sbtab_document_get_table(S,table_name);
 end
 
@@ -89,5 +94,9 @@ elseif sbtab_table_has_column(T,'Unit'),
     error(sprintf('Inconsistent units in file %s',data_file));
   end
 else
-  error(sprintf('No units found in file %s',data_file));
+  if isstr(data_file),
+    error(sprintf('No units found in file %s',data_file));
+  else
+    error(sprintf('No units found in data file'));    
+  end
 end

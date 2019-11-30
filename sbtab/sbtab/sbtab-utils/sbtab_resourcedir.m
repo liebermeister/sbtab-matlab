@@ -4,4 +4,4 @@
 
 function d = sbtab_resourcedir()
 
-d = [fileparts(which(mfilename)) filesep '..' filesep '..'  filesep '..' filesep '..' filesep 'resources' ];
+d = [fileparts(which(mfilename)) filesep '..' filesep '..'  filesep '..' filesep 'resources' ];

@@ -3,11 +3,22 @@ function my_sbtab_document = sbtab_document_load_from_one(filename)
 % SBTAB_DOCUMENT_LOAD_FROM_ONE % Load SBtab document (possibly, several tables) from one file
 %
 % my_sbtab_document = sbtab_document_load_from_one(filename)
-%
-% Note that table names must be provided as table attributes
-
-if ~isstr(filename),
+% 
+% the argument 'filename' can be of the following types:
+%  string                -> single file
+%  string cell array     -> several files, to be concatenated
+%  sbtab object (struct) -> the function simply returns the function argument
+  
+if isstruct(filename),
    my_sbtab_document = filename; 
+  return
+end
+
+if iscell(filename),
+  my_sbtab_document = sbtab_document_load_from_one(filename{1});
+  for it = 2:length(filename),
+    my_sbtab_document = sbtab_document_combine(my_sbtab_document, sbtab_document_load_from_one(filename{it}));
+  end
   return
 end
   

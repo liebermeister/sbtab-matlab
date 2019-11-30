@@ -1,6 +1,8 @@
 function result = sbtab_table_diff(SBtab_table_1, SBtab_table_2, sort_by_columns1, sort_by_columns2, show_columns_list)
 
-%   SBtab_table_1 and  SBtab_table_2 can be filenames or SBtab structs
+% result = sbtab_table_diff(SBtab_table_1, SBtab_table_2, sort_by_columns1, sort_by_columns2, show_columns_list)
+%
+% SBtab_table_1 and  SBtab_table_2 can be filenames or SBtab structs
   
 eval(default('sort_by_column','[]','show_columns_list','[]'));
 

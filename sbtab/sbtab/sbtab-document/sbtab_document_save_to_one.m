@@ -31,7 +31,7 @@ end
 for it = 1:length(fn),
   my_sbtab_table      = sbtab_document.tables.(fn{it});
   if ~isfield(my_sbtab_table.attributes, 'TableID'),
-    error('Table ID is missing');
+    warning('Table ID is missing');
   end
   my_sbtab_table_flat = sbtab_table_save(my_sbtab_table);
   if it>0,

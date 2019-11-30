@@ -6,10 +6,10 @@ function my_sbtab_document = sbtab_document_load(table_names,filenames)
 %  load SBtab document from a single document file (argument 'filename')
 %
 % my_sbtab_document = sbtab_document_load(table_names,filenames)
-%  load SBtab document from svereal table files
+%  load SBtab document from several table files
 %
-%  table_names: List of table names (to be inserted as attributes)
-%  filenames  : List of file from which to load the tables
+%  table_names: cell array of table names (to be inserted as attributes)
+%  filenames  : cell array of of corresponding input files (each containing one table)
 
 if nargin==1,
   my_sbtab_document = sbtab_document_load_from_one(table_names);

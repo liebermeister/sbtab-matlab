@@ -21,7 +21,6 @@ for it=1:size(my_sbtab_cell,1),
   end
 end
 ind = find(ind);
-
 if length(column_names),
   my_table = cell2table(my_sbtab_cell(ind,:),'VariableNames', column_names);
 else

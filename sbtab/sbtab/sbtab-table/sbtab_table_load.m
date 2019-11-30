@@ -15,7 +15,11 @@ if isempty(my_table),
     my_table = load_unformatted_table(filename);
     my_table = remove_comment_lines(my_table); 
   catch
-    error(sprintf('I could not import the file %s',  filename))
+    if isstr(filename),
+      error(sprintf('I could not import the file %s',  filename))
+    else
+      error(sprintf('I could not import the file'))
+    end
   end
 end
 

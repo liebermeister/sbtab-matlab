@@ -32,6 +32,7 @@ end
 if strcmp(style,'all'),
   display(sprintf(' '))
   display(sbtab_table_to_table(sbtab_table))
+
 else
   
   column_names = sbtab_table.column.column_names;
@@ -64,4 +65,3 @@ else
   end
   
 end
-  

@@ -117,13 +117,13 @@ if options.omit_declarations,
 end
 
 if isfield(my_sbtab_table.attributes,'TableOrientation'),
- switch my_sbtab_table.attributes.TableOrientation,
-   case 'Transposed',
-     [n1,n2] = size(my_table);
-     mm = my_table(1,:);
-     mm(2:n2+1,1:n1-1) = my_table(2:end,:)';
-     my_table =  mm;
- end
+  switch my_sbtab_table.attributes.TableOrientation,
+    case 'Transposed',
+      [n1,n2] = size(my_table);
+      mm = my_table(1,:);
+      mm(2:n2+1,1:n1-1) = my_table(2:end,:)';
+      my_table =  mm;
+  end
 end
 
 if length(options.filename),

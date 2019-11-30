@@ -1,5 +1,7 @@
 function sbtab_document_diff(SBtab_document_1, SBtab_document_2)
 
+% sbtab_document_diff(SBtab_document_1, SBtab_document_2)
+
 d1 = sbtab_document_load(SBtab_document_1);
 d2 = sbtab_document_load(SBtab_document_2);
 

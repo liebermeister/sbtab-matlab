@@ -13,4 +13,6 @@ if isfield(options,'filename'),
   options = rmfield(options,'filename');
 end
 
+my_sbtab_table = sbtab_table_add_attribute(my_sbtab_table,'TableOrientation','Normal'); 
+
 my_cell = sbtab_table_save(my_sbtab_table, options);

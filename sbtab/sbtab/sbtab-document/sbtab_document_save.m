@@ -8,6 +8,10 @@ function sbtab_document_save(sbtab_document,filename,flag_latex,verbose,to_one_f
 
 eval(default('flag_latex','0','verbose','1','to_one_file','1','add_date_and_sbtab_version','1'));
 
+if strcmp(filename(end-3:end),'.tsv'),
+  filename = filename(1:end-4);
+end
+
 if to_one_file,
 
   sbtab_document_save_to_one(sbtab_document,[filename '.tsv'],verbose,flag_latex);
@@ -30,7 +34,7 @@ for it = 1:length(fn),
     case 1,  my_filename = [filename '_' fn{it} '.tex'];
   end
   if ~isfield(my_sbtab_table.attributes, 'TableID'),
-    error('Table ID is missing');
+    warning('Table ID is missing');
   end
   if verbose,
     display(sprintf('Writing table %s to file %s', fn{it}, my_filename));
