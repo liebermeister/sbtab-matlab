@@ -1,7 +1,9 @@
 Matlab code for SBtab file format
 =================================
 
-[SBtab](https://www.sbtab.net) is a table-based data format for Systems Biology, designed to support automated data integration and model building. It uses the structure of spreadsheets and defines conventions for table structure, controlled vocabularies and semantic annotations. The format comes with predefined table types for experimental data and SBML-compliant model structures and can easily be customized to cover new types of data. 
+[SBtab](https://www.sbtab.net) is a table-based data format for Systems Biology, designed to support automated data integration and model building. It uses the structure of spreadsheets and defines conventions for table structure, controlled vocabularies and semantic annotations. The format comes with predefined table types for experimental data and SBML-compliant model structures and can easily be customized to cover new types of data.
+
+This repository contains Matlab code for SBtab. For python code and a larger collection of example files, please see the [main SBtab repository](https://github.com/tlubitz/SBtab).
 
 ## Dependencies
 
