@@ -30,7 +30,7 @@ options_default.flux_table_id       = 'Flux';
 options_default.enzyme_table_id     = 'EnzymeConcentration';
 options_default.columns_mean = {'Mean'};
 options_default.columns_std = {'Std'};
-options_default.match_data_by = {'KeggId'}; % 'ElementId' 
+options_default.match_data_by = 'KeggId'; % 'ElementId' 
 options = join_struct(options_default, options);
 
 % load SBtab document from one or several files

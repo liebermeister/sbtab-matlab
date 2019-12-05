@@ -4,7 +4,7 @@ function sbtab = sbtab_table_load(filename, my_table, flag_remove_comments)
 %
 % sbtab = sbtab_table_load(filename, my_table, flag_remove_comments)
 %
-% Either load SBtab table from file [filename]
+% Either load SBtab table from file (with filename [filename])
 % or     (if argument [my_table] is given)
 %        load SBtab table from string cell array [my_table]
 

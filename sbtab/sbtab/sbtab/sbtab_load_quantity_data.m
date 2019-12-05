@@ -11,7 +11,18 @@ else
 end
 
 if isempty(table_name),
-  T = S;%sbtab_table_load(data_file);
+  switch sbtab_object_type(S), 
+    case 'document', 
+      tn = sbtab_document_get_table_names(S);
+      if length(tn)==1,
+        T = sbtab_document_get_table(S,tn{1});
+        %sbtab_table_load(data_file);
+      else 
+        error('Please specify a table name')
+      end
+    case 'table',
+      T = S; %sbtab_table_load(data_file);
+  end
 else
   T = sbtab_document_get_table(S,table_name);
 end

@@ -6,7 +6,7 @@ function options = sbtab_to_options(sbtab)
 %
 % Convert SBtab Config table into matlab struct (used for tool options)
 %
-% see also options_to_sbtab
+% For the conversion in the other direction, see 'options_to_sbtab'
 
 [options,attributes] = sbtab_table_to_simple_struct(sbtab,'Option','Value');
 

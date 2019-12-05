@@ -8,7 +8,7 @@ function my_sbtab_document = sbtab_document_load_from_one(filename)
 %  string                -> single file
 %  string cell array     -> several files, to be concatenated
 %  sbtab object (struct) -> the function simply returns the function argument
-  
+
 if isstruct(filename),
    my_sbtab_document = filename; 
   return
@@ -26,13 +26,9 @@ my_sbtab_document = sbtab_document_construct;
 
 flag_remove_comment_lines = 1;
 
-%try 
 my_table  = load_unformatted_table(filename);
 ind_empty = find(cellfun('size',my_table(:),1)==0);
 my_table(ind_empty) = repmat({''},length(ind_empty),1);
-%catch
-%  error(sprintf('Problem in import of file %s If you use non-".tsv" files, you need to specify this!',  filename))
-%end
 
 attribute_line_number = find(cellfun('length',strfind(my_table,'!!!')));
 

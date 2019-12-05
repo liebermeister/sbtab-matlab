@@ -103,13 +103,13 @@ for it = 1:length(fn),
 end
 
 for it = 1:length(my_sbtab_table.data.ind),
-  my_table{2,my_sbtab_table.data.ind(it)} = my_sbtab_table.data.headers{it};
+  my_table{2,my_sbtab_table.data.ind(it)}               = my_sbtab_table.data.headers{it};
   my_table(2+n_rows+(1:nr),my_sbtab_table.data.ind(it)) = my_sbtab_table.data.data(:,it);
 end
 
 for it = 1:length(my_sbtab_table.uncontrolled.ind),
   my_table(2,my_sbtab_table.uncontrolled.ind(it))               = my_sbtab_table.uncontrolled.headers(it);
-  my_table(2+n_rows+(1:nr),my_sbtab_table.uncontrolled.ind(it)) = num2cell(my_sbtab_table.uncontrolled.data(:,it));
+  my_table(2+n_rows+(1:nr),my_sbtab_table.uncontrolled.ind(it)) = my_sbtab_table.uncontrolled.data(:,it); % num2cell()
 end
 
 if options.omit_declarations,
@@ -136,5 +136,5 @@ if length(options.filename),
 end
 
 if options.verbose,
-  display(sprintf('Writing file %s', options.filename));
+  display(sprintf('Writing SBtab file %s', options.filename));
 end

@@ -1,19 +1,21 @@
 function sbtab = options_to_sbtab(s,options)
 
-% OPTIONS_TO_SBTAB - Convert "config" matlab struct (typically used for tool options) into SBtab object
+% OPTIONS_TO_SBTAB - Convert matlab struct (typically used for tool options) into SBtab table of type "Config"
 %
-% sbtab = options_to_sbtab(s,options)
+% sbtab = options_to_sbtab(s, options)
 %
-% IMPORTANT: to allow for complex structures, in the SBtab all information is stored in JSON string
+% If an options field contains a struct, these data are stored in JSON string in the SBtab table
 %
-% options.filename:   (optional) filename for export 
-% options.TableName:  (optional) TableName attribute, for SBtab
-%
-% see also sbtab_to_options
+% options.filename:   (string, optional) filename for export to file
+% options.TableName:  (string, optional) TableName attribute, for SBtab
+% options.TableID:    (string, optional) TableID attribute, for SBtab
+% options.Method:     (string, optional) Method attribute, for SBtab
+% For the conversion in the other direction, see 'sbtab_to_options'
 
 eval(default('options','struct'));
-options_default = struct('TableName','Config','CalculationMethod','unknown');
+options_default = struct('TableName','Options','TableID','Options','Method','unknown','verbose',1);
 options = join_struct(options_default,options); 
+
 column_options = {};
 column_values  = {};
 fn = fieldnames(s);
@@ -30,9 +32,11 @@ for it = 1:length(fn),
 end
 
 
-sbtab = sbtab_table_construct(struct('TableID','Config','TableType','Config','TableName',options.TableName,'CalculationMethod',options.CalculationMethod), {'Option','Value'},{column_options,column_values});
+sbtab = sbtab_table_construct(struct('TableName',options.TableName,'TableID', options.TableID, 'TableType','Config','Method',options.Method), {'Option','Value'},{column_options,column_values});
 
 if isfield(options,'filename'),
   sbtab_table_save(sbtab,options.filename);
-  display(sprintf('Writing options to SBtab file %s', options.filename));
+  if options.verbose,
+    display(sprintf('Writing options to SBtab file %s', options.filename));
+  end
 end
