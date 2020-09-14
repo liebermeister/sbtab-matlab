@@ -8,6 +8,8 @@ function my_sbtab_object = struct_to_sbtab(my_struct,object_type,structure)
 %
 % Set structure = 'row-cell' if each table in my_struct are given as a struct array (and not as a normal struct)
 %
+% object_type = {'document','table'}
+%
 % For the conversion SBtab object -> matlab struct, see 'sbtab_to_struct'
   
 eval(default('object_type','[]','structure','[]'));
@@ -54,7 +56,7 @@ switch object_type,
     end
     
     if ~isfield(attributes,'TableID'),
-      warning('Table ID missing');
+%      warning('Table ID missing');
     end
 
     my_sbtab_object.attributes   = attributes; 
@@ -114,4 +116,7 @@ switch object_type,
       my_sbtab_object.uncontrolled      = struct('ind',[],'headers',[]);
       
     end
+  otherwise,
+    error('Unknown object type');
+
 end

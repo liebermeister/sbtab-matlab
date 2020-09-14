@@ -32,10 +32,11 @@ switch sbtab_object_type(my_sbtab_object),
   
   case 'document',
     all_ids = sbtab_document_get_ids(my_sbtab_object);
+    fn = fieldnames(my_sbtab_object.tables);
+    if label_names('DOCUMENT_ATTRIBUTES',fn), error('Table name DOCUMENT_ATTRIBUTES cannot be handled'); end
     if options.store_attributes,
       my_struct.DOCUMENT_ATTRIBUTES = my_sbtab_object.attributes;
     end
-    fn = fieldnames(my_sbtab_object.tables);
     for it = 1:length(fn),
       opt = join_struct(options,struct('object_id_counter',id_counter));
       opt.all_ids = all_ids;
@@ -43,6 +44,11 @@ switch sbtab_object_type(my_sbtab_object),
     end
   
   case 'table',
+    column_names = my_sbtab_object.column.column_names;
+    if label_names('TABLE_ATTRIBUTES',column_names),
+      error('Column name TABLE_ATTRIBUTES cannot be handled'); 
+    end
+
     if options.store_attributes,
       my_struct.TABLE_ATTRIBUTES = my_sbtab_object.attributes;
     end
@@ -89,7 +95,7 @@ switch sbtab_object_type(my_sbtab_object),
       case 'table',
         my_struct.table = sbtab_table_to_cell(my_sbtab_object);
         my_struct.table = my_struct.table(2:end,:);
-        
+      
       otherwise,
         error(sprintf('invalid function argument "%s"',structure));
     end

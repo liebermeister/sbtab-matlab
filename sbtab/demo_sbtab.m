@@ -1,6 +1,6 @@
 % SBtab - short demo: load SBtab table and show its structure
 
-% -- Read an SBtab file (uncontrolled columns)
+% -- Read an SBtab file (single table, uncontrolled columns)
 
 filename = [ sbtab_resourcedir '/examples/sbtab/sbtab_omics/sbtab_omics_row_example.tsv'];
 S = sbtab_table_load(filename);

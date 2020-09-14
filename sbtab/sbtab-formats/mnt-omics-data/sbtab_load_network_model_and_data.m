@@ -67,9 +67,17 @@ data_metabolite = sbtab_document_get_table(s,options.metabolite_table_id);
 data_flux       = sbtab_document_get_table(s,options.flux_table_id);
 data_enzyme     = sbtab_document_get_table(s,options.enzyme_table_id);
 
-[result.state_data.metabolite_data, ids, states] = load_network_state_data(result.network, data_metabolite, 'metabolite_concentration', options);
-[result.state_data.flux_data, ids, states] = load_network_state_data(result.network, data_flux, 'reaction_flux', options);
-[result.state_data.enzyme_data, ids, states] = load_network_state_data(result.network, data_enzyme, 'enzyme_concentration', options);
+if data_metabolite,
+  [result.state_data.metabolite_data, ids, states] = load_network_state_data(result.network, data_metabolite, 'metabolite_concentration', options);
+end
+
+if data_flux,
+  [result.state_data.flux_data, ids, states] = load_network_state_data(result.network, data_flux, 'reaction_rate', options);
+end
+
+if data_enzyme,
+  [result.state_data.enzyme_data, ids, states] = load_network_state_data(result.network, data_enzyme, 'enzyme_concentration', options);
+end
 
 % extract tool options (if available)
 
