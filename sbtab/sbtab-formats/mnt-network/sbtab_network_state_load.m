@@ -2,7 +2,7 @@ function [network,c,v] = sbtab_network_state_load(filename)
 
 % [network,c,v] = sbtab_network_state_load(filename)
 %
-% Load a matlab 'network' structure, concentration vector c, and flux vector v from SBtab file
+% Load 'network' data structure, concentration vector 'c', and flux vector 'v' from SBtab file
   
 sbtab = sbtab_document_load(filename);
 
