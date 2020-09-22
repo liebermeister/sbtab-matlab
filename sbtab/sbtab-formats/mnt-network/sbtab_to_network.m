@@ -33,7 +33,7 @@ function [network, kinetic_data] = sbtab_to_network(filename,options)
 %  options_default.quantity_table_file = '';    % filename for parameter data
 %  options_default.use_sbml_ids        = 0;     % use sbml_ids from input files
 %  options_default.extension           ='.tsv'; % default extension of input files
-%  options_default.read_positions      = 0;     % expect SBtab table to contain position information
+%  options_default.read_positions      = 1;     % expect SBtab table to contain position information
 %  options_default.position_file       = [];    % filename for position information
 %  options_default.only_reaction_table = 0;     % read only reaction table (no compounds and parameters)
 %                                               % assume full filename to be given
@@ -56,7 +56,7 @@ options_default.load_quantity_table = 1;     % use input file for parameter data
 options_default.quantity_table_file = '';    % filename for parameter data
 options_default.use_sbml_ids        = 0;     % use sbml_ids from input files
 options_default.extension           ='.tsv'; % default extension of input files
-options_default.read_positions      = 0;     % expect SBtab table to contain position information
+options_default.read_positions      = 1;     % expect SBtab table to contain position information
 options_default.position_file       = [];    % filename for position information
 options_default.omit_water          = 1;     % set row for water in stoich matrix to zero
 options_default.only_reaction_table = 0;     % read only reaction table (no compounds and parameters)
@@ -77,10 +77,14 @@ if options.one_sbtab_file,
   if ~isfield(filename.tables,'Parameter'), options.load_quantity_table = 0; end
 end
 
-if length(options.position_file),
-  options.read_positions = 1; 
+if ~length(options.position_file),
+  if ~isstr(filename),
+    if ~isfield(filename.tables,'Position'),
+      options.read_positions = 0; 
+    end
+  end
 end
-    
+
 if isstr(filename),
   if options.only_reaction_table,
     filename_reactions = filename;
