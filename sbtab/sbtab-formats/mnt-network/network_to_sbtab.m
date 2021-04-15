@@ -18,6 +18,8 @@ function sbtab_document = network_to_sbtab(network, options)
 % modular_rate_law_kinetics: write kinetics strings for modular rate law kinetics
 % modular_rate_law_parameter_id: flag: include column with parameter ids?
 % save_in_one_file      : flag for saving SBtab in one file (default = 1)
+% c_min                 : minimal concentration vector to be saved
+% c_max                 : maximal concentration vector to be saved
 % c                     : concentration vector to be saved
 % v                     : flux vector to be saved
 % document_name         : (for SBtab attribute Document)
@@ -32,7 +34,7 @@ catch err,
 end
 
 eval(default('options','struct'));
-options_default = struct('filename',[],'only_reaction_table',0,'modular_rate_law_table',1,'use_sbml_ids',0,'verbose',1,'write_concentrations',1,'write_enzyme_concentrations',1,'save_in_one_file',1, 'modular_rate_law_kinetics', 1, 'modular_rate_law_parameter_id', 0, 'c', [], 'v', [], 'document_name','Model', 'graphics_positions', 1, 'omit_kegg_ids',0);
+options_default = struct('filename',[],'only_reaction_table',0,'modular_rate_law_table',1,'use_sbml_ids',0,'verbose',1,'write_concentrations',1,'write_enzyme_concentrations',1,'save_in_one_file',1, 'modular_rate_law_kinetics', 1, 'modular_rate_law_parameter_id', 0, 'c', [], 'c_min', [], 'c_max', [], 'v', [], 'document_name','Model', 'graphics_positions', 1, 'omit_kegg_ids',0);
 
 options = join_struct(options_default,options);
 
@@ -190,7 +192,7 @@ if options.graphics_positions,
   if isfield(network,'graphics_par')
     %% beim einlesen: network = netgraph_read_positions(network, table_positions)
     [names, positions] = netgraph_print_positions(network);
-    position_table = sbtab_table_construct(struct('TableID','Position','TableType','Position','TableName','Position'),{'Element','PositionX','PositionY'},{names,positions(1,:)',positions(2,:)'}); 
+    position_table = sbtab_table_construct(struct('TableID','Position','TableType','Position','TableName','Network layout'),{'Element','PositionX','PositionY'},{names,positions(1,:)',positions(2,:)'}); 
     sbtab_document = sbtab_document_add_table(sbtab_document,'Position',position_table);
   end
 end
@@ -210,7 +212,12 @@ if options.c,
   sbtab_document = sbtab_document_add_table(sbtab_document,'MetaboliteConcentration',concentration_table);
 end
 
-if options.v,
+if length(options.c_min),
+  concentration_constraint_table = sbtab_table_construct(struct('TableID','ConcentrationConstraint','TableType','Quantity','TableName','Metabolite concentration constraints'),{'QuantityType','Compound','Min','Max'},{repmat({'concentration'},length(options.c_min),1),network.metabolites,options.c_min,options.c_max}); 
+  sbtab_document = sbtab_document_add_table(sbtab_document,'ConcentrationConstraint',concentration_constraint_table);
+end
+
+if length(options.v),
   flux_table = sbtab_table_construct(struct('TableID','Flux','TableType','Quantity','TableName','Flux'),{'QuantityType','Reaction','Value'},{repmat({'rate of reaction'},length(options.v),1),network.actions,options.v,}); 
   sbtab_document = sbtab_document_add_table(sbtab_document,'Flux',flux_table);
 end

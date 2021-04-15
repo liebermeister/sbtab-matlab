@@ -95,7 +95,7 @@ if ~isfield(attributes,'TableType'),
 end
 
 %if ~isfield(attributes,'TableName'),
-%  warning(sprintf('Table name missing in file %s',filename));
+%  warning(sprintf('Table name missing in file %s', filename));
 %  attributes.TableName = 'unknown';
 %end
 

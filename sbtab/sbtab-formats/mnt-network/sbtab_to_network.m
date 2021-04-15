@@ -144,8 +144,10 @@ end
 
 if options.omit_water,
   if network_find_water(network),
-    warning('Water as a chemical species causes problems in thermodynamic and kinetic models; setting stoichiometric coefficients for water to zero');
-    network.N(network_find_water(network),:) = 0;
+    if options.verbose,
+      display('  WARNING (sbtab_to_network.m): Water as a chemical species causes problems in thermodynamic and kinetic models; setting stoichiometric coefficients for water to zero');
+      network.N(network_find_water(network),:) = 0;
+    end
   end
 end
 

@@ -1,4 +1,4 @@
-function [M, ids_out, data_columns_out, unit] = sbtab_load_quantity_data(data_file, table_name, quantity_type, id_column, ids, data_columns,as_numbers,match_column_pattern)
+function [M, ids_out, data_columns_out, unit] = sbtab_load_quantity_data(data_file, table_name, quantity_type, id_column, ids, data_columns, as_numbers, match_column_pattern)
 
 % [M, ids_out, data_columns_out] = sbtab_load_quantity_data(data_file, table_name, quantity_type, id_column, ids, data_columns,as_numbers, match_column_pattern)
 
@@ -17,14 +17,19 @@ if isempty(table_name),
       if length(tn)==1,
         T = sbtab_document_get_table(S,tn{1});
         %sbtab_table_load(data_file);
-      else 
+      else
         error('Please specify a table name')
       end
     case 'table',
       T = S; %sbtab_table_load(data_file);
   end
 else
-  T = sbtab_document_get_table(S,table_name);
+  switch sbtab_object_type(S), 
+    case 'document', 
+      T = sbtab_document_get_table(S,table_name);
+    otherwise
+      T=S;
+  end
 end
 
 data = {};
@@ -42,6 +47,9 @@ all_data_columns(T.uncontrolled.ind,1) = T.uncontrolled.headers';
 
 z = 1;
 for it = 1:length(my_data_columns),
+  if sum(strcmp(my_data_columns{it},all_data_columns))==0, 
+    warning(sprintf('Column %s not found in file/SBtab', my_data_columns{it})); 
+  end 
   for itt = 1:length(all_data_columns),
     match = 0;
     if match_column_pattern,

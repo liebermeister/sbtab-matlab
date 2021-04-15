@@ -1,5 +1,7 @@
 function sbtab_save_network_model_and_data(my_object, filename)
 
+% For loading network model (including kinetic data) and state data, see: sbtab_load_network_model_and_data
+
 if 0,
   filename = '/home/wolfram/projekte/convex_model_balancing/matlab/convex-model-balancing/resources/data/data-organisms/human_hela/human_hela_ECM_Model.tsv';
 end

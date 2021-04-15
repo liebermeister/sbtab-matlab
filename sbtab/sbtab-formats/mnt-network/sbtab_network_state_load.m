@@ -7,7 +7,6 @@ function [network,c,v] = sbtab_network_state_load(filename)
 sbtab = sbtab_document_load(filename);
 
 network = sbtab_to_network(sbtab);
-
 sbtab_c = sbtab_to_struct(sbtab_document_get_table(sbtab,'MetaboliteConcentration'),'column');
 sbtab_v = sbtab_to_struct(sbtab_document_get_table(sbtab,'Flux'),'column');
 
