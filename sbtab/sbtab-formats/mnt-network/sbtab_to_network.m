@@ -105,7 +105,11 @@ if isstr(filename),
 else
   % Assume that "filename" is an SBtab data structure!
   filename_reactions  = filename.tables.Reaction;
-  filename_compounds  = filename.tables.Compound;
+  if isfield(filename.tables,'Compound'),  
+    filename_compounds  = filename.tables.Compound;
+  else 
+    filename_compounds = [];
+  end
   if isfield(filename.tables,'EnzymeRegulation'),
     filename_regulation = filename.tables.EnzymeRegulation;
   else
@@ -117,7 +121,6 @@ else
     filename_position = [];
   end
 end
-
 
 % If thermodynamic parameters are in an extra table, copy them into table "Parameters"
 
@@ -163,6 +166,7 @@ end
 % Parameters (optional)
 
 if options.load_quantity_table,
+  
   if length(options.quantity_table_file),
     quantity_table_file = options.quantity_table_file;
   else
@@ -173,11 +177,13 @@ if options.load_quantity_table,
       [network.kinetics, kinetic_data, other_parameters] = sbtab_to_modular_rate_law(network,filename.tables.Parameter,options);
     end
   end
+  
   if sum(isfinite(other_parameters.metabolite_mass)),
     network.metabolite_mass = other_parameters.metabolite_mass;
   end
+  
   if sum(isfinite(other_parameters.enzyme_mass)),
     network.enzyme_mass = other_parameters.enzyme_mass;
   end
-end
 
+end

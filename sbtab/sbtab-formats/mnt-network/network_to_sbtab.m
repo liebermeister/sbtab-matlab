@@ -22,8 +22,10 @@ function sbtab_document = network_to_sbtab(network, options)
 % c_max                 : maximal concentration vector to be saved
 % c                     : concentration vector to be saved
 % v                     : flux vector to be saved
+% dmu                   : dmu vector to be saved
 % document_name         : (for SBtab attribute Document)
 % graphics_positions    : flag: add table with x and y coordinates
+% adjust_metabolite_ids : flag: adjust IDs for SBML syntax; default = 1
 %
 % To convert sbtab -> network, use 'sbtab_to_network'
 
@@ -34,14 +36,13 @@ catch err,
 end
 
 eval(default('options','struct'));
-options_default = struct('filename',[],'only_reaction_table',0,'modular_rate_law_table',1,'use_sbml_ids',0,'verbose',1,'write_concentrations',1,'write_enzyme_concentrations',1,'save_in_one_file',1, 'modular_rate_law_kinetics', 1, 'modular_rate_law_parameter_id', 0, 'c', [], 'c_min', [], 'c_max', [], 'v', [], 'document_name','Model', 'graphics_positions', 1, 'omit_kegg_ids',0);
+options_default = struct('filename',[],'only_reaction_table',0,'modular_rate_law_table',1,'use_sbml_ids',0,'verbose',1,'write_concentrations',1,'write_enzyme_concentrations',1,'save_in_one_file',1, 'modular_rate_law_kinetics', 1, 'modular_rate_law_parameter_id', 0, 'c', [], 'c_min', [], 'c_max', [], 'v', [], 'dmu', [], 'document_name','Model', 'graphics_positions', 1, 'omit_kegg_ids',0,'adjust_metabolite_ids', 1, 'keq',[]);
 
 options = join_struct(options_default,options);
 
-if ~isfield(network,'kinetics'),
-  options.modular_rate_law_table    = 0;
-  options.modular_rate_law_kinetics = 0;
-else
+options.modular_rate_law_table    = 0;
+options.modular_rate_law_kinetics = 0;
+if isfield(network,'kinetics'),
   if isfield(network.kinetics,'type'),
     switch network.kinetics.type,
       case {'cs','ms','ds','rp','numeric'},
@@ -76,10 +77,36 @@ if isfield(network,'metabolite_KEGGID'),
   end
 end
 
+if isfield(network,'reaction_BIGGID'),
+  if isempty(network.reaction_BIGGID'),
+    network = rmfield(network,'reaction_BIGGID');
+  end
+end
+
+if isfield(network,'reaction_BIGGID'),
+  if sum(cellfun('length',network.reaction_BIGGID))==0, 
+    network = rmfield(network,'reaction_BIGGID');
+  end
+end
+
+if isfield(network,'metabolite_BIGGID'),
+  if isempty(network.metabolite_BIGGID),
+    network = rmfield(network,'metabolite_BIGGID');
+  end
+end
+
+if isfield(network,'metabolite_BIGGID'),
+  if sum(cellfun('length',network.metabolite_BIGGID))==0, 
+    network = rmfield(network,'metabolite_BIGGID');
+  end
+end
 
 % if necessary, make metabolite + reaction names syntactically correct:
 
-[network.metabolites,network.actions] = network_adjust_names_for_sbml_export(network.metabolites,network.actions);
+if options.adjust_metabolite_ids,
+  [network.metabolites,network.actions] = network_adjust_names_for_sbml_export(network.metabolites,network.actions);
+end
+
 network.formulae = network_print_formulae(network,network.actions,network.metabolites);
 
 reaction_table = sbtab_table_construct(struct('TableID','Reaction','TableType','Reaction','TableName','Reaction'),{'ID','ReactionFormula'},{network.actions,network.formulae});
@@ -96,6 +123,10 @@ end
 
 if isfield(network, 'reaction_KEGGID'),
   reaction_table = sbtab_table_add_column(reaction_table,'Identifiers:kegg.reaction', network.reaction_KEGGID);
+end
+
+if isfield(network, 'reaction_BIGGID'),
+  reaction_table = sbtab_table_add_column(reaction_table,'Identifiers:bigg.reaction', network.reaction_BIGGID);
 end
 
 if isfield(network, 'reversible'),
@@ -171,6 +202,10 @@ if ~options.only_reaction_table,
     compound_table = sbtab_table_add_column(compound_table,'Identifiers:kegg.compound',network.metabolite_KEGGID);
   end
   
+  if isfield(network, 'metabolite_BIGGID'),
+    compound_table = sbtab_table_add_column(compound_table,'Identifiers:bigg.compound',network.metabolite_BIGGID);
+  end
+
   if isfield(network, 'sbml_id_species'),
     compound_table = sbtab_table_add_column(compound_table,'SBML:species:id',network.sbml_id_species);
   end
@@ -218,8 +253,18 @@ if length(options.c_min),
 end
 
 if length(options.v),
-  flux_table = sbtab_table_construct(struct('TableID','Flux','TableType','Quantity','TableName','Flux'),{'QuantityType','Reaction','Value'},{repmat({'rate of reaction'},length(options.v),1),network.actions,options.v,}); 
+  flux_table = sbtab_table_construct(struct('TableID','Flux','TableType','Quantity','TableName','Metabolic flux'),{'QuantityType','Reaction','Value'},{repmat({'rate of reaction'},length(options.v),1),network.actions,options.v,}); 
   sbtab_document = sbtab_document_add_table(sbtab_document,'Flux',flux_table);
+end
+
+if length(options.dmu),
+  delta_g_table = sbtab_table_construct(struct('TableID','ReactionGibbsFreeEnergy','TableType','Quantity','TableName','Reaction Gibbs free Energy'),{'QuantityType','Reaction','Value'},{repmat({'Gibbs free energy of reaction'},length(options.dmu),1),network.actions,options.dmu,}); 
+  sbtab_document = sbtab_document_add_table(sbtab_document,'ReactionDeltaG',delta_g_table);
+end
+
+if length(options.keq),
+  keq_table = sbtab_table_construct(struct('TableID','EquilibriumConstant','TableType','Quantity','TableName','Equilibrium constant'),{'QuantityType','Reaction','Value'},{repmat({'equilibrium constant'},length(options.keq),1),network.actions,options.keq,}); 
+  sbtab_document = sbtab_document_add_table(sbtab_document,'EquilibriumConstant',keq_table);
 end
 
 if ~isempty(options.filename),

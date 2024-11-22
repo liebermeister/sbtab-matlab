@@ -21,7 +21,11 @@ function [my_struct,id_counter] = sbtab_to_struct(my_sbtab_object,structure,opti
 % For the conversion matlab struct -> SBtab object, see 'struct_to_sbtab'
 
 eval(default('structure','''table''','options','struct()'));
-  
+
+if isempty(my_sbtab_object),
+  error('Empty SBtab object');
+end
+
 options_default = struct('store_attributes',1,'store_object_type',0,'store_object_id',0,'object_id_counter',0,'all_ids',[]);
 options = join_struct(options_default,options);
 

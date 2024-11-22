@@ -2,6 +2,11 @@ function [M, ids_out, data_columns_out, unit] = sbtab_load_quantity_data(data_fi
 
 % [M, ids_out, data_columns_out] = sbtab_load_quantity_data(data_file, table_name, quantity_type, id_column, ids, data_columns,as_numbers, match_column_pattern)
 
+if isempty(data_file),
+  M = [];    ids_out =[];  data_columns_out = []; unit=[];
+  return
+end
+  
 eval(default('table_name', '[]', 'as_numbers', '0', 'match_column_pattern', '0'));
 
 if isstr(data_file),

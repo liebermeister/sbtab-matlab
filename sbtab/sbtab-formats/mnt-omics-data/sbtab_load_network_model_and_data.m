@@ -7,10 +7,11 @@ function result = sbtab_load_network_model_and_data(data_file, file_options)
 %              describing a metabolic model, kinetic model parameters (in table "Parameter"), and metabolic state data
 %
 %   file_options:   struct with (optional) fields describing details of the state data file
-%      file_options.match_data_by       'ModelElementId' or 'KeggId';
-%      file_options.metabolite_table_id (default 'MetaboliteConcentration')
-%      file_options.flux_table_id       (default 'MetabolicFlux')
-%      file_options.enzyme_table_id     (default 'EnzymeConcentration')
+%      file_options.match_data_by       'ModelElementId' or 'KeggId' or 'BiggId';
+%      file_options.flux_table_id       (default 'FluxData')
+%      file_options.metabolite_table_id (default 'MetaboliteConcentrationData')
+%      file_options.enzyme_table_id     (default 'EnzymeConcentrationData')
+%      file_options_default.delta_g_table_id  (default 'ReactionGibbsFreeEnergyData')
 %      file_options.columns_mean:       cell array of column names for mean data values
 %                                       (same columns names in metabolite, flux, and enzyme table!)
 %      file_options.columns_std:        same, for std dev columns
@@ -27,7 +28,6 @@ function result = sbtab_load_network_model_and_data(data_file, file_options)
 %
 % For saving network model (including kinetic data) and state data, see: sbtab_save_network_model_and_data
 
-
 if 0,
   data_file = '/home/wolfram/projekte/convex_model_balancing/matlab/convex-model-balancing/resources/data/data-organisms/human_hela/human_hela_ECM_Model.tsv';
 end
@@ -35,12 +35,12 @@ end
 eval(default('file_options','struct'));
 
 file_options_default.metabolite_table_id = 'MetaboliteConcentrationData';
-file_options_default.flux_table_id       = 'MetabolicFluxData';
+file_options_default.flux_table_id       = 'FluxData';
 file_options_default.enzyme_table_id     = 'EnzymeConcentrationData';
-file_options_default.delta_g_table_id    = 'ReactionGibbsFreeEnergy';
+file_options_default.delta_g_table_id    = 'ReactionGibbsFreeEnergyData';
 file_options_default.columns_mean        = {'Mean'};
 file_options_default.columns_std         = {'Std'};
-file_options_default.match_data_by       = 'ModelElementId'; % 'KeggId'; % 
+file_options_default.match_data_by       = 'ModelElementId'; % 'KeggId'; % 'BiggId'
 file_options_default.load_quantity_table = 0;
 file_options_default.prior_file          = [];
 file_options = join_struct(file_options_default, file_options);
@@ -71,12 +71,13 @@ end
 if isempty(file_options.prior_file),
   file_options.prior_file = cmb_prior_file;
 end  
+
 parameter_prior = parameter_balancing_prior([], file_options.prior_file, 0);
 
 if label_names('ParameterData', sbtab_document_get_table_names(s)),
-  result.kinetic_data = kinetic_data_load([],parameter_prior, result.network, sbtab_document_get_table(s,'ParameterData'));
+  result.kinetic_data = kinetic_data_load([],parameter_prior, result.network, sbtab_document_get_table(s,'ParameterData'), struct('enforce_ranges',0));
 elseif label_names('Parameter', sbtab_document_get_table_names(s)),
-  result.kinetic_data = kinetic_data_load([],parameter_prior, result.network, sbtab_document_get_table(s,'Parameter'));
+  result.kinetic_data = kinetic_data_load([],parameter_prior, result.network, sbtab_document_get_table(s,'Parameter'), struct('enforce_ranges',0));
 else
   warning('No kinetic data table (ID "Parameter") found');
 end

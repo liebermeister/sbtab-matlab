@@ -6,6 +6,10 @@ function  [my_struct,attributes] = sbtab_table_convert_to_struct(my_sbtab_table)
 %
 % Construct a matlab struct from an SBtab table; ignore uncontrolled columns
 
+if isempty(my_sbtab_table), 
+  warning('Empty SBtab object!'); 
+end 
+  
 attributes = my_sbtab_table.attributes; 
 
 my_struct = my_sbtab_table.column.column;

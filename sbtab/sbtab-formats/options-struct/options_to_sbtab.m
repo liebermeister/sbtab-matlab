@@ -10,6 +10,7 @@ function sbtab = options_to_sbtab(s,options)
 % options.TableName:  (string, optional) TableName attribute, for SBtab
 % options.TableID:    (string, optional) TableID attribute, for SBtab
 % options.Method:     (string, optional) Method attribute, for SBtab
+%
 % For the conversion in the other direction, see 'sbtab_to_options'
 
 eval(default('options','struct'));

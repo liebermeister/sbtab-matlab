@@ -1,17 +1,17 @@
-function sbtab = sbtab_table_load(filename, my_table, flag_remove_comments)
+function sbtab = sbtab_table_load(filename, my_table, flag_remove_comments, table_id)
 
 % SBTAB_TABLE_LOAD Load SBtab table from file, or generate it from a list of strings
 %
 % sbtab = sbtab_table_load(filename, my_table, flag_remove_comments)
 %
 % Either load SBtab table from file (with filename [filename])
+%        (if table_id is given (non-empty), use this table; otherwise, then use the first table);
 % or     (if argument [my_table] is given)
 %        load SBtab table from string cell array [my_table]
+eval(default('my_table', '[]', 'flag_remove_comments', '0','table_id','[]'));
 
-eval(default('my_table', '[]', 'flag_remove_comments', '0'));
-  
 if isempty(my_table),
-  try 
+  try
     my_table = load_unformatted_table(filename);
     my_table = remove_comment_lines(my_table); 
   catch
@@ -23,12 +23,18 @@ if isempty(my_table),
   end
 end
 
-if strcmp('!!!',my_table{1,1}(1:3)), 
-  my_table = my_table(2:end,:);
+if strcmp('!!!',my_table{1,1}(1:3)),
+  if ~isempty(table_id),
+    sbtab_doc = sbtab_document_load(filename);
+    sbtab = sbtab_document_get_table(sbtab_doc,table_id);
+    return
+  else
+    my_table = my_table(2:end,:);
+  end
 end
 
 if sum( cellfun('length',strfind(my_table(:,1),'!!')))>1,
-  error(sprintf('Input file %s contains several tables; it cannot be loaded as one table',filename));
+  error(sprintf('Input file %s contains several tables; it cannot be loaded as one table. In the sbtab_table_load command, please specify the table ID ',filename));
 end
 
 attribute_line = {};
@@ -224,13 +230,10 @@ end
 
 function my_table = remove_comment_lines(my_table)
   
-  dum = my_table(:,1); 
-  ind = [];  
-  for it = 1:length(dum), 
-    if isempty(dum(it)), 
-      ind=[ind; it]; 
-    elseif strcmp('%',dum{it}(1)), 
-      ind=[ind; it]; 
-    end
+is_comment_line = zeros(size(my_table,1),1);
+for it = 1:size(my_table,1),
+  if strcmp(my_table{it,1}(1),'%'), 
+    is_comment_line(it) = 1;
   end
-  my_table = my_table(setdiff(1:size(my_table,1),ind),:);
+end
+my_table=my_table(find(is_comment_line==0),:);

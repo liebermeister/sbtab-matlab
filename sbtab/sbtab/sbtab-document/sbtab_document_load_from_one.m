@@ -30,6 +30,10 @@ my_table  = load_unformatted_table(filename);
 ind_empty = find(cellfun('size',my_table(:),1)==0);
 my_table(ind_empty) = repmat({''},length(ind_empty),1);
 
+if flag_remove_comment_lines,
+  my_table = remove_comment_lines(my_table);
+end
+
 attribute_line_number = find(cellfun('length',strfind(my_table,'!!!')));
 
 split_lines = [find(cellfun('length',strfind(my_table,'!!'))); size(my_table,1)+1];
@@ -93,11 +97,6 @@ for it = 1:length(split_lines)-1,
   my_tables{it} = my_table(split_lines(it):split_lines(it+1)-1,:);
   % remove empty columns
   my_tables{it} = my_tables{it}(:,find(sum(cellfun('length',my_tables{it}))));
-  if flag_remove_comment_lines,
-    dum = char(my_tables{it}(:,1));
-    keep = find(strcmp(cellstr(dum(:,1)),'%')==0);
-    my_tables{it} = my_tables{it}(keep,:);
-  end
 end
 
 for it = 1:length(my_tables),
@@ -119,3 +118,15 @@ end
 if length(my_sbtab_document.table_names) <  length(unique(my_sbtab_document.table_names)),
   error(sprintf('Non-unique Table IDs in file %s',filename));
 end
+
+% -----------------------------------------------------
+
+function my_table = remove_comment_lines(my_table)
+  
+is_comment_line = zeros(size(my_table,1),1);
+for it = 1:size(my_table,1),
+  if strcmp(my_table{it,1}(1),'%'), 
+    is_comment_line(it) = 1;
+  end
+end
+my_table=my_table(find(is_comment_line==0),:);

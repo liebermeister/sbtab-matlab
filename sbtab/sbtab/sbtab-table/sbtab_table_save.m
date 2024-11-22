@@ -98,7 +98,7 @@ for it = 1:length(fn),
     my_sbtab_table.column.column.(fn{it}) = num2cell(my_sbtab_table.column.column.(fn{it}));
   end
   if length(my_sbtab_table.column.column.(fn{it})),
-    my_table(2+n_rows+(1:nr),my_sbtab_table.column.ind(it)) = my_sbtab_table.column.column.(fn{it});
+    my_table(2+n_rows+(1:nr),my_sbtab_table.column.ind(it)) = column(my_sbtab_table.column.column.(fn{it}));
   end
 end
 
