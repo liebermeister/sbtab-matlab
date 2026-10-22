@@ -8,6 +8,10 @@ function [my_struct,attributes] = sbtab_table_to_simple_struct(my_sbtab_table,co
 
 [dum, attributes] = sbtab_table_to_struct(my_sbtab_table);
 
-for it = 1:length(dum.Option),
+column_key   = sbtab_clean_column_headers(column_key);
+column_value = sbtab_clean_column_headers(column_value);
+
+my_struct = struct;
+for it = 1:length(dum.(column_key)),
   my_struct.(dum.(column_key){it}) = dum.(column_value){it};
 end

@@ -1,6 +1,6 @@
 function my_sbtab_document = sbtab_document_add_column(my_sbtab_document,table_name,column_name,column,is_sbtab_column)
 
-% SBTAB_DOCUMENT_ADD_TABLE Add column to existing table in SBtab document.
+% SBTAB_DOCUMENT_ADD_COLUMN Add column to existing table in SBtab document.
 %
 % my_sbtab_document = sbtab_document_add_column(my_sbtab_document,table_name,column_name,column,is_sbtab_column)
 

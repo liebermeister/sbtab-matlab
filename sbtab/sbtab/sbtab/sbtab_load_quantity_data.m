@@ -1,13 +1,24 @@
 function [M, ids_out, data_columns_out, unit] = sbtab_load_quantity_data(data_file, table_name, quantity_type, id_column, ids, data_columns, as_numbers, match_column_pattern)
 
-% [M, ids_out, data_columns_out] = sbtab_load_quantity_data(data_file, table_name, quantity_type, id_column, ids, data_columns,as_numbers, match_column_pattern)
+% [M, ids_out, data_columns_out, unit] = sbtab_load_quantity_data(data_file, table_name, quantity_type, id_column, ids, data_columns, as_numbers, match_column_pattern)
+%
+% Read data values from an SBtab table
+%
+%  data_file:            SBtab file name, document, or table
+%  table_name:           table ID (optional if the document contains only one table)
+%  quantity_type:        if not empty, use only rows with this entry in column 'QuantityType'
+%  id_column:            column containing the element IDs
+%  ids:                  if not empty, return the values for these element IDs (in this order)
+%  data_columns:         list of data columns to be read
+%  as_numbers:           flag: convert the table entries to numbers (default 0)
+%  match_column_pattern: flag: use all columns whose names start with one of the strings in data_columns (default 0)
 
 if isempty(data_file),
   M = [];    ids_out =[];  data_columns_out = []; unit=[];
   return
 end
   
-eval(default('table_name', '[]', 'as_numbers', '0', 'match_column_pattern', '0'));
+eval(default('table_name', '[]', 'ids', '[]', 'as_numbers', '0', 'match_column_pattern', '0'));
 
 if isstr(data_file),
   S = sbtab_document_load(data_file);
@@ -39,16 +50,14 @@ end
 
 data = {};
 data_columns_out = {};
-my_data_columns = data_columns;
-%my_data_columns  = strrep(data_columns,'>','_');
-%my_data_columns  = strrep(my_data_columns,'!','');
-%my_data_columns  = strrep(my_data_columns,':','_');
+my_data_columns = regexprep(data_columns,'^!','');
 
-all_data_columns(T.column.ind,1)       = T.column.column_names(T.column.ind,1);
-all_data_columns(T.uncontrolled.ind,1) = T.uncontrolled.headers';
-%all_data_columns = strrep(all_data_columns,':','_');
-%all_data_columns = strrep(all_data_columns,'!','_');
-%all_data_columns = strrep(all_data_columns,'>','_');
+% names of all table columns (in the order of the table)
+all_data_columns = {};
+all_data_columns(T.column.ind,1) = column(T.column.column_names);
+if length(T.uncontrolled.ind),
+  all_data_columns(T.uncontrolled.ind,1) = column(T.uncontrolled.headers);
+end
 
 z = 1;
 for it = 1:length(my_data_columns),
@@ -72,12 +81,12 @@ end
 
 data_columns_out = strrep(data_columns_out,'SAMPLE_','');
 
-%  error(sprintf('Column %s not found in data file %s',data_columns{it},data_file));
-
 % filter for rows with the quantity type specified in function argument quantity_type
 
+id_list     = sbtab_table_get_column(T,id_column);
+row_indices = 1:length(id_list);
+
 if length(quantity_type),
-  id_list = sbtab_table_get_column(T,id_column);
   quantity_type_list = sbtab_table_get_column(T,'QuantityType');
   row_indices = find(strcmp(quantity_type, quantity_type_list));
   id_list     = id_list(row_indices);
@@ -88,11 +97,10 @@ if length(ids),
   M = repmat({[]},length(ids), length(data_columns_out));
   for it = 1:length(ids),
     if length(ids{it}),
-      ll = label_names(ids{it},id_list,'multiple'); 
+      ll = find(strcmp(ids{it},id_list));
       if length(ll)>1, warning('multiple matching rows found in data file; using only the first hit'); end
-      ll = label_names(ids{it},id_list);
-      if ll, 
-        M(it,:) = data(ll,:);
+      if length(ll),
+        M(it,:) = data(ll(1),:);
       end
     end
   end
@@ -103,7 +111,7 @@ else,
 end
 
 if as_numbers,
-  M = cell_string2num(M);
+  M = sbtab_cell_to_numbers(M);
 end
 
 A = sbtab_table_get_attributes(T);

@@ -21,5 +21,5 @@ if ind==0, error('Element not found'); end
 my_element = object_column{ind};
 
 if flag_numbers,
-  my_element = cell_string2num(my_element);
+  my_element = sbtab_cell_to_numbers({my_element});
 end

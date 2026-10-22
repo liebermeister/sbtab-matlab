@@ -2,7 +2,7 @@ function my_sbtab_object = struct_to_sbtab(my_struct,object_type,structure)
 
 % STRUCT_TO_SBTAB Construct an SBtab object from matlab struct
 %
-% my_sbtab_object = struct_to_sbtab(structure)
+% my_sbtab_object = struct_to_sbtab(my_struct,object_type,structure)
 %
 % Construct an SBtab document or table object from a matlab struct
 %
@@ -81,7 +81,8 @@ switch object_type,
     if isstruct(my_struct.(fn{1})),
       % the struct entries correspond to table rows
       element_names = fn;
-      column_names = fieldnames(my_struct.(element_names{1}));
+      % the ID column is constructed from the element names
+      column_names = setdiff(fieldnames(my_struct.(element_names{1})),{'ID'},'stable');
       my_sbtab_object.column.column_names = [{'ID'}; column_names];
       cn.ID = column(element_names)';
       for it=1:length(column_names)

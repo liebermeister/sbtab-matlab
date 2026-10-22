@@ -1,14 +1,24 @@
 function sbtab_document_save_to_one(sbtab_document,filename,verbose,flag_latex)
 
-% SBTAB_DOCUMENT_SAVE Save SBtab document to one file (with concatenated tables)
+% SBTAB_DOCUMENT_SAVE_TO_ONE Save SBtab document to one file (with concatenated tables)
 %
 % sbtab_document_save_to_one(sbtab_document,filename,verbose,flag_latex)
+%
+% (The argument flag_latex is not used)
 
-eval(default('flag_latex','0','verbose','1','add_date_and_sbtab_version','1'));
+eval(default('flag_latex','0','verbose','1'));
+add_date_and_sbtab_version = 1;
 
 fn = fieldnames(sbtab_document.tables);
 
 my_table = {};
+
+if add_date_and_sbtab_version,
+  sbtab_document.attributes.Date = datestr(date,29);
+  if ~isfield(sbtab_document.attributes,'SBtabVersion'),
+    sbtab_document.attributes.SBtabVersion = num2str(sbtab_version);
+  end
+end
 
 if length(sbtab_document.attributes),
  my_table{1} = ['!!!SBtab'];
@@ -19,13 +29,6 @@ if length(sbtab_document.attributes),
    if isnumeric(my_value), my_value = num2str(my_value); end
    my_table{1} = sprintf('%s %s=''%s''',my_table{1}, my_key, my_value);
  end
-end
-
-if add_date_and_sbtab_version,
-  sbtab_document.attributes.Date = datestr(date,29);
-  if ~isfield(sbtab_document.attributes,'SBtabVersion'),
-    sbtab_document.attributes.SBtabVersion = num2str(sbtab_version);
-  end
 end
 
 for it = 1:length(fn),

@@ -16,7 +16,6 @@ for it = 1:length(columns)
       tt(itt,it) = strrep(tt(itt,it),' ','');
     end
   else,
-    val
     tt(:,it) = val;
   end
 end

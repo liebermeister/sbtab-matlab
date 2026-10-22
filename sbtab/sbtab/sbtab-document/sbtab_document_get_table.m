@@ -4,7 +4,7 @@ function sbtab_table = sbtab_document_get_table(sbtab_document,table_name)
 %
 % sbtab_table = sbtab_document_get_table(sbtab_document,table_name)
 
-table_name = strrep(table_name,' ','');
+table_name = sbtab_clean_table_id(table_name);
 
 if isfield(sbtab_document.tables,table_name),
   sbtab_table = sbtab_document.tables.(table_name);

@@ -4,11 +4,14 @@ function sbtab_document_save(sbtab_document,filename,flag_latex,verbose,to_one_f
 %
 % sbtab_document_save(sbtab_document,filename)
 % 
-% filename has to be without extension
+% If to_one_file==1 (default), the document is saved to one file [filename].tsv;
+% otherwise, each table is saved to a file [filename]_[TableID].tsv
+% (or .tex, if flag_latex==1). The extension .tsv in filename is optional.
 
-eval(default('flag_latex','0','verbose','1','to_one_file','1','add_date_and_sbtab_version','1'));
+eval(default('flag_latex','0','verbose','1','to_one_file','1'));
+add_date_and_sbtab_version = 1;
 
-if strcmp(filename(end-3:end),'.tsv'),
+if endsWith(filename,'.tsv'),
   filename = filename(1:end-4);
 end
 

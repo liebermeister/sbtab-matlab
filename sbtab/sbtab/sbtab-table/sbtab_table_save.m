@@ -33,7 +33,6 @@ my_table = {'!!SBtab'};
 % end
 
 if options.add_date_and_sbtab_version,
-  my_sbtab_table.attributes.SBtabVersion = num2str(sbtab_version);
   my_sbtab_table.attributes.Date = datestr(date,29);
   if ~isfield(my_sbtab_table.attributes,'SBtabVersion'),
     my_sbtab_table.attributes.SBtabVersion = num2str(sbtab_version);
@@ -42,7 +41,11 @@ end
 
 attribute_types  = fieldnames(my_sbtab_table.attributes);
 for it = 1:length(attribute_types),
- attribute_string = [ attribute_types{it} '=''' getfield(my_sbtab_table.attributes,attribute_types{it}) '''' ];
+ attribute_value = my_sbtab_table.attributes.(attribute_types{it});
+ if isnumeric(attribute_value) || islogical(attribute_value),
+   attribute_value = num2str(attribute_value);
+ end
+ attribute_string = [ attribute_types{it} '=''' attribute_value '''' ];
  my_table{1,1} = [   my_table{1,1} ' '  attribute_string];
 end
 
@@ -87,6 +90,12 @@ cn = my_sbtab_table.column.column_names;
 fn = fieldnames(my_sbtab_table.column.column);
 if length(fn),
   nr = length(my_sbtab_table.column.column.(fn{1}));
+elseif length(my_sbtab_table.uncontrolled.ind),
+  nr = size(my_sbtab_table.uncontrolled.data,1);
+elseif length(my_sbtab_table.data.ind),
+  nr = size(my_sbtab_table.data.data,1);
+else
+  nr = 0;
 end
 for it = 1:length(fn),
   fnn = cn{it};

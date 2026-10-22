@@ -8,8 +8,8 @@ function my_sbtab_document = sbtab_document_load(table_names,filenames)
 % my_sbtab_document = sbtab_document_load(table_names,filenames)
 %  load SBtab document from several table files
 %
-%  table_names: cell array of table names (to be inserted as attributes)
-%  filenames  : cell array of of corresponding input files (each containing one table)
+%  table_names: cell array of table names (used as table IDs in the document)
+%  filenames  : cell array of corresponding input files (each containing one table)
 
 if nargin==1,
   % remove empty entries
@@ -23,7 +23,7 @@ else
 
   for it = 1:length(table_names),
       my_sbtab_table = sbtab_table_load(filenames{it});
-      my_sbtab_document.tables = setfield(my_sbtab_document.tables,table_names{it}, my_sbtab_table);
+      my_sbtab_document = sbtab_document_add_table(my_sbtab_document,table_names{it},my_sbtab_table);
   end
 
 end

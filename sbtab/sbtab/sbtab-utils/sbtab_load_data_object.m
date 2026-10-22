@@ -12,4 +12,5 @@ switch type,
   case 'sbtab',  object = sbtab_document_load(filename);
   case {'matlab','cobra-matlab'},  dum = load(filename);
     fn = fieldnames(dum); object = dum.(fn{1});
+  otherwise, error('Unknown type "%s"', type);
 end

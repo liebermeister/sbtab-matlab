@@ -13,7 +13,7 @@ else
 end
 new_names = [column(old_names); column_name];
 
-if length(unique(new_names)) < length(old_names),
+if length(unique(new_names)) < length(new_names),
   error('The column name exists already');
 end
 
@@ -28,10 +28,10 @@ if is_sbtab_column,
   my_sbtab_table.column.column.(column_name) = my_column;
   my_sbtab_table.column.ind           = [my_sbtab_table.column.ind max(indices)+1];
 else
-  my_sbtab_table.uncontrolled.headers = [my_sbtab_table.uncontrolled.headers, column_name];
+  my_sbtab_table.uncontrolled.headers = [column(my_sbtab_table.uncontrolled.headers)', {old_column_name}];
   my_sbtab_table.uncontrolled.ind     = [my_sbtab_table.uncontrolled.ind max(indices)+1];
-  if ismatrix(my_column),
+  if isnumeric(my_column),
     my_column = num2cell(my_column);
   end
-  my_sbtab_table.uncontrolled.data    = [my_sbtab_table.uncontrolled.data, my_column];
+  my_sbtab_table.uncontrolled.data    = [my_sbtab_table.uncontrolled.data, column(my_column)];
 end

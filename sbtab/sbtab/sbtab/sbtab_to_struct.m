@@ -14,7 +14,7 @@ function [my_struct,id_counter] = sbtab_to_struct(my_sbtab_object,structure,opti
 %
 % Usage example: 
 %
-% filename = [ sbtab_basedir '/demo/data/sbtab_omics_row_example_document.tsv'];
+% filename = [ sbtab_resourcedir '/examples/sbtab/ecoli/ecoli_wortel_2018_model.tsv'];
 % s = sbtab_document_load(filename);
 % t = sbtab_to_struct(s);
 %
@@ -61,6 +61,9 @@ switch sbtab_object_type(my_sbtab_object),
       
       case 'column',
         my_struct = my_sbtab_object.column.column;
+        if options.store_attributes,
+          my_struct.TABLE_ATTRIBUTES = my_sbtab_object.attributes;
+        end
       
       case 'row',
         my_IDs = my_sbtab_object.column.column.ID;
@@ -89,8 +92,7 @@ switch sbtab_object_type(my_sbtab_object),
         fn = fieldnames(my_sbtab_object.column.column);
         for it = 1:length(fn),
           my_fn = fn{it};
-          my_sbtab_object.column.column.(my_fn);
-          for itt = 1:length(my_IDs),
+            for itt = 1:length(my_IDs),
             entry = my_sbtab_object.column.column.(my_fn){itt};
             my_struct(itt).(my_fn) = entry;
           end

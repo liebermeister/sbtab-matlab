@@ -1,6 +1,6 @@
 function my_sbtab_document = sbtab_document_load_from_one(filename)
 
-% SBTAB_DOCUMENT_LOAD_FROM_ONE % Load SBtab document (possibly, several tables) from one file
+% SBTAB_DOCUMENT_LOAD_FROM_ONE Load SBtab document (possibly, several tables) from one file
 %
 % my_sbtab_document = sbtab_document_load_from_one(filename)
 % 
@@ -34,9 +34,9 @@ if flag_remove_comment_lines,
   my_table = remove_comment_lines(my_table);
 end
 
-attribute_line_number = find(cellfun('length',strfind(my_table,'!!!')));
+attribute_line_number = find(strncmp(my_table(:,1),'!!!',3));
 
-split_lines = [find(cellfun('length',strfind(my_table,'!!'))); size(my_table,1)+1];
+split_lines = [find(strncmp(my_table(:,1),'!!',2)); size(my_table,1)+1];
 split_lines = setdiff(split_lines,attribute_line_number);
 
 % ---------------------------------------------
@@ -100,33 +100,19 @@ for it = 1:length(split_lines)-1,
 end
 
 for it = 1:length(my_tables),
-  my_sbtab_table = sbtab_table_load([],my_tables{it});
-  if ~isfield(my_sbtab_table.attributes,'TableID'),
-    my_sbtab_table.attributes.TableID = my_sbtab_table.attributes.TableName;
-    warning(sprintf('File %s: Attribute TableID is missing in input file; replacing it by TableName attribute',filename));
-  end
-  if ~isfield(my_sbtab_table.attributes,'TableName'),
-    %warning(sprintf('File %s: Attribute TableName is missing in input file',filename));
-  else
-    my_sbtab_document.table_names{it} = my_sbtab_table.attributes.TableName;
-  end
-  table_ids{it} = strrep(my_sbtab_table.attributes.TableID,' ','');
-  my_sbtab_document.table_names{it} = my_sbtab_table.attributes.TableID;
-  my_sbtab_document.tables = setfield(my_sbtab_document.tables, table_ids{it}, my_sbtab_table);
+  % (sbtab_table_load sets a missing TableID to 'unknown')
+  my_sbtab_table = sbtab_table_load(filename,my_tables{it});
+  table_ids{it,1} = sbtab_clean_table_id(my_sbtab_table.attributes.TableID);
+  my_sbtab_document.table_names{it,1} = my_sbtab_table.attributes.TableID;
+  my_sbtab_document.tables.(table_ids{it}) = my_sbtab_table;
 end
 
-if length(my_sbtab_document.table_names) <  length(unique(my_sbtab_document.table_names)),
+if length(unique(table_ids)) < length(table_ids),
   error(sprintf('Non-unique Table IDs in file %s',filename));
 end
 
 % -----------------------------------------------------
 
 function my_table = remove_comment_lines(my_table)
-  
-is_comment_line = zeros(size(my_table,1),1);
-for it = 1:size(my_table,1),
-  if strcmp(my_table{it,1}(1),'%'), 
-    is_comment_line(it) = 1;
-  end
-end
-my_table=my_table(find(is_comment_line==0),:);
+
+my_table = my_table(~strncmp(my_table(:,1),'%',1),:);

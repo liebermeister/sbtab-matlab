@@ -9,12 +9,7 @@ if length(remove_keys),
 fn = fieldnames(my_table);
 keys = my_table.(fn{1});
 
-keep = ones(size(keys));
-for it = 1:length(remove_keys),
-  keep(find(strcmp(keys,remove_keys))) = 0;
-end
-
-ind_keep = find(keep);
+ind_keep = find(~ismember(keys,remove_keys));
 
 for itt = 1:length(fn),
   my_table_sub.(fn{itt}) = my_table.(fn{itt})(ind_keep);
