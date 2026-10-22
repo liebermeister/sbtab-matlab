@@ -1,15 +1,15 @@
-function  [my_struct,attributes] = sbtab_table_convert_to_struct(my_sbtab_table)
+function [my_struct,attributes] = sbtab_table_to_struct(my_sbtab_table)
 
-% SBTAB_TABLE_CONVERT_TO_STRUCT Convert an SBtab table into a matlab struct
+% SBTAB_TABLE_TO_STRUCT Convert an SBtab table into a matlab struct
 %
-% [my_struct,attributes] = sbtab_table_convert_to_struct(my_sbtab_table)
+% [my_struct,attributes] = sbtab_table_to_struct(my_sbtab_table)
 %
 % Construct a matlab struct from an SBtab table; ignore uncontrolled columns
 
-if isempty(my_sbtab_table), 
-  warning('Empty SBtab object!'); 
-end 
-  
-attributes = my_sbtab_table.attributes; 
+if isempty(my_sbtab_table)
+  error('Empty SBtab object');
+end
+
+attributes = my_sbtab_table.attributes;
 
 my_struct = my_sbtab_table.column.column;

@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of Contents</title>
+  <meta name="keywords" content="Contents">
+  <meta name="description" content="Matlab data structure for omics data matrices (metabolites, fluxes, proteins, expression)">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../../../../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../../../../index.html">Home</a> &gt;  <a href="../../../index.html">sbtab</a> &gt; <a href="../../index.html">sbtab-formats</a> &gt; <a href="../index.html">mnt-omics-data</a> &gt; <a href="index.html">biotable</a> &gt; Contents.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../../../../index.html"><img alt="<" border="0" src="../../../../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for sbtab/sbtab-formats/mnt-omics-data/biotable&nbsp;<img alt=">" border="0" src="../../../../right.png"></a></td></tr></table>-->
+
+<h1>Contents
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../../../../up.png"></a></h2>
+<div class="box"><strong>Matlab data structure for omics data matrices (metabolites, fluxes, proteins, expression)</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../../../../up.png"></a></h2>
+<div class="box"><strong>This is a script file. </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../../../../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> Matlab data structure for omics data matrices (metabolites, fluxes, proteins, expression)
+
+ REPRESENTATION IN MATLAB: CELL STRUCTURE
+
+ The first n fields contain names, IDs etc. of the biological elements (as string lists)
+ The number n of these fields may vary
+
+ data_table.SampleName: list of sample names (strings)
+ data_table.SampleTime: vector of sample times (numbers)
+ data_table.DataMean:   matrix of data mean values
+ data_table.DataStd:    matrix of data standard deviations
+ data_table.Info:       N x 2 cellstruct with strings (additional information)
+
+
+ REPRESENTATION IN FILES: TAB-SEPARATED FILES (THREE POSSIBLE FORMATS)
+
+ (I) Simple tab-separated files (two files are necessary)
+
+   1. File [name].tsv: contains everything except for .Info
+    First n columns: contents of the first n fields
+    Remaining columns: data, columns appear in the order
+        &quot;[sample1] Mean&quot; &quot;[sample1] Std&quot; &quot;[sample2] Mean&quot; &quot;[sample2] Std&quot; etc
+    First row: column headers
+    Second row: sample times
+    Remaining rows: contents
+
+   2. File [name]_info.tsv: contains the contents of .Info
+
+ (II) SBtab files
+
+ (III) OpenBIS files
+
+
+ FUNCTIONS
+
+ biotable_construct_timeseries     - construct a biotable
+ biotable_data_construct           - construct biotables for metabolites, fluxes, proteins and transcripts
+ biotable_read, biotable_write     - read and write biotable files
+ biotable_read_multiple, biotable_write_multiple - same, for metabolites, fluxes, proteins and transcripts
+ biotable_choose_items, biotable_remove, biotable_remove_nan_items, biotable_choose_samples - select data
+ biotable_align                    - reorder the elements
+ biotable_concatenate, biotable_combine_experiments - concatenate samples
+ biotable_join_replicates          - collect data from several replicates
+ biotable_combine_replicates       - combine replicates by replicate regression (requires replicate-regression)
+ biotable_replicate_mean_std       - mean values and standard deviations of replicates
+ biotable_interpolate, biotable_time_interpolation - interpolation in time
+ biotable_network_interpolate      - fill in missing values from neighbours in the network
+ biotable_smooth_mean, biotable_omit_outliers - preprocessing
+ biotable_add_initial_time_point, biotable_invent_standard_deviations, biotable_clean - other changes
+ biotable_data_consistency         - compare flux data with metabolite and expression data
+ openBIS_BE_default_pars           - default options for writing files in OpenBIS format</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../../../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../../../../matlabicon.gif)">
+</ul>
+This function is called by:
+<ul style="list-style-image:url(../../../../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+
+
+
+<hr><address>Generated on Thu 22-Oct-2026 20:11:23 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

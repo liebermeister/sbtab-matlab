@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of sbtab_table_add_annotation</title>
+  <meta name="keywords" content="sbtab_table_add_annotation">
+  <meta name="description" content="SBTAB_TABLE_ADD_ANNOTATION Insert annotation column into a table.">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../../../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../../../index.html">Home</a> &gt;  <a href="../../index.html">sbtab</a> &gt; <a href="../index.html">sbtab</a> &gt; <a href="index.html">sbtab-table</a> &gt; sbtab_table_add_annotation.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../../../index.html"><img alt="<" border="0" src="../../../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for sbtab/sbtab/sbtab-table&nbsp;<img alt=">" border="0" src="../../../right.png"></a></td></tr></table>-->
+
+<h1>sbtab_table_add_annotation
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="box"><strong>SBTAB_TABLE_ADD_ANNOTATION Insert annotation column into a table.</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="box"><strong>function t = sbtab_table_add_annotation(t,column_old,column_new,item_old,item_new) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> SBTAB_TABLE_ADD_ANNOTATION Insert annotation column into a table.
+
+ t = sbtab_table_add_annotation(t,column_old,column_new,item_old,item_new)
+
+ instead of two lists 'item_old' and 'item new', one can also give them as an N x 2 list in the argument item_old</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../../../matlabicon.gif)">
+<li><a href="sbtab_table_load.html" class="code" title="function sbtab = sbtab_table_load(filename, my_table, flag_remove_comments, table_id)">sbtab_table_load</a>	SBTAB_TABLE_LOAD Load SBtab table from file, or generate it from a list of strings</li><li><a href="../../../sbtab/sbtab/sbtab-utils/sbtab_clean_column_headers.html" class="code" title="function column_names = sbtab_clean_column_headers(column_names)">sbtab_clean_column_headers</a>	SBTAB_CLEAN_COLUMN_HEADERS Convert SBtab column names into Matlab field names</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../../../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function t = sbtab_table_add_annotation(t,column_old,column_new,item_old,item_new)</a>
+0002 
+0003 <span class="comment">% SBTAB_TABLE_ADD_ANNOTATION Insert annotation column into a table.</span>
+0004 <span class="comment">%</span>
+0005 <span class="comment">% t = sbtab_table_add_annotation(t,column_old,column_new,item_old,item_new)</span>
+0006 <span class="comment">%</span>
+0007 <span class="comment">% instead of two lists 'item_old' and 'item new', one can also give them as an N x 2 list in the argument item_old</span>
+0008 
+0009 eval(default(<span class="string">'sbtab_file_out'</span>,<span class="string">'[]'</span>,<span class="string">'item_new'</span>,<span class="string">'[]'</span>));
+0010 
+0011 <span class="keyword">if</span> isstr(t)
+0012   t = <a href="sbtab_table_load.html" class="code" title="function sbtab = sbtab_table_load(filename, my_table, flag_remove_comments, table_id)">sbtab_table_load</a>(t);
+0013 <span class="keyword">end</span>
+0014 
+0015 <span class="keyword">if</span> isempty(item_new)
+0016   item_new = item_old(:,2);
+0017   item_old = item_old(:,1);
+0018 <span class="keyword">end</span>
+0019 
+0020 t.column.column_names = [t.column.column_names; column_new];
+0021 
+0022 column_old = <a href="../../../sbtab/sbtab/sbtab-utils/sbtab_clean_column_headers.html" class="code" title="function column_names = sbtab_clean_column_headers(column_names)">sbtab_clean_column_headers</a>(column_old);
+0023 column_new = <a href="../../../sbtab/sbtab/sbtab-utils/sbtab_clean_column_headers.html" class="code" title="function column_names = sbtab_clean_column_headers(column_names)">sbtab_clean_column_headers</a>(column_new);
+0024 
+0025 ind = label_names(item_old,t.column.column.(column_old));
+0026 t.column.column.(column_new) = repmat({<span class="string">''</span>},length(t.column.column.(column_old)),1);
+0027 t.column.ind = [t.column.ind, max([t.column.ind, t.data.ind, t.uncontrolled.ind])+1];
+0028 
+0029 t.column.column.(column_new)(ind(find(ind))) = item_new(find(ind));</pre></div>
+<hr><address>Generated on Thu 22-Oct-2026 20:11:23 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

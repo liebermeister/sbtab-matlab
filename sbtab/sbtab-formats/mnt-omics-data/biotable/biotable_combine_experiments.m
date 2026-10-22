@@ -1,6 +1,7 @@
 function data_join = biotable_combine_experiments(data1,data2)
 
 % concatenate time series
+
 data2.metabolite_data.SampleTime = data2.metabolite_data.SampleTime - min(data2.metabolite_data.SampleTime) + max(data1.metabolite_data.SampleTime);
 data2.flux_data.SampleTime       = data2.flux_data.SampleTime       - min(data2.flux_data.SampleTime) + max(data1.flux_data.SampleTime);
 data2.protein_data.SampleTime    = data2.protein_data.SampleTime    - min(data2.protein_data.SampleTime) + max(data1.protein_data.SampleTime);

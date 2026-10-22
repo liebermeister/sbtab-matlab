@@ -1,0 +1,192 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of sbtab_load_quantity_data</title>
+  <meta name="keywords" content="sbtab_load_quantity_data">
+  <meta name="description" content="[M, ids_out, data_columns_out, unit] = sbtab_load_quantity_data(data_file, table_name, quantity_type, id_column, ids, data_columns, as_numbers, match_column_pattern)">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../../../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../../../index.html">Home</a> &gt;  <a href="../../index.html">sbtab</a> &gt; <a href="../index.html">sbtab</a> &gt; <a href="index.html">sbtab</a> &gt; sbtab_load_quantity_data.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../../../index.html"><img alt="<" border="0" src="../../../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for sbtab/sbtab/sbtab&nbsp;<img alt=">" border="0" src="../../../right.png"></a></td></tr></table>-->
+
+<h1>sbtab_load_quantity_data
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="box"><strong>[M, ids_out, data_columns_out, unit] = sbtab_load_quantity_data(data_file, table_name, quantity_type, id_column, ids, data_columns, as_numbers, match_column_pattern)</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="box"><strong>function [M, ids_out, data_columns_out, unit] = sbtab_load_quantity_data(data_file, table_name, quantity_type, id_column, ids, data_columns, as_numbers, match_column_pattern) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> [M, ids_out, data_columns_out, unit] = sbtab_load_quantity_data(data_file, table_name, quantity_type, id_column, ids, data_columns, as_numbers, match_column_pattern)
+
+ Read data values from an SBtab table
+
+  data_file:            SBtab file name, document, or table
+  table_name:           table ID (optional if the document contains only one table)
+  quantity_type:        if not empty, use only rows with this entry in column 'QuantityType'
+  id_column:            column containing the element IDs
+  ids:                  if not empty, return the values for these element IDs (in this order)
+  data_columns:         list of data columns to be read
+  as_numbers:           flag: convert the table entries to numbers (default 0)
+  match_column_pattern: flag: use all columns whose names start with one of the strings in data_columns (default 0)</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../../../matlabicon.gif)">
+<li><a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_get_table.html" class="code" title="function sbtab_table = sbtab_document_get_table(sbtab_document,table_name)">sbtab_document_get_table</a>	SBTAB_DOCUMENT_GET_TABLE Get table from SBtab document.</li><li><a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_get_table_names.html" class="code" title="function table_names = sbtab_document_get_table_names(my_sbtab_document)">sbtab_document_get_table_names</a>	SBTAB_DOCUMENT_GET_TABLE_NAMES Get table names from SBtab document.</li><li><a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_load.html" class="code" title="function my_sbtab_document = sbtab_document_load(table_names,filenames)">sbtab_document_load</a>	SBTAB_DOCUMENT_LOAD Load SBtab document from several files (each containing one table)</li><li><a href="../../../sbtab/sbtab/sbtab-table/sbtab_table_get_attributes.html" class="code" title="function attributes = sbtab_table_get_attributes(my_sbtab_table)">sbtab_table_get_attributes</a>	SBTAB_TABLE_GET_ATTRIBUTES Get attributes from an SBtab table</li><li><a href="../../../sbtab/sbtab/sbtab-table/sbtab_table_get_column.html" class="code" title="function my_column = sbtab_table_get_column(my_sbtab_table,column_name,flag_numbers,verbose)">sbtab_table_get_column</a>	SBTAB_TABLE_GET_COLUMN Get column from an SBtab table</li><li><a href="../../../sbtab/sbtab/sbtab-table/sbtab_table_has_column.html" class="code" title="function res = sbtab_table_has_column(my_sbtab_table,column_name)">sbtab_table_has_column</a>	SBTAB_TABLE_HAS_COLUMN Check for existence of column in an SBtab table</li><li><a href="../../../sbtab/sbtab/sbtab-utils/sbtab_cell_to_numbers.html" class="code" title="function x = sbtab_cell_to_numbers(c)">sbtab_cell_to_numbers</a>	SBTAB_CELL_TO_NUMBERS Convert table entries (strings or numbers) into a numeric array</li><li><a href="sbtab_object_type.html" class="code" title="function object_type = sbtab_object_type(sbtab_object)">sbtab_object_type</a>	object_type = sbtab_object_type(sbtab_object)</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../../../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function [M, ids_out, data_columns_out, unit] = sbtab_load_quantity_data(data_file, table_name, quantity_type, id_column, ids, data_columns, as_numbers, match_column_pattern)</a>
+0002 
+0003 <span class="comment">% [M, ids_out, data_columns_out, unit] = sbtab_load_quantity_data(data_file, table_name, quantity_type, id_column, ids, data_columns, as_numbers, match_column_pattern)</span>
+0004 <span class="comment">%</span>
+0005 <span class="comment">% Read data values from an SBtab table</span>
+0006 <span class="comment">%</span>
+0007 <span class="comment">%  data_file:            SBtab file name, document, or table</span>
+0008 <span class="comment">%  table_name:           table ID (optional if the document contains only one table)</span>
+0009 <span class="comment">%  quantity_type:        if not empty, use only rows with this entry in column 'QuantityType'</span>
+0010 <span class="comment">%  id_column:            column containing the element IDs</span>
+0011 <span class="comment">%  ids:                  if not empty, return the values for these element IDs (in this order)</span>
+0012 <span class="comment">%  data_columns:         list of data columns to be read</span>
+0013 <span class="comment">%  as_numbers:           flag: convert the table entries to numbers (default 0)</span>
+0014 <span class="comment">%  match_column_pattern: flag: use all columns whose names start with one of the strings in data_columns (default 0)</span>
+0015 
+0016 <span class="keyword">if</span> isempty(data_file)
+0017   M = [];    ids_out =[];  data_columns_out = []; unit=[];
+0018   <span class="keyword">return</span>
+0019 <span class="keyword">end</span>
+0020 
+0021 eval(default(<span class="string">'table_name'</span>, <span class="string">'[]'</span>, <span class="string">'ids'</span>, <span class="string">'[]'</span>, <span class="string">'as_numbers'</span>, <span class="string">'0'</span>, <span class="string">'match_column_pattern'</span>, <span class="string">'0'</span>));
+0022 
+0023 <span class="keyword">if</span> isstr(data_file)
+0024   S = <a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_load.html" class="code" title="function my_sbtab_document = sbtab_document_load(table_names,filenames)">sbtab_document_load</a>(data_file);
+0025 <span class="keyword">else</span>
+0026   S = data_file;
+0027 <span class="keyword">end</span>
+0028 
+0029 <span class="keyword">if</span> isempty(table_name)
+0030   <span class="keyword">switch</span> <a href="sbtab_object_type.html" class="code" title="function object_type = sbtab_object_type(sbtab_object)">sbtab_object_type</a>(S)
+0031     <span class="keyword">case</span> <span class="string">'document'</span>
+0032       tn = <a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_get_table_names.html" class="code" title="function table_names = sbtab_document_get_table_names(my_sbtab_document)">sbtab_document_get_table_names</a>(S);
+0033       <span class="keyword">if</span> length(tn)==1
+0034         T = <a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_get_table.html" class="code" title="function sbtab_table = sbtab_document_get_table(sbtab_document,table_name)">sbtab_document_get_table</a>(S,tn{1});
+0035         <span class="comment">%sbtab_table_load(data_file);</span>
+0036       <span class="keyword">else</span>
+0037         error(<span class="string">'Please specify a table name'</span>)
+0038       <span class="keyword">end</span>
+0039     <span class="keyword">case</span> <span class="string">'table'</span>
+0040       T = S; <span class="comment">%sbtab_table_load(data_file);</span>
+0041   <span class="keyword">end</span>
+0042 <span class="keyword">else</span>
+0043   <span class="keyword">switch</span> <a href="sbtab_object_type.html" class="code" title="function object_type = sbtab_object_type(sbtab_object)">sbtab_object_type</a>(S)
+0044     <span class="keyword">case</span> <span class="string">'document'</span>
+0045       T = <a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_get_table.html" class="code" title="function sbtab_table = sbtab_document_get_table(sbtab_document,table_name)">sbtab_document_get_table</a>(S,table_name);
+0046     <span class="keyword">otherwise</span>
+0047       T=S;
+0048   <span class="keyword">end</span>
+0049 <span class="keyword">end</span>
+0050 
+0051 data = {};
+0052 data_columns_out = {};
+0053 my_data_columns = regexprep(data_columns,<span class="string">'^!'</span>,<span class="string">''</span>);
+0054 
+0055 <span class="comment">% names of all table columns (in the order of the table)</span>
+0056 all_data_columns = {};
+0057 all_data_columns(T.column.ind,1) = column(T.column.column_names);
+0058 <span class="keyword">if</span> length(T.uncontrolled.ind)
+0059   all_data_columns(T.uncontrolled.ind,1) = column(T.uncontrolled.headers);
+0060 <span class="keyword">end</span>
+0061 
+0062 z = 1;
+0063 <span class="keyword">for</span> it = 1:length(my_data_columns)
+0064   <span class="keyword">if</span> sum(strcmp(my_data_columns{it},all_data_columns))==0
+0065     warning(sprintf(<span class="string">'Column %s not found in file/SBtab'</span>, my_data_columns{it}));
+0066   <span class="keyword">end</span>
+0067   <span class="keyword">for</span> itt = 1:length(all_data_columns)
+0068     match = 0;
+0069     <span class="keyword">if</span> match_column_pattern
+0070       <span class="keyword">if</span> sum(strfind(all_data_columns{itt},my_data_columns{it})==1), match = 1; <span class="keyword">end</span>
+0071     <span class="keyword">else</span>
+0072       <span class="keyword">if</span> strcmp(my_data_columns{it}, all_data_columns{itt}), match = 1; <span class="keyword">end</span>
+0073     <span class="keyword">end</span>
+0074     <span class="keyword">if</span> match
+0075       data(:,z) = <a href="../../../sbtab/sbtab/sbtab-table/sbtab_table_get_column.html" class="code" title="function my_column = sbtab_table_get_column(my_sbtab_table,column_name,flag_numbers,verbose)">sbtab_table_get_column</a>(T,all_data_columns{itt});
+0076       data_columns_out{z,1} = all_data_columns{itt};
+0077       z = z+1;
+0078     <span class="keyword">end</span>
+0079   <span class="keyword">end</span>
+0080 <span class="keyword">end</span>
+0081 
+0082 data_columns_out = strrep(data_columns_out,<span class="string">'SAMPLE_'</span>,<span class="string">''</span>);
+0083 
+0084 <span class="comment">% filter for rows with the quantity type specified in function argument quantity_type</span>
+0085 
+0086 id_list     = <a href="../../../sbtab/sbtab/sbtab-table/sbtab_table_get_column.html" class="code" title="function my_column = sbtab_table_get_column(my_sbtab_table,column_name,flag_numbers,verbose)">sbtab_table_get_column</a>(T,id_column);
+0087 row_indices = 1:length(id_list);
+0088 
+0089 <span class="keyword">if</span> length(quantity_type)
+0090   quantity_type_list = <a href="../../../sbtab/sbtab/sbtab-table/sbtab_table_get_column.html" class="code" title="function my_column = sbtab_table_get_column(my_sbtab_table,column_name,flag_numbers,verbose)">sbtab_table_get_column</a>(T,<span class="string">'QuantityType'</span>);
+0091   row_indices = find(strcmp(quantity_type, quantity_type_list));
+0092   id_list     = id_list(row_indices);
+0093   data        = data(row_indices,:);
+0094 <span class="keyword">end</span>
+0095 
+0096 <span class="keyword">if</span> length(ids)
+0097   M = repmat({[]},length(ids), length(data_columns_out));
+0098   <span class="keyword">for</span> it = 1:length(ids)
+0099     <span class="keyword">if</span> length(ids{it})
+0100       ll = find(strcmp(ids{it},id_list));
+0101       <span class="keyword">if</span> length(ll)&gt;1, warning(<span class="string">'multiple matching rows found in data file; using only the first hit'</span>); <span class="keyword">end</span>
+0102       <span class="keyword">if</span> length(ll)
+0103         M(it,:) = data(ll(1),:);
+0104       <span class="keyword">end</span>
+0105     <span class="keyword">end</span>
+0106   <span class="keyword">end</span>
+0107   ids_out = ids;
+0108 <span class="keyword">else</span>
+0109   M = data;
+0110   ids_out = id_list;
+0111 <span class="keyword">end</span>
+0112 
+0113 <span class="keyword">if</span> as_numbers
+0114   M = <a href="../../../sbtab/sbtab/sbtab-utils/sbtab_cell_to_numbers.html" class="code" title="function x = sbtab_cell_to_numbers(c)">sbtab_cell_to_numbers</a>(M);
+0115 <span class="keyword">end</span>
+0116 
+0117 A = <a href="../../../sbtab/sbtab/sbtab-table/sbtab_table_get_attributes.html" class="code" title="function attributes = sbtab_table_get_attributes(my_sbtab_table)">sbtab_table_get_attributes</a>(T);
+0118 <span class="keyword">if</span> isfield(A,<span class="string">'Unit'</span>)
+0119   unit = A.Unit;
+0120 <span class="keyword">elseif</span> <a href="../../../sbtab/sbtab/sbtab-table/sbtab_table_has_column.html" class="code" title="function res = sbtab_table_has_column(my_sbtab_table,column_name)">sbtab_table_has_column</a>(T,<span class="string">'Unit'</span>)
+0121   unit_column = <a href="../../../sbtab/sbtab/sbtab-table/sbtab_table_get_column.html" class="code" title="function my_column = sbtab_table_get_column(my_sbtab_table,column_name,flag_numbers,verbose)">sbtab_table_get_column</a>(T,<span class="string">'Unit'</span>);
+0122   unit = unique(unit_column(row_indices));
+0123   <span class="keyword">if</span> length(unit)==1
+0124     unit = unit{1};
+0125   <span class="keyword">else</span>
+0126     error(sprintf(<span class="string">'Inconsistent units in file %s'</span>,data_file));
+0127   <span class="keyword">end</span>
+0128 <span class="keyword">else</span>
+0129   <span class="keyword">if</span> isstr(data_file)
+0130     error(sprintf(<span class="string">'No units found in file %s'</span>,data_file));
+0131   <span class="keyword">else</span>
+0132     error(sprintf(<span class="string">'No units found in data file'</span>));
+0133   <span class="keyword">end</span>
+0134 <span class="keyword">end</span></pre></div>
+<hr><address>Generated on Thu 22-Oct-2026 20:11:23 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

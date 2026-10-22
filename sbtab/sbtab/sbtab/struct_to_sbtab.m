@@ -2,7 +2,7 @@ function my_sbtab_object = struct_to_sbtab(my_struct,object_type,structure)
 
 % STRUCT_TO_SBTAB Construct an SBtab object from matlab struct
 %
-% my_sbtab_object = struct_to_sbtab(structure)
+% my_sbtab_object = struct_to_sbtab(my_struct,object_type,structure)
 %
 % Construct an SBtab document or table object from a matlab struct
 %
@@ -11,13 +11,13 @@ function my_sbtab_object = struct_to_sbtab(my_struct,object_type,structure)
 % object_type = {'document','table'}
 %
 % For the conversion SBtab object -> matlab struct, see 'sbtab_to_struct'
-  
+
 eval(default('object_type','[]','structure','[]'));
 
-if isempty(object_type),
-  if isfield(my_struct,'DOCUMENT_ATTRIBUTES'),
+if isempty(object_type)
+  if isfield(my_struct,'DOCUMENT_ATTRIBUTES')
     object_type = 'document';
-  elseif isfield(my_struct,'TABLE_ATTRIBUTES'),
+  elseif isfield(my_struct,'TABLE_ATTRIBUTES')
     object_type = 'table';
   else
     object_type = 'document';
@@ -25,50 +25,50 @@ if isempty(object_type),
   end
 end
 
-switch object_type,
-  
-  case 'document',
-    if isfield(my_struct,'DOCUMENT_ATTRIBUTES'),
-      attributes = my_struct.DOCUMENT_ATTRIBUTES; 
+switch object_type
+
+  case 'document'
+    if isfield(my_struct,'DOCUMENT_ATTRIBUTES')
+      attributes = my_struct.DOCUMENT_ATTRIBUTES;
       my_struct = rmfield(my_struct,'DOCUMENT_ATTRIBUTES');
     else
       attributes = struct;
     end
     table_names = fieldnames(my_struct);
     tables = {};
-    for it = 1:length(table_names),
+    for it = 1:length(table_names)
       tables = [tables; struct_to_sbtab(my_struct.(table_names{it}),'table',structure)];
     end
     my_sbtab_object = sbtab_document_construct(attributes,table_names,tables);
 
-  case 'table',
+  case 'table'
 
-    if isfield(my_struct,'TABLE_ATTRIBUTES'),
+    if isfield(my_struct,'TABLE_ATTRIBUTES')
       attributes = my_struct.TABLE_ATTRIBUTES;
       my_struct = rmfield(my_struct,'TABLE_ATTRIBUTES');
     else
       attributes = struct;
     end
-    
-    if ~isfield(attributes,'TableType'),
+
+    if ~isfield(attributes,'TableType')
       %warning('Table type missing');
       attributes.TableType = 'unknown';
     end
-    
-    if ~isfield(attributes,'TableID'),
-%      warning('Table ID missing');
+
+    if ~isfield(attributes,'TableID')
+      %      warning('Table ID missing');
     end
 
-    my_sbtab_object.attributes   = attributes; 
+    my_sbtab_object.attributes   = attributes;
     my_sbtab_object.rows         = struct;
 
     % if my_struct is given as a struct array (and not a struct), convert it to struct
-    if strcmp(structure,'row-cell'),
+    if strcmp(structure,'row-cell')
       mmy_struct = struct;
-      for it = 1:length(my_struct),
-        if isfield(my_struct(it),'ID'),
+      for it = 1:length(my_struct)
+        if isfield(my_struct(it),'ID')
           fnn{it,1} = my_struct(it).ID;
-        elseif isfield(my_struct(it),'id'),
+        elseif isfield(my_struct(it),'id')
           fnn{it,1} = my_struct(it).id;
         end
         mmy_struct.(fnn{it,1}) = my_struct(it);
@@ -78,22 +78,23 @@ switch object_type,
 
     fn = fieldnames(my_struct);
 
-    if isstruct(my_struct.(fn{1})),
+    if isstruct(my_struct.(fn{1}))
       % the struct entries correspond to table rows
       element_names = fn;
-      column_names = fieldnames(my_struct.(element_names{1}));
+      % the ID column is constructed from the element names
+      column_names = setdiff(fieldnames(my_struct.(element_names{1})),{'ID'},'stable');
       my_sbtab_object.column.column_names = [{'ID'}; column_names];
       cn.ID = column(element_names)';
       for it=1:length(column_names)
         cn.(column_names{it}) = {};
-        for itt = 1:length(element_names),
+        for itt = 1:length(element_names)
           my_entry = my_struct.(element_names{itt}).(column_names{it});
-          if isstruct(my_entry),
-            if isfield(my_entry,'id'),
+          if isstruct(my_entry)
+            if isfield(my_entry,'id')
               my_entry = my_entry.id;
-            elseif isfield(my_entry,'ID'),
-              my_entry = my_entry.ID;            
-            else,
+            elseif isfield(my_entry,'ID')
+              my_entry = my_entry.ID;
+            else
               my_entry = '';
             end
           end
@@ -106,7 +107,7 @@ switch object_type,
       my_sbtab_object.data              = struct('ind',[]);
       my_sbtab_object.uncontrolled      = struct('ind',[],'headers',[]);
 
-    elseif iscell(my_struct.(fn{1})) + ismatrix(my_struct.(fn{1})),
+    elseif iscell(my_struct.(fn{1})) + ismatrix(my_struct.(fn{1}))
       % the struct entries correspond to table columns
       my_sbtab_object.column.column_names = fn;
       my_sbtab_object.column.column     = my_struct;
@@ -114,9 +115,9 @@ switch object_type,
       my_sbtab_object.column.ind        = 1:length(fieldnames(my_struct));
       my_sbtab_object.data              = struct('ind',[]);
       my_sbtab_object.uncontrolled      = struct('ind',[],'headers',[]);
-      
+
     end
-  otherwise,
+  otherwise
     error('Unknown object type');
 
 end

@@ -2,20 +2,21 @@ function sbtab = sbtab_table_load(filename, my_table, flag_remove_comments, tabl
 
 % SBTAB_TABLE_LOAD Load SBtab table from file, or generate it from a list of strings
 %
-% sbtab = sbtab_table_load(filename, my_table, flag_remove_comments)
+% sbtab = sbtab_table_load(filename, my_table, flag_remove_comments, table_id)
 %
 % Either load SBtab table from file (with filename [filename])
 %        (if table_id is given (non-empty), use this table; otherwise, then use the first table);
 % or     (if argument [my_table] is given)
 %        load SBtab table from string cell array [my_table]
+
 eval(default('my_table', '[]', 'flag_remove_comments', '0','table_id','[]'));
 
-if isempty(my_table),
+if isempty(my_table)
   try
     my_table = load_unformatted_table(filename);
-    my_table = remove_comment_lines(my_table); 
+    my_table = remove_comment_lines(my_table);
   catch
-    if isstr(filename),
+    if isstr(filename)
       error(sprintf('I could not import the file %s',  filename))
     else
       error(sprintf('I could not import the file'))
@@ -23,24 +24,24 @@ if isempty(my_table),
   end
 end
 
-if strcmp('!!!',my_table{1,1}(1:3)),
-  if ~isempty(table_id),
-    sbtab_doc = sbtab_document_load(filename);
-    sbtab = sbtab_document_get_table(sbtab_doc,table_id);
-    return
-  else
-    my_table = my_table(2:end,:);
-  end
+if ~isempty(table_id)
+  sbtab_doc = sbtab_document_load(filename);
+  sbtab = sbtab_document_get_table(sbtab_doc,table_id);
+  return
 end
 
-if sum( cellfun('length',strfind(my_table(:,1),'!!')))>1,
+if strncmp('!!!',my_table{1,1},3)
+  my_table = my_table(2:end,:);
+end
+
+if sum(strncmp(my_table(:,1),'!!',2))>1
   error(sprintf('Input file %s contains several tables; it cannot be loaded as one table. In the sbtab_table_load command, please specify the table ID ',filename));
 end
 
 attribute_line = {};
 cont = 1;
-while cont * length(my_table),
-  if strcmp('!!',my_table{1,1}(1:2)), 
+while cont * length(my_table)
+  if strncmp('!!',my_table{1,1},2)
     attribute_line = my_table(1,:);
     cont = 0;
   end
@@ -51,18 +52,18 @@ if isempty(my_table)
   error(sprintf('No declaration line (starting with !!SBtab) found in file %s',filename));
 end
 
-if length(attribute_line),
+if length(attribute_line)
 
-for it = 1:length(attribute_line),
-  if length(attribute_line{it}),
-    attribute_line{it} = strrep(attribute_line{it},'''','"');
-    attribute_line{it} = strrep(attribute_line{it},'’','"');
+  for it = 1:length(attribute_line)
+    if length(attribute_line{it})
+      attribute_line{it} = strrep(attribute_line{it},'''','"');
+      attribute_line{it} = strrep(attribute_line{it},'’','"');
+    end
   end
-end
 
   attr_line = attribute_line{1};
-  for it = 2:length(attribute_line),
-    if length(attribute_line{it}),
+  for it = 2:length(attribute_line)
+    if length(attribute_line{it})
       attr_line = sprintf('%s\t%s',attr_line, attribute_line{it});
     end
   end
@@ -78,24 +79,24 @@ end
 
 attributes = struct;
 
-if length(attribute_line), 
-  attribute_line{1}=strrep(attribute_line{1},'!!SBtab ',''); 
-  attribute_line{1}=strrep(attribute_line{1},'!!Sbtab ',''); 
+if length(attribute_line)
+  attribute_line{1}=strrep(attribute_line{1},'!!SBtab ','');
+  attribute_line{1}=strrep(attribute_line{1},'!!Sbtab ','');
 end
 
-for it=1:length(attribute_line),
- attribute_line{it} = strrep(attribute_line{it}, '= ','=');
- mm = Strsplit('=',attribute_line{it});
- if length(mm) == 2,
-   mm{1} = deblank(strrep(mm{1},'!',''));
-   mm{1} = strrep(mm{1},':','');
-   mm{2} = strrep(mm{2},'''','');
-   mm{2} = deblank(strrep(mm{2},'"',''));
-   attributes = setfield(attributes,mm{1},mm{2});
- end
+for it=1:length(attribute_line)
+  attribute_line{it} = strrep(attribute_line{it}, '= ','=');
+  mm = Strsplit('=',attribute_line{it});
+  if length(mm) == 2
+    mm{1} = deblank(strrep(mm{1},'!',''));
+    mm{1} = strrep(mm{1},':','');
+    mm{2} = strrep(mm{2},'''','');
+    mm{2} = deblank(strrep(mm{2},'"',''));
+    attributes = setfield(attributes,mm{1},mm{2});
+  end
 end
 
-if ~isfield(attributes,'TableType'),
+if ~isfield(attributes,'TableType')
   %warning(sprintf('Table type missing in file %s', filename));
   attributes.TableType = 'unknown';
 end
@@ -105,7 +106,7 @@ end
 %  attributes.TableName = 'unknown';
 %end
 
-if ~isfield(attributes,'TableID'),
+if ~isfield(attributes,'TableID')
   warning(sprintf('Table ID missing in file %s',filename));
   attributes.TableID = 'unknown';
 end
@@ -113,11 +114,11 @@ end
 % -------------------------------------------------------
 % If desired transpose the table
 
-if isfield(attributes,'TableOrientation'),
- switch attributes.TableOrientation,
-   case 'Transposed',
-     my_table =  my_table';
- end
+if isfield(attributes,'TableOrientation')
+  switch attributes.TableOrientation
+    case 'Transposed'
+      my_table =  my_table';
+  end
 end
 
 % -------------------------------------------------------
@@ -125,54 +126,39 @@ end
 
 % omit empty columns
 
-for it = 1:size(my_table,2),
-  if prod(double(cellfun('isempty',my_table(:,it)))),
-    my_table = my_table(:, setdiff(1:size(my_table,2),it));
-  end
-end
+my_table = my_table(:, ~all(cellfun('isempty',my_table),1));
 
-% detect empty column header 
+% detect empty column header
 if sum(double(cellfun('isempty',my_table(1,:))))
   error(sprintf('Column header missing in file %s',filename));
 end
 
 rows = struct;
 ind_data = [];
-if size(my_table,1)>1,
-  while strcmp('!',my_table{2,1}(1)), 
-    row_header = my_table{2,1}(2:end);
-    row_rest   = [{[]},my_table(2,2:end)];
-    ind_data   = [ind_data, find(cellfun('length',row_rest))];
-    my_table   = my_table([1,3:end],:);
-    rows       = setfield(rows,row_header,row_rest);
-  end
+while size(my_table,1)>1 && strncmp('!',my_table{2,1},1)
+  row_header = my_table{2,1}(2:end);
+  row_rest   = [{[]},my_table(2,2:end)];
+  ind_data   = [ind_data, find(cellfun('length',row_rest))];
+  my_table   = my_table([1,3:end],:);
+  rows       = setfield(rows,row_header,row_rest);
 end
 
 ind_rows   = setdiff(unique(ind_data),1);
 column     = struct;
 ind_column = [];
+column_names = {};
 
-for it = 1:size(my_table,2),
+for it = 1:size(my_table,2)
   column_header = my_table{1,it};
-  if strcmp('!',column_header(1)),
+  if strcmp('!',column_header(1))
     column_header = column_header(2:end);
     column_names{it,1} = column_header;
-    if strfind(column_header,'ID'), % compatibility to older SBtab files
-      column_header = strrep(column_header,'MiriamID::urn:miriam:','Identifiers:');    
-      column_header = strrep(column_header,'SBML::reaction::ID','SBML:reaction:ID');    
-      column_header = strrep(column_header,'SBML::species::ID','SBML:species:ID');    
+    if strfind(column_header,'ID')  % compatibility to older SBtab files
+      column_header = strrep(column_header,'MiriamID::urn:miriam:','Identifiers:');
+      column_header = strrep(column_header,'SBML::reaction::ID','SBML:reaction:ID');
+      column_header = strrep(column_header,'SBML::species::ID','SBML:species:ID');
     end
-    column_header = strrep(column_header,' ','_');
-    column_header = strrep(column_header,'-','_');
-    column_header = strrep(column_header,'','_');
-    column_header = strrep(column_header,':','_');
-    column_header = strrep(column_header,'.','_');
-    column_header = strrep(column_header,'[','_');
-    column_header = strrep(column_header,']','_');
-    column_header = strrep(column_header,'(','_');
-    column_header = strrep(column_header,')','_');
-    column_header = strrep(column_header,'/','_');
-    column_header = strrep(column_header,'>','SAMPLE_');
+    column_header = sbtab_clean_column_headers(column_header);
     ind_column = [ind_column it];
     column = setfield(column,column_header,my_table(2:end,it));
   end
@@ -183,7 +169,7 @@ data_headers     = my_table(1,ind_data);
 data             = my_table(2:end,ind_data);
 
 ind_uncontrolled = setdiff(1:size(my_table,2),[ind_column,ind_data]);
-if length(ind_uncontrolled),
+if length(ind_uncontrolled)
   uncontrolled_headers = my_table(1,ind_uncontrolled);
   uncontrolled         = my_table(2:end,ind_uncontrolled);
 else
@@ -221,7 +207,7 @@ sbtab.uncontrolled.headers = uncontrolled_headers;
 sbtab.uncontrolled.data = uncontrolled;
 sbtab.uncontrolled.ind  = ind_uncontrolled;
 
-if flag_remove_comments, 
+if flag_remove_comments
   sbtab = sbtab_table_remove_comment_lines(sbtab);
 end
 
@@ -229,11 +215,5 @@ end
 % -----------------------------------------------------
 
 function my_table = remove_comment_lines(my_table)
-  
-is_comment_line = zeros(size(my_table,1),1);
-for it = 1:size(my_table,1),
-  if strcmp(my_table{it,1}(1),'%'), 
-    is_comment_line(it) = 1;
-  end
-end
-my_table=my_table(find(is_comment_line==0),:);
+
+  my_table = my_table(~strncmp(my_table(:,1),'%',1),:);

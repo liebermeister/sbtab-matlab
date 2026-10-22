@@ -10,4 +10,4 @@ function my_table = sbtab_table_array(my_sbtab_table, options)
 eval(default('options','struct'));
 options.filename = [];
 
-my_table = sbtab_table_save(my_sbtab_table, options)
+my_table = sbtab_table_save(my_sbtab_table, options);

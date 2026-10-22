@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of sbtab_table_get_column</title>
+  <meta name="keywords" content="sbtab_table_get_column">
+  <meta name="description" content="SBTAB_TABLE_GET_COLUMN Get column from an SBtab table">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../../../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../../../index.html">Home</a> &gt;  <a href="../../index.html">sbtab</a> &gt; <a href="../index.html">sbtab</a> &gt; <a href="index.html">sbtab-table</a> &gt; sbtab_table_get_column.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../../../index.html"><img alt="<" border="0" src="../../../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for sbtab/sbtab/sbtab-table&nbsp;<img alt=">" border="0" src="../../../right.png"></a></td></tr></table>-->
+
+<h1>sbtab_table_get_column
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="box"><strong>SBTAB_TABLE_GET_COLUMN Get column from an SBtab table</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="box"><strong>function my_column = sbtab_table_get_column(my_sbtab_table,column_name,flag_numbers,verbose) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> SBTAB_TABLE_GET_COLUMN Get column from an SBtab table
+
+ my_column = sbtab_table_get_column(my_sbtab_table,column_name,flag_numbers)
+
+ If the column does not exist, an empty element is returned
+ If flag_numbers is set to 1, the table entries are returned as numbers (otherwise as strings)</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../../../matlabicon.gif)">
+<li><a href="../../../sbtab/sbtab/sbtab-utils/sbtab_cell_to_numbers.html" class="code" title="function x = sbtab_cell_to_numbers(c)">sbtab_cell_to_numbers</a>	SBTAB_CELL_TO_NUMBERS Convert table entries (strings or numbers) into a numeric array</li><li><a href="../../../sbtab/sbtab/sbtab-utils/sbtab_clean_column_headers.html" class="code" title="function column_names = sbtab_clean_column_headers(column_names)">sbtab_clean_column_headers</a>	SBTAB_CLEAN_COLUMN_HEADERS Convert SBtab column names into Matlab field names</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../../../matlabicon.gif)">
+<li><a href="../../../sbtab/sbtab-formats/mnt-omics-data/sbtab_2_dynamic_data.html" class="code" title="function d = sbtab_2_dynamic_data(filename)">sbtab_2_dynamic_data</a>	d = sbtab_2_dynamic_data(filename)</li><li><a href="sbtab_table_diff.html" class="code" title="function result = sbtab_table_diff(SBtab_table_1, SBtab_table_2, sort_by_columns1, sort_by_columns2, show_columns_list)">sbtab_table_diff</a>	result = sbtab_table_diff(SBtab_table_1, SBtab_table_2, sort_by_columns1, sort_by_columns2, show_columns_list)</li><li><a href="sbtab_table_get_element.html" class="code" title="function my_element = sbtab_table_get_element(my_sbtab_table,column_name,column_select,row_select,flag_numbers,verbose)">sbtab_table_get_element</a>	SBTAB_TABLE_GET_ELEMENT Get element from an SBtab table</li><li><a href="sbtab_table_get_ids.html" class="code" title="function unique_ids = sbtab_table_get_ids(sbtab_table)">sbtab_table_get_ids</a>	unique_ids = sbtab_table_get_ids(sbtab_table)</li><li><a href="../../../sbtab/sbtab/sbtab/sbtab_load_quantity_data.html" class="code" title="function [M, ids_out, data_columns_out, unit] = sbtab_load_quantity_data(data_file, table_name, quantity_type, id_column, ids, data_columns, as_numbers, match_column_pattern)">sbtab_load_quantity_data</a>	[M, ids_out, data_columns_out, unit] = sbtab_load_quantity_data(data_file, table_name, quantity_type, id_column, ids, data_columns, as_numbers, match_column_pattern)</li></ul>
+<!-- crossreference -->
+
+
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function my_column = sbtab_table_get_column(my_sbtab_table,column_name,flag_numbers,verbose)</a>
+0002 
+0003 <span class="comment">% SBTAB_TABLE_GET_COLUMN Get column from an SBtab table</span>
+0004 <span class="comment">%</span>
+0005 <span class="comment">% my_column = sbtab_table_get_column(my_sbtab_table,column_name,flag_numbers)</span>
+0006 <span class="comment">%</span>
+0007 <span class="comment">% If the column does not exist, an empty element is returned</span>
+0008 <span class="comment">% If flag_numbers is set to 1, the table entries are returned as numbers (otherwise as strings)</span>
+0009 
+0010 eval(default(<span class="string">'flag_numbers'</span>,<span class="string">'0'</span>,<span class="string">'verbose'</span>,<span class="string">'1'</span>));
+0011 
+0012 column_name = <a href="../../../sbtab/sbtab/sbtab-utils/sbtab_clean_column_headers.html" class="code" title="function column_names = sbtab_clean_column_headers(column_names)">sbtab_clean_column_headers</a>(column_name);
+0013 
+0014 <span class="keyword">if</span> isfield(my_sbtab_table.column.column,column_name)
+0015   my_column = my_sbtab_table.column.column.(column_name);
+0016   my_column = column(my_column);
+0017 <span class="keyword">else</span>
+0018   my_headers = my_sbtab_table.uncontrolled.headers;
+0019   my_headers = <a href="../../../sbtab/sbtab/sbtab-utils/sbtab_clean_column_headers.html" class="code" title="function column_names = sbtab_clean_column_headers(column_names)">sbtab_clean_column_headers</a>(my_headers);
+0020   ll = find(strcmp(my_headers,column_name));
+0021   <span class="keyword">if</span> length(ll)
+0022     my_column = my_sbtab_table.uncontrolled.data(:,ll);
+0023   <span class="keyword">else</span>
+0024     <span class="keyword">if</span> verbose
+0025       warning(sprintf(<span class="string">'Column %s not found in table'</span>,column_name));
+0026     <span class="keyword">end</span>
+0027     my_column = [];
+0028   <span class="keyword">end</span>
+0029 <span class="keyword">end</span>
+0030 
+0031 <span class="keyword">if</span> flag_numbers &amp;&amp; iscell(my_column)
+0032   <span class="keyword">if</span> sum(strcmpi(<span class="string">'true'</span>,my_column)+strcmpi(<span class="string">'false'</span>,my_column))
+0033     <span class="comment">%% Convert Boolean values to numbers 0 or 1</span>
+0034     dum = nan*ones(size(my_column));
+0035     dum(find(strcmpi(<span class="string">'true'</span>,my_column))) = 1;
+0036     dum(find(strcmpi(<span class="string">'false'</span>,my_column))) = 0;
+0037     my_column = dum;
+0038   <span class="keyword">else</span>
+0039     my_column = <a href="../../../sbtab/sbtab/sbtab-utils/sbtab_cell_to_numbers.html" class="code" title="function x = sbtab_cell_to_numbers(c)">sbtab_cell_to_numbers</a>(my_column);
+0040   <span class="keyword">end</span>
+0041 <span class="keyword">end</span></pre></div>
+<hr><address>Generated on Thu 22-Oct-2026 20:11:23 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

@@ -1,1 +1,0 @@
-% See functions in mnt toolbox, directory mnt/mnt-extensions/mnt_kinetic_data

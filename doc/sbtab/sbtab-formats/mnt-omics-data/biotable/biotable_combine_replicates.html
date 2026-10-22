@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of biotable_combine_replicates</title>
+  <meta name="keywords" content="biotable_combine_replicates">
+  <meta name="description" content="[data_average, data_replicates, data_central, statistics, options_complete, data_combined, data_collected, options_update] = biotable_combine_replicates(data, options)">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../../../../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../../../../index.html">Home</a> &gt;  <a href="../../../index.html">sbtab</a> &gt; <a href="../../index.html">sbtab-formats</a> &gt; <a href="../index.html">mnt-omics-data</a> &gt; <a href="index.html">biotable</a> &gt; biotable_combine_replicates.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../../../../index.html"><img alt="<" border="0" src="../../../../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for sbtab/sbtab-formats/mnt-omics-data/biotable&nbsp;<img alt=">" border="0" src="../../../../right.png"></a></td></tr></table>-->
+
+<h1>biotable_combine_replicates
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../../../../up.png"></a></h2>
+<div class="box"><strong>[data_average, data_replicates, data_central, statistics, options_complete, data_combined, data_collected, options_update] = biotable_combine_replicates(data, options)</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../../../../up.png"></a></h2>
+<div class="box"><strong>function [data_average, data_replicates, data_central, statistics, options_complete, data_combined, data_collected, options_update] = biotable_combine_replicates(data, options) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../../../../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> [data_average, data_replicates, data_central, statistics, options_complete, data_combined, data_collected, options_update] = biotable_combine_replicates(data, options)
+
+ Combine and interpolate data from multiple replicate experiments
+
+ 'data' is a cell array of data sets (all in biotable format, same form!!)
+ The entries of the first field are used as unique identifiers
+ The data entries are reordered in the combined data set.
+
+ data_average, data_replicates,
+ data_central (struct arrays):   regression results
+ statistics:                     additional information about the regression procedure
+ data_collected (struct arrays): data structure from intermediate processing steps
+ data_combined (struct arrays) : data structure from intermediate processing steps
+                                 field 'SampleName' contains replicate labels (as numbers)
+ options:                        options for multi-curve regression (see replicate_regression_biotable)
+   with optional additional fields .prior_updating
+     and .updating_factor
+
+ This function requires the package replicate-regression (https://github.com/liebermeister/replicate-regression)</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../../../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../../../../matlabicon.gif)">
+<li><a href="biotable_join_replicates.html" class="code" title="function [combined,collected] = biotable_join_replicates(data,p)">biotable_join_replicates</a>	[combined,collected] = biotable_join_replicates(data,p)</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../../../../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../../../../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function [data_average, data_replicates, data_central, statistics, options_complete, data_combined, data_collected, options_update] = biotable_combine_replicates(data, options)</a>
+0002 
+0003 <span class="comment">% [data_average, data_replicates, data_central, statistics, options_complete, data_combined, data_collected, options_update] = biotable_combine_replicates(data, options)</span>
+0004 <span class="comment">%</span>
+0005 <span class="comment">% Combine and interpolate data from multiple replicate experiments</span>
+0006 <span class="comment">%</span>
+0007 <span class="comment">% 'data' is a cell array of data sets (all in biotable format, same form!!)</span>
+0008 <span class="comment">% The entries of the first field are used as unique identifiers</span>
+0009 <span class="comment">% The data entries are reordered in the combined data set.</span>
+0010 <span class="comment">%</span>
+0011 <span class="comment">% data_average, data_replicates,</span>
+0012 <span class="comment">% data_central (struct arrays):   regression results</span>
+0013 <span class="comment">% statistics:                     additional information about the regression procedure</span>
+0014 <span class="comment">% data_collected (struct arrays): data structure from intermediate processing steps</span>
+0015 <span class="comment">% data_combined (struct arrays) : data structure from intermediate processing steps</span>
+0016 <span class="comment">%                                 field 'SampleName' contains replicate labels (as numbers)</span>
+0017 <span class="comment">% options:                        options for multi-curve regression (see replicate_regression_biotable)</span>
+0018 <span class="comment">%   with optional additional fields .prior_updating</span>
+0019 <span class="comment">%     and .updating_factor</span>
+0020 <span class="comment">%</span>
+0021 <span class="comment">% This function requires the package replicate-regression (https://github.com/liebermeister/replicate-regression)</span>
+0022 
+0023 <span class="comment">% -----------------------------------------------------------------</span>
+0024 
+0025 eval(default(<span class="string">'options'</span>,<span class="string">'struct'</span>));
+0026 
+0027 [data_combined, data_collected] = <a href="biotable_join_replicates.html" class="code" title="function [combined,collected] = biotable_join_replicates(data,p)">biotable_join_replicates</a>(data, options);
+0028 
+0029 <span class="comment">% -------------------------------</span>
+0030 <span class="comment">% Do replicate regression: build tables data_central and data_average</span>
+0031 <span class="comment">% and list of tables data_replicates,</span>
+0032 
+0033 [data_average, data_replicates, data_central, ~, ~, ~, options_complete, statistics, options_update] = replicate_regression_biotable(data_combined, options);
+0034 
+0035 <span class="comment">% -------------------------------------------------------------------------</span>
+0036 <span class="comment">% If option prior_updating is set, repeat everything to update the prior</span>
+0037 <span class="comment">% Revisit prior assumptions: update data error bars and priors and rerun estimation</span>
+0038 
+0039 <span class="keyword">if</span> isfield(options,<span class="string">'prior_updating'</span>)
+0040   <span class="keyword">if</span> isfinite(options.prior_updating)
+0041 
+0042     <span class="keyword">for</span> it = 1:options.prior_updating
+0043       display(sprintf(<span class="string">'Updating the priors: iteration %d'</span>,it));
+0044       my_options                = join_struct(options, options_update);
+0045       my_options.verbose        = 0;
+0046       my_options.prior_updating = nan;
+0047       [data_average, data_replicates, data_central, ~, ~, ~, options_complete, statistics, options_update] = replicate_regression_biotable(data_combined, my_options);
+0048     <span class="keyword">end</span>
+0049 
+0050   <span class="keyword">end</span>
+0051 <span class="keyword">end</span></pre></div>
+<hr><address>Generated on Thu 22-Oct-2026 20:11:23 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

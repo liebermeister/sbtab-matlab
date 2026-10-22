@@ -1,4 +1,6 @@
-% SBtab - short demo: load SBtab table and show its structure
+% SBtab - short demo: load SBtab tables and documents and show their structure
+
+sbtab_dependencies;
 
 % -- Read an SBtab file (single table, uncontrolled columns)
 
@@ -6,13 +8,13 @@ filename = [ sbtab_resourcedir '/examples/sbtab/sbtab_omics/sbtab_omics_row_exam
 S = sbtab_table_load(filename);
 sbtab_print(S)
 
-% -- Read an SBtab file (uncontrolled columns)
+% -- Read an SBtab document (several tables)
 
 filename = [ sbtab_resourcedir '/examples/sbtab/ecoli/ecoli_noor_2016_model.tsv'];
 S = sbtab_document_load(filename);
 sbtab_print(S)
 
-% -- Read an SBtab file (controlled columns)
+% -- Read an SBtab document with one table
 
 filename = [ sbtab_resourcedir '/examples/sbtab/sbtab_omics/sbtab_omics_row_example_document.tsv'];
 S = sbtab_document_load(filename);
@@ -32,4 +34,3 @@ s.Reaction
 
 s = sbtab_to_struct(sbtab_doc,'column');
 s.Reaction
-

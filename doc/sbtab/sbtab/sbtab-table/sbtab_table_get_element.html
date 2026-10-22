@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of sbtab_table_get_element</title>
+  <meta name="keywords" content="sbtab_table_get_element">
+  <meta name="description" content="SBTAB_TABLE_GET_ELEMENT Get element from an SBtab table">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../../../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../../../index.html">Home</a> &gt;  <a href="../../index.html">sbtab</a> &gt; <a href="../index.html">sbtab</a> &gt; <a href="index.html">sbtab-table</a> &gt; sbtab_table_get_element.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../../../index.html"><img alt="<" border="0" src="../../../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for sbtab/sbtab/sbtab-table&nbsp;<img alt=">" border="0" src="../../../right.png"></a></td></tr></table>-->
+
+<h1>sbtab_table_get_element
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="box"><strong>SBTAB_TABLE_GET_ELEMENT Get element from an SBtab table</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="box"><strong>function my_element = sbtab_table_get_element(my_sbtab_table,column_name,column_select,row_select,flag_numbers,verbose) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> SBTAB_TABLE_GET_ELEMENT Get element from an SBtab table
+
+ my_element = sbtab_table_get_element(my_sbtab_table,column_name,column_select,row_select,flag_numbers,verbose)
+
+ in given SBtab table, select element in column [column_name] and in the row specified by [column_select]/[row_select]
+ (ie in the row whose element in column [column_select] is given by [row_select])
+
+ If flag_numbers is set to 1, the table entries are returned as numbers (otherwise as strings)</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../../../matlabicon.gif)">
+<li><a href="sbtab_table_get_column.html" class="code" title="function my_column = sbtab_table_get_column(my_sbtab_table,column_name,flag_numbers,verbose)">sbtab_table_get_column</a>	SBTAB_TABLE_GET_COLUMN Get column from an SBtab table</li><li><a href="../../../sbtab/sbtab/sbtab-utils/sbtab_cell_to_numbers.html" class="code" title="function x = sbtab_cell_to_numbers(c)">sbtab_cell_to_numbers</a>	SBTAB_CELL_TO_NUMBERS Convert table entries (strings or numbers) into a numeric array</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../../../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function my_element = sbtab_table_get_element(my_sbtab_table,column_name,column_select,row_select,flag_numbers,verbose)</a>
+0002 
+0003 <span class="comment">% SBTAB_TABLE_GET_ELEMENT Get element from an SBtab table</span>
+0004 <span class="comment">%</span>
+0005 <span class="comment">% my_element = sbtab_table_get_element(my_sbtab_table,column_name,column_select,row_select,flag_numbers,verbose)</span>
+0006 <span class="comment">%</span>
+0007 <span class="comment">% in given SBtab table, select element in column [column_name] and in the row specified by [column_select]/[row_select]</span>
+0008 <span class="comment">% (ie in the row whose element in column [column_select] is given by [row_select])</span>
+0009 <span class="comment">%</span>
+0010 <span class="comment">% If flag_numbers is set to 1, the table entries are returned as numbers (otherwise as strings)</span>
+0011 
+0012 eval(default(<span class="string">'flag_numbers'</span>,<span class="string">'0'</span>,<span class="string">'verbose'</span>,<span class="string">'1'</span>));
+0013 
+0014 select_column = <a href="sbtab_table_get_column.html" class="code" title="function my_column = sbtab_table_get_column(my_sbtab_table,column_name,flag_numbers,verbose)">sbtab_table_get_column</a>(my_sbtab_table,column_select,0,verbose);
+0015 object_column = <a href="sbtab_table_get_column.html" class="code" title="function my_column = sbtab_table_get_column(my_sbtab_table,column_name,flag_numbers,verbose)">sbtab_table_get_column</a>(my_sbtab_table,column_name,0,verbose);
+0016 
+0017 ind        = label_names(row_select,select_column);
+0018 
+0019 <span class="keyword">if</span> ind==0, error(<span class="string">'Element not found'</span>); <span class="keyword">end</span>
+0020 
+0021 my_element = object_column{ind};
+0022 
+0023 <span class="keyword">if</span> flag_numbers
+0024   my_element = <a href="../../../sbtab/sbtab/sbtab-utils/sbtab_cell_to_numbers.html" class="code" title="function x = sbtab_cell_to_numbers(c)">sbtab_cell_to_numbers</a>({my_element});
+0025 <span class="keyword">end</span></pre></div>
+<hr><address>Generated on Thu 22-Oct-2026 20:11:23 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

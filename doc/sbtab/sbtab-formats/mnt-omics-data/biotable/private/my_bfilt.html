@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of my_bfilt</title>
+  <meta name="keywords" content="my_bfilt">
+  <meta name="description" content="r = my_bfilt(data)">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../../../../../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../../../../../index.html">Home</a> &gt;  <a href="../../../../index.html">sbtab</a> &gt; <a href="../../../index.html">sbtab-formats</a> &gt; <a href="../../index.html">mnt-omics-data</a> &gt; <a href="../index.html">biotable</a> &gt; <a href="index.html">private</a> &gt; my_bfilt.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../../../../../index.html"><img alt="<" border="0" src="../../../../../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for sbtab/sbtab-formats/mnt-omics-data/biotable/private&nbsp;<img alt=">" border="0" src="../../../../../right.png"></a></td></tr></table>-->
+
+<h1>my_bfilt
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../../../../../up.png"></a></h2>
+<div class="box"><strong>r = my_bfilt(data)</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../../../../../up.png"></a></h2>
+<div class="box"><strong>function r = my_bfilt(data) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../../../../../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> r = my_bfilt(data)
+
+ Smooth data along rows (weighted moving average over 5 neighbouring values,
+ omitting the largest and smallest of them); the data need at least 5 columns</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../../../../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../../../../../matlabicon.gif)">
+</ul>
+This function is called by:
+<ul style="list-style-image:url(../../../../../matlabicon.gif)">
+<li><a href="../../../../../sbtab/sbtab-formats/mnt-omics-data/biotable/biotable_replicate_mean_std.html" class="code" title="function data = biotable_replicate_mean_std(data_rep,bfilt_flag)">biotable_replicate_mean_std</a>	data = biotable_replicate_mean_std(data_rep,bfilt_flag)</li><li><a href="../../../../../sbtab/sbtab-formats/mnt-omics-data/biotable/biotable_smooth_mean.html" class="code" title="function data = biotable_smooth_mean(data)">biotable_smooth_mean</a>	data = biotable_smooth_mean(data)</li></ul>
+<!-- crossreference -->
+
+
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../../../../../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function r = my_bfilt(data)</a>
+0002 
+0003 <span class="comment">% r = my_bfilt(data)</span>
+0004 <span class="comment">%</span>
+0005 <span class="comment">% Smooth data along rows (weighted moving average over 5 neighbouring values,</span>
+0006 <span class="comment">% omitting the largest and smallest of them); the data need at least 5 columns</span>
+0007 
+0008 clear r;
+0009 
+0010 <span class="keyword">for</span> it =1:size(data,1)
+0011 
+0012   dum2 = [];
+0013 
+0014   <span class="keyword">for</span> it2 =3:size(data,2)-2
+0015     dum = data(it,it2-2:it2+2);
+0016     dum(find(~isfinite(dum)))= mean(dum',<span class="string">'omitnan'</span>);
+0017     [d1,order] = sort(dum);
+0018     <span class="keyword">if</span> d1(1)==d1(end)
+0019       dum2 = [dum2; d1(1:3)];
+0020     <span class="keyword">else</span>
+0021       dum([order(1),order(end)])  = nan;
+0022       dum2 = [dum2; dum(isfinite(dum))];
+0023     <span class="keyword">end</span>
+0024   <span class="keyword">end</span>
+0025   r(it,:) = (dum2*[0.25 0.5 0.25]')';
+0026 <span class="keyword">end</span>
+0027 
+0028 r = [data(:,1:2)*[0.7,0.3]',  data(:,1:3)*[0.25 0.5 0.25]', r ,<span class="keyword">...</span>
+0029      data(:,end-2:end)*[0.25 0.5 0.25]', data(:,end-1:end)*[0.3,0.7]'];</pre></div>
+<hr><address>Generated on Thu 22-Oct-2026 20:11:23 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

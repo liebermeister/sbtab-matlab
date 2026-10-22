@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of sbtab_document_get_table_names</title>
+  <meta name="keywords" content="sbtab_document_get_table_names">
+  <meta name="description" content="SBTAB_DOCUMENT_GET_TABLE_NAMES Get table names from SBtab document.">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../../../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../../../index.html">Home</a> &gt;  <a href="../../index.html">sbtab</a> &gt; <a href="../index.html">sbtab</a> &gt; <a href="index.html">sbtab-document</a> &gt; sbtab_document_get_table_names.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../../../index.html"><img alt="<" border="0" src="../../../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for sbtab/sbtab/sbtab-document&nbsp;<img alt=">" border="0" src="../../../right.png"></a></td></tr></table>-->
+
+<h1>sbtab_document_get_table_names
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="box"><strong>SBTAB_DOCUMENT_GET_TABLE_NAMES Get table names from SBtab document.</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="box"><strong>function table_names = sbtab_document_get_table_names(my_sbtab_document) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> SBTAB_DOCUMENT_GET_TABLE_NAMES Get table names from SBtab document.
+
+ table_names = sbtab_document_get_table_names(my_sbtab_document)</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../../../matlabicon.gif)">
+</ul>
+This function is called by:
+<ul style="list-style-image:url(../../../matlabicon.gif)">
+<li><a href="../../../sbtab/sbtab-formats/mnt-network/sbtab_network_state_load.html" class="code" title="function [network,c,v,dmu,keq] = sbtab_network_state_load(filename)">sbtab_network_state_load</a>	[network,c,v,dmu,keq] = sbtab_network_state_load(filename)</li><li><a href="../../../sbtab/sbtab-formats/mnt-omics-data/sbtab_load_network_model_and_data.html" class="code" title="function result = sbtab_load_network_model_and_data(data_file, file_options)">sbtab_load_network_model_and_data</a>	result = sbtab_load_network_model_and_data(data_file, file_options)</li><li><a href="../../../sbtab/sbtab/sbtab/sbtab_load_quantity_data.html" class="code" title="function [M, ids_out, data_columns_out, unit] = sbtab_load_quantity_data(data_file, table_name, quantity_type, id_column, ids, data_columns, as_numbers, match_column_pattern)">sbtab_load_quantity_data</a>	[M, ids_out, data_columns_out, unit] = sbtab_load_quantity_data(data_file, table_name, quantity_type, id_column, ids, data_columns, as_numbers, match_column_pattern)</li></ul>
+<!-- crossreference -->
+
+
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function table_names = sbtab_document_get_table_names(my_sbtab_document)</a>
+0002 
+0003 <span class="comment">% SBTAB_DOCUMENT_GET_TABLE_NAMES Get table names from SBtab document.</span>
+0004 <span class="comment">%</span>
+0005 <span class="comment">% table_names = sbtab_document_get_table_names(my_sbtab_document)</span>
+0006 
+0007 table_names = fieldnames(my_sbtab_document.tables);</pre></div>
+<hr><address>Generated on Thu 22-Oct-2026 20:11:23 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

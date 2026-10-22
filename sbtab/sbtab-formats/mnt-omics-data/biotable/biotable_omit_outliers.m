@@ -1,6 +1,6 @@
-function data = biotable_omit_outliers(data, fraction_omit_samples, fraction_omit_values) 
+function data = biotable_omit_outliers(data, fraction_omit_samples, fraction_omit_values)
 
-% data = biotable_omit_outliers(data, fraction_omit_samples, fraction_omit_values) 
+% data = biotable_omit_outliers(data, fraction_omit_samples, fraction_omit_values)
 %
 % remove (=set to nan) some of the values in a data table
 
@@ -11,10 +11,11 @@ data = biotable_clean(data);
 
 X = log(data.DataMean);
 indlist = [];
-for it =1: ceil(fraction_omit_samples*size(data.DataMean,2)),
-  column_deviation = [0 nanmean(abs(2 * X(:,2:end-1) - X(:,1:end-2) - X(:,3:end)) ) 0];
+for it =1: ceil(fraction_omit_samples*size(data.DataMean,2))
+  column_deviation = [0 mean(abs(2 * X(:,2:end-1) - X(:,1:end-2) - X(:,3:end)),1,'omitnan') 0];
   [mmax,ind] = max(column_deviation);
-  X(:,ind) = nanmean([X(:,ind-1) X(:,ind+1)],2);
+  if ~(mmax > 0), break; end
+  X(:,ind) = mean([X(:,ind-1) X(:,ind+1)],2,'omitnan');
   indlist(it) = ind;
 end
 

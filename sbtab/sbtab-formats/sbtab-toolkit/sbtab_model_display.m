@@ -4,10 +4,10 @@ function sbtab_model_display(sbtab_file)
 %
 % Read SBtab toolkit SBtab file and print / plot some overview information
 %
-% Usage example: 
+% Usage example:
 % dir = [sbtab_basedir '/../resources/examples/sbtab/ecoli/'];
 % sbtab_model_display([dir 'ecoli_noor_2016_model.tsv']);
-  
+
 sbtab_object = sbtab_document_load(sbtab_file);
 
 sbtab_document_print(sbtab_object)
