@@ -48,8 +48,8 @@ d.SampleName = samplenames;
 d.SampleTime = time;
 
 for it = 1:n_samples,
-  d.DataMean(:,it) =   cell2mat(sbtab_table_get_column(T_table,['Sample_S' num2str(it) '_Mean']));
-  d.DataStd(:,it) =   cell2mat(sbtab_table_get_column(T_table,['Sample_S' num2str(it) '_Std']));
+  d.DataMean(:,it) =   cell2mat(sbtab_table_get_column(T_table,['>Sample:S' num2str(it) ':Mean']));
+  d.DataStd(:,it) =   cell2mat(sbtab_table_get_column(T_table,['>Sample:S' num2str(it) ':Std']));
 end
 
 % Read field .Info

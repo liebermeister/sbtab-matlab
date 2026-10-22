@@ -19,13 +19,8 @@ end
 
 t.column.column_names = [t.column.column_names; column_new];
 
-column_old = strrep(column_old,' ','_');
-column_old = strrep(column_old,'.','_');
-column_old = strrep(column_old,':','_');
-
-column_new = strrep(column_new,' ','_');
-column_new = strrep(column_new,'.','_');
-column_new = strrep(column_new,':','_');
+column_old = sbtab_clean_column_headers(column_old);
+column_new = sbtab_clean_column_headers(column_new);
 
 ind = label_names(item_old,t.column.column.(column_old));
 t.column.column.(column_new) = repmat({''},length(t.column.column.(column_old)),1);

@@ -162,17 +162,7 @@ for it = 1:size(my_table,2),
       column_header = strrep(column_header,'SBML::reaction::ID','SBML:reaction:ID');    
       column_header = strrep(column_header,'SBML::species::ID','SBML:species:ID');    
     end
-    column_header = strrep(column_header,' ','_');
-    column_header = strrep(column_header,'-','_');
-    column_header = strrep(column_header,'','_');
-    column_header = strrep(column_header,':','_');
-    column_header = strrep(column_header,'.','_');
-    column_header = strrep(column_header,'[','_');
-    column_header = strrep(column_header,']','_');
-    column_header = strrep(column_header,'(','_');
-    column_header = strrep(column_header,')','_');
-    column_header = strrep(column_header,'/','_');
-    column_header = strrep(column_header,'>','SAMPLE_');
+    column_header = sbtab_clean_column_headers(column_header);
     ind_column = [ind_column it];
     column = setfield(column,column_header,my_table(2:end,it));
   end

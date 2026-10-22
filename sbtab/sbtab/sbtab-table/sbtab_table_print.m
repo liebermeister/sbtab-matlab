@@ -60,7 +60,7 @@ else
             display(sprintf('    %s',uncontrolled_column_names{it}));
           end
         end
-        display(sprintf('  Number of rows: %d',length(sbtab_table.column.column.(sbtab_clean_column_headers(  column_names{1})))));      
+        display(sprintf('  Number of rows: %d',length(sbtab_table.column.column.(sbtab_clean_column_headers(column_names{1})))));      
     end
   end
   

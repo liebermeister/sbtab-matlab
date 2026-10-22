@@ -4,6 +4,7 @@ function my_sbtab_table = sbtab_table_remove_column(my_sbtab_table,column_name)
 %
 % my_sbtab_table = sbtab_table_remove_column(my_sbtab_table,column_name)
 
+column_name = sbtab_clean_column_headers(column_name);
 fn = fieldnames(my_sbtab_table.column.column);
 
 ind_remove = find(strcmp(column_name,fn));

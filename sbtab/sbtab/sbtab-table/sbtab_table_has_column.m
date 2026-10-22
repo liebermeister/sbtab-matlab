@@ -4,12 +4,6 @@ function res = sbtab_table_has_column(my_sbtab_table,column_name)
 %
 % res = sbtab_table_has_column(my_sbtab_table,column_name)
 
-if find(strfind(column_name,'!')==1),
-  column_name = column_name(2:end);
-end
-
-column_name = strrep(column_name,' ','_');
-column_name = strrep(column_name,'.','_');
-column_name = strrep(column_name,':','_');
+column_name = sbtab_clean_column_headers(column_name);
 
 res = isfield(my_sbtab_table.column.column,column_name);

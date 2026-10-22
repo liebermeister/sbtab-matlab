@@ -19,11 +19,7 @@ end
 
 old_column_name = column_name;
 
-column_name = strrep(column_name,' ','_');
-column_name = strrep(column_name,'.','_');
-column_name = strrep(column_name,':','_');
-column_name = strrep(column_name,'-','_');
-column_name = strrep(column_name,'>','SBTAB_ELEMENT_');
+column_name = sbtab_clean_column_headers(column_name);
 
 indices = [my_sbtab_table.column.ind, my_sbtab_table.uncontrolled.ind];% , my_sbtab_table.data.ind];
 

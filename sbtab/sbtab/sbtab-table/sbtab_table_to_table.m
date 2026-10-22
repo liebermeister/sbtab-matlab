@@ -6,9 +6,7 @@ function my_table = sbtab_table_to_table(my_sbtab_table)
 
 column_names(my_sbtab_table.column.ind) = my_sbtab_table.column.column_names(my_sbtab_table.column.ind);
 column_names(my_sbtab_table.uncontrolled.ind) = my_sbtab_table.uncontrolled.headers;
-column_names = strrep(column_names,':','_');
-column_names = strrep(column_names,'.','_');
-column_names = strrep(column_names,'>','SBTAB_ELEMENT_');
+column_names = sbtab_clean_column_headers(column_names);
 
 my_sbtab_cell = sbtab_table_to_cell(my_sbtab_table);
 

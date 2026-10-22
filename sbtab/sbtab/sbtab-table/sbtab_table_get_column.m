@@ -9,23 +9,14 @@ function my_column = sbtab_table_get_column(my_sbtab_table,column_name,flag_numb
 
 eval(default('flag_numbers','0','verbose','1'));
 
-if find(strfind(column_name,'!')==1),
-  column_name = column_name(2:end);
-end
-
-column_name = strrep(column_name,' ','_');
-column_name = strrep(column_name,'.','_');
-column_name = strrep(column_name,':','_');
-column_name = strrep(column_name,'[','_');
-column_name = strrep(column_name,']','_');
-column_name = strrep(column_name,'>','SAMPLE_');
+column_name = sbtab_clean_column_headers(column_name);
 
 if isfield(my_sbtab_table.column.column,column_name),
   my_column = my_sbtab_table.column.column.(column_name);
   my_column = column(my_column);
 else
   my_headers = my_sbtab_table.uncontrolled.headers;
-  my_headers = strrep(my_headers,':','_');
+  my_headers = sbtab_clean_column_headers(my_headers);
   ll = find(strcmp(my_headers,column_name));
   if length(ll),
     my_column = my_sbtab_table.uncontrolled.data(:,ll);
