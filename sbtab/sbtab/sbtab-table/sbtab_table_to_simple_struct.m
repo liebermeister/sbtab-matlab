@@ -1,8 +1,8 @@
-function  [my_struct,attributes] = sbtab__convert_to_simple_struct(my_sbtab_table,column_key,column_value)
+function [my_struct,attributes] = sbtab_table_to_simple_struct(my_sbtab_table,column_key,column_value)
 
-% SBTAB_TABLE_CONVERT_TO_STRUCT Convert an SBtab table into a matlab struct
+% SBTAB_TABLE_TO_SIMPLE_STRUCT Convert an SBtab table into a matlab struct
 %
-% [my_struct,attributes] = sbtab_table_convert_to_simple_struct(my_sbtab_table,column_key,column_value)
+% [my_struct,attributes] = sbtab_table_to_simple_struct(my_sbtab_table,column_key,column_value)
 %
 % Construct a matlab struct from an SBtab table, considering one key column and one value column
 

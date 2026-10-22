@@ -1,6 +1,6 @@
-function SBtab_table = sbtab_table_combine_horizontally(SBtab_table_1, SBtab_table_2)
+function SBtab_table = sbtab_table_combine_vertically(SBtab_table_1, SBtab_table_2)
 
-% SBtab_table = sbtab_table_combine_horizontally(SBtab_table_1, SBtab_table_2)
+% SBtab_table = sbtab_table_combine_vertically(SBtab_table_1, SBtab_table_2)
 %
 % SBtab_table_1 and  SBtab_table_2 can be filenames or SBtab structs
   
