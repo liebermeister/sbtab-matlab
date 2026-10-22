@@ -17,9 +17,9 @@ n_samples      = length(dynamic_data.SampleName);
 clear S_attributes S_column_names S_columns
 clear T_attributes T_column_names T_columns
 
-S_attributes = struct('TableType','Measurement','TableName',experiment_name);
+S_attributes = struct('TableID','Samples','TableType','Measurement','TableName',experiment_name);
 
-T_attributes = struct('TableType','QuantityMatrix','TableName',[ experiment_name ' - Samples']);
+T_attributes = struct('TableID','Data','TableType','QuantityMatrix','TableName',[ experiment_name ' - Samples']);
 
 for it = 1:size(dynamic_data.Info,1)
   T_attributes.(strrep(dynamic_data.Info{it,1},' ','')) = dynamic_data.Info{it,2};
@@ -56,7 +56,7 @@ for it = 1:length(dynamic_data.SampleName)
   T_columns{n_name_columns+it} = num2cell(values);
 
   T_column_names{n_name_columns+n_samples+it} = ['>Sample:S' num2str(it) ':Std'];
-  values = dynamic_data.DataMean(:,it);
+  values = dynamic_data.DataStd(:,it);
   T_columns{n_name_columns+n_samples+it} = num2cell(values);
 end
 

@@ -11,7 +11,7 @@ function result = sbtab_load_network_model_and_data(data_file, file_options)
 %      file_options.flux_table_id       (default 'FluxData')
 %      file_options.metabolite_table_id (default 'MetaboliteConcentrationData')
 %      file_options.enzyme_table_id     (default 'EnzymeConcentrationData')
-%      file_options_default.delta_g_table_id  (default 'ReactionGibbsFreeEnergyData')
+%      file_options.delta_g_table_id    (default 'ReactionGibbsFreeEnergyData')
 %      file_options.columns_mean:       cell array of column names for mean data values
 %                                       (same columns names in metabolite, flux, and enzyme table!)
 %      file_options.columns_std:        same, for std dev columns
@@ -20,6 +20,9 @@ function result = sbtab_load_network_model_and_data(data_file, file_options)
 %      file_options.load_quantity_table generate field "network.kinetics" from Parameter table (if it exists) (default 0)
 %      file_options.prior_file          prior file for parameter_table (optional, default value = []; then cmb_prior_file is used)
 %
+% This function requires the packages Parameter balancing (function parameter_balancing_prior)
+% and, if no prior file is given, Model balancing (function cmb_prior_file)
+%
 % Output
 %   result.network     
 %   result.kinetic_data
@@ -27,10 +30,6 @@ function result = sbtab_load_network_model_and_data(data_file, file_options)
 %   result.file_options     
 %
 % For saving network model (including kinetic data) and state data, see: sbtab_save_network_model_and_data
-
-if 0,
-  data_file = '/home/wolfram/projekte/convex_model_balancing/matlab/convex-model-balancing/resources/data/data-organisms/human_hela/human_hela_ECM_Model.tsv';
-end
 
 eval(default('file_options','struct'));
 
@@ -110,7 +109,7 @@ end
 % extract tool options (if available)
 
 if label_names('Config', sbtab_document_get_table_names(s)),
-  result.file_options    = sbtab_to_options(s, sbtab_document_get_table(s,'Config'));
+  result.file_options    = sbtab_to_options(sbtab_document_get_table(s,'Config'));
 else 
  %  warning('No options table (ID "Config") found');
 end

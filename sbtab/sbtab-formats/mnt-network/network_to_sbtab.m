@@ -8,14 +8,15 @@ function sbtab_document = network_to_sbtab(network, options)
 % If options.filename is given -> write output files: 
 %  [filename]_Reaction.tsv
 %  [filename]_Compound.tsv
-%  [filename]_QuantityData.tsv (only if argument modular_rate_law_table==1)
+%  [filename]_QuantityData.tsv (only if options.modular_rate_law_table==1)
 %
 % Options are given in the structure 'options' with fields:
 %
 % filename              : file name for saving the sbtab (extension is added automatically)
 % only_reaction_table   : (default 0) produce only 'Reactions' table
-% modular_rate_law_table: produce table with modular rate law kinetic constants 
-% modular_rate_law_kinetics: write kinetics strings for modular rate law kinetics
+% modular_rate_law_table: (default 0) produce table with modular rate law kinetic constants
+%                         (only if network.kinetics is of type 'cs','ms','ds','rp', or 'numeric')
+% modular_rate_law_kinetics: (default 0) write kinetics strings for modular rate law kinetics
 % modular_rate_law_parameter_id: flag: include column with parameter ids?
 % save_in_one_file      : flag for saving SBtab in one file (default = 1)
 % c_min                 : minimal concentration vector to be saved
@@ -36,13 +37,14 @@ catch err,
 end
 
 eval(default('options','struct'));
-options_default = struct('filename',[],'only_reaction_table',0,'modular_rate_law_table',1,'use_sbml_ids',0,'verbose',1,'write_concentrations',1,'write_enzyme_concentrations',1,'save_in_one_file',1, 'modular_rate_law_kinetics', 1, 'modular_rate_law_parameter_id', 0, 'c', [], 'c_min', [], 'c_max', [], 'v', [], 'dmu', [], 'document_name','Model', 'graphics_positions', 1, 'omit_kegg_ids',0,'adjust_metabolite_ids', 1, 'keq',[]);
+options_default = struct('filename',[],'only_reaction_table',0,'modular_rate_law_table',0,'use_sbml_ids',0,'verbose',1,'write_concentrations',1,'write_enzyme_concentrations',1,'save_in_one_file',1, 'modular_rate_law_kinetics', 0, 'modular_rate_law_parameter_id', 0, 'c', [], 'c_min', [], 'c_max', [], 'v', [], 'dmu', [], 'document_name','Model', 'graphics_positions', 1, 'omit_kegg_ids',0,'adjust_metabolite_ids', 1, 'keq',[]);
 
 options = join_struct(options_default,options);
 
-options.modular_rate_law_table    = 0;
-options.modular_rate_law_kinetics = 0;
-if isfield(network,'kinetics'),
+if ~isfield(network,'kinetics'),
+  options.modular_rate_law_table    = 0;
+  options.modular_rate_law_kinetics = 0;
+elseif options.modular_rate_law_table,
   if isfield(network.kinetics,'type'),
     switch network.kinetics.type,
       case {'cs','ms','ds','rp','numeric'},
@@ -140,7 +142,7 @@ end
 [nm,nr] = size(network.N);
 
 % metabolic regulation of enzymes
-if norm(full(network.regulation_matrix))>0,
+if isfield(network,'regulation_matrix') && norm(full(network.regulation_matrix))>0,
 for it = 1:nr,
   my_line = '';
   ind_pos = find(network.regulation_matrix(it,:)>0);
@@ -182,7 +184,7 @@ if options.modular_rate_law_kinetics,
   end
 end
 
-sbtab_document = sbtab_document_construct(struct('Document',options.document_name),{'Reaction'},{reaction_table});;
+sbtab_document = sbtab_document_construct(struct('Document',options.document_name),{'Reaction'},{reaction_table});
 
 if ~options.only_reaction_table,
 
@@ -242,7 +244,7 @@ if options.modular_rate_law_table,
   sbtab_document = sbtab_document_add_table(sbtab_document,'Parameter',quantity_table);
 end
 
-if options.c,
+if length(options.c),
   concentration_table = sbtab_table_construct(struct('TableID','MetaboliteConcentration','TableType','Quantity','TableName','Metabolite concentration'),{'QuantityType','Metabolite','Value'},{repmat({'concentration'},length(options.c),1),network.metabolites,options.c,}); 
   sbtab_document = sbtab_document_add_table(sbtab_document,'MetaboliteConcentration',concentration_table);
 end
@@ -271,7 +273,7 @@ if ~isempty(options.filename),
   switch options.save_in_one_file,
     case 0, sbtab_document_save(sbtab_document,options.filename,0,options.verbose);
     case 1, 
-      if ~strcmp(options.filename(end-3:end),'.tsv'),
+      if ~endsWith(options.filename,'.tsv'),
         options.filename = [options.filename, '.tsv'];
       end
       sbtab_document_save_to_one(sbtab_document,options.filename );

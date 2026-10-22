@@ -35,7 +35,7 @@ end
 
 sbtab = sbtab_table_construct(struct('TableName',options.TableName,'TableID', options.TableID, 'TableType','Config','Method',options.Method), {'Option','Value'},{column_options,column_values});
 
-if isfield(options,'filename'),
+if isfield(options,'filename') && length(options.filename),
   sbtab_table_save(sbtab,options.filename);
   if options.verbose,
     display(sprintf('Writing options to SBtab file %s', options.filename));

@@ -1,9 +1,12 @@
 function [network, kinetic_data] = sbtab_to_network(filename,options)
 
-%function network = sbtab_to_network(filename,options)
+% [network, parameter_table] = sbtab_to_network(filename,options)
 %
-%Read network structure and kinetic data from SBtab files
-%(for the opposite conversion, use 'network_to_sbtab');
+% Read network structure and kinetic data from SBtab files
+% (for the opposite conversion, use 'network_to_sbtab');
+%
+% The second output contains the SBtab table with kinetic parameters
+% (empty if no parameters were read).
 %
 %Insert kinetic parameters that *directly* appear in the rate law specified in "options.kinetic_law"
 %
@@ -65,6 +68,8 @@ options_default.one_sbtab_file      = 1;     % all data from one SBtab file (sev
 
 options = join_struct(options_default,options);
 
+kinetic_data = [];
+
 if options.only_reaction_table,
   options.use_compound_table = 0;
   options.load_quantity_table = 0;
@@ -93,9 +98,9 @@ if isstr(filename),
     filename_position  = [];
   else
     % Assume that "filename" is an actual filename
-    filename_reactions = [filename '_Reaction' options_default.extension];
-    filename_compounds = [filename '_Compound' options_default.extension];
-    filename_regulation = [filename '_Regulation' options_default.extension];
+    filename_reactions = [filename '_Reaction' options.extension];
+    filename_compounds = [filename '_Compound' options.extension];
+    filename_regulation = [filename '_Regulation' options.extension];
     if options.read_positions,
       filename_position = [filename '_Position' options.extension];
     else
@@ -124,7 +129,7 @@ end
 
 % If thermodynamic parameters are in an extra table, copy them into table "Parameters"
 
-if isfield(filename.tables,'Thermodynamics'),
+if isstruct(filename) && isfield(filename.tables,'Thermodynamics'),
   if isfield(filename.tables,'Parameter'),
     filename.tables.Parameter = sbtab_table_combine_vertically(filename.tables.Thermodynamics,filename.tables.Parameter);
   end
@@ -137,20 +142,20 @@ end
 network = network_build_from_sum_formulae(filename_reactions, filename_compounds, [], filename_regulation);
 
 if isfield(network,'IsReversible'),
-  network.reversible(find(strcmp('True',network.IsReversible))) = 1;
-  network.reversible(find(strcmp('False',network.IsReversible))) = 0;
+  network.reversible(find(strcmpi('True',network.IsReversible))) = 1;
+  network.reversible(find(strcmpi('False',network.IsReversible))) = 0;
 end
 
 if isfield(network,'IsConstant'),
-  network.external(find(strcmp('True',network.IsConstant))) = 1;
+  network.external(find(strcmpi('True',network.IsConstant))) = 1;
 end
 
 if options.omit_water,
   if network_find_water(network),
     if options.verbose,
       display('  WARNING (sbtab_to_network.m): Water as a chemical species causes problems in thermodynamic and kinetic models; setting stoichiometric coefficients for water to zero');
-      network.N(network_find_water(network),:) = 0;
     end
+    network.N(network_find_water(network),:) = 0;
   end
 end
 
@@ -168,15 +173,13 @@ end
 if options.load_quantity_table,
   
   if length(options.quantity_table_file),
-    quantity_table_file = options.quantity_table_file;
+    quantity_table = options.quantity_table_file;
+  elseif isstr(filename),
+    quantity_table = [filename '_QuantityData' options.extension];
   else
-    if isstr(filename),
-      quantity_table_file = [filename '_QuantityData' options_default.extension];
-      [network.kinetics, kinetic_data, other_parameters] = sbtab_to_modular_rate_law(network,quantity_table_file,options);
-    else
-      [network.kinetics, kinetic_data, other_parameters] = sbtab_to_modular_rate_law(network,filename.tables.Parameter,options);
-    end
+    quantity_table = filename.tables.Parameter;
   end
+  [network.kinetics, kinetic_data, other_parameters] = sbtab_to_modular_rate_law(network,quantity_table,options);
   
   if sum(isfinite(other_parameters.metabolite_mass)),
     network.metabolite_mass = other_parameters.metabolite_mass;
