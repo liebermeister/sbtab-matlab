@@ -1,6 +1,13 @@
 function data = biotable_concatenate(data1,data2,flag_duplicate_first_sample)
 
-eval(default('flag_duplicate_first_sample','0','time_shift','5'));
+% data = biotable_concatenate(data1,data2,flag_duplicate_first_sample)
+%
+% Concatenate the samples of two biotables with the same elements
+% If flag_duplicate_first_sample==1, the first sample of each table is
+% duplicated and placed at time -5
+
+eval(default('flag_duplicate_first_sample','0'));
+time_shift = 5;
 
 if flag_duplicate_first_sample,
   [nx,nt] = size(data1.DataMean);

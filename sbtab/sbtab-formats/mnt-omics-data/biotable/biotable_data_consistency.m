@@ -25,7 +25,7 @@ end
 
 C = log(metabolite_data.DataMean+10^-5);
 V = v_projected;
-U = log(transcript_data.DataMean+10^-5); U = U-repmat(nanmean(U,2),1,n_exp);
+U = log(transcript_data.DataMean+10^-5); U = U-repmat(mean(U,2,'omitnan'),1,n_exp);
 
 
 % -----------------------------------
@@ -38,7 +38,7 @@ ind_unknown_metabolites = find(sum(isnan(C),2)>0);
 [nm,nr] = size(network.N);
 
 n_rand = 200;
-V_mean   = nanmean(V,2);
+V_mean   = mean(V,2,'omitnan');
 delta_V  = V-repmat(V_mean,1,n_exp);
 
 for it = 1:nr,
@@ -67,7 +67,7 @@ if pars.graphics_flag,
   for it =1:n_exp,
     figure(it);
     pars = struct('arrowstyle','fluxes','arrowvalues',V(:,it),'actstyle','fixed','metstyle','fixed');
-    pars.arrowvaluesmax = 5*nanmedian(abs(V(:,it)));
+    pars.arrowvaluesmax = 5*median(abs(V(:,it)),'omitnan');
     pars.omitreactions = {'Biomass production'};
     netgraph_concentrations(network_CoHid,C(:,it),U(:,it),1,pars);
     title(exp_names{it});

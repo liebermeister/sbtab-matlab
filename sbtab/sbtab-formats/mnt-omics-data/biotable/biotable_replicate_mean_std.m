@@ -13,5 +13,5 @@ for it = 1:length(fn),
     X_tensor(:,:,it)      = data_rep.(fn{it}).DataMean;
   end
 end
-data.DataMean =  squeeze(nanmean(X_tensor,3));
+data.DataMean =  squeeze(mean(X_tensor,3,'omitnan'));
 data.DataStd  = squeeze(std(X_tensor,[],3));
