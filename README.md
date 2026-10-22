@@ -5,21 +5,70 @@ Matlab code for SBtab file format
 
 This repository contains Matlab code for SBtab. For python code and a larger collection of example files, please see the [main SBtab repository](https://github.com/tlubitz/SBtab).
 
-## Dependencies
-
-For using the functions in the subdirectory sbtab-formats, the Metabolic Network Toolbox must be installed:
-
-  https://github.com/liebermeister/metabolic-network-toolbox
-
-Further dependencies:
-
-  o Matlab utility functions    (https://github.com/liebermeister/matlab-utils)
-
 ## Installation
-Please see the [installation instructions](INSTALLATION).
+
+Download or clone the repository and add the `sbtab` folder, with its subfolders, to your Matlab path:
+
+```matlab
+addpath(genpath('/path/to/sbtab-matlab/sbtab'));
+savepath;   % optional: keep the folders on the path in future sessions
+```
+
+Then install the required packages (see below) and run the demo:
+
+```matlab
+demo_sbtab
+```
+
+To check which of the other packages are installed, run `sbtab_dependencies`.
+
+## Requirements
+
+- Matlab (tested with R2025b)
+- [Matlab utility functions](https://github.com/liebermeister/matlab-utils) (required)
+
+The functions in the folder `sbtab-formats` require further packages:
+
+| Package | Needed for |
+|---------|------------|
+| [Metabolic Network Toolbox](https://github.com/liebermeister/metabolic-network-toolbox) | conversion between SBtab and network models (`network_to_sbtab`, `sbtab_to_network`, ...) and SBML or COBRA models |
+| [libSBML](https://sbml.org/software/libsbml/) (Matlab interface) | conversion between SBtab and SBML (`sbml_to_sbtab`, `sbtab_to_sbml`) |
+| [Replicate regression](https://github.com/liebermeister/replicate-regression) | `biotable_combine_replicates` |
+| [Parameter balancing](https://github.com/liebermeister/parameter-balancing-matlab) and [Model balancing](https://github.com/liebermeister/model-balancing) | `sbtab_load_network_model_and_data` |
+
+## Usage
+
+```matlab
+filename = fullfile(sbtab_resourcedir, 'examples', 'sbtab', 'ecoli', 'ecoli_noor_2016_model.tsv');
+sbtab_document = sbtab_document_load(filename);         % load an SBtab document (several tables)
+sbtab_print(sbtab_document)                              % show its structure
+reaction_table = sbtab_document_get_table(sbtab_document, 'Reaction');
+ids = sbtab_table_get_column(reaction_table, 'ID');      % get a column
+sbtab_document_save(sbtab_document, 'my_model.tsv');     % save the document to one file
+```
+
+## Contents
+
+- **`sbtab/sbtab`**: SBtab tables (`sbtab-table`) and documents (`sbtab-document`), functions for both
+  (`sbtab`), and utility functions (`sbtab-utils`)
+- **`sbtab/sbtab-formats`**: conversion between SBtab and other formats: network models of the
+  Metabolic Network Toolbox, omics data ("biotable" data structure), SBML and COBRA models, and
+  Matlab structs with tool options
+- **`resources/examples`**: example files (SBtab, SBML, COBRA)
+
+Each folder contains a `Contents.m` file with an overview (type, e.g., `help sbtab-table`).
+HTML documentation is available in the folder `doc`.
+
+## Tests
+
+From the repository folder, run
+
+```matlab
+results = runtests('tests')
+```
 
 ## License
-This package is released under the [GNU General Public License](LICENSE).
+This package is released under the [GNU General Public License](LICENSE), version 2 or later.
 
 ## Contact
 Please contact [Wolfram Liebermeister](mailto:wolfram.liebermeister@gmail.com) with any questions or comments.
