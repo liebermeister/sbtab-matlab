@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of biotable_choose_samples</title>
+  <meta name="keywords" content="biotable_choose_samples">
+  <meta name="description" content="data2 = biotable_choose_samples(data,ind)">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../../../../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../../../../index.html">Home</a> &gt;  <a href="../../../index.html">sbtab</a> &gt; <a href="../../index.html">sbtab-formats</a> &gt; <a href="../index.html">mnt-omics-data</a> &gt; <a href="index.html">biotable</a> &gt; biotable_choose_samples.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../../../../index.html"><img alt="<" border="0" src="../../../../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for sbtab/sbtab-formats/mnt-omics-data/biotable&nbsp;<img alt=">" border="0" src="../../../../right.png"></a></td></tr></table>-->
+
+<h1>biotable_choose_samples
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../../../../up.png"></a></h2>
+<div class="box"><strong>data2 = biotable_choose_samples(data,ind)</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../../../../up.png"></a></h2>
+<div class="box"><strong>function data2 = biotable_choose_samples(data,ind) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../../../../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> data2 = biotable_choose_samples(data,ind)</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../../../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../../../../matlabicon.gif)">
+<li><a href="biotable_choose_samples.html" class="code" title="function data2 = biotable_choose_samples(data,ind)">biotable_choose_samples</a>	data2 = biotable_choose_samples(data,ind)</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../../../../matlabicon.gif)">
+<li><a href="biotable_choose_samples.html" class="code" title="function data2 = biotable_choose_samples(data,ind)">biotable_choose_samples</a>	data2 = biotable_choose_samples(data,ind)</li></ul>
+<!-- crossreference -->
+
+
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../../../../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function data2 = biotable_choose_samples(data,ind)</a>
+0002 
+0003 <span class="comment">% data2 = biotable_choose_samples(data,ind)</span>
+0004 
+0005 <span class="keyword">if</span> isfield(data, <span class="string">'metabolite_data'</span>)
+0006 
+0007   fn = fieldnames(data);
+0008   <span class="keyword">for</span> it =1:length(fn)
+0009     data2.(fn{it}) = <a href="biotable_choose_samples.html" class="code" title="function data2 = biotable_choose_samples(data,ind)">biotable_choose_samples</a>(data.(fn{it}),ind);
+0010   <span class="keyword">end</span>
+0011 
+0012 <span class="keyword">else</span>
+0013 
+0014   data2            = data;
+0015   data2.SampleName = data2.SampleName(ind);
+0016   data2.SampleTime = data2.SampleTime(ind);
+0017   data2.DataMean   = data2.DataMean(:,ind);
+0018   data2.DataStd    = data2.DataStd(:,ind);
+0019 
+0020 <span class="keyword">end</span></pre></div>
+<hr><address>Generated on Thu 22-Oct-2026 20:11:23 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

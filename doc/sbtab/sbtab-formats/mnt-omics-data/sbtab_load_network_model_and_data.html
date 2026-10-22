@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of sbtab_load_network_model_and_data</title>
+  <meta name="keywords" content="sbtab_load_network_model_and_data">
+  <meta name="description" content="result = sbtab_load_network_model_and_data(data_file, file_options)">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../../../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../../../index.html">Home</a> &gt;  <a href="../../index.html">sbtab</a> &gt; <a href="../index.html">sbtab-formats</a> &gt; <a href="index.html">mnt-omics-data</a> &gt; sbtab_load_network_model_and_data.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../../../index.html"><img alt="<" border="0" src="../../../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for sbtab/sbtab-formats/mnt-omics-data&nbsp;<img alt=">" border="0" src="../../../right.png"></a></td></tr></table>-->
+
+<h1>sbtab_load_network_model_and_data
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="box"><strong>result = sbtab_load_network_model_and_data(data_file, file_options)</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="box"><strong>function result = sbtab_load_network_model_and_data(data_file, file_options) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> result = sbtab_load_network_model_and_data(data_file, file_options)
+
+ Inputs
+   data_file: (string or cell array of strings) SBtab file(s) containing tables with input data,
+              describing a metabolic model, kinetic model parameters (in table &quot;Parameter&quot;), and metabolic state data
+
+   file_options:   struct with (optional) fields describing details of the state data file
+      file_options.match_data_by       'ModelElementId' or 'KeggId' or 'BiggId';
+      file_options.flux_table_id       (default 'FluxData')
+      file_options.metabolite_table_id (default 'MetaboliteConcentrationData')
+      file_options.enzyme_table_id     (default 'EnzymeConcentrationData')
+      file_options.delta_g_table_id    (default 'ReactionGibbsFreeEnergyData')
+      file_options.columns_mean:       cell array of column names for mean data values
+                                       (same columns names in metabolite, flux, and enzyme table!)
+      file_options.columns_std:        same, for std dev columns
+   also:
+      file_options.network             network model (needed if the input files do not contain the network model)
+      file_options.load_quantity_table generate field &quot;network.kinetics&quot; from Parameter table (if it exists) (default 0)
+      file_options.prior_file          prior file for parameter_table (optional, default value = []; then cmb_prior_file is used)
+
+ This function requires the packages Parameter balancing (function parameter_balancing_prior)
+ and, if no prior file is given, Model balancing (function cmb_prior_file)
+
+ Output
+   result.network
+   result.kinetic_data
+   result.state_data
+   result.file_options
+
+ For saving network model (including kinetic data) and state data, see: sbtab_save_network_model_and_data</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../../../matlabicon.gif)">
+<li><a href="../../../sbtab/sbtab-formats/mnt-network/sbtab_to_network.html" class="code" title="function [network, kinetic_data] = sbtab_to_network(filename,options)">sbtab_to_network</a>	[network, parameter_table] = sbtab_to_network(filename,options)</li><li><a href="../../../sbtab/sbtab-formats/options-struct/sbtab_to_options.html" class="code" title="function options = sbtab_to_options(sbtab)">sbtab_to_options</a>	SBTAB_TO_OPTIONS - Convert SBtab object into "config" matlab struct (typically used for tool options)</li><li><a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_get_table.html" class="code" title="function sbtab_table = sbtab_document_get_table(sbtab_document,table_name)">sbtab_document_get_table</a>	SBTAB_DOCUMENT_GET_TABLE Get table from SBtab document.</li><li><a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_get_table_names.html" class="code" title="function table_names = sbtab_document_get_table_names(my_sbtab_document)">sbtab_document_get_table_names</a>	SBTAB_DOCUMENT_GET_TABLE_NAMES Get table names from SBtab document.</li><li><a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_load.html" class="code" title="function my_sbtab_document = sbtab_document_load(table_names,filenames)">sbtab_document_load</a>	SBTAB_DOCUMENT_LOAD Load SBtab document from several files (each containing one table)</li><li><a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_load_from_one.html" class="code" title="function my_sbtab_document = sbtab_document_load_from_one(filename)">sbtab_document_load_from_one</a>	SBTAB_DOCUMENT_LOAD_FROM_ONE Load SBtab document (possibly, several tables) from one file</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../../../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function result = sbtab_load_network_model_and_data(data_file, file_options)</a>
+0002 
+0003 <span class="comment">% result = sbtab_load_network_model_and_data(data_file, file_options)</span>
+0004 <span class="comment">%</span>
+0005 <span class="comment">% Inputs</span>
+0006 <span class="comment">%   data_file: (string or cell array of strings) SBtab file(s) containing tables with input data,</span>
+0007 <span class="comment">%              describing a metabolic model, kinetic model parameters (in table &quot;Parameter&quot;), and metabolic state data</span>
+0008 <span class="comment">%</span>
+0009 <span class="comment">%   file_options:   struct with (optional) fields describing details of the state data file</span>
+0010 <span class="comment">%      file_options.match_data_by       'ModelElementId' or 'KeggId' or 'BiggId';</span>
+0011 <span class="comment">%      file_options.flux_table_id       (default 'FluxData')</span>
+0012 <span class="comment">%      file_options.metabolite_table_id (default 'MetaboliteConcentrationData')</span>
+0013 <span class="comment">%      file_options.enzyme_table_id     (default 'EnzymeConcentrationData')</span>
+0014 <span class="comment">%      file_options.delta_g_table_id    (default 'ReactionGibbsFreeEnergyData')</span>
+0015 <span class="comment">%      file_options.columns_mean:       cell array of column names for mean data values</span>
+0016 <span class="comment">%                                       (same columns names in metabolite, flux, and enzyme table!)</span>
+0017 <span class="comment">%      file_options.columns_std:        same, for std dev columns</span>
+0018 <span class="comment">%   also:</span>
+0019 <span class="comment">%      file_options.network             network model (needed if the input files do not contain the network model)</span>
+0020 <span class="comment">%      file_options.load_quantity_table generate field &quot;network.kinetics&quot; from Parameter table (if it exists) (default 0)</span>
+0021 <span class="comment">%      file_options.prior_file          prior file for parameter_table (optional, default value = []; then cmb_prior_file is used)</span>
+0022 <span class="comment">%</span>
+0023 <span class="comment">% This function requires the packages Parameter balancing (function parameter_balancing_prior)</span>
+0024 <span class="comment">% and, if no prior file is given, Model balancing (function cmb_prior_file)</span>
+0025 <span class="comment">%</span>
+0026 <span class="comment">% Output</span>
+0027 <span class="comment">%   result.network</span>
+0028 <span class="comment">%   result.kinetic_data</span>
+0029 <span class="comment">%   result.state_data</span>
+0030 <span class="comment">%   result.file_options</span>
+0031 <span class="comment">%</span>
+0032 <span class="comment">% For saving network model (including kinetic data) and state data, see: sbtab_save_network_model_and_data</span>
+0033 
+0034 eval(default(<span class="string">'file_options'</span>,<span class="string">'struct'</span>));
+0035 
+0036 file_options_default.metabolite_table_id = <span class="string">'MetaboliteConcentrationData'</span>;
+0037 file_options_default.flux_table_id       = <span class="string">'FluxData'</span>;
+0038 file_options_default.enzyme_table_id     = <span class="string">'EnzymeConcentrationData'</span>;
+0039 file_options_default.delta_g_table_id    = <span class="string">'ReactionGibbsFreeEnergyData'</span>;
+0040 file_options_default.columns_mean        = {<span class="string">'Mean'</span>};
+0041 file_options_default.columns_std         = {<span class="string">'Std'</span>};
+0042 file_options_default.match_data_by       = <span class="string">'ModelElementId'</span>; <span class="comment">% 'KeggId'; % 'BiggId'</span>
+0043 file_options_default.load_quantity_table = 0;
+0044 file_options_default.prior_file          = [];
+0045 file_options = join_struct(file_options_default, file_options);
+0046 
+0047 <span class="comment">% load SBtab document from one or several files</span>
+0048 
+0049 <span class="keyword">if</span> iscell(data_file)
+0050   s = <a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_load.html" class="code" title="function my_sbtab_document = sbtab_document_load(table_names,filenames)">sbtab_document_load</a>(data_file);
+0051 <span class="keyword">else</span>
+0052   s = <a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_load_from_one.html" class="code" title="function my_sbtab_document = sbtab_document_load_from_one(filename)">sbtab_document_load_from_one</a>(data_file);
+0053 <span class="keyword">end</span>
+0054 
+0055 <span class="comment">% extract network</span>
+0056 
+0057 <span class="keyword">if</span> label_names({<span class="string">'Reaction'</span>},<a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_get_table_names.html" class="code" title="function table_names = sbtab_document_get_table_names(my_sbtab_document)">sbtab_document_get_table_names</a>(s))
+0058   opt = struct(<span class="string">'load_quantity_table'</span>,file_options.load_quantity_table);
+0059   result.network = <a href="../../../sbtab/sbtab-formats/mnt-network/sbtab_to_network.html" class="code" title="function [network, kinetic_data] = sbtab_to_network(filename,options)">sbtab_to_network</a>(s, opt);
+0060 <span class="keyword">else</span>
+0061   display(<span class="string">'No network information found in file'</span>);
+0062   <span class="keyword">if</span> isfield(file_options,<span class="string">'network'</span>)
+0063     result.network = file_options.network;
+0064   <span class="keyword">else</span>
+0065     error(<span class="string">'Please provide network structure in file_options.network'</span>);
+0066   <span class="keyword">end</span>
+0067 <span class="keyword">end</span>
+0068 
+0069 <span class="comment">% extract kinetic constants (if available)</span>
+0070 <span class="keyword">if</span> isempty(file_options.prior_file)
+0071   file_options.prior_file = cmb_prior_file;
+0072 <span class="keyword">end</span>
+0073 
+0074 parameter_prior = parameter_balancing_prior([], file_options.prior_file, 0);
+0075 
+0076 <span class="keyword">if</span> label_names(<span class="string">'ParameterData'</span>, <a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_get_table_names.html" class="code" title="function table_names = sbtab_document_get_table_names(my_sbtab_document)">sbtab_document_get_table_names</a>(s))
+0077   result.kinetic_data = kinetic_data_load([],parameter_prior, result.network, <a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_get_table.html" class="code" title="function sbtab_table = sbtab_document_get_table(sbtab_document,table_name)">sbtab_document_get_table</a>(s,<span class="string">'ParameterData'</span>), struct(<span class="string">'enforce_ranges'</span>,0));
+0078 <span class="keyword">elseif</span> label_names(<span class="string">'Parameter'</span>, <a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_get_table_names.html" class="code" title="function table_names = sbtab_document_get_table_names(my_sbtab_document)">sbtab_document_get_table_names</a>(s))
+0079   result.kinetic_data = kinetic_data_load([],parameter_prior, result.network, <a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_get_table.html" class="code" title="function sbtab_table = sbtab_document_get_table(sbtab_document,table_name)">sbtab_document_get_table</a>(s,<span class="string">'Parameter'</span>), struct(<span class="string">'enforce_ranges'</span>,0));
+0080 <span class="keyword">else</span>
+0081   warning(<span class="string">'No kinetic data table (ID &quot;Parameter&quot;) found'</span>);
+0082 <span class="keyword">end</span>
+0083 
+0084 <span class="comment">% check</span>
+0085 <span class="comment">% kinetic_data_print(result.kinetic_data,result.network)</span>
+0086 
+0087 <span class="comment">% extract metabolic state data</span>
+0088 
+0089 <span class="keyword">if</span> length(file_options.metabolite_table_id)
+0090   data_metabolite = <a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_get_table.html" class="code" title="function sbtab_table = sbtab_document_get_table(sbtab_document,table_name)">sbtab_document_get_table</a>(s,file_options.metabolite_table_id);
+0091   [result.state_data.metabolite_data, ids, states] = load_state_data_for_network(result.network, data_metabolite, <span class="string">'metabolite_concentration'</span>, file_options);
+0092 <span class="keyword">end</span>
+0093 
+0094 <span class="keyword">if</span> length(file_options.flux_table_id)
+0095   data_flux = <a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_get_table.html" class="code" title="function sbtab_table = sbtab_document_get_table(sbtab_document,table_name)">sbtab_document_get_table</a>(s,file_options.flux_table_id);
+0096   [result.state_data.flux_data, ids, states] = load_state_data_for_network(result.network, data_flux, <span class="string">'reaction_rate'</span>, file_options);
+0097 <span class="keyword">end</span>
+0098 
+0099 <span class="keyword">if</span> length(file_options.enzyme_table_id)
+0100   data_enzyme     = <a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_get_table.html" class="code" title="function sbtab_table = sbtab_document_get_table(sbtab_document,table_name)">sbtab_document_get_table</a>(s,file_options.enzyme_table_id);
+0101   [result.state_data.enzyme_data, ids, states] = load_state_data_for_network(result.network, data_enzyme, <span class="string">'enzyme_concentration'</span>, file_options);
+0102 <span class="keyword">end</span>
+0103 
+0104 <span class="keyword">if</span> length(file_options.delta_g_table_id)
+0105   data_delta_g    = <a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_get_table.html" class="code" title="function sbtab_table = sbtab_document_get_table(sbtab_document,table_name)">sbtab_document_get_table</a>(s,file_options.delta_g_table_id);
+0106   [result.state_data.delta_g_data, ids, states] = load_state_data_for_network(result.network, data_delta_g, <span class="string">'reaction_gibbs_free_energy'</span>, file_options);
+0107 <span class="keyword">end</span>
+0108 
+0109 <span class="comment">% extract tool options (if available)</span>
+0110 
+0111 <span class="keyword">if</span> label_names(<span class="string">'Config'</span>, <a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_get_table_names.html" class="code" title="function table_names = sbtab_document_get_table_names(my_sbtab_document)">sbtab_document_get_table_names</a>(s))
+0112   result.file_options    = <a href="../../../sbtab/sbtab-formats/options-struct/sbtab_to_options.html" class="code" title="function options = sbtab_to_options(sbtab)">sbtab_to_options</a>(<a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_get_table.html" class="code" title="function sbtab_table = sbtab_document_get_table(sbtab_document,table_name)">sbtab_document_get_table</a>(s,<span class="string">'Config'</span>));
+0113 <span class="keyword">else</span>
+0114   <span class="comment">%  warning('No options table (ID &quot;Config&quot;) found');</span>
+0115 <span class="keyword">end</span></pre></div>
+<hr><address>Generated on Thu 22-Oct-2026 20:11:23 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

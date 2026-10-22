@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of biotable_concatenate</title>
+  <meta name="keywords" content="biotable_concatenate">
+  <meta name="description" content="data = biotable_concatenate(data1,data2,flag_duplicate_first_sample)">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../../../../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../../../../index.html">Home</a> &gt;  <a href="../../../index.html">sbtab</a> &gt; <a href="../../index.html">sbtab-formats</a> &gt; <a href="../index.html">mnt-omics-data</a> &gt; <a href="index.html">biotable</a> &gt; biotable_concatenate.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../../../../index.html"><img alt="<" border="0" src="../../../../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for sbtab/sbtab-formats/mnt-omics-data/biotable&nbsp;<img alt=">" border="0" src="../../../../right.png"></a></td></tr></table>-->
+
+<h1>biotable_concatenate
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../../../../up.png"></a></h2>
+<div class="box"><strong>data = biotable_concatenate(data1,data2,flag_duplicate_first_sample)</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../../../../up.png"></a></h2>
+<div class="box"><strong>function data = biotable_concatenate(data1,data2,flag_duplicate_first_sample) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../../../../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> data = biotable_concatenate(data1,data2,flag_duplicate_first_sample)
+
+ Concatenate the samples of two biotables with the same elements
+ If flag_duplicate_first_sample==1, the first sample of each table is
+ duplicated and placed at time -5</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../../../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../../../../matlabicon.gif)">
+</ul>
+This function is called by:
+<ul style="list-style-image:url(../../../../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../../../../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function data = biotable_concatenate(data1,data2,flag_duplicate_first_sample)</a>
+0002 
+0003 <span class="comment">% data = biotable_concatenate(data1,data2,flag_duplicate_first_sample)</span>
+0004 <span class="comment">%</span>
+0005 <span class="comment">% Concatenate the samples of two biotables with the same elements</span>
+0006 <span class="comment">% If flag_duplicate_first_sample==1, the first sample of each table is</span>
+0007 <span class="comment">% duplicated and placed at time -5</span>
+0008 
+0009 eval(default(<span class="string">'flag_duplicate_first_sample'</span>,<span class="string">'0'</span>));
+0010 time_shift = 5;
+0011 
+0012 <span class="keyword">if</span> flag_duplicate_first_sample
+0013   [nx,nt] = size(data1.DataMean);
+0014   data1.SampleName = [{num2str(-time_shift)}; data1.SampleName];
+0015   data1.SampleTime = [-time_shift; data1.SampleTime];
+0016   data1.DataMean   = data1.DataMean(:,[1, 1:nt])  ;
+0017   data1.DataStd    = data1.DataStd(:, [1, 1:nt])   ;
+0018   [nx,nt] = size(data2.DataMean);
+0019   data2.SampleName = [{num2str(-time_shift)}; data2.SampleName];
+0020   data2.SampleTime = [-time_shift; data2.SampleTime];
+0021   data2.DataMean   = data2.DataMean(:,[1,  1:nt])  ;
+0022   data2.DataStd    = data2.DataStd(:, [1,  1:nt])   ;
+0023 <span class="keyword">end</span>
+0024 
+0025 data            = data1;
+0026 data.SampleName = [data1.SampleName; data2.SampleName];
+0027 data.SampleTime = [data1.SampleTime; data2.SampleTime];
+0028 data.DataMean   = [data1.DataMean  , data2.DataMean  ];
+0029 data.DataStd    = [data1.DataStd   , data2.DataStd   ];
+0030 data.Info       = {};</pre></div>
+<hr><address>Generated on Thu 22-Oct-2026 20:11:23 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

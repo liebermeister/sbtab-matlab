@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of sbtab_to_sbml</title>
+  <meta name="keywords" content="sbtab_to_sbml">
+  <meta name="description" content="sbml_object = sbtab_to_sbml(sbtab_object, filename)">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../../../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../../../index.html">Home</a> &gt;  <a href="../../index.html">sbtab</a> &gt; <a href="../index.html">sbtab-formats</a> &gt; <a href="index.html">sbml</a> &gt; sbtab_to_sbml.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../../../index.html"><img alt="<" border="0" src="../../../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for sbtab/sbtab-formats/sbml&nbsp;<img alt=">" border="0" src="../../../right.png"></a></td></tr></table>-->
+
+<h1>sbtab_to_sbml
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="box"><strong>sbml_object = sbtab_to_sbml(sbtab_object, filename)</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="box"><strong>function sbml_object = sbtab_to_sbml(sbtab_object, filename) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> sbml_object = sbtab_to_sbml(sbtab_object, filename)
+
+ Convert an SBtab model (SBtab document or file name) into an SBML model
+ (Matlab struct in libSBML's format). If 'filename' is given, the model is
+ also written to an SBML file.
+
+ This function requires the Metabolic Network Toolbox and libSBML (see network_sbml_export)
+
+ usage example:
+ sbtab_object = sbtab_load_example('sbtab/ecoli/ecoli_noor_2016_model.tsv','sbtab');
+ sbml_object = sbtab_to_sbml(sbtab_object);</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../../../matlabicon.gif)">
+<li><a href="../../../sbtab/sbtab-formats/mnt-network/sbtab_to_network.html" class="code" title="function [network, kinetic_data] = sbtab_to_network(filename,options)">sbtab_to_network</a>	[network, parameter_table] = sbtab_to_network(filename,options)</li><li><a href="../../../sbtab/sbtab/sbtab/sbtab_get.html" class="code" title="function sbtab_object = sbtab_get(sbtab_object)">sbtab_get</a>	sbtab_object = sbtab_get(sbtab_object)</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../../../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function sbml_object = sbtab_to_sbml(sbtab_object, filename)</a>
+0002 
+0003 <span class="comment">% sbml_object = sbtab_to_sbml(sbtab_object, filename)</span>
+0004 <span class="comment">%</span>
+0005 <span class="comment">% Convert an SBtab model (SBtab document or file name) into an SBML model</span>
+0006 <span class="comment">% (Matlab struct in libSBML's format). If 'filename' is given, the model is</span>
+0007 <span class="comment">% also written to an SBML file.</span>
+0008 <span class="comment">%</span>
+0009 <span class="comment">% This function requires the Metabolic Network Toolbox and libSBML (see network_sbml_export)</span>
+0010 <span class="comment">%</span>
+0011 <span class="comment">% usage example:</span>
+0012 <span class="comment">% sbtab_object = sbtab_load_example('sbtab/ecoli/ecoli_noor_2016_model.tsv','sbtab');</span>
+0013 <span class="comment">% sbml_object = sbtab_to_sbml(sbtab_object);</span>
+0014 
+0015 eval(default(<span class="string">'filename'</span>,<span class="string">'[]'</span>));
+0016 
+0017 sbml_object = network_sbml_export(<a href="../../../sbtab/sbtab-formats/mnt-network/sbtab_to_network.html" class="code" title="function [network, kinetic_data] = sbtab_to_network(filename,options)">sbtab_to_network</a>(<a href="../../../sbtab/sbtab/sbtab/sbtab_get.html" class="code" title="function sbtab_object = sbtab_get(sbtab_object)">sbtab_get</a>(sbtab_object)), 0, <span class="string">'Model'</span>, filename);</pre></div>
+<hr><address>Generated on Thu 22-Oct-2026 20:11:23 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

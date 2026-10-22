@@ -1,0 +1,279 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of sbtab_to_network</title>
+  <meta name="keywords" content="sbtab_to_network">
+  <meta name="description" content="[network, parameter_table] = sbtab_to_network(filename,options)">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../../../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../../../index.html">Home</a> &gt;  <a href="../../index.html">sbtab</a> &gt; <a href="../index.html">sbtab-formats</a> &gt; <a href="index.html">mnt-network</a> &gt; sbtab_to_network.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../../../index.html"><img alt="<" border="0" src="../../../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for sbtab/sbtab-formats/mnt-network&nbsp;<img alt=">" border="0" src="../../../right.png"></a></td></tr></table>-->
+
+<h1>sbtab_to_network
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="box"><strong>[network, parameter_table] = sbtab_to_network(filename,options)</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="box"><strong>function [network, kinetic_data] = sbtab_to_network(filename,options) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> [network, parameter_table] = sbtab_to_network(filename,options)
+
+ Read network structure and kinetic data from SBtab files
+ (for the opposite conversion, use 'network_to_sbtab');
+
+ The second output contains the SBtab table with kinetic parameters
+ (empty if no parameters were read).
+
+Insert kinetic parameters that *directly* appear in the rate law specified in &quot;options.kinetic_law&quot;
+
+ Assumes three input files:
+  [filename]_Reaction.tsv
+  [filename]_Compound.tsv
+  [filename]_QuantityData.tsv
+
+ The last one can be omitted if options.load_quantity_table = 0;
+ or another file name can be explicitly given in options.quantity_table_file
+ also see network_to_sbtab.m
+
+ Further optional input tables:
+  [filename]_Regulation.tsv
+  [filename]_Position.tsv
+
+ OR: instead of a filename, an SBtab data structure can given directly!!
+
+ OR: if options.one_sbtab_file = 1 has been set, all data are read from one SBtab file (several tables)
+
+ Options and their default values:
+
+  options_default.verbose             = 0;     % verbose mode
+  options_default.kinetic_law         = 'cs';  % type of modular rate law to be used
+  options_default.use_compound_table  = 1;     % use input file for compounds?
+  options_default.load_quantity_table = 1;     % use input file for parameter data?
+  options_default.quantity_table_file = '';    % filename for parameter data
+  options_default.use_sbml_ids        = 0;     % use sbml_ids from input files
+  options_default.extension           ='.tsv'; % default extension of input files
+  options_default.read_positions      = 1;     % expect SBtab table to contain position information
+  options_default.position_file       = [];    % filename for position information
+  options_default.only_reaction_table = 0;     % read only reaction table (no compounds and parameters)
+                                               % assume full filename to be given
+  options_default.one_sbtab_file      = 1;     % all data from one SBtab file (several tables)</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../../../matlabicon.gif)">
+<li><a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_load_from_one.html" class="code" title="function my_sbtab_document = sbtab_document_load_from_one(filename)">sbtab_document_load_from_one</a>	SBTAB_DOCUMENT_LOAD_FROM_ONE Load SBtab document (possibly, several tables) from one file</li><li><a href="../../../sbtab/sbtab/sbtab-table/sbtab_table_combine_vertically.html" class="code" title="function SBtab_table = sbtab_table_combine_vertically(SBtab_table_1, SBtab_table_2)">sbtab_table_combine_vertically</a>	SBtab_table = sbtab_table_combine_vertically(SBtab_table_1, SBtab_table_2)</li><li><a href="../../../sbtab/sbtab/sbtab-utils/sbtab_version.html" class="code" title="function m = sbtab_version()">sbtab_version</a>	SBTAB_VERSION SBtab version</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../../../matlabicon.gif)">
+<li><a href="../../../sbtab/sbtab-formats/cobra/sbtab_to_cobra.html" class="code" title="function cobra_object = sbtab_to_cobra(sbtab_object)">sbtab_to_cobra</a>	cobra_object = sbtab_to_cobra(sbtab_object)</li><li><a href="sbtab_network_state_load.html" class="code" title="function [network,c,v,dmu,keq] = sbtab_network_state_load(filename)">sbtab_network_state_load</a>	[network,c,v,dmu,keq] = sbtab_network_state_load(filename)</li><li><a href="../../../sbtab/sbtab-formats/mnt-omics-data/sbtab_load_network_model_and_data.html" class="code" title="function result = sbtab_load_network_model_and_data(data_file, file_options)">sbtab_load_network_model_and_data</a>	result = sbtab_load_network_model_and_data(data_file, file_options)</li><li><a href="../../../sbtab/sbtab-formats/sbml/sbtab_to_sbml.html" class="code" title="function sbml_object = sbtab_to_sbml(sbtab_object, filename)">sbtab_to_sbml</a>	sbml_object = sbtab_to_sbml(sbtab_object, filename)</li><li><a href="../../../sbtab/sbtab-formats/sbtab-toolkit/sbtab_model_display.html" class="code" title="function sbtab_model_display(sbtab_file)">sbtab_model_display</a>	sbtab_model_display(sbtab_file)</li></ul>
+<!-- crossreference -->
+
+
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function [network, kinetic_data] = sbtab_to_network(filename,options)</a>
+0002 
+0003 <span class="comment">% [network, parameter_table] = sbtab_to_network(filename,options)</span>
+0004 <span class="comment">%</span>
+0005 <span class="comment">% Read network structure and kinetic data from SBtab files</span>
+0006 <span class="comment">% (for the opposite conversion, use 'network_to_sbtab');</span>
+0007 <span class="comment">%</span>
+0008 <span class="comment">% The second output contains the SBtab table with kinetic parameters</span>
+0009 <span class="comment">% (empty if no parameters were read).</span>
+0010 <span class="comment">%</span>
+0011 <span class="comment">%Insert kinetic parameters that *directly* appear in the rate law specified in &quot;options.kinetic_law&quot;</span>
+0012 <span class="comment">%</span>
+0013 <span class="comment">% Assumes three input files:</span>
+0014 <span class="comment">%  [filename]_Reaction.tsv</span>
+0015 <span class="comment">%  [filename]_Compound.tsv</span>
+0016 <span class="comment">%  [filename]_QuantityData.tsv</span>
+0017 <span class="comment">%</span>
+0018 <span class="comment">% The last one can be omitted if options.load_quantity_table = 0;</span>
+0019 <span class="comment">% or another file name can be explicitly given in options.quantity_table_file</span>
+0020 <span class="comment">% also see network_to_sbtab.m</span>
+0021 <span class="comment">%</span>
+0022 <span class="comment">% Further optional input tables:</span>
+0023 <span class="comment">%  [filename]_Regulation.tsv</span>
+0024 <span class="comment">%  [filename]_Position.tsv</span>
+0025 <span class="comment">%</span>
+0026 <span class="comment">% OR: instead of a filename, an SBtab data structure can given directly!!</span>
+0027 <span class="comment">%</span>
+0028 <span class="comment">% OR: if options.one_sbtab_file = 1 has been set, all data are read from one SBtab file (several tables)</span>
+0029 <span class="comment">%</span>
+0030 <span class="comment">% Options and their default values:</span>
+0031 <span class="comment">%</span>
+0032 <span class="comment">%  options_default.verbose             = 0;     % verbose mode</span>
+0033 <span class="comment">%  options_default.kinetic_law         = 'cs';  % type of modular rate law to be used</span>
+0034 <span class="comment">%  options_default.use_compound_table  = 1;     % use input file for compounds?</span>
+0035 <span class="comment">%  options_default.load_quantity_table = 1;     % use input file for parameter data?</span>
+0036 <span class="comment">%  options_default.quantity_table_file = '';    % filename for parameter data</span>
+0037 <span class="comment">%  options_default.use_sbml_ids        = 0;     % use sbml_ids from input files</span>
+0038 <span class="comment">%  options_default.extension           ='.tsv'; % default extension of input files</span>
+0039 <span class="comment">%  options_default.read_positions      = 1;     % expect SBtab table to contain position information</span>
+0040 <span class="comment">%  options_default.position_file       = [];    % filename for position information</span>
+0041 <span class="comment">%  options_default.only_reaction_table = 0;     % read only reaction table (no compounds and parameters)</span>
+0042 <span class="comment">%                                               % assume full filename to be given</span>
+0043 <span class="comment">%  options_default.one_sbtab_file      = 1;     % all data from one SBtab file (several tables)</span>
+0044 
+0045 <span class="keyword">try</span>
+0046   <a href="../../../sbtab/sbtab/sbtab-utils/sbtab_version.html" class="code" title="function m = sbtab_version()">sbtab_version</a>;
+0047 <span class="keyword">catch</span> err
+0048   error(<span class="string">'The SBtab toolbox for matlab must be installed'</span>);
+0049 <span class="keyword">end</span>
+0050 
+0051 <span class="comment">%network_sbtab_check_for_errors(my_sbtab);</span>
+0052 
+0053 eval(default(<span class="string">'options'</span>,<span class="string">'struct'</span>));
+0054 
+0055 options_default.verbose             = 0;     <span class="comment">% verbose mode</span>
+0056 options_default.kinetic_law         = <span class="string">'cs'</span>;  <span class="comment">% type of modular rate law to be used</span>
+0057 options_default.use_compound_table  = 1;     <span class="comment">% use input file for compounds?</span>
+0058 options_default.load_quantity_table = 1;     <span class="comment">% use input file for parameter data?</span>
+0059 options_default.quantity_table_file = <span class="string">''</span>;    <span class="comment">% filename for parameter data</span>
+0060 options_default.use_sbml_ids        = 0;     <span class="comment">% use sbml_ids from input files</span>
+0061 options_default.extension           =<span class="string">'.tsv'</span>; <span class="comment">% default extension of input files</span>
+0062 options_default.read_positions      = 1;     <span class="comment">% expect SBtab table to contain position information</span>
+0063 options_default.position_file       = [];    <span class="comment">% filename for position information</span>
+0064 options_default.omit_water          = 1;     <span class="comment">% set row for water in stoich matrix to zero</span>
+0065 options_default.only_reaction_table = 0;     <span class="comment">% read only reaction table (no compounds and parameters)</span>
+0066 <span class="comment">% assume full filename to be given</span>
+0067 options_default.one_sbtab_file      = 1;     <span class="comment">% all data from one SBtab file (several tables)</span>
+0068 
+0069 options = join_struct(options_default,options);
+0070 
+0071 kinetic_data = [];
+0072 
+0073 <span class="keyword">if</span> options.only_reaction_table
+0074   options.use_compound_table = 0;
+0075   options.load_quantity_table = 0;
+0076 <span class="keyword">end</span>
+0077 
+0078 <span class="comment">% sbtab_table_print(filename.tables.Parameter,'all')</span>
+0079 
+0080 <span class="keyword">if</span> options.one_sbtab_file
+0081   filename = <a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_load_from_one.html" class="code" title="function my_sbtab_document = sbtab_document_load_from_one(filename)">sbtab_document_load_from_one</a>(filename);
+0082   <span class="keyword">if</span> ~isfield(filename.tables,<span class="string">'Parameter'</span>), options.load_quantity_table = 0; <span class="keyword">end</span>
+0083 <span class="keyword">end</span>
+0084 
+0085 <span class="keyword">if</span> ~length(options.position_file)
+0086   <span class="keyword">if</span> ~isstr(filename)
+0087     <span class="keyword">if</span> ~isfield(filename.tables,<span class="string">'Position'</span>)
+0088       options.read_positions = 0;
+0089     <span class="keyword">end</span>
+0090   <span class="keyword">end</span>
+0091 <span class="keyword">end</span>
+0092 
+0093 <span class="keyword">if</span> isstr(filename)
+0094   <span class="keyword">if</span> options.only_reaction_table
+0095     filename_reactions = filename;
+0096     filename_compounds = [];
+0097     filename_regulation = [];
+0098     filename_position  = [];
+0099   <span class="keyword">else</span>
+0100     <span class="comment">% Assume that &quot;filename&quot; is an actual filename</span>
+0101     filename_reactions = [filename <span class="string">'_Reaction'</span> options.extension];
+0102     filename_compounds = [filename <span class="string">'_Compound'</span> options.extension];
+0103     filename_regulation = [filename <span class="string">'_Regulation'</span> options.extension];
+0104     <span class="keyword">if</span> options.read_positions
+0105       filename_position = [filename <span class="string">'_Position'</span> options.extension];
+0106     <span class="keyword">else</span>
+0107       filename_position = [];
+0108     <span class="keyword">end</span>
+0109   <span class="keyword">end</span>
+0110 <span class="keyword">else</span>
+0111   <span class="comment">% Assume that &quot;filename&quot; is an SBtab data structure!</span>
+0112   filename_reactions  = filename.tables.Reaction;
+0113   <span class="keyword">if</span> isfield(filename.tables,<span class="string">'Compound'</span>)
+0114     filename_compounds  = filename.tables.Compound;
+0115   <span class="keyword">else</span>
+0116     filename_compounds = [];
+0117   <span class="keyword">end</span>
+0118   <span class="keyword">if</span> isfield(filename.tables,<span class="string">'EnzymeRegulation'</span>)
+0119     filename_regulation = filename.tables.EnzymeRegulation;
+0120   <span class="keyword">else</span>
+0121     filename_regulation = [];
+0122   <span class="keyword">end</span>
+0123   <span class="keyword">if</span> isfield(filename.tables,<span class="string">'Position'</span>)
+0124     filename_position = filename.tables.Position;
+0125   <span class="keyword">else</span>
+0126     filename_position = [];
+0127   <span class="keyword">end</span>
+0128 <span class="keyword">end</span>
+0129 
+0130 <span class="comment">% If thermodynamic parameters are in an extra table, copy them into table &quot;Parameters&quot;</span>
+0131 
+0132 <span class="keyword">if</span> isstruct(filename) &amp;&amp; isfield(filename.tables,<span class="string">'Thermodynamics'</span>)
+0133   <span class="keyword">if</span> isfield(filename.tables,<span class="string">'Parameter'</span>)
+0134     filename.tables.Parameter = <a href="../../../sbtab/sbtab/sbtab-table/sbtab_table_combine_vertically.html" class="code" title="function SBtab_table = sbtab_table_combine_vertically(SBtab_table_1, SBtab_table_2)">sbtab_table_combine_vertically</a>(filename.tables.Thermodynamics,filename.tables.Parameter);
+0135   <span class="keyword">end</span>
+0136 <span class="keyword">end</span>
+0137 
+0138 <span class="keyword">if</span> options.use_compound_table ==0
+0139   filename_compounds = [];
+0140 <span class="keyword">end</span>
+0141 
+0142 network = network_build_from_sum_formulae(filename_reactions, filename_compounds, [], filename_regulation);
+0143 
+0144 <span class="keyword">if</span> isfield(network,<span class="string">'IsReversible'</span>)
+0145   network.reversible(find(strcmpi(<span class="string">'True'</span>,network.IsReversible))) = 1;
+0146   network.reversible(find(strcmpi(<span class="string">'False'</span>,network.IsReversible))) = 0;
+0147 <span class="keyword">end</span>
+0148 
+0149 <span class="keyword">if</span> isfield(network,<span class="string">'IsConstant'</span>)
+0150   network.external(find(strcmpi(<span class="string">'True'</span>,network.IsConstant))) = 1;
+0151 <span class="keyword">end</span>
+0152 
+0153 <span class="keyword">if</span> options.omit_water
+0154   <span class="keyword">if</span> network_find_water(network)
+0155     <span class="keyword">if</span> options.verbose
+0156       display(<span class="string">'  WARNING (sbtab_to_network.m): Water as a chemical species causes problems in thermodynamic and kinetic models; setting stoichiometric coefficients for water to zero'</span>);
+0157     <span class="keyword">end</span>
+0158     network.N(network_find_water(network),:) = 0;
+0159   <span class="keyword">end</span>
+0160 <span class="keyword">end</span>
+0161 
+0162 
+0163 <span class="comment">% -------------------------------------------</span>
+0164 <span class="comment">% Layout (optional)</span>
+0165 
+0166 <span class="keyword">if</span> length(filename_position)
+0167   network = netgraph_read_positions(network, filename_position);
+0168 <span class="keyword">end</span>
+0169 
+0170 <span class="comment">% -------------------------------------------</span>
+0171 <span class="comment">% Parameters (optional)</span>
+0172 
+0173 <span class="keyword">if</span> options.load_quantity_table
+0174 
+0175   <span class="keyword">if</span> length(options.quantity_table_file)
+0176     quantity_table = options.quantity_table_file;
+0177   <span class="keyword">elseif</span> isstr(filename)
+0178     quantity_table = [filename <span class="string">'_QuantityData'</span> options.extension];
+0179   <span class="keyword">else</span>
+0180     quantity_table = filename.tables.Parameter;
+0181   <span class="keyword">end</span>
+0182   [network.kinetics, kinetic_data, other_parameters] = sbtab_to_modular_rate_law(network,quantity_table,options);
+0183 
+0184   <span class="keyword">if</span> sum(isfinite(other_parameters.metabolite_mass))
+0185     network.metabolite_mass = other_parameters.metabolite_mass;
+0186   <span class="keyword">end</span>
+0187 
+0188   <span class="keyword">if</span> sum(isfinite(other_parameters.enzyme_mass))
+0189     network.enzyme_mass = other_parameters.enzyme_mass;
+0190   <span class="keyword">end</span>
+0191 
+0192 <span class="keyword">end</span></pre></div>
+<hr><address>Generated on Thu 22-Oct-2026 20:11:23 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

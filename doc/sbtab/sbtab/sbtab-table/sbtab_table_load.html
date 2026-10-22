@@ -1,0 +1,275 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of sbtab_table_load</title>
+  <meta name="keywords" content="sbtab_table_load">
+  <meta name="description" content="SBTAB_TABLE_LOAD Load SBtab table from file, or generate it from a list of strings">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../../../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../../../index.html">Home</a> &gt;  <a href="../../index.html">sbtab</a> &gt; <a href="../index.html">sbtab</a> &gt; <a href="index.html">sbtab-table</a> &gt; sbtab_table_load.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../../../index.html"><img alt="<" border="0" src="../../../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for sbtab/sbtab/sbtab-table&nbsp;<img alt=">" border="0" src="../../../right.png"></a></td></tr></table>-->
+
+<h1>sbtab_table_load
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="box"><strong>SBTAB_TABLE_LOAD Load SBtab table from file, or generate it from a list of strings</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="box"><strong>function sbtab = sbtab_table_load(filename, my_table, flag_remove_comments, table_id) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> SBTAB_TABLE_LOAD Load SBtab table from file, or generate it from a list of strings
+
+ sbtab = sbtab_table_load(filename, my_table, flag_remove_comments, table_id)
+
+ Either load SBtab table from file (with filename [filename])
+        (if table_id is given (non-empty), use this table; otherwise, then use the first table);
+ or     (if argument [my_table] is given)
+        load SBtab table from string cell array [my_table]</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../../../matlabicon.gif)">
+<li><a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_get_table.html" class="code" title="function sbtab_table = sbtab_document_get_table(sbtab_document,table_name)">sbtab_document_get_table</a>	SBTAB_DOCUMENT_GET_TABLE Get table from SBtab document.</li><li><a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_load.html" class="code" title="function my_sbtab_document = sbtab_document_load(table_names,filenames)">sbtab_document_load</a>	SBTAB_DOCUMENT_LOAD Load SBtab document from several files (each containing one table)</li><li><a href="sbtab_table_remove_comment_lines.html" class="code" title="function my_sbtab_table = sbtab_table_remove_comment_lines(my_sbtab_table)">sbtab_table_remove_comment_lines</a>	SBTAB_TABLE_REMOVE_COMMENT_LINES Remove all comment lines from a table</li><li><a href="../../../sbtab/sbtab/sbtab-utils/sbtab_clean_column_headers.html" class="code" title="function column_names = sbtab_clean_column_headers(column_names)">sbtab_clean_column_headers</a>	SBTAB_CLEAN_COLUMN_HEADERS Convert SBtab column names into Matlab field names</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../../../matlabicon.gif)">
+<li><a href="../../../sbtab/demo_sbtab.html" class="code" title="">demo_sbtab</a>	SBtab - short demo: load SBtab tables and documents and show their structure</li><li><a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_load.html" class="code" title="function my_sbtab_document = sbtab_document_load(table_names,filenames)">sbtab_document_load</a>	SBTAB_DOCUMENT_LOAD Load SBtab document from several files (each containing one table)</li><li><a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_load_from_one.html" class="code" title="function my_sbtab_document = sbtab_document_load_from_one(filename)">sbtab_document_load_from_one</a>	SBTAB_DOCUMENT_LOAD_FROM_ONE Load SBtab document (possibly, several tables) from one file</li><li><a href="sbtab_table_add_annotation.html" class="code" title="function t = sbtab_table_add_annotation(t,column_old,column_new,item_old,item_new)">sbtab_table_add_annotation</a>	SBTAB_TABLE_ADD_ANNOTATION Insert annotation column into a table.</li><li><a href="sbtab_table_combine_horizontally.html" class="code" title="function SBtab_table = sbtab_table_combine_horizontally(SBtab_table_1, SBtab_table_2)">sbtab_table_combine_horizontally</a>	SBtab_table = sbtab_table_combine_horizontally(SBtab_table_1, SBtab_table_2)</li><li><a href="sbtab_table_combine_vertically.html" class="code" title="function SBtab_table = sbtab_table_combine_vertically(SBtab_table_1, SBtab_table_2)">sbtab_table_combine_vertically</a>	SBtab_table = sbtab_table_combine_vertically(SBtab_table_1, SBtab_table_2)</li><li><a href="sbtab_table_diff.html" class="code" title="function result = sbtab_table_diff(SBtab_table_1, SBtab_table_2, sort_by_columns1, sort_by_columns2, show_columns_list)">sbtab_table_diff</a>	result = sbtab_table_diff(SBtab_table_1, SBtab_table_2, sort_by_columns1, sort_by_columns2, show_columns_list)</li><li><a href="sbtab_table_subselect_items.html" class="code" title="function t = sbtab_table_subselect_items(t,column,sbtab_file_out,given_entry)">sbtab_table_subselect_items</a>	SBTAB_TABLE_SUBSELECT_ITEMS Select rows that have entries for a specific column</li></ul>
+<!-- crossreference -->
+
+<h2><a name="_subfunctions"></a>SUBFUNCTIONS <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<ul style="list-style-image:url(../../../matlabicon.gif)">
+<li><a href="#_sub1" class="code">function my_table = remove_comment_lines(my_table)</a></li></ul>
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function sbtab = sbtab_table_load(filename, my_table, flag_remove_comments, table_id)</a>
+0002 
+0003 <span class="comment">% SBTAB_TABLE_LOAD Load SBtab table from file, or generate it from a list of strings</span>
+0004 <span class="comment">%</span>
+0005 <span class="comment">% sbtab = sbtab_table_load(filename, my_table, flag_remove_comments, table_id)</span>
+0006 <span class="comment">%</span>
+0007 <span class="comment">% Either load SBtab table from file (with filename [filename])</span>
+0008 <span class="comment">%        (if table_id is given (non-empty), use this table; otherwise, then use the first table);</span>
+0009 <span class="comment">% or     (if argument [my_table] is given)</span>
+0010 <span class="comment">%        load SBtab table from string cell array [my_table]</span>
+0011 
+0012 eval(default(<span class="string">'my_table'</span>, <span class="string">'[]'</span>, <span class="string">'flag_remove_comments'</span>, <span class="string">'0'</span>,<span class="string">'table_id'</span>,<span class="string">'[]'</span>));
+0013 
+0014 <span class="keyword">if</span> isempty(my_table)
+0015   <span class="keyword">try</span>
+0016     my_table = load_unformatted_table(filename);
+0017     my_table = <a href="#_sub1" class="code" title="subfunction my_table = remove_comment_lines(my_table)">remove_comment_lines</a>(my_table);
+0018   <span class="keyword">catch</span>
+0019     <span class="keyword">if</span> isstr(filename)
+0020       error(sprintf(<span class="string">'I could not import the file %s'</span>,  filename))
+0021     <span class="keyword">else</span>
+0022       error(sprintf(<span class="string">'I could not import the file'</span>))
+0023     <span class="keyword">end</span>
+0024   <span class="keyword">end</span>
+0025 <span class="keyword">end</span>
+0026 
+0027 <span class="keyword">if</span> ~isempty(table_id)
+0028   sbtab_doc = <a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_load.html" class="code" title="function my_sbtab_document = sbtab_document_load(table_names,filenames)">sbtab_document_load</a>(filename);
+0029   sbtab = <a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_get_table.html" class="code" title="function sbtab_table = sbtab_document_get_table(sbtab_document,table_name)">sbtab_document_get_table</a>(sbtab_doc,table_id);
+0030   <span class="keyword">return</span>
+0031 <span class="keyword">end</span>
+0032 
+0033 <span class="keyword">if</span> strncmp(<span class="string">'!!!'</span>,my_table{1,1},3)
+0034   my_table = my_table(2:<span class="keyword">end</span>,:);
+0035 <span class="keyword">end</span>
+0036 
+0037 <span class="keyword">if</span> sum(strncmp(my_table(:,1),<span class="string">'!!'</span>,2))&gt;1
+0038   error(sprintf(<span class="string">'Input file %s contains several tables; it cannot be loaded as one table. In the sbtab_table_load command, please specify the table ID '</span>,filename));
+0039 <span class="keyword">end</span>
+0040 
+0041 attribute_line = {};
+0042 cont = 1;
+0043 <span class="keyword">while</span> cont * length(my_table)
+0044   <span class="keyword">if</span> strncmp(<span class="string">'!!'</span>,my_table{1,1},2)
+0045     attribute_line = my_table(1,:);
+0046     cont = 0;
+0047   <span class="keyword">end</span>
+0048   my_table       = my_table(2:<span class="keyword">end</span>,:);
+0049 <span class="keyword">end</span>
+0050 
+0051 <span class="keyword">if</span> isempty(my_table)
+0052   error(sprintf(<span class="string">'No declaration line (starting with !!SBtab) found in file %s'</span>,filename));
+0053 <span class="keyword">end</span>
+0054 
+0055 <span class="keyword">if</span> length(attribute_line)
+0056 
+0057   <span class="keyword">for</span> it = 1:length(attribute_line)
+0058     <span class="keyword">if</span> length(attribute_line{it})
+0059       attribute_line{it} = strrep(attribute_line{it},<span class="string">''''</span>,<span class="string">'&quot;'</span>);
+0060       attribute_line{it} = strrep(attribute_line{it},<span class="string">'’'</span>,<span class="string">'&quot;'</span>);
+0061     <span class="keyword">end</span>
+0062   <span class="keyword">end</span>
+0063 
+0064   attr_line = attribute_line{1};
+0065   <span class="keyword">for</span> it = 2:length(attribute_line)
+0066     <span class="keyword">if</span> length(attribute_line{it})
+0067       attr_line = sprintf(<span class="string">'%s\t%s'</span>,attr_line, attribute_line{it});
+0068     <span class="keyword">end</span>
+0069   <span class="keyword">end</span>
+0070   attr_line = strrep(attr_line,<span class="string">'   '</span>,<span class="string">' '</span>);
+0071   attr_line = strrep(attr_line,<span class="string">'  '</span>,<span class="string">' '</span>);
+0072   attr_line = strrep(attr_line,<span class="string">''' '</span>,sprintf(<span class="string">'\t'</span>));
+0073   attr_line = strrep(attr_line,<span class="string">'&quot; '</span>,sprintf(<span class="string">'\t'</span>));
+0074   attribute_line = Strsplit(sprintf(<span class="string">'\t'</span>),attr_line);
+0075 <span class="keyword">end</span>
+0076 
+0077 <span class="comment">% -------------------------------------------------------</span>
+0078 <span class="comment">% Attributes</span>
+0079 
+0080 attributes = struct;
+0081 
+0082 <span class="keyword">if</span> length(attribute_line)
+0083   attribute_line{1}=strrep(attribute_line{1},<span class="string">'!!SBtab '</span>,<span class="string">''</span>);
+0084   attribute_line{1}=strrep(attribute_line{1},<span class="string">'!!Sbtab '</span>,<span class="string">''</span>);
+0085 <span class="keyword">end</span>
+0086 
+0087 <span class="keyword">for</span> it=1:length(attribute_line)
+0088   attribute_line{it} = strrep(attribute_line{it}, <span class="string">'= '</span>,<span class="string">'='</span>);
+0089   mm = Strsplit(<span class="string">'='</span>,attribute_line{it});
+0090   <span class="keyword">if</span> length(mm) == 2
+0091     mm{1} = deblank(strrep(mm{1},<span class="string">'!'</span>,<span class="string">''</span>));
+0092     mm{1} = strrep(mm{1},<span class="string">':'</span>,<span class="string">''</span>);
+0093     mm{2} = strrep(mm{2},<span class="string">''''</span>,<span class="string">''</span>);
+0094     mm{2} = deblank(strrep(mm{2},<span class="string">'&quot;'</span>,<span class="string">''</span>));
+0095     attributes = setfield(attributes,mm{1},mm{2});
+0096   <span class="keyword">end</span>
+0097 <span class="keyword">end</span>
+0098 
+0099 <span class="keyword">if</span> ~isfield(attributes,<span class="string">'TableType'</span>)
+0100   <span class="comment">%warning(sprintf('Table type missing in file %s', filename));</span>
+0101   attributes.TableType = <span class="string">'unknown'</span>;
+0102 <span class="keyword">end</span>
+0103 
+0104 <span class="comment">%if ~isfield(attributes,'TableName'),</span>
+0105 <span class="comment">%  warning(sprintf('Table name missing in file %s', filename));</span>
+0106 <span class="comment">%  attributes.TableName = 'unknown';</span>
+0107 <span class="comment">%end</span>
+0108 
+0109 <span class="keyword">if</span> ~isfield(attributes,<span class="string">'TableID'</span>)
+0110   warning(sprintf(<span class="string">'Table ID missing in file %s'</span>,filename));
+0111   attributes.TableID = <span class="string">'unknown'</span>;
+0112 <span class="keyword">end</span>
+0113 
+0114 <span class="comment">% -------------------------------------------------------</span>
+0115 <span class="comment">% If desired transpose the table</span>
+0116 
+0117 <span class="keyword">if</span> isfield(attributes,<span class="string">'TableOrientation'</span>)
+0118   <span class="keyword">switch</span> attributes.TableOrientation
+0119     <span class="keyword">case</span> <span class="string">'Transposed'</span>
+0120       my_table =  my_table';
+0121   <span class="keyword">end</span>
+0122 <span class="keyword">end</span>
+0123 
+0124 <span class="comment">% -------------------------------------------------------</span>
+0125 <span class="comment">% Table columns</span>
+0126 
+0127 <span class="comment">% omit empty columns</span>
+0128 
+0129 my_table = my_table(:, ~all(cellfun(<span class="string">'isempty'</span>,my_table),1));
+0130 
+0131 <span class="comment">% detect empty column header</span>
+0132 <span class="keyword">if</span> sum(double(cellfun(<span class="string">'isempty'</span>,my_table(1,:))))
+0133   error(sprintf(<span class="string">'Column header missing in file %s'</span>,filename));
+0134 <span class="keyword">end</span>
+0135 
+0136 rows = struct;
+0137 ind_data = [];
+0138 <span class="keyword">while</span> size(my_table,1)&gt;1 &amp;&amp; strncmp(<span class="string">'!'</span>,my_table{2,1},1)
+0139   row_header = my_table{2,1}(2:end);
+0140   row_rest   = [{[]},my_table(2,2:end)];
+0141   ind_data   = [ind_data, find(cellfun(<span class="string">'length'</span>,row_rest))];
+0142   my_table   = my_table([1,3:end],:);
+0143   rows       = setfield(rows,row_header,row_rest);
+0144 <span class="keyword">end</span>
+0145 
+0146 ind_rows   = setdiff(unique(ind_data),1);
+0147 column     = struct;
+0148 ind_column = [];
+0149 column_names = {};
+0150 
+0151 <span class="keyword">for</span> it = 1:size(my_table,2)
+0152   column_header = my_table{1,it};
+0153   <span class="keyword">if</span> strcmp(<span class="string">'!'</span>,column_header(1))
+0154     column_header = column_header(2:end);
+0155     column_names{it,1} = column_header;
+0156     <span class="keyword">if</span> strfind(column_header,<span class="string">'ID'</span>)  <span class="comment">% compatibility to older SBtab files</span>
+0157       column_header = strrep(column_header,<span class="string">'MiriamID::urn:miriam:'</span>,<span class="string">'Identifiers:'</span>);
+0158       column_header = strrep(column_header,<span class="string">'SBML::reaction::ID'</span>,<span class="string">'SBML:reaction:ID'</span>);
+0159       column_header = strrep(column_header,<span class="string">'SBML::species::ID'</span>,<span class="string">'SBML:species:ID'</span>);
+0160     <span class="keyword">end</span>
+0161     column_header = <a href="../../../sbtab/sbtab/sbtab-utils/sbtab_clean_column_headers.html" class="code" title="function column_names = sbtab_clean_column_headers(column_names)">sbtab_clean_column_headers</a>(column_header);
+0162     ind_column = [ind_column it];
+0163     column = setfield(column,column_header,my_table(2:<span class="keyword">end</span>,it));
+0164   <span class="keyword">end</span>
+0165 <span class="keyword">end</span>
+0166 
+0167 ind_data         = setdiff(ind_rows,ind_column);
+0168 data_headers     = my_table(1,ind_data);
+0169 data             = my_table(2:<span class="keyword">end</span>,ind_data);
+0170 
+0171 ind_uncontrolled = setdiff(1:size(my_table,2),[ind_column,ind_data]);
+0172 <span class="keyword">if</span> length(ind_uncontrolled)
+0173   uncontrolled_headers = my_table(1,ind_uncontrolled);
+0174   uncontrolled         = my_table(2:<span class="keyword">end</span>,ind_uncontrolled);
+0175 <span class="keyword">else</span>
+0176   uncontrolled_headers = [];
+0177   uncontrolled         = [];
+0178   ind_uncontrolled = [];
+0179 <span class="keyword">end</span>
+0180 
+0181 fn = fieldnames(rows);
+0182 
+0183 data_attributes   = [];
+0184 column_attributes = [];
+0185 
+0186 <span class="keyword">for</span> it = 1:length(fn);
+0187   data_attributes.(fn{it})   = rows.(fn{it})(ind_data);
+0188   column_attributes.(fn{it}) = rows.(fn{it})(ind_column);
+0189 <span class="keyword">end</span>
+0190 
+0191 
+0192 <span class="comment">% -------------------------------------------------------</span>
+0193 <span class="comment">% Generate SBtab struct</span>
+0194 
+0195 sbtab.filename          = filename;
+0196 sbtab.attributes        = attributes;
+0197 sbtab.rows              = rows;
+0198 sbtab.column.column     = column;
+0199 sbtab.column.column_names = column_names;
+0200 sbtab.column.attributes = column_attributes;
+0201 sbtab.column.ind        = ind_column;
+0202 sbtab.data.headers      = data_headers;
+0203 sbtab.data.attributes   = data_attributes;
+0204 sbtab.data.data         = data;
+0205 sbtab.data.ind          = ind_data;
+0206 sbtab.uncontrolled.headers = uncontrolled_headers;
+0207 sbtab.uncontrolled.data = uncontrolled;
+0208 sbtab.uncontrolled.ind  = ind_uncontrolled;
+0209 
+0210 <span class="keyword">if</span> flag_remove_comments
+0211   sbtab = <a href="sbtab_table_remove_comment_lines.html" class="code" title="function my_sbtab_table = sbtab_table_remove_comment_lines(my_sbtab_table)">sbtab_table_remove_comment_lines</a>(sbtab);
+0212 <span class="keyword">end</span>
+0213 
+0214 
+0215 <span class="comment">% -----------------------------------------------------</span>
+0216 
+0217 <a name="_sub1" href="#_subfunctions" class="code">function my_table = remove_comment_lines(my_table)</a>
+0218 
+0219   my_table = my_table(~strncmp(my_table(:,1),<span class="string">'%'</span>,1),:);</pre></div>
+<hr><address>Generated on Thu 22-Oct-2026 20:11:23 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

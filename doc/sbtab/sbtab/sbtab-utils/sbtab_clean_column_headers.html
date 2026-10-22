@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of sbtab_clean_column_headers</title>
+  <meta name="keywords" content="sbtab_clean_column_headers">
+  <meta name="description" content="SBTAB_CLEAN_COLUMN_HEADERS Convert SBtab column names into Matlab field names">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../../../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../../../index.html">Home</a> &gt;  <a href="../../index.html">sbtab</a> &gt; <a href="../index.html">sbtab</a> &gt; <a href="index.html">sbtab-utils</a> &gt; sbtab_clean_column_headers.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../../../index.html"><img alt="<" border="0" src="../../../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for sbtab/sbtab/sbtab-utils&nbsp;<img alt=">" border="0" src="../../../right.png"></a></td></tr></table>-->
+
+<h1>sbtab_clean_column_headers
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="box"><strong>SBTAB_CLEAN_COLUMN_HEADERS Convert SBtab column names into Matlab field names</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="box"><strong>function column_names = sbtab_clean_column_headers(column_names) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> SBTAB_CLEAN_COLUMN_HEADERS Convert SBtab column names into Matlab field names
+
+ column_names = sbtab_clean_column_headers(column_names)
+
+ column_names: column name (string) or list of column names (cell array of strings)
+
+ In SBtab table objects, the columns are stored in a struct (my_sbtab_table.column.column)
+ whose field names are obtained from the column names by this function:
+  - a leading '!' is removed
+  - '&gt;' is replaced by 'SAMPLE_'
+  - all other characters except letters, digits, and '_' are replaced by '_'
+ Example: '!Compound:Identifiers:kegg.compound' -&gt; 'Compound_Identifiers_kegg_compound'</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../../../matlabicon.gif)">
+</ul>
+This function is called by:
+<ul style="list-style-image:url(../../../matlabicon.gif)">
+<li><a href="../../../sbtab/sbtab-formats/mnt-omics-data/sbtab_2_dynamic_data.html" class="code" title="function d = sbtab_2_dynamic_data(filename)">sbtab_2_dynamic_data</a>	d = sbtab_2_dynamic_data(filename)</li><li><a href="../../../sbtab/sbtab/sbtab-table/sbtab_table_add_annotation.html" class="code" title="function t = sbtab_table_add_annotation(t,column_old,column_new,item_old,item_new)">sbtab_table_add_annotation</a>	SBTAB_TABLE_ADD_ANNOTATION Insert annotation column into a table.</li><li><a href="../../../sbtab/sbtab/sbtab-table/sbtab_table_add_column.html" class="code" title="function my_sbtab_table = sbtab_table_add_column(my_sbtab_table,column_name,my_column,is_sbtab_column)">sbtab_table_add_column</a>	SBTAB_TABLE_ADD_COLUMN Add column to SBtab table.</li><li><a href="../../../sbtab/sbtab/sbtab-table/sbtab_table_construct.html" class="code" title="function my_sbtab_table = sbtab_table_construct(attributes, column_names, columns)">sbtab_table_construct</a>	SBTAB_TABLE_CONSTRUCT Construct an SBtab table object.</li><li><a href="../../../sbtab/sbtab/sbtab-table/sbtab_table_diff.html" class="code" title="function result = sbtab_table_diff(SBtab_table_1, SBtab_table_2, sort_by_columns1, sort_by_columns2, show_columns_list)">sbtab_table_diff</a>	result = sbtab_table_diff(SBtab_table_1, SBtab_table_2, sort_by_columns1, sort_by_columns2, show_columns_list)</li><li><a href="../../../sbtab/sbtab/sbtab-table/sbtab_table_get_column.html" class="code" title="function my_column = sbtab_table_get_column(my_sbtab_table,column_name,flag_numbers,verbose)">sbtab_table_get_column</a>	SBTAB_TABLE_GET_COLUMN Get column from an SBtab table</li><li><a href="../../../sbtab/sbtab/sbtab-table/sbtab_table_has_column.html" class="code" title="function res = sbtab_table_has_column(my_sbtab_table,column_name)">sbtab_table_has_column</a>	SBTAB_TABLE_HAS_COLUMN Check for existence of column in an SBtab table</li><li><a href="../../../sbtab/sbtab/sbtab-table/sbtab_table_load.html" class="code" title="function sbtab = sbtab_table_load(filename, my_table, flag_remove_comments, table_id)">sbtab_table_load</a>	SBTAB_TABLE_LOAD Load SBtab table from file, or generate it from a list of strings</li><li><a href="../../../sbtab/sbtab/sbtab-table/sbtab_table_print.html" class="code" title="function sbtab_table_print(sbtab_table,style)">sbtab_table_print</a>	SBTAB_TABLE_PRINT Show contents of Sbtab table</li><li><a href="../../../sbtab/sbtab/sbtab-table/sbtab_table_remove_column.html" class="code" title="function my_sbtab_table = sbtab_table_remove_column(my_sbtab_table,column_name)">sbtab_table_remove_column</a>	SBTAB_TABLE_REMOVE_COLUMN Remove column from SBtab table</li><li><a href="../../../sbtab/sbtab/sbtab-table/sbtab_table_subselect_items.html" class="code" title="function t = sbtab_table_subselect_items(t,column,sbtab_file_out,given_entry)">sbtab_table_subselect_items</a>	SBTAB_TABLE_SUBSELECT_ITEMS Select rows that have entries for a specific column</li><li><a href="../../../sbtab/sbtab/sbtab-table/sbtab_table_to_simple_struct.html" class="code" title="function [my_struct,attributes] = sbtab_table_to_simple_struct(my_sbtab_table,column_key,column_value)">sbtab_table_to_simple_struct</a>	SBTAB_TABLE_TO_SIMPLE_STRUCT Convert an SBtab table into a matlab struct</li><li><a href="../../../sbtab/sbtab/sbtab-table/sbtab_table_to_table.html" class="code" title="function my_table = sbtab_table_to_table(my_sbtab_table)">sbtab_table_to_table</a>	SBTAB_TABLE_TO_TABLE Convert SBtab table to matlab table object</li></ul>
+<!-- crossreference -->
+
+
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function column_names = sbtab_clean_column_headers(column_names)</a>
+0002 
+0003 <span class="comment">% SBTAB_CLEAN_COLUMN_HEADERS Convert SBtab column names into Matlab field names</span>
+0004 <span class="comment">%</span>
+0005 <span class="comment">% column_names = sbtab_clean_column_headers(column_names)</span>
+0006 <span class="comment">%</span>
+0007 <span class="comment">% column_names: column name (string) or list of column names (cell array of strings)</span>
+0008 <span class="comment">%</span>
+0009 <span class="comment">% In SBtab table objects, the columns are stored in a struct (my_sbtab_table.column.column)</span>
+0010 <span class="comment">% whose field names are obtained from the column names by this function:</span>
+0011 <span class="comment">%  - a leading '!' is removed</span>
+0012 <span class="comment">%  - '&gt;' is replaced by 'SAMPLE_'</span>
+0013 <span class="comment">%  - all other characters except letters, digits, and '_' are replaced by '_'</span>
+0014 <span class="comment">% Example: '!Compound:Identifiers:kegg.compound' -&gt; 'Compound_Identifiers_kegg_compound'</span>
+0015 
+0016 column_names = regexprep(column_names, <span class="string">'^!'</span>, <span class="string">''</span>);
+0017 column_names = strrep(column_names, <span class="string">'&gt;'</span>, <span class="string">'SAMPLE_'</span>);
+0018 column_names = regexprep(column_names, <span class="string">'[^A-Za-z0-9_]'</span>, <span class="string">'_'</span>);</pre></div>
+<hr><address>Generated on Thu 22-Oct-2026 20:11:23 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

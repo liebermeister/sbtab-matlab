@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of sbtab_2_dynamic_data</title>
+  <meta name="keywords" content="sbtab_2_dynamic_data">
+  <meta name="description" content="d = sbtab_2_dynamic_data(filename)">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../../../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../../../index.html">Home</a> &gt;  <a href="../../index.html">sbtab</a> &gt; <a href="../index.html">sbtab-formats</a> &gt; <a href="index.html">mnt-omics-data</a> &gt; sbtab_2_dynamic_data.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../../../index.html"><img alt="<" border="0" src="../../../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for sbtab/sbtab-formats/mnt-omics-data&nbsp;<img alt=">" border="0" src="../../../right.png"></a></td></tr></table>-->
+
+<h1>sbtab_2_dynamic_data
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="box"><strong>d = sbtab_2_dynamic_data(filename)</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="box"><strong>function d = sbtab_2_dynamic_data(filename) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> d = sbtab_2_dynamic_data(filename)
+
+ Read SBtab file and put the data into omics data table (&quot;biotable&quot; data structure)
+
+ Omics data can be related to compounds or reactions.
+ For writing such files, see dynamic_data_2_sbtab.m
+ For the biotable format itself, see 'help biotable'</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../../../matlabicon.gif)">
+<li><a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_get_table.html" class="code" title="function sbtab_table = sbtab_document_get_table(sbtab_document,table_name)">sbtab_document_get_table</a>	SBTAB_DOCUMENT_GET_TABLE Get table from SBtab document.</li><li><a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_load_from_one.html" class="code" title="function my_sbtab_document = sbtab_document_load_from_one(filename)">sbtab_document_load_from_one</a>	SBTAB_DOCUMENT_LOAD_FROM_ONE Load SBtab document (possibly, several tables) from one file</li><li><a href="../../../sbtab/sbtab/sbtab-table/sbtab_table_get_column.html" class="code" title="function my_column = sbtab_table_get_column(my_sbtab_table,column_name,flag_numbers,verbose)">sbtab_table_get_column</a>	SBTAB_TABLE_GET_COLUMN Get column from an SBtab table</li><li><a href="../../../sbtab/sbtab/sbtab-utils/sbtab_clean_column_headers.html" class="code" title="function column_names = sbtab_clean_column_headers(column_names)">sbtab_clean_column_headers</a>	SBTAB_CLEAN_COLUMN_HEADERS Convert SBtab column names into Matlab field names</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../../../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function d = sbtab_2_dynamic_data(filename)</a>
+0002 
+0003 <span class="comment">% d = sbtab_2_dynamic_data(filename)</span>
+0004 <span class="comment">%</span>
+0005 <span class="comment">% Read SBtab file and put the data into omics data table (&quot;biotable&quot; data structure)</span>
+0006 <span class="comment">%</span>
+0007 <span class="comment">% Omics data can be related to compounds or reactions.</span>
+0008 <span class="comment">% For writing such files, see dynamic_data_2_sbtab.m</span>
+0009 <span class="comment">% For the biotable format itself, see 'help biotable'</span>
+0010 
+0011 <span class="keyword">if</span> isstr(filename)
+0012   SBtab_doc = <a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_load_from_one.html" class="code" title="function my_sbtab_document = sbtab_document_load_from_one(filename)">sbtab_document_load_from_one</a>(filename);
+0013 <span class="keyword">else</span>
+0014   SBtab_doc = filename;
+0015 <span class="keyword">end</span>
+0016 
+0017 S_table = <a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_get_table.html" class="code" title="function sbtab_table = sbtab_document_get_table(sbtab_document,table_name)">sbtab_document_get_table</a>(SBtab_doc,<span class="string">'Samples'</span>);
+0018 T_table = <a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_get_table.html" class="code" title="function sbtab_table = sbtab_document_get_table(sbtab_document,table_name)">sbtab_document_get_table</a>(SBtab_doc,<span class="string">'Data'</span>);
+0019 
+0020 clear d
+0021 
+0022 <span class="comment">% Sample names</span>
+0023 
+0024 samplenames = <a href="../../../sbtab/sbtab/sbtab-table/sbtab_table_get_column.html" class="code" title="function my_column = sbtab_table_get_column(my_sbtab_table,column_name,flag_numbers,verbose)">sbtab_table_get_column</a>(S_table,<span class="string">'Sample:Name'</span>);
+0025 samplenames = samplenames(1:length(samplenames)/2);
+0026 samplenames = strrep(samplenames,<span class="string">':Mean'</span>,<span class="string">''</span>);
+0027 n_samples = length(samplenames);
+0028 
+0029 time = <a href="../../../sbtab/sbtab/sbtab-table/sbtab_table_get_column.html" class="code" title="function my_column = sbtab_table_get_column(my_sbtab_table,column_name,flag_numbers,verbose)">sbtab_table_get_column</a>(S_table,<span class="string">'Time'</span>);
+0030 time = cell_string2num(time(1:length(time)/2));
+0031 
+0032 T_colnames = T_table.column.column_names';
+0033 element_names =  <a href="../../../sbtab/sbtab/sbtab-utils/sbtab_clean_column_headers.html" class="code" title="function column_names = sbtab_clean_column_headers(column_names)">sbtab_clean_column_headers</a>(T_colnames(1:end-2*n_samples));
+0034 
+0035 <span class="keyword">for</span> it =1:length(element_names)
+0036   <span class="keyword">switch</span> element_names{it}
+0037     <span class="keyword">case</span> <span class="string">'Compound_Name'</span>
+0038       my_name = <span class="string">'MetaboliteName'</span>;
+0039     <span class="keyword">case</span> <span class="string">'Reaction_Name'</span>
+0040       my_name = <span class="string">'ReactionName'</span>;
+0041     <span class="keyword">otherwise</span>
+0042       my_name = element_names{it};
+0043   <span class="keyword">end</span>
+0044   d.(my_name) = <a href="../../../sbtab/sbtab/sbtab-table/sbtab_table_get_column.html" class="code" title="function my_column = sbtab_table_get_column(my_sbtab_table,column_name,flag_numbers,verbose)">sbtab_table_get_column</a>(T_table,element_names{it});
+0045 <span class="keyword">end</span>
+0046 
+0047 d.SampleName = samplenames;
+0048 d.SampleTime = time;
+0049 
+0050 <span class="keyword">for</span> it = 1:n_samples
+0051   d.DataMean(:,it) = <a href="../../../sbtab/sbtab/sbtab-table/sbtab_table_get_column.html" class="code" title="function my_column = sbtab_table_get_column(my_sbtab_table,column_name,flag_numbers,verbose)">sbtab_table_get_column</a>(T_table,[<span class="string">'&gt;Sample:S'</span> num2str(it) <span class="string">':Mean'</span>],1);
+0052   d.DataStd(:,it)  = <a href="../../../sbtab/sbtab/sbtab-table/sbtab_table_get_column.html" class="code" title="function my_column = sbtab_table_get_column(my_sbtab_table,column_name,flag_numbers,verbose)">sbtab_table_get_column</a>(T_table,[<span class="string">'&gt;Sample:S'</span> num2str(it) <span class="string">':Std'</span>],1);
+0053 <span class="keyword">end</span>
+0054 
+0055 <span class="comment">% Read field .Info</span>
+0056 
+0057 infos = fieldnames(T_table.attributes);
+0058 keys = setdiff(infos,{<span class="string">'TableID'</span>,<span class="string">'TableType'</span>,<span class="string">'TableName'</span>});
+0059 <span class="keyword">for</span> it =1:length(keys)
+0060   d.Info{it,1} = keys{it};
+0061   d.Info{it,2} = T_table.attributes.(keys{it});
+0062 <span class="keyword">end</span></pre></div>
+<hr><address>Generated on Thu 22-Oct-2026 20:11:23 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

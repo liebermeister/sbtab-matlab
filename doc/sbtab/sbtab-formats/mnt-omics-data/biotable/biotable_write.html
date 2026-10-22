@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of biotable_write</title>
+  <meta name="keywords" content="biotable_write">
+  <meta name="description" content="biotable_write(data_table,basename)">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../../../../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../../../../index.html">Home</a> &gt;  <a href="../../../index.html">sbtab</a> &gt; <a href="../../index.html">sbtab-formats</a> &gt; <a href="../index.html">mnt-omics-data</a> &gt; <a href="index.html">biotable</a> &gt; biotable_write.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../../../../index.html"><img alt="<" border="0" src="../../../../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for sbtab/sbtab-formats/mnt-omics-data/biotable&nbsp;<img alt=">" border="0" src="../../../../right.png"></a></td></tr></table>-->
+
+<h1>biotable_write
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../../../../up.png"></a></h2>
+<div class="box"><strong>biotable_write(data_table,basename)</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../../../../up.png"></a></h2>
+<div class="box"><strong>function all = biotable_write(data_table,basename,options) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../../../../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> biotable_write(data_table,basename)
+
+ export matlab data structure to standard table format for dynamic data
+
+ EXAMPLE
+ d = struct();
+ d.MetaboliteName = {'A','B'}';
+ d.ChebiId = {'a','b'}';
+ d.SampleName = {'1','2'}';
+ d.SampleTime = [0;1];
+ d.DataMean = ones(2);
+ d.DataStd = 0.1*ones(2);
+ d.Info = {'bla','bli';'blu','bloe'};
+
+ %OpenBis format
+ T = biotable_write(d,[],struct('flag_openbis',1,'ind_use_id',2,'ExperimentCode','GM','CultivationMethod','BR','BiologicalReplicateCode','B1','TimePointType','EX','TechnicalReplicateCode','','CelLoc','CE','DataSetType','MetaboliteLCMS','ShortUnit','mM','Scale','Lin','BiID','','CG',''));
+
+ %SBtab format
+ T= biotable_write(d,[],struct('flag_openbis',0,'ind_use_id',2,'ExperimentCode','GM','CultivationMethod','BR','BiologicalReplicateCode','B1','TimePointType','EX','TechnicalReplicateCode','','CelLoc','CE','DataSetType','MetaboliteLCMS','ShortUnit','mM','Scale','Lin','BiID','','CG',''));</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../../../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../../../../matlabicon.gif)">
+<li><a href="biotable_clean.html" class="code" title="function data_table = biotable_clean(data_table)">biotable_clean</a>	</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../../../../matlabicon.gif)">
+<li><a href="biotable_write_multiple.html" class="code" title="function biotable_write_multiple(data, filename, options)">biotable_write_multiple</a>	</li></ul>
+<!-- crossreference -->
+
+
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../../../../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function all = biotable_write(data_table,basename,options)</a>
+0002 
+0003 <span class="comment">% biotable_write(data_table,basename)</span>
+0004 <span class="comment">%</span>
+0005 <span class="comment">% export matlab data structure to standard table format for dynamic data</span>
+0006 <span class="comment">%</span>
+0007 <span class="comment">% EXAMPLE</span>
+0008 <span class="comment">% d = struct();</span>
+0009 <span class="comment">% d.MetaboliteName = {'A','B'}';</span>
+0010 <span class="comment">% d.ChebiId = {'a','b'}';</span>
+0011 <span class="comment">% d.SampleName = {'1','2'}';</span>
+0012 <span class="comment">% d.SampleTime = [0;1];</span>
+0013 <span class="comment">% d.DataMean = ones(2);</span>
+0014 <span class="comment">% d.DataStd = 0.1*ones(2);</span>
+0015 <span class="comment">% d.Info = {'bla','bli';'blu','bloe'};</span>
+0016 <span class="comment">%</span>
+0017 <span class="comment">% %OpenBis format</span>
+0018 <span class="comment">% T = biotable_write(d,[],struct('flag_openbis',1,'ind_use_id',2,'ExperimentCode','GM','CultivationMethod','BR','BiologicalReplicateCode','B1','TimePointType','EX','TechnicalReplicateCode','','CelLoc','CE','DataSetType','MetaboliteLCMS','ShortUnit','mM','Scale','Lin','BiID','','CG',''));</span>
+0019 <span class="comment">%</span>
+0020 <span class="comment">% %SBtab format</span>
+0021 <span class="comment">% T= biotable_write(d,[],struct('flag_openbis',0,'ind_use_id',2,'ExperimentCode','GM','CultivationMethod','BR','BiologicalReplicateCode','B1','TimePointType','EX','TechnicalReplicateCode','','CelLoc','CE','DataSetType','MetaboliteLCMS','ShortUnit','mM','Scale','Lin','BiID','','CG',''));</span>
+0022 
+0023 <span class="comment">% if pars.flag_openbis is set to 1, then also the following entries have to be set</span>
+0024 <span class="comment">%</span>
+0025 <span class="comment">% pars.ind_use_id</span>
+0026 <span class="comment">% pars.ExperimentCode</span>
+0027 <span class="comment">% pars.CultivationMethod</span>
+0028 <span class="comment">% pars.BiologicalReplicateCode</span>
+0029 <span class="comment">% pars.TimePointType</span>
+0030 <span class="comment">% pars.TechnicalReplicateCode</span>
+0031 <span class="comment">% pars.CelLoc</span>
+0032 <span class="comment">% pars.DataSetType</span>
+0033 <span class="comment">% pars.ShortUnit</span>
+0034 <span class="comment">% pars.Scale</span>
+0035 <span class="comment">% pars.BiID = 'NB'</span>
+0036 <span class="comment">% pars.CG = 'NC'</span>
+0037 <span class="comment">% pars.HumanReadable cell array of element names for column &quot;human readable&quot;</span>
+0038 
+0039 eval(default(<span class="string">'options'</span>,<span class="string">'struct'</span>,<span class="string">'basename'</span>,<span class="string">'[]'</span>));
+0040 pars = struct(<span class="string">'flag_openbis'</span>,0,<span class="string">'extension'</span>,<span class="string">'.csv'</span>,<span class="string">'latex'</span>,0);
+0041 pars = join_struct(pars,options);
+0042 
+0043 <span class="keyword">if</span> pars.flag_openbis, pars.extension = <span class="string">'_openBIS.txt'</span>;  pars.BiID = <span class="string">'NB'</span>;  pars.CG = <span class="string">'NC'</span>; <span class="keyword">end</span>
+0044 
+0045 data_table  = <a href="biotable_clean.html" class="code" title="function data_table = biotable_clean(data_table)">biotable_clean</a>(data_table);
+0046 sample_name = data_table.SampleName;
+0047 sample_time = data_table.SampleTime;
+0048 data_mean   = data_table.DataMean;
+0049 data_std    = data_table.DataStd;
+0050 info        = data_table.Info;
+0051 data_table  = rmfield(data_table,{<span class="string">'DataMean'</span>,<span class="string">'DataStd'</span>,<span class="string">'Info'</span>,<span class="string">'SampleName'</span>,<span class="string">'SampleTime'</span>});
+0052 
+0053 <span class="comment">% -------------------------------------------------</span>
+0054 
+0055 fn  = fieldnames(data_table);
+0056 all = {};
+0057 
+0058 [n_items, n_samples] = size(data_mean);
+0059 
+0060 values = reshape([data_mean; data_std],n_items,2*n_samples);
+0061 
+0062 clear names time
+0063 
+0064 <span class="keyword">if</span> pars.flag_openbis
+0065 
+0066   <span class="keyword">if</span> ~isfield(pars,<span class="string">'RowIdentifier'</span>), pars.RowIdentifier=<span class="string">'ID'</span>; <span class="keyword">end</span>
+0067   <span class="keyword">if</span> ~isfield(pars,<span class="string">'HumanReadable'</span>), pars.HumanReadable=[]; <span class="keyword">end</span>
+0068 
+0069   all = [all [{pars.RowIdentifier}; getfield(data_table,fn{pars.ind_use_id}) ]];
+0070   <span class="keyword">for</span> itt = 1:length(all), all{itt} = strrep(all{itt},<span class="string">'+'</span>,<span class="string">'_'</span>); <span class="keyword">end</span>
+0071   s1  = sprintf(<span class="string">'%s::%s::%s::'</span>,pars.ExperimentCode,pars.CultivationMethod,pars.BiologicalReplicateCode);
+0072   s2  = sprintf(<span class="string">'::%s::%s::%s::%s::'</span>,pars.TimePointType,pars.TechnicalReplicateCode,pars.CelLoc,pars.DataSetType);
+0073   s3  = sprintf(<span class="string">'[%s]::%s::%s::%s'</span>,pars.ShortUnit,pars.Scale,pars.BiID,pars.CG);
+0074 
+0075   <span class="keyword">for</span> it=1:n_samples
+0076     my_time = ceil(60*sample_time(it));
+0077     <span class="keyword">if</span> my_time&gt;=0
+0078       my_time = [<span class="string">'+'</span> num2str(my_time)];
+0079     <span class="keyword">else</span>
+0080       my_time = [num2str(my_time)];
+0081     <span class="keyword">end</span>
+0082     <span class="keyword">if</span> ~isstr(sample_name{it}), sample_name{it} = num2str(sample_name{it}); <span class="keyword">end</span>
+0083 
+0084     names{1,2*it-1}  = sprintf(<span class="string">'%s%s%sMean%s'</span>,s1,my_time,s2,s3);
+0085     names{1,2*it  }  = sprintf(<span class="string">'%s%s%sStd%s'</span>,s1,my_time,s2,s3);
+0086   <span class="keyword">end</span>
+0087 
+0088   <span class="keyword">if</span> isempty(pars.HumanReadable), pars.HumanReadable =  repmat({<span class="string">''</span>},size(values,1),1); <span class="keyword">end</span>
+0089   all = [all, [{<span class="string">'HumanReadable'</span>};  pars.HumanReadable], [names; num2cell(values)]];
+0090 
+0091   <span class="comment">%% remove rows with nonidentified compounds</span>
+0092   ind_unidentified_entries = find(strcmp(all(:,1),<span class="string">'no CHEBI:ID found'</span>));
+0093   all = all(setdiff(1:size(all,1),ind_unidentified_entries),:);
+0094 
+0095 <span class="keyword">else</span>
+0096 
+0097   <span class="keyword">for</span> it =1:length(fn)
+0098     all = [all [{fn{it}}; {<span class="string">''</span>}; getfield(data_table,fn{it})]];
+0099   <span class="keyword">end</span>
+0100   all{1,1}=[<span class="string">'!'</span>   all{1,1}];
+0101 
+0102   all{2,1}=<span class="string">'!Time'</span>;
+0103   <span class="keyword">for</span> it=1:n_samples
+0104     time{1,2*it-1} = num2str(sample_time(it));
+0105     time{1,2*it}   = num2str(sample_time(it));
+0106     <span class="keyword">if</span> ~isstr(sample_name{it}), sample_name{it} = num2str(sample_name{it}); <span class="keyword">end</span>
+0107     names{1,2*it-1}  = [sample_name{it} <span class="string">' Mean'</span>];
+0108     names{1,2*it  }  = [sample_name{it} <span class="string">' Std'</span>];
+0109   <span class="keyword">end</span>
+0110   all = [all, [names; time; num2cell(values)]];
+0111 
+0112   <span class="comment">%all = [{'!!BStab'}, repmat({''},1,size(all,2)-1); all];</span>
+0113 
+0114 <span class="keyword">end</span>
+0115 
+0116 <span class="comment">% ------------------------------------------------</span>
+0117 
+0118 <span class="keyword">if</span> length(basename)
+0119   <span class="keyword">if</span> pars.latex
+0120     pars.extension = <span class="string">'.tex'</span>;
+0121     mytable(all,<span class="string">'tex'</span>, [basename pars.extension]);
+0122   <span class="keyword">else</span>
+0123     mytable(all,0, [basename pars.extension]);
+0124   <span class="keyword">end</span>
+0125   display(sprintf(<span class="string">'Writing file %s'</span>, [basename pars.extension]));
+0126 <span class="keyword">else</span>
+0127   mytable(all,0)
+0128 <span class="keyword">end</span></pre></div>
+<hr><address>Generated on Thu 22-Oct-2026 20:11:23 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

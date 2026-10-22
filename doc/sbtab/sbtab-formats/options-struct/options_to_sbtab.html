@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of options_to_sbtab</title>
+  <meta name="keywords" content="options_to_sbtab">
+  <meta name="description" content="OPTIONS_TO_SBTAB - Convert matlab struct (typically used for tool options) into SBtab table of type &quot;Config&quot;">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../../../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../../../index.html">Home</a> &gt;  <a href="../../index.html">sbtab</a> &gt; <a href="../index.html">sbtab-formats</a> &gt; <a href="index.html">options-struct</a> &gt; options_to_sbtab.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../../../index.html"><img alt="<" border="0" src="../../../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for sbtab/sbtab-formats/options-struct&nbsp;<img alt=">" border="0" src="../../../right.png"></a></td></tr></table>-->
+
+<h1>options_to_sbtab
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="box"><strong>OPTIONS_TO_SBTAB - Convert matlab struct (typically used for tool options) into SBtab table of type &quot;Config&quot;</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="box"><strong>function sbtab = options_to_sbtab(s,options) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> OPTIONS_TO_SBTAB - Convert matlab struct (typically used for tool options) into SBtab table of type &quot;Config&quot;
+
+ sbtab = options_to_sbtab(s, options)
+
+ If an options field contains a struct, these data are stored in JSON string in the SBtab table
+
+ options.filename:   (string, optional) filename for export to file
+ options.TableName:  (string, optional) TableName attribute, for SBtab
+ options.TableID:    (string, optional) TableID attribute, for SBtab
+ options.Method:     (string, optional) Method attribute, for SBtab
+
+ For the conversion in the other direction, see 'sbtab_to_options'</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../../../matlabicon.gif)">
+<li><a href="../../../sbtab/sbtab/sbtab-table/sbtab_table_construct.html" class="code" title="function my_sbtab_table = sbtab_table_construct(attributes, column_names, columns)">sbtab_table_construct</a>	SBTAB_TABLE_CONSTRUCT Construct an SBtab table object.</li><li><a href="../../../sbtab/sbtab/sbtab-table/sbtab_table_save.html" class="code" title="function my_table = sbtab_table_save(my_sbtab_table, options)">sbtab_table_save</a>	SBTAB_TABLE_SAVE Save SBtab table</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../../../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function sbtab = options_to_sbtab(s,options)</a>
+0002 
+0003 <span class="comment">% OPTIONS_TO_SBTAB - Convert matlab struct (typically used for tool options) into SBtab table of type &quot;Config&quot;</span>
+0004 <span class="comment">%</span>
+0005 <span class="comment">% sbtab = options_to_sbtab(s, options)</span>
+0006 <span class="comment">%</span>
+0007 <span class="comment">% If an options field contains a struct, these data are stored in JSON string in the SBtab table</span>
+0008 <span class="comment">%</span>
+0009 <span class="comment">% options.filename:   (string, optional) filename for export to file</span>
+0010 <span class="comment">% options.TableName:  (string, optional) TableName attribute, for SBtab</span>
+0011 <span class="comment">% options.TableID:    (string, optional) TableID attribute, for SBtab</span>
+0012 <span class="comment">% options.Method:     (string, optional) Method attribute, for SBtab</span>
+0013 <span class="comment">%</span>
+0014 <span class="comment">% For the conversion in the other direction, see 'sbtab_to_options'</span>
+0015 
+0016 eval(default(<span class="string">'options'</span>,<span class="string">'struct'</span>));
+0017 options_default = struct(<span class="string">'TableName'</span>,<span class="string">'Options'</span>,<span class="string">'TableID'</span>,<span class="string">'Options'</span>,<span class="string">'Method'</span>,<span class="string">'unknown'</span>,<span class="string">'verbose'</span>,1);
+0018 options = join_struct(options_default,options);
+0019 
+0020 column_options = {};
+0021 column_values  = {};
+0022 fn = fieldnames(s);
+0023 <span class="keyword">for</span> it = 1:length(fn)
+0024   my_string = s.(fn{it});
+0025   <span class="keyword">if</span> ~isempty(my_string)
+0026     my_string = jsonencode(my_string);
+0027     <span class="keyword">if</span> strcmp(my_string(1),<span class="string">'&quot;'</span>) * strcmp(my_string(end),<span class="string">'&quot;'</span>)
+0028       my_string = my_string(2:end-1);
+0029     <span class="keyword">end</span>
+0030     column_options = [ column_options; fn(it)];
+0031     column_values  = [ column_values;  my_string];
+0032   <span class="keyword">end</span>
+0033 <span class="keyword">end</span>
+0034 
+0035 
+0036 sbtab = <a href="../../../sbtab/sbtab/sbtab-table/sbtab_table_construct.html" class="code" title="function my_sbtab_table = sbtab_table_construct(attributes, column_names, columns)">sbtab_table_construct</a>(struct(<span class="string">'TableName'</span>,options.TableName,<span class="string">'TableID'</span>, options.TableID, <span class="string">'TableType'</span>,<span class="string">'Config'</span>,<span class="string">'Method'</span>,options.Method), {<span class="string">'Option'</span>,<span class="string">'Value'</span>},{column_options,column_values});
+0037 
+0038 <span class="keyword">if</span> isfield(options,<span class="string">'filename'</span>) &amp;&amp; length(options.filename)
+0039   <a href="../../../sbtab/sbtab/sbtab-table/sbtab_table_save.html" class="code" title="function my_table = sbtab_table_save(my_sbtab_table, options)">sbtab_table_save</a>(sbtab,options.filename);
+0040   <span class="keyword">if</span> options.verbose
+0041     display(sprintf(<span class="string">'Writing options to SBtab file %s'</span>, options.filename));
+0042   <span class="keyword">end</span>
+0043 <span class="keyword">end</span></pre></div>
+<hr><address>Generated on Thu 22-Oct-2026 20:11:23 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

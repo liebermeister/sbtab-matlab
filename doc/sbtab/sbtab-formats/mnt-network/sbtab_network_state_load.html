@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of sbtab_network_state_load</title>
+  <meta name="keywords" content="sbtab_network_state_load">
+  <meta name="description" content="[network,c,v,dmu,keq] = sbtab_network_state_load(filename)">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../../../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../../../index.html">Home</a> &gt;  <a href="../../index.html">sbtab</a> &gt; <a href="../index.html">sbtab-formats</a> &gt; <a href="index.html">mnt-network</a> &gt; sbtab_network_state_load.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../../../index.html"><img alt="<" border="0" src="../../../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for sbtab/sbtab-formats/mnt-network&nbsp;<img alt=">" border="0" src="../../../right.png"></a></td></tr></table>-->
+
+<h1>sbtab_network_state_load
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="box"><strong>[network,c,v,dmu,keq] = sbtab_network_state_load(filename)</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="box"><strong>function [network,c,v,dmu,keq] = sbtab_network_state_load(filename) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> [network,c,v,dmu,keq] = sbtab_network_state_load(filename)
+
+ Load 'network' data structure, concentration vector 'c', and flux vector 'v' from SBtab file
+ (and, optionally, reaction Gibbs free energies 'dmu' and equilibrium constants 'keq'; empty if not in the file)</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../../../matlabicon.gif)">
+<li><a href="sbtab_to_network.html" class="code" title="function [network, kinetic_data] = sbtab_to_network(filename,options)">sbtab_to_network</a>	[network, parameter_table] = sbtab_to_network(filename,options)</li><li><a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_get_table.html" class="code" title="function sbtab_table = sbtab_document_get_table(sbtab_document,table_name)">sbtab_document_get_table</a>	SBTAB_DOCUMENT_GET_TABLE Get table from SBtab document.</li><li><a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_get_table_names.html" class="code" title="function table_names = sbtab_document_get_table_names(my_sbtab_document)">sbtab_document_get_table_names</a>	SBTAB_DOCUMENT_GET_TABLE_NAMES Get table names from SBtab document.</li><li><a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_load.html" class="code" title="function my_sbtab_document = sbtab_document_load(table_names,filenames)">sbtab_document_load</a>	SBTAB_DOCUMENT_LOAD Load SBtab document from several files (each containing one table)</li><li><a href="../../../sbtab/sbtab/sbtab/sbtab_to_struct.html" class="code" title="function [my_struct,id_counter] = sbtab_to_struct(my_sbtab_object,structure,options)">sbtab_to_struct</a>	SBTAB_TO_STRUCT Convert an SBtab document or table into a matlab struct</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../../../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../../../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function [network,c,v,dmu,keq] = sbtab_network_state_load(filename)</a>
+0002 
+0003 <span class="comment">% [network,c,v,dmu,keq] = sbtab_network_state_load(filename)</span>
+0004 <span class="comment">%</span>
+0005 <span class="comment">% Load 'network' data structure, concentration vector 'c', and flux vector 'v' from SBtab file</span>
+0006 <span class="comment">% (and, optionally, reaction Gibbs free energies 'dmu' and equilibrium constants 'keq'; empty if not in the file)</span>
+0007 
+0008 sbtab = <a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_load.html" class="code" title="function my_sbtab_document = sbtab_document_load(table_names,filenames)">sbtab_document_load</a>(filename);
+0009 
+0010 network = <a href="sbtab_to_network.html" class="code" title="function [network, kinetic_data] = sbtab_to_network(filename,options)">sbtab_to_network</a>(sbtab);
+0011 sbtab_c = <a href="../../../sbtab/sbtab/sbtab/sbtab_to_struct.html" class="code" title="function [my_struct,id_counter] = sbtab_to_struct(my_sbtab_object,structure,options)">sbtab_to_struct</a>(<a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_get_table.html" class="code" title="function sbtab_table = sbtab_document_get_table(sbtab_document,table_name)">sbtab_document_get_table</a>(sbtab,<span class="string">'MetaboliteConcentration'</span>),<span class="string">'column'</span>);
+0012 sbtab_v = <a href="../../../sbtab/sbtab/sbtab/sbtab_to_struct.html" class="code" title="function [my_struct,id_counter] = sbtab_to_struct(my_sbtab_object,structure,options)">sbtab_to_struct</a>(<a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_get_table.html" class="code" title="function sbtab_table = sbtab_document_get_table(sbtab_document,table_name)">sbtab_document_get_table</a>(sbtab,<span class="string">'Flux'</span>), <span class="string">'column'</span>);
+0013 
+0014 ll = label_names(network.metabolites,sbtab_c.Metabolite);
+0015 c  = cell_string2num(sbtab_c.Value(ll));
+0016 
+0017 ll = label_names(network.actions,sbtab_v.Reaction);
+0018 v  = cell_string2num(sbtab_v.Value(ll));
+0019 
+0020 dmu = [];
+0021 keq = [];
+0022 
+0023 <span class="keyword">if</span> nargout &gt; 3
+0024   <span class="keyword">if</span> find(strcmp(<span class="string">'ReactionGibbsFreeEnergy'</span>,<a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_get_table_names.html" class="code" title="function table_names = sbtab_document_get_table_names(my_sbtab_document)">sbtab_document_get_table_names</a>(sbtab)))
+0025     sbtab_dmu = <a href="../../../sbtab/sbtab/sbtab/sbtab_to_struct.html" class="code" title="function [my_struct,id_counter] = sbtab_to_struct(my_sbtab_object,structure,options)">sbtab_to_struct</a>(<a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_get_table.html" class="code" title="function sbtab_table = sbtab_document_get_table(sbtab_document,table_name)">sbtab_document_get_table</a>(sbtab,<span class="string">'ReactionGibbsFreeEnergy'</span>),<span class="string">'column'</span>);
+0026     ll = label_names(network.actions,sbtab_dmu.Reaction);
+0027     dmu  = cell_string2num(sbtab_dmu.Value(ll));
+0028   <span class="keyword">else</span>
+0029     warning(<span class="string">'No Reaction Gibbs free energy values found in file'</span>);
+0030   <span class="keyword">end</span>
+0031 <span class="keyword">end</span>
+0032 
+0033 <span class="keyword">if</span> nargout &gt; 4
+0034   <span class="keyword">if</span> find(strcmp(<span class="string">'EquilibriumConstant'</span>,<a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_get_table_names.html" class="code" title="function table_names = sbtab_document_get_table_names(my_sbtab_document)">sbtab_document_get_table_names</a>(sbtab)))
+0035     sbtab_dmu = <a href="../../../sbtab/sbtab/sbtab/sbtab_to_struct.html" class="code" title="function [my_struct,id_counter] = sbtab_to_struct(my_sbtab_object,structure,options)">sbtab_to_struct</a>(<a href="../../../sbtab/sbtab/sbtab-document/sbtab_document_get_table.html" class="code" title="function sbtab_table = sbtab_document_get_table(sbtab_document,table_name)">sbtab_document_get_table</a>(sbtab,<span class="string">'EquilibriumConstant'</span>),<span class="string">'column'</span>);
+0036     ll = label_names(network.actions,sbtab_dmu.Reaction);
+0037     keq  = cell_string2num(sbtab_dmu.Value(ll));
+0038   <span class="keyword">else</span>
+0039     warning(<span class="string">'No equilibrium constant values found in file'</span>);
+0040   <span class="keyword">end</span>
+0041 <span class="keyword">end</span></pre></div>
+<hr><address>Generated on Thu 22-Oct-2026 20:11:23 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

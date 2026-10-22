@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of biotable_data_construct</title>
+  <meta name="keywords" content="biotable_data_construct">
+  <meta name="description" content="data = biotable_data_construct(nn,c_mean,c_std,v_mean,v_std,p_mean,p_std,x_mean,x_std);">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../../../../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../../../../index.html">Home</a> &gt;  <a href="../../../index.html">sbtab</a> &gt; <a href="../../index.html">sbtab-formats</a> &gt; <a href="../index.html">mnt-omics-data</a> &gt; <a href="index.html">biotable</a> &gt; biotable_data_construct.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../../../../index.html"><img alt="<" border="0" src="../../../../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for sbtab/sbtab-formats/mnt-omics-data/biotable&nbsp;<img alt=">" border="0" src="../../../../right.png"></a></td></tr></table>-->
+
+<h1>biotable_data_construct
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../../../../up.png"></a></h2>
+<div class="box"><strong>data = biotable_data_construct(nn,c_mean,c_std,v_mean,v_std,p_mean,p_std,x_mean,x_std);</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../../../../up.png"></a></h2>
+<div class="box"><strong>function data = biotable_data_construct(nn,c_mean,c_std,v_mean,v_std,p_mean,p_std,x_mean,x_std); </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../../../../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> data = biotable_data_construct(nn,c_mean,c_std,v_mean,v_std,p_mean,p_std,x_mean,x_std);
+
+ simple constructor for combined biotable data structure</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../../../../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../../../../matlabicon.gif)">
+<li><a href="biotable_construct_timeseries.html" class="code" title="function bt = biotable_construct_timeseries(item_name,items,time,data_mean,data_std)">biotable_construct_timeseries</a>	bt = biotable_construct_timeseries(item_name,items,time,data_mean,data_std)</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../../../../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+
+
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../../../../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function data = biotable_data_construct(nn,c_mean,c_std,v_mean,v_std,p_mean,p_std,x_mean,x_std);</a>
+0002 
+0003 <span class="comment">% data = biotable_data_construct(nn,c_mean,c_std,v_mean,v_std,p_mean,p_std,x_mean,x_std);</span>
+0004 <span class="comment">%</span>
+0005 <span class="comment">% simple constructor for combined biotable data structure</span>
+0006 
+0007 [nm,nr] = size(nn.N);
+0008 
+0009 nt = max([size(c_mean,2),size(v_mean,2),size(p_mean,2),size(x_mean,2)]);
+0010 
+0011 <span class="keyword">if</span> ~length(c_mean)
+0012   c_mean = nan * ones(nm,nt);
+0013   c_std  = nan * ones(nm,nt);
+0014 <span class="keyword">end</span>
+0015 
+0016 <span class="keyword">if</span> ~length(v_mean)
+0017   v_mean = nan * ones(nr,nt);
+0018   v_std  = nan * ones(nr,nt);
+0019 <span class="keyword">end</span>
+0020 
+0021 <span class="keyword">if</span> ~length(p_mean)
+0022   p_mean = nan * ones(nr,nt);
+0023   p_std  = nan * ones(nr,nt);
+0024 <span class="keyword">end</span>
+0025 
+0026 <span class="keyword">if</span> ~length(x_mean)
+0027   x_mean = nan * ones(nr,nt);
+0028   x_std  = nan * ones(nr,nt);
+0029 <span class="keyword">end</span>
+0030 
+0031 data.metabolite_data = <a href="biotable_construct_timeseries.html" class="code" title="function bt = biotable_construct_timeseries(item_name,items,time,data_mean,data_std)">biotable_construct_timeseries</a>(<span class="string">'Metabolite'</span>,nn.metabolites,1:nt,c_mean,c_std);
+0032 data.flux_data       = <a href="biotable_construct_timeseries.html" class="code" title="function bt = biotable_construct_timeseries(item_name,items,time,data_mean,data_std)">biotable_construct_timeseries</a>(<span class="string">'Reaction'</span>  ,nn.actions    ,1:nt,v_mean,v_std);
+0033 data.protein_data    = <a href="biotable_construct_timeseries.html" class="code" title="function bt = biotable_construct_timeseries(item_name,items,time,data_mean,data_std)">biotable_construct_timeseries</a>(<span class="string">'Reaction'</span>  ,nn.actions    ,1:nt,p_mean,p_std);
+0034 data.transcript_data = <a href="biotable_construct_timeseries.html" class="code" title="function bt = biotable_construct_timeseries(item_name,items,time,data_mean,data_std)">biotable_construct_timeseries</a>(<span class="string">'Reaction'</span>  ,nn.actions    ,1:nt,x_mean,x_std);</pre></div>
+<hr><address>Generated on Thu 22-Oct-2026 20:11:23 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>
