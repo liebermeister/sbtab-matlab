@@ -9,10 +9,10 @@ keys = my_table.(fn{1});
 
 if length(unique(keys))<length(keys), error('Redundant keys'); end
 
-for it = 1:length(keys),
+for it = 1:length(keys)
   my_table_sub.(keys{it}) = struct;
-  for itt = 2:length(fn),
+  for itt = 2:length(fn)
     my_table_sub.(keys{it}).(fn{itt}) = my_table.(fn{itt}){it};
-  end  
+  end
   my_table_sub.(keys{it}).index = it;
 end

@@ -24,10 +24,10 @@ function result = sbtab_load_network_model_and_data(data_file, file_options)
 % and, if no prior file is given, Model balancing (function cmb_prior_file)
 %
 % Output
-%   result.network     
+%   result.network
 %   result.kinetic_data
-%   result.state_data  
-%   result.file_options     
+%   result.state_data
+%   result.file_options
 %
 % For saving network model (including kinetic data) and state data, see: sbtab_save_network_model_and_data
 
@@ -46,20 +46,20 @@ file_options = join_struct(file_options_default, file_options);
 
 % load SBtab document from one or several files
 
-if iscell(data_file),
+if iscell(data_file)
   s = sbtab_document_load(data_file);
-else,
+else
   s = sbtab_document_load_from_one(data_file);
 end
 
 % extract network
 
-if label_names({'Reaction'},sbtab_document_get_table_names(s)),
+if label_names({'Reaction'},sbtab_document_get_table_names(s))
   opt = struct('load_quantity_table',file_options.load_quantity_table);
   result.network = sbtab_to_network(s, opt);
 else
   display('No network information found in file');
-  if isfield(file_options,'network'),
+  if isfield(file_options,'network')
     result.network = file_options.network;
   else
     error('Please provide network structure in file_options.network');
@@ -67,15 +67,15 @@ else
 end
 
 % extract kinetic constants (if available)
-if isempty(file_options.prior_file),
+if isempty(file_options.prior_file)
   file_options.prior_file = cmb_prior_file;
-end  
+end
 
 parameter_prior = parameter_balancing_prior([], file_options.prior_file, 0);
 
-if label_names('ParameterData', sbtab_document_get_table_names(s)),
+if label_names('ParameterData', sbtab_document_get_table_names(s))
   result.kinetic_data = kinetic_data_load([],parameter_prior, result.network, sbtab_document_get_table(s,'ParameterData'), struct('enforce_ranges',0));
-elseif label_names('Parameter', sbtab_document_get_table_names(s)),
+elseif label_names('Parameter', sbtab_document_get_table_names(s))
   result.kinetic_data = kinetic_data_load([],parameter_prior, result.network, sbtab_document_get_table(s,'Parameter'), struct('enforce_ranges',0));
 else
   warning('No kinetic data table (ID "Parameter") found');
@@ -86,30 +86,30 @@ end
 
 % extract metabolic state data
 
-if length(file_options.metabolite_table_id),
+if length(file_options.metabolite_table_id)
   data_metabolite = sbtab_document_get_table(s,file_options.metabolite_table_id);
   [result.state_data.metabolite_data, ids, states] = load_state_data_for_network(result.network, data_metabolite, 'metabolite_concentration', file_options);
 end
 
-if length(file_options.flux_table_id),
+if length(file_options.flux_table_id)
   data_flux = sbtab_document_get_table(s,file_options.flux_table_id);
   [result.state_data.flux_data, ids, states] = load_state_data_for_network(result.network, data_flux, 'reaction_rate', file_options);
 end
 
-if length(file_options.enzyme_table_id),
+if length(file_options.enzyme_table_id)
   data_enzyme     = sbtab_document_get_table(s,file_options.enzyme_table_id);
   [result.state_data.enzyme_data, ids, states] = load_state_data_for_network(result.network, data_enzyme, 'enzyme_concentration', file_options);
 end
 
-if length(file_options.delta_g_table_id),
+if length(file_options.delta_g_table_id)
   data_delta_g    = sbtab_document_get_table(s,file_options.delta_g_table_id);
   [result.state_data.delta_g_data, ids, states] = load_state_data_for_network(result.network, data_delta_g, 'reaction_gibbs_free_energy', file_options);
 end
 
 % extract tool options (if available)
 
-if label_names('Config', sbtab_document_get_table_names(s)),
+if label_names('Config', sbtab_document_get_table_names(s))
   result.file_options    = sbtab_to_options(sbtab_document_get_table(s,'Config'));
-else 
- %  warning('No options table (ID "Config") found');
+else
+  %  warning('No options table (ID "Config") found');
 end

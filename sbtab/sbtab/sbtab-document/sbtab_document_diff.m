@@ -11,7 +11,7 @@ d2 = sbtab_document_load(SBtab_document_2);
 
 table_names = intersect(fieldnames(d1.tables),fieldnames(d2.tables));
 
-for it = 1:length(table_names),
+for it = 1:length(table_names)
   display(sprintf('Comparing tables %s',table_names{it}))
   sbtab_table_diff(d1.tables.(table_names{it}),d2.tables.(table_names{it}));
 end

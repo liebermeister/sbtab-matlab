@@ -7,7 +7,7 @@ function sbtab_save_network_model_and_data(my_object, filename)
 % Saving state data and options is not implemented yet.
 % For loading network model (including kinetic data) and state data, see: sbtab_load_network_model_and_data
 
-if ~isfield(my_object,'network'),
+if ~isfield(my_object,'network')
   error('The object has no field "network"');
 end
 

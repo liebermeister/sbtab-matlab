@@ -9,7 +9,7 @@ function data = biotable_concatenate(data1,data2,flag_duplicate_first_sample)
 eval(default('flag_duplicate_first_sample','0'));
 time_shift = 5;
 
-if flag_duplicate_first_sample,
+if flag_duplicate_first_sample
   [nx,nt] = size(data1.DataMean);
   data1.SampleName = [{num2str(-time_shift)}; data1.SampleName];
   data1.SampleTime = [-time_shift; data1.SampleTime];

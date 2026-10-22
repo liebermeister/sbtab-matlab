@@ -12,6 +12,6 @@ column_key   = sbtab_clean_column_headers(column_key);
 column_value = sbtab_clean_column_headers(column_value);
 
 my_struct = struct;
-for it = 1:length(dum.(column_key)),
+for it = 1:length(dum.(column_key))
   my_struct.(dum.(column_key){it}) = dum.(column_value){it};
 end

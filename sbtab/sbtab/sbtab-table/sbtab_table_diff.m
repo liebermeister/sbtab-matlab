@@ -19,32 +19,32 @@ function result = sbtab_table_diff(SBtab_table_1, SBtab_table_2, sort_by_columns
 
 eval(default('sort_by_columns1','[]','sort_by_columns2','[]','show_columns_list','[]'));
 
-if isstr(SBtab_table_1),
+if isstr(SBtab_table_1)
   t1 = sbtab_table_load(SBtab_table_1);
 else
   t1 = SBtab_table_1;
 end
 
-if isstr(SBtab_table_2),
+if isstr(SBtab_table_2)
   t2 = sbtab_table_load(SBtab_table_2);
 else
   t2 = SBtab_table_2;
 end
 
-if isempty(sort_by_columns1),
+if isempty(sort_by_columns1)
   sort_by_columns1 = t1.column.column_names(1);
 end
-if isstr(sort_by_columns1),
+if isstr(sort_by_columns1)
   sort_by_columns1 = {sort_by_columns1};
 end
-if isempty(sort_by_columns2),
+if isempty(sort_by_columns2)
   sort_by_columns2 = sort_by_columns1;
 end
-if isstr(sort_by_columns2),
+if isstr(sort_by_columns2)
   sort_by_columns2 = {sort_by_columns2};
 end
 
-if isempty(show_columns_list),
+if isempty(show_columns_list)
   show_columns_list = setdiff(intersect(t1.column.column_names,t2.column.column_names),sort_by_columns1);
 end
 
@@ -55,12 +55,12 @@ keys2 = row_keys(t2, sort_by_columns2);
 
 result = struct;
 
-for it = 1:length(show_columns_list),
+for it = 1:length(show_columns_list)
   my_column_name = sbtab_clean_column_headers(show_columns_list{it});
   column_1 = sbtab_table_get_column(t1, show_columns_list{it});
   column_2 = sbtab_table_get_column(t2, show_columns_list{it});
   result.(my_column_name) = [keys, column_1(order1), column_2(order2)];
-  if nargout == 0,
+  if nargout == 0
     display(my_column_name)
     disp(result.(my_column_name))
   end
@@ -71,9 +71,9 @@ end
 
 function keys = row_keys(t, key_columns)
 
-% join the entries of the key columns into one string per row
+  % join the entries of the key columns into one string per row
 
-keys = sbtab_table_get_column(t, key_columns{1});
-for it = 2:length(key_columns),
-  keys = strcat(keys, '|', sbtab_table_get_column(t, key_columns{it}));
-end
+  keys = sbtab_table_get_column(t, key_columns{1});
+  for it = 2:length(key_columns)
+    keys = strcat(keys, '|', sbtab_table_get_column(t, key_columns{it}));
+  end

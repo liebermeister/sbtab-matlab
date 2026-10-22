@@ -7,17 +7,17 @@ function r = my_bfilt(data)
 
 clear r;
 
-for it =1:size(data,1),
+for it =1:size(data,1)
 
   dum2 = [];
 
-  for it2 =3:size(data,2)-2,
+  for it2 =3:size(data,2)-2
     dum = data(it,it2-2:it2+2);
     dum(find(~isfinite(dum)))= mean(dum','omitnan');
     [d1,order] = sort(dum);
-    if d1(1)==d1(end),
+    if d1(1)==d1(end)
       dum2 = [dum2; d1(1:3)];
-    else,
+    else
       dum([order(1),order(end)])  = nan;
       dum2 = [dum2; dum(isfinite(dum))];
     end

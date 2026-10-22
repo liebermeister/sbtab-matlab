@@ -8,7 +8,7 @@ function [data_average, data_replicates, data_central, statistics, options_compl
 % The entries of the first field are used as unique identifiers
 % The data entries are reordered in the combined data set.
 %
-% data_average, data_replicates, 
+% data_average, data_replicates,
 % data_central (struct arrays):   regression results
 % statistics:                     additional information about the regression procedure
 % data_collected (struct arrays): data structure from intermediate processing steps
@@ -28,7 +28,7 @@ eval(default('options','struct'));
 
 % -------------------------------
 % Do replicate regression: build tables data_central and data_average
-% and list of tables data_replicates, 
+% and list of tables data_replicates,
 
 [data_average, data_replicates, data_central, ~, ~, ~, options_complete, statistics, options_update] = replicate_regression_biotable(data_combined, options);
 
@@ -36,16 +36,16 @@ eval(default('options','struct'));
 % If option prior_updating is set, repeat everything to update the prior
 % Revisit prior assumptions: update data error bars and priors and rerun estimation
 
-if isfield(options,'prior_updating'),
-  if isfinite(options.prior_updating),
-    
-    for it = 1:options.prior_updating,
+if isfield(options,'prior_updating')
+  if isfinite(options.prior_updating)
+
+    for it = 1:options.prior_updating
       display(sprintf('Updating the priors: iteration %d',it));
       my_options                = join_struct(options, options_update);
       my_options.verbose        = 0;
       my_options.prior_updating = nan;
       [data_average, data_replicates, data_central, ~, ~, ~, options_complete, statistics, options_update] = replicate_regression_biotable(data_combined, my_options);
     end
-    
+
   end
 end

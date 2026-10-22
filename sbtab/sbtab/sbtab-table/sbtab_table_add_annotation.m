@@ -3,16 +3,16 @@ function t = sbtab_table_add_annotation(t,column_old,column_new,item_old,item_ne
 % SBTAB_TABLE_ADD_ANNOTATION Insert annotation column into a table.
 %
 % t = sbtab_table_add_annotation(t,column_old,column_new,item_old,item_new)
-% 
+%
 % instead of two lists 'item_old' and 'item new', one can also give them as an N x 2 list in the argument item_old
 
 eval(default('sbtab_file_out','[]','item_new','[]'));
-  
-if isstr(t),
+
+if isstr(t)
   t = sbtab_table_load(t);
 end
 
-if isempty(item_new),
+if isempty(item_new)
   item_new = item_old(:,2);
   item_old = item_old(:,1);
 end

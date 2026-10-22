@@ -1,8 +1,8 @@
-function data = biotable_smooth_mean(data) 
+function data = biotable_smooth_mean(data)
 
-% data = biotable_smooth_mean(data) 
+% data = biotable_smooth_mean(data)
 %
-% preprocess data table in order to reach a smooth behavior 
+% preprocess data table in order to reach a smooth behavior
 % of the geometric mean as a function of time
 
 mm            = median(log(data.DataMean),1,'omitnan');

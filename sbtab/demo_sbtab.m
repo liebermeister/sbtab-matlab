@@ -34,4 +34,3 @@ s.Reaction
 
 s = sbtab_to_struct(sbtab_doc,'column');
 s.Reaction
-

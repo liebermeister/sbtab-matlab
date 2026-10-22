@@ -7,7 +7,7 @@ function x = sbtab_cell_to_numbers(c)
 % c: cell array whose entries are strings or numbers
 % Empty and non-numeric entries are converted to NaN
 
-if ~iscell(c),
+if ~iscell(c)
   x = c;
   return
 end

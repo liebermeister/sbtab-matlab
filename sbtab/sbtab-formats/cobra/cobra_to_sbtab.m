@@ -1,7 +1,7 @@
 function sbtab_object = cobra_to_sbtab(cobra_object)
 
 % sbtab_object = cobra_to_sbtab(cobra_object)
-% 
+%
 % conversion from cobra matlab object to sbtab object
 %
 % usage example:

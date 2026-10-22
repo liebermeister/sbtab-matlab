@@ -14,7 +14,7 @@ options_default = struct('extension','.tsv');
 eval(default('p','struct'));
 p = join_struct(options_default,p);
 
-if ~endsWith(basename, {'.txt','.csv','.tsv'}),
+if ~endsWith(basename, {'.txt','.csv','.tsv'})
   basename = [basename, p.extension];
 end
 
@@ -38,4 +38,3 @@ data.DataMean   =  cell_string2num(A(3:end,n_name_columns+1:2:end-1));
 data.DataStd    =  cell_string2num(A(3:end,n_name_columns+2:2:end));
 
 data.Info = {};
-

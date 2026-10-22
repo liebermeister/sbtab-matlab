@@ -9,29 +9,29 @@ function t = sbtab_table_subselect_items(t,column,sbtab_file_out,given_entry)
 
 eval(default('sbtab_file_out','[]'));
 
-if isstr(t),
+if isstr(t)
   t = sbtab_table_load(t);
 end
 
 column = sbtab_clean_column_headers(column);
 
-if exist('given_entry','var'),
+if exist('given_entry','var')
   ind = find(strcmp(given_entry,t.column.column.(column)));
 else
   ind = find(cellfun('length',t.column.column.(column)));
 end
 
 fn = fieldnames(t.column.column);
-for it = 1:length(fn),
+for it = 1:length(fn)
   t.column.column.(fn{it}) = t.column.column.(fn{it})(ind);
 end
-if length(t.data.ind),
+if length(t.data.ind)
   t.data.data = t.data.data(ind,:);
 end
-if length(t.uncontrolled.ind),
+if length(t.uncontrolled.ind)
   t.uncontrolled.data = t.uncontrolled.data(ind,:);
 end
 
-if length(sbtab_file_out),
+if length(sbtab_file_out)
   sbtab_table_save(t,struct('filename',sbtab_file_out));
 end

@@ -6,14 +6,14 @@ function my_sbtab_table = sbtab_table_add_column(my_sbtab_table,column_name,my_c
 
 eval(default('is_sbtab_column','1'));
 
-if is_sbtab_column,
+if is_sbtab_column
   old_names = my_sbtab_table.column.column_names;
 else
   old_names = my_sbtab_table.uncontrolled.headers;
 end
 new_names = [column(old_names); column_name];
 
-if length(unique(new_names)) < length(new_names),
+if length(unique(new_names)) < length(new_names)
   error('The column name exists already');
 end
 
@@ -23,14 +23,14 @@ column_name = sbtab_clean_column_headers(column_name);
 
 indices = [my_sbtab_table.column.ind, my_sbtab_table.uncontrolled.ind];% , my_sbtab_table.data.ind];
 
-if is_sbtab_column,
+if is_sbtab_column
   my_sbtab_table.column.column_names  = [column(my_sbtab_table.column.column_names); old_column_name];
   my_sbtab_table.column.column.(column_name) = my_column;
   my_sbtab_table.column.ind           = [my_sbtab_table.column.ind max(indices)+1];
 else
   my_sbtab_table.uncontrolled.headers = [column(my_sbtab_table.uncontrolled.headers)', {old_column_name}];
   my_sbtab_table.uncontrolled.ind     = [my_sbtab_table.uncontrolled.ind max(indices)+1];
-  if isnumeric(my_column),
+  if isnumeric(my_column)
     my_column = num2cell(my_column);
   end
   my_sbtab_table.uncontrolled.data    = [my_sbtab_table.uncontrolled.data, column(my_column)];

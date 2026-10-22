@@ -9,10 +9,10 @@ function my_cell = sbtab_table_to_cell(my_sbtab_table, options)
 
 eval(default('options','struct'));
 
-if isfield(options,'filename'),
+if isfield(options,'filename')
   options = rmfield(options,'filename');
 end
 
-my_sbtab_table = sbtab_table_add_attribute(my_sbtab_table,'TableOrientation','Normal'); 
+my_sbtab_table = sbtab_table_add_attribute(my_sbtab_table,'TableOrientation','Normal');
 
 my_cell = sbtab_table_save(my_sbtab_table, options);

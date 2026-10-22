@@ -1,6 +1,6 @@
 % Matlab data structure for omics data matrices (metabolites, fluxes, proteins, expression)
 %
-% REPRESENTATION IN MATLAB: CELL STRUCTURE 
+% REPRESENTATION IN MATLAB: CELL STRUCTURE
 %
 % The first n fields contain names, IDs etc. of the biological elements (as string lists)
 % The number n of these fields may vary
@@ -19,11 +19,11 @@
 %   1. File [name].tsv: contains everything except for .Info
 %    First n columns: contents of the first n fields
 %    Remaining columns: data, columns appear in the order
-%        "[sample1] Mean" "[sample1] Std" "[sample2] Mean" "[sample2] Std" etc 
+%        "[sample1] Mean" "[sample1] Std" "[sample2] Mean" "[sample2] Std" etc
 %    First row: column headers
 %    Second row: sample times
 %    Remaining rows: contents
-%   
+%
 %   2. File [name]_info.tsv: contains the contents of .Info
 %
 % (II) SBtab files

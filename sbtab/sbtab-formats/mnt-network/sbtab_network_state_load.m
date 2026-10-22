@@ -20,8 +20,8 @@ v  = cell_string2num(sbtab_v.Value(ll));
 dmu = [];
 keq = [];
 
-if nargout > 3,
-  if find(strcmp('ReactionGibbsFreeEnergy',sbtab_document_get_table_names(sbtab))),
+if nargout > 3
+  if find(strcmp('ReactionGibbsFreeEnergy',sbtab_document_get_table_names(sbtab)))
     sbtab_dmu = sbtab_to_struct(sbtab_document_get_table(sbtab,'ReactionGibbsFreeEnergy'),'column');
     ll = label_names(network.actions,sbtab_dmu.Reaction);
     dmu  = cell_string2num(sbtab_dmu.Value(ll));
@@ -30,8 +30,8 @@ if nargout > 3,
   end
 end
 
-if nargout > 4,
-  if find(strcmp('EquilibriumConstant',sbtab_document_get_table_names(sbtab))),
+if nargout > 4
+  if find(strcmp('EquilibriumConstant',sbtab_document_get_table_names(sbtab)))
     sbtab_dmu = sbtab_to_struct(sbtab_document_get_table(sbtab,'EquilibriumConstant'),'column');
     ll = label_names(network.actions,sbtab_dmu.Reaction);
     keq  = cell_string2num(sbtab_dmu.Value(ll));

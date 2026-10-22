@@ -10,7 +10,7 @@ dum_mean   = data.DataMean;
 dum_std    = data.DataStd;
 ii         = label_names(lower(names),lower(getfield(data,namefield)));
 
-for it = 1:n_names,
+for it = 1:n_names
   a = getfield(data,fn{it});
   ddata = setfield(ddata,fn{it},repmat({''},length(names),1));
   ddata.(fn{it})(find(ii)) = a(ii(find(ii)));

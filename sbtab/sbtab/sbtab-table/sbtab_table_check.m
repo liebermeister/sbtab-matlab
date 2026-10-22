@@ -9,8 +9,8 @@ function sbtab_table_check(sbtab,type)
 
 eval(default('type','[]'));
 
-if ~isfield(sbtab.attributes,'TableType'),
+if ~isfield(sbtab.attributes,'TableType')
   warning('No table type specified');
-elseif ~isempty(type) && ~strcmp(sbtab.attributes.TableType,type),
+elseif ~isempty(type) && ~strcmp(sbtab.attributes.TableType,type)
   warning('Table type is "%s" (expected "%s")', sbtab.attributes.TableType, type);
 end

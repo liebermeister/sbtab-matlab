@@ -11,19 +11,19 @@ function my_sbtab_document = sbtab_document_load(table_names,filenames)
 %  table_names: cell array of table names (used as table IDs in the document)
 %  filenames  : cell array of corresponding input files (each containing one table)
 
-if nargin==1,
+if nargin==1
   % remove empty entries
-  if iscell(table_names),
+  if iscell(table_names)
     table_names = table_names(find(cellfun('length',table_names)));
   end
   my_sbtab_document = sbtab_document_load_from_one(table_names);
 
-else  
+else
   my_sbtab_document = sbtab_document_construct;
 
-  for it = 1:length(table_names),
-      my_sbtab_table = sbtab_table_load(filenames{it});
-      my_sbtab_document = sbtab_document_add_table(my_sbtab_document,table_names{it},my_sbtab_table);
+  for it = 1:length(table_names)
+    my_sbtab_table = sbtab_table_load(filenames{it});
+    my_sbtab_document = sbtab_document_add_table(my_sbtab_document,table_names{it},my_sbtab_table);
   end
 
 end
