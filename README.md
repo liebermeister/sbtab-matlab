@@ -7,7 +7,7 @@ This repository contains Matlab code for SBtab. For python code and a larger col
 
 ## Installation
 
-Download or clone the repository and add the `sbtab` folder, with its subfolders, to your Matlab path:
+Download or clone the repository and add the `matlab` folder, with its subfolders, to your Matlab path:
 
 ```matlab
 addpath(genpath('/path/to/sbtab-matlab/sbtab'));
@@ -49,9 +49,9 @@ sbtab_document_save(sbtab_document, 'my_model.tsv');     % save the document to 
 
 ## Contents
 
-- **`sbtab/sbtab`**: SBtab tables (`sbtab-table`) and documents (`sbtab-document`), functions for both
+- **`matlab/sbtab`**: SBtab tables (`sbtab-table`) and documents (`sbtab-document`), functions for both
   (`sbtab`), and utility functions (`sbtab-utils`)
-- **`sbtab/sbtab-formats`**: conversion between SBtab and other formats: network models of the
+- **`matlab/sbtab-formats`**: conversion between SBtab and other formats: network models of the
   Metabolic Network Toolbox, omics data ("biotable" data structure), SBML and COBRA models, and
   Matlab structs with tool options
 - **`resources/examples`**: example files (SBtab, SBML, COBRA)
