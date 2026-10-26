@@ -44,6 +44,8 @@ assert(isequal(c(2,1:3), {'!ComponentName','!ComponentType','!IsPartOf'}));
 %% the table key: TableID in version 1.1, TableName in version 1.0
 t10 = sbtab_table_construct(struct('TableName','C','TableTitle','My compounds','TableType','Compound','SBtabVersion','1.0'), {'ID'}, {{'A'}});
 c = sbtab_table_save(t10);
+assert(contains(c{1,1}, 'TableID=''C''') && contains(c{1,1}, 'TableName=''My compounds''') && ~contains(c{1,1}, 'TableTitle'));
+c = sbtab_table_save(sbtab_table_construct(struct('TableName','C','TableType','Compound','SBtabVersion','1.0'), {'ID'}, {{'A'}}));
 assert(contains(c{1,1}, 'TableID=''C''') && ~contains(c{1,1}, 'TableName'));
 c = sbtab_table_save(t10, struct('sbtab_version','1.0'));
 assert(contains(c{1,1}, 'TableName=''C''') && contains(c{1,1}, 'TableTitle=''My compounds''') && ~contains(c{1,1}, 'TableID'));

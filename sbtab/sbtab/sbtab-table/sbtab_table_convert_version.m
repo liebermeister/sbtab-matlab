@@ -13,7 +13,9 @@ function my_sbtab_table = sbtab_table_convert_version(my_sbtab_table, v)
 %      1.1: !Name          !Type          !Parent
 %  - the table key (shortname) is TableName in 1.0 and TableID in 1.1:
 %      1.1: a missing TableID is set to the TableName; a TableName that only
-%           repeats the TableID is removed
+%           repeats the TableID is removed. If the table's SBtabVersion is missing
+%           or differs from 1.1 and there is no other TableName, the TableTitle
+%           (1.0) becomes the TableName (free text)
 %      1.0: a TableID that only repeats the TableName is removed. If the table's
 %           SBtabVersion is missing or differs from 1.0, TableName is set to the
 %           TableID (a different TableName is kept as TableTitle, unless there is
@@ -51,6 +53,10 @@ switch v
     end
     if isfield(a, 'TableID') && isfield(a, 'TableName') && strcmp(a.TableID, a.TableName)
       a = rmfield(a, 'TableName');
+    end
+    if ~version_unchanged && ~isfield(a, 'TableName') && isfield(a, 'TableTitle')
+      a.TableName = a.TableTitle;
+      a = rmfield(a, 'TableTitle');
     end
     if ~isfield(a, 'TableID')
       warning('SBtab 1.1: the table has no TableID');
