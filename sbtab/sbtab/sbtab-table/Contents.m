@@ -6,6 +6,7 @@
 %   sbtab_table_load_from_document   - load one table from a document file
 %   sbtab_table_save                 - save an SBtab table (or convert it into a cell array)
 %   sbtab_table_print                - display an SBtab table
+%   sbtab_table_convert_version      - adapt a table to an SBtab version (used when saving)
 %   matrix_to_sbtab_table            - construct a table of type 'Matrix' from a matrix
 %   struct_to_sbtab_table            - construct an SBtab table from a struct of columns
 %

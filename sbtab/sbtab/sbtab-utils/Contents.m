@@ -1,6 +1,7 @@
 % Utility functions
 %
-% sbtab_version                 - SBtab version
+% sbtab_version                 - default SBtab version for writing files ('1.1')
+% sbtab_check_version           - check an SBtab version number for writing files
 % sbtab_basedir                 - folder of the toolbox
 % sbtab_resourcedir             - folder with resources (example files)
 % sbtab_load_example            - load an example file

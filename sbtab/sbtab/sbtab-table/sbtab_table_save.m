@@ -7,7 +7,11 @@ function my_table = sbtab_table_save(my_sbtab_table, options)
 % options.filename
 % options.omit_declarations
 % options.flag_latex
-% options.add_date_and_sbtab_version
+% options.sbtab_version              SBtab version to be written ('1.0' or '1.1'; default: see 'sbtab_version')
+% options.add_date_and_sbtab_version add the attribute Date
+%
+% The attribute SBtabVersion is always written in the declaration line; for the
+% changes made to adapt the table to the SBtab version, see 'sbtab_table_convert_version'.
 %
 % OR: options itself contains the filename
 
@@ -17,7 +21,7 @@ if isstr(options)
   options = struct('filename',options);
 end
 
-options_default = struct('filename',[],'omit_declarations',0,'flag_latex',0,'verbose',0,'add_date_and_sbtab_version',0);
+options_default = struct('filename',[],'omit_declarations',0,'flag_latex',0,'verbose',0,'add_date_and_sbtab_version',0,'sbtab_version',[]);
 options         = join_struct(options_default,options);
 
 if options.flag_latex
@@ -34,10 +38,9 @@ my_table = {'!!SBtab'};
 
 if options.add_date_and_sbtab_version
   my_sbtab_table.attributes.Date = datestr(date,29);
-  if ~isfield(my_sbtab_table.attributes,'SBtabVersion')
-    my_sbtab_table.attributes.SBtabVersion = num2str(sbtab_version);
-  end
 end
+
+my_sbtab_table = sbtab_table_convert_version(my_sbtab_table, options.sbtab_version);
 
 attribute_types  = fieldnames(my_sbtab_table.attributes);
 % a TableID that only repeats the TableName (set when loading SBtab 1.0 files) is not written

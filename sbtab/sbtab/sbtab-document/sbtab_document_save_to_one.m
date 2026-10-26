@@ -1,12 +1,15 @@
-function sbtab_document_save_to_one(sbtab_document,filename,verbose,flag_latex)
+function sbtab_document_save_to_one(sbtab_document,filename,verbose,flag_latex,sbtab_version)
 
 % SBTAB_DOCUMENT_SAVE_TO_ONE Save SBtab document to one file (with concatenated tables)
 %
-% sbtab_document_save_to_one(sbtab_document,filename,verbose,flag_latex)
+% sbtab_document_save_to_one(sbtab_document,filename,verbose,flag_latex,sbtab_version)
 %
+% sbtab_version: SBtab version to be written ('1.0' or '1.1'; default: see 'sbtab_version');
+%                it is written in the document declaration line and in all table declaration lines
 % (The argument flag_latex is not used)
 
-eval(default('flag_latex','0','verbose','1'));
+eval(default('flag_latex','0','verbose','1','sbtab_version','[]'));
+sbtab_version = sbtab_check_version(sbtab_version);
 add_date_and_sbtab_version = 1;
 
 fn = fieldnames(sbtab_document.tables);
@@ -15,10 +18,8 @@ my_table = {};
 
 if add_date_and_sbtab_version
   sbtab_document.attributes.Date = datestr(date,29);
-  if ~isfield(sbtab_document.attributes,'SBtabVersion')
-    sbtab_document.attributes.SBtabVersion = num2str(sbtab_version);
-  end
 end
+sbtab_document.attributes.SBtabVersion = sbtab_version;
 
 if length(sbtab_document.attributes)
   my_table{1} = ['!!!SBtab'];
@@ -36,7 +37,7 @@ for it = 1:length(fn)
   if ~isfield(my_sbtab_table.attributes, 'TableID')
     warning('Table ID is missing');
   end
-  my_sbtab_table_flat = sbtab_table_save(my_sbtab_table);
+  my_sbtab_table_flat = sbtab_table_save(my_sbtab_table,struct('sbtab_version',sbtab_version));
   if it>0
     my_sbtab_table_flat = [[{sprintf('')}, repmat({''},1,size(my_sbtab_table_flat,2)-1) ]; my_sbtab_table_flat];
   end
