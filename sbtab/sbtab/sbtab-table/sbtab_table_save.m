@@ -50,7 +50,11 @@ for it = 1:length(attribute_types)
   if isnumeric(attribute_value) || islogical(attribute_value)
     attribute_value = num2str(attribute_value);
   end
-  attribute_string = [ attribute_types{it} '=''' attribute_value '''' ];
+  attribute_name = attribute_types{it};
+  if isfield(my_sbtab_table.column,'constant_names') && sum(strcmp(my_sbtab_table.column.constant_names,attribute_name))
+    attribute_name = [':' attribute_name];
+  end
+  attribute_string = [ attribute_name '=''' attribute_value '''' ];
   my_table{1,1} = [   my_table{1,1} ' '  attribute_string];
  end
 

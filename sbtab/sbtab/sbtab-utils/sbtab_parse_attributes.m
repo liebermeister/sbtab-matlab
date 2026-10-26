@@ -1,4 +1,4 @@
-function attributes = sbtab_parse_attributes(declaration_line)
+function [attributes, constant_columns] = sbtab_parse_attributes(declaration_line)
 
 % SBTAB_PARSE_ATTRIBUTES Read the attributes from an SBtab declaration line
 %
@@ -6,6 +6,8 @@ function attributes = sbtab_parse_attributes(declaration_line)
 %
 % declaration_line: string, or cell array of strings (the cells of a '!!SBtab' or '!!!SBtab' line)
 % attributes      : struct with one field per attribute (values are strings)
+% constant_columns: names (Matlab field names) of the attributes written with ':' (e.g. ':Unit'),
+%                   which stand for columns with the same value in every row
 %
 % Attributes have the form Name='value' or Name="value" and may be spread over several cells
 % or written in one cell. Values may contain spaces, '=' and the other type of quote;
@@ -26,8 +28,11 @@ line = regexprep(line, '^\s*!*\s*SBtab\s*', '', 'ignorecase');
 tokens = regexp(line, '([^\s=]+)\s*=\s*(''[^'']*''|"[^"]*"|[^\s''"]*)', 'tokens');
 
 attributes = struct;
+constant_columns = {};
 for it = 1:length(tokens)
-  name  = strrep(strrep(tokens{it}{1}, '!', ''), ':', '');
+  name  = strrep(tokens{it}{1}, '!', '');
+  is_constant_column = strncmp(name, ':', 1);
+  name  = strrep(name, ':', '');
   value = tokens{it}{2};
   if length(value) >= 2 && any(value(1) == '''"')
     value = value(2:end-1);
@@ -40,4 +45,7 @@ for it = 1:length(tokens)
     name = ['x' name];
   end
   attributes.(name) = strtrim(value);
+  if is_constant_column
+    constant_columns{end+1} = name;
+  end
 end

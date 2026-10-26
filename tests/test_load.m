@@ -83,6 +83,22 @@ assert(strcmp(a.Plain, 'value'));
 a = sbtab_parse_attributes(['!!SBtab TableType=' char(8217) 'Compound' char(8217)]);
 assert(strcmp(a.TableType, 'Compound'));
 
+%% attributes written with ':' act as columns; attributes without ':' do not
+f = fullfile(d, 'unit.tsv');
+write_file(f, ['!!SBtab TableType=''Quantity'' TableName=''Conc'' :Unit=''mM'' ValueType=''Mean''' newline ...
+               '!ID' tab '!Value' newline 'c1' tab '1' newline 'c2' tab '2' newline]);
+t = sbtab_table_load(f);
+assert(sbtab_table_has_column(t, 'Unit'));
+assert(isequal(sbtab_table_get_column(t, 'Unit'), {'mM'; 'mM'}));
+assert(strcmp(t.attributes.Unit, 'mM'));
+assert(~sbtab_table_has_column(t, 'ValueType'));
+assert(isempty(sbtab_table_get_column(t, 'ValueType', 0, 0)));
+f2 = fullfile(d, 'unit_saved.tsv');
+sbtab_table_save(t, f2);
+text = fileread(f2);
+assert(contains(text, ':Unit=''mM''') && contains(text, ' ValueType=''Mean'''));
+assert(isequal(sbtab_table_get_column(sbtab_table_load(f2), 'Unit'), {'mM'; 'mM'}));
+
 %% problems that lead to warnings instead of errors
 my_table = {'!!SBtab TableType=''Compound'' TableName=''C''', '', '';
             '!ID', '', '!Name';

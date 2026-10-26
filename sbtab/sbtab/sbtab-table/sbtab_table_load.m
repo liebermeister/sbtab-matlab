@@ -57,7 +57,7 @@ end
 % -------------------------------------------------------
 % Attributes
 
-attributes = sbtab_parse_attributes(attribute_line);
+[attributes, constant_columns] = sbtab_parse_attributes(attribute_line);
 
 if ~isfield(attributes,'TableType')
   warning('Table type missing in file %s', filename_string(filename));
@@ -166,6 +166,10 @@ sbtab.column.column     = column;
 sbtab.column.column_names = column_names;
 sbtab.column.attributes = column_attributes;
 sbtab.column.ind        = ind_column;
+if length(constant_columns)
+  % attributes like ':Unit' (columns with the same value in all rows; see sbtab_table_get_column)
+  sbtab.column.constant_names = constant_columns;
+end
 sbtab.data.headers      = data_headers;
 sbtab.data.attributes   = data_attributes;
 sbtab.data.data         = data;
