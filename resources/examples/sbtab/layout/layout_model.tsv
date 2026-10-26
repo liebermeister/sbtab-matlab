@@ -1,19 +1,19 @@
-!!!SBtab SBtabVersion='1.2' Document='TestModel' Name='TestModel' Date='2018-11-23'
-!!SBtab TableID='compartment' SBtabVersion='1.2' Document='layout' TableType='Compartment' TableID='Compartment' Date='2018-11-23'
+!!!SBtab SBtabVersion='1.0' DocumentName='TestModel' Name='TestModel' Date='2018-11-23'
+!!SBtab SBtabVersion='1.0' Document='layout' TableType='Compartment' TableName='Compartment' Date='2018-11-23'
 !ID	!Name	!Size	!Unit	!SBOTerm
 Compartment_1	Compartment_1	nan		
 
-!!SBtab TableID='compound' SBtabVersion='1.2' Document='layout' TableType='Compound' TableID='Compound' Date='2018-11-23'
+!!SBtab SBtabVersion='1.0' Document='layout' TableType='Compound' TableName='Compound' Date='2018-11-23'
 !ID	!Name	!Location	!IsConstant	!SBOTerm	!InitialConcentration	!hasOnlySubstanceUnits
 Species_1		Compartment_1	False		nan	False
 Species_2		Compartment_1	False		nan	False
 
-!!SBtab TableID='reaction' SBtabVersion='1.2' Document='layout' TableType='Reaction' TableID='Reaction' Date='2018-11-23'
+!!SBtab SBtabVersion='1.0' Document='layout' TableType='Reaction' TableName='Reaction' Date='2018-11-23'
 !ID	!Name	!ReactionFormula	!Location	!Regulator	!KineticLaw	!SBOTerm	!IsReversible
 Reaction_1		1 Species_1 <=> 1 Species_2 <=> 					False
 Reaction_2		1 Species_2 <=> 1 Species_1 <=> 					False
 
-!!SBtab TableID='layout' SBtabVersion='1.2' Document='layout' TableType='Layout' TableID='SBML Layout' Date='2018-11-23'
+!!SBtab SBtabVersion='1.0' Document='layout' TableType='Layout' TableName='SBML Layout' Date='2018-11-23'
 !ID	!Name	!ModelEntity	!SBML:compartment:id	!SBML:reaction:id	!SBML:species:id	!CurveSegment	!SBML:X	!SBML:Y	!SBML:width	!SBML:height
 Layout_1		LayoutCanvas							400.0	220.0
 CompartmentGlyph_1		Compartment	Compartment_1				5.0	5.0	390.0	210.0

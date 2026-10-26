@@ -1,4 +1,4 @@
-!!SBtab SBtabVersion='1.0' TableType='Quantity' TableID='Parameter' Document='pfk_data.tsv' Date='2018-04-16'
+!!SBtab SBtabVersion='1.0' TableType='Quantity' TableName='Parameter' Document='pfk_data.tsv' Date='2018-04-16'
 !QuantityType	!Reaction:SBML:reaction:id	!Compound:SBML:species:id	!Mode	!Unit	!UnconstrainedGeometricMean	!UnconstrainedGeometricStd	!UnconstrainedMean	!UnconstrainedStd
 standard chemical potential		ATP_c	-2299.3779	kJ/mol	NaN	NaN	-2299.3779	8.8007
 concentration		ATP_c	1.4006	mM	1.4006	1.2975	1.4489	0.3838
