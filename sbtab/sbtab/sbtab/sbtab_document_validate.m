@@ -314,7 +314,7 @@ end
 % R31: pointers !>Table:Row refer to existing rows
 if strcmp(version, '1.1')
   for c = column_names(strncmp(column_names, '>', 1))
-    parts = strsplit(c{1}(2:end), ':');
+    parts = regexp(c{1}(2:end), ':', 'split');
     if length(parts) == 2
       target = find_table(sbtab_document, parts{1});
       if isempty(target)
@@ -341,7 +341,7 @@ undefined = {};
 for it = 1:length(formulae)
   f = strtrim(formulae{it});
   if isempty(f), continue; end
-  sides = strsplit(f, '<=>');
+  sides = regexp(f, '<=>', 'split');
   if length(sides) ~= 2
     messages = add(messages, 'Error', 'R52', label, sprintf('Reaction formula "%s" does not contain exactly one arrow <=>', f));
     continue
@@ -350,7 +350,7 @@ for it = 1:length(formulae)
     s = strtrim(side{1});
     if isempty(s), continue; end
     for term = regexp(s, '\s+\+\s+', 'split')
-      tokens = strsplit(strtrim(term{1}));
+      tokens = regexp(strtrim(term{1}), '\s+', 'split');
       if length(tokens) == 2
         coefficient = str2double(tokens{1});
         if isnan(coefficient)

@@ -54,7 +54,8 @@ end
 rows = cell(length(lines), 1);
 for it = 1:length(lines)
   if strcmp(delimiter, sprintf('\t'))
-    rows{it} = strsplit(lines{it}, delimiter, 'CollapseDelimiters', false);
+    % regexp instead of strsplit, which is shadowed by other toolboxes on some paths
+    rows{it} = regexp(lines{it}, '\t', 'split');
   else
     rows{it} = split_quoted(lines{it}, delimiter);
   end

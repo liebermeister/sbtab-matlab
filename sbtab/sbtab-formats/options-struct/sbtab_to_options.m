@@ -8,7 +8,11 @@ function options = sbtab_to_options(sbtab)
 %
 % For the conversion in the other direction, see 'options_to_sbtab'
 
-[options,attributes] = sbtab_table_to_simple_struct(sbtab,'Option','Value');
+% option names in column !ID (in older files: !Option)
+option_column = 'ID';
+if ~sbtab_table_has_column(sbtab,'ID'), option_column = 'Option'; end
+
+[options,attributes] = sbtab_table_to_simple_struct(sbtab,option_column,'Value');
 
 fn = fieldnames(options);
 
