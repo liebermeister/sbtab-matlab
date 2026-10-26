@@ -40,6 +40,11 @@ if options.add_date_and_sbtab_version
 end
 
 attribute_types  = fieldnames(my_sbtab_table.attributes);
+% a TableID that only repeats the TableName (set when loading SBtab 1.0 files) is not written
+if isfield(my_sbtab_table.attributes,'TableID') && isfield(my_sbtab_table.attributes,'TableName') ...
+    && strcmp(my_sbtab_table.attributes.TableID, my_sbtab_table.attributes.TableName)
+  attribute_types = setdiff(attribute_types, {'TableID'}, 'stable');
+end
 for it = 1:length(attribute_types)
   attribute_value = my_sbtab_table.attributes.(attribute_types{it});
   if isnumeric(attribute_value) || islogical(attribute_value)

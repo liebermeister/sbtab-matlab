@@ -13,11 +13,11 @@ eval(default('my_table', '[]', 'flag_remove_comments', '0','table_id','[]'));
 
 if isempty(my_table)
   try
-    my_table = load_unformatted_table(filename);
+    my_table = sbtab_load_text_table(filename);
     my_table = remove_comment_lines(my_table);
-  catch
+  catch err
     if isstr(filename)
-      error(sprintf('I could not import the file %s',  filename))
+      error(sprintf('I could not import the file %s (%s)',  filename, err.message))
     else
       error(sprintf('I could not import the file'))
     end
@@ -34,8 +34,10 @@ if strncmp('!!!',my_table{1,1},3)
   my_table = my_table(2:end,:);
 end
 
-if sum(strncmp(my_table(:,1),'!!',2))>1
-  error(sprintf('Input file %s contains several tables; it cannot be loaded as one table. In the sbtab_table_load command, please specify the table ID ',filename));
+ind_declarations = find(strncmp(my_table(:,1),'!!',2));
+if length(ind_declarations)>1
+  warning('Input file %s contains several tables; only the first one is loaded. To load another table, please specify its table ID (or use sbtab_document_load)', filename_string(filename));
+  my_table = my_table(1:ind_declarations(2)-1,:);
 end
 
 attribute_line = {};
@@ -49,66 +51,29 @@ while cont * length(my_table)
 end
 
 if isempty(my_table)
-  error(sprintf('No declaration line (starting with !!SBtab) found in file %s',filename));
-end
-
-if length(attribute_line)
-
-  for it = 1:length(attribute_line)
-    if length(attribute_line{it})
-      attribute_line{it} = strrep(attribute_line{it},'''','"');
-      attribute_line{it} = strrep(attribute_line{it},'’','"');
-    end
-  end
-
-  attr_line = attribute_line{1};
-  for it = 2:length(attribute_line)
-    if length(attribute_line{it})
-      attr_line = sprintf('%s\t%s',attr_line, attribute_line{it});
-    end
-  end
-  attr_line = strrep(attr_line,'   ',' ');
-  attr_line = strrep(attr_line,'  ',' ');
-  attr_line = strrep(attr_line,''' ',sprintf('\t'));
-  attr_line = strrep(attr_line,'" ',sprintf('\t'));
-  attribute_line = Strsplit(sprintf('\t'),attr_line);
+  error(sprintf('No declaration line (starting with !!SBtab) found in file %s',filename_string(filename)));
 end
 
 % -------------------------------------------------------
 % Attributes
 
-attributes = struct;
-
-if length(attribute_line)
-  attribute_line{1}=strrep(attribute_line{1},'!!SBtab ','');
-  attribute_line{1}=strrep(attribute_line{1},'!!Sbtab ','');
-end
-
-for it=1:length(attribute_line)
-  attribute_line{it} = strrep(attribute_line{it}, '= ','=');
-  mm = Strsplit('=',attribute_line{it});
-  if length(mm) == 2
-    mm{1} = deblank(strrep(mm{1},'!',''));
-    mm{1} = strrep(mm{1},':','');
-    mm{2} = strrep(mm{2},'''','');
-    mm{2} = deblank(strrep(mm{2},'"',''));
-    attributes = setfield(attributes,mm{1},mm{2});
-  end
-end
+attributes = sbtab_parse_attributes(attribute_line);
 
 if ~isfield(attributes,'TableType')
-  %warning(sprintf('Table type missing in file %s', filename));
+  warning('Table type missing in file %s', filename_string(filename));
   attributes.TableType = 'unknown';
 end
 
-%if ~isfield(attributes,'TableName'),
-%  warning(sprintf('Table name missing in file %s', filename));
-%  attributes.TableName = 'unknown';
-%end
+% The table ID (used to identify the table in an SBtab document) is the attribute TableID
+% (in SBtab files before version 1.0) or, otherwise, the attribute TableName
 
 if ~isfield(attributes,'TableID')
-  warning(sprintf('Table ID missing in file %s',filename));
-  attributes.TableID = 'unknown';
+  if isfield(attributes,'TableName') && ~isempty(attributes.TableName)
+    attributes.TableID = attributes.TableName;
+  else
+    warning('Table name missing in file %s (table type %s)', filename_string(filename), attributes.TableType);
+    attributes.TableID = attributes.TableType;
+  end
 end
 
 % -------------------------------------------------------
@@ -129,8 +94,10 @@ end
 my_table = my_table(:, ~all(cellfun('isempty',my_table),1));
 
 % detect empty column header
-if sum(double(cellfun('isempty',my_table(1,:))))
-  error(sprintf('Column header missing in file %s',filename));
+ind_no_header = find(cellfun('isempty',my_table(1,:)));
+if length(ind_no_header)
+  warning('Column header missing in file %s; the column(s) without header are ignored', filename_string(filename));
+  my_table = my_table(:,setdiff(1:size(my_table,2),ind_no_header));
 end
 
 rows = struct;
@@ -211,6 +178,16 @@ if flag_remove_comments
   sbtab = sbtab_table_remove_comment_lines(sbtab);
 end
 
+
+% -----------------------------------------------------
+
+function s = filename_string(filename)
+
+if ischar(filename)
+  s = filename;
+else
+  s = '';
+end
 
 % -----------------------------------------------------
 

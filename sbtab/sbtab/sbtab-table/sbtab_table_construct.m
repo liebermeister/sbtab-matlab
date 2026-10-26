@@ -23,7 +23,12 @@ if ~isfield(attributes,'TableType')
 end
 
 if ~isfield(attributes,'TableID')
-  error('TableID attribute is missing');
+  if isfield(attributes,'TableName') && ~isempty(attributes.TableName)
+    attributes.TableID = attributes.TableName;
+  else
+    warning('TableID and TableName attributes are missing; the table type is used as table ID');
+    attributes.TableID = attributes.TableType;
+  end
 end
 
 my_sbtab_table = struct('attributes',{attributes},'column',struct,'rows',struct,'data',struct('ind',[]),'uncontrolled',struct('ind',[]));

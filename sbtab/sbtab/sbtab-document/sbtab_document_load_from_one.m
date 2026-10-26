@@ -26,9 +26,7 @@ my_sbtab_document = sbtab_document_construct;
 
 flag_remove_comment_lines = 1;
 
-my_table  = load_unformatted_table(filename);
-ind_empty = find(cellfun('size',my_table(:),1)==0);
-my_table(ind_empty) = repmat({''},length(ind_empty),1);
+my_table  = sbtab_load_text_table(filename);
 
 if flag_remove_comment_lines
   my_table = remove_comment_lines(my_table);
@@ -41,50 +39,12 @@ split_lines = setdiff(split_lines,attribute_line_number);
 
 % ---------------------------------------------
 
-attribute_line = my_table(attribute_line_number,1);
-
-if length(attribute_line)
-
-  for it = 1:length(attribute_line)
-    if length(attribute_line{it})
-      attribute_line{it} = strrep(attribute_line{it},'''','"');
-      attribute_line{it} = strrep(attribute_line{it},'’','"');
-    end
-  end
-
-  attr_line = attribute_line{1};
-  for it = 2:length(attribute_line)
-    if length(attribute_line{it})
-      attr_line = sprintf('%s\t%s',attr_line, attribute_line{it});
-    end
-  end
-  attr_line = strrep(attr_line,'   ',' ');
-  attr_line = strrep(attr_line,'  ',' ');
-  attr_line = strrep(attr_line,''' ',sprintf('\t'));
-  attr_line = strrep(attr_line,'" ',sprintf('\t'));
-  attribute_line = Strsplit(sprintf('\t'),attr_line);
-end
-
-% -------------------------------------------------------
-% Attributes
-
 attributes = struct;
-
-if length(attribute_line)
-  attribute_line{1}=strrep(attribute_line{1},'!!SBtab ','');
-  attribute_line{1}=strrep(attribute_line{1},'!!Sbtab ','');
-end
-
-for it=1:length(attribute_line)
-  attribute_line{it} = strrep(attribute_line{it}, '= ','=');
-  mm = Strsplit('=',attribute_line{it});
-  if length(mm) == 2
-    mm{1} = deblank(strrep(mm{1},'!',''));
-    mm{1} = strrep(mm{1},':','');
-    mm{2} = strrep(mm{2},'''','');
-    mm{2} = deblank(strrep(mm{2},'"',''));
-    attributes = setfield(attributes,mm{1},mm{2});
+if length(attribute_line_number)
+  if length(attribute_line_number)>1
+    warning('File %s contains several document lines (!!!SBtab); only the first one is used', filename);
   end
+  attributes = sbtab_parse_attributes(my_table(attribute_line_number(1),:));
 end
 
 my_sbtab_document.attributes = attributes;
@@ -100,15 +60,25 @@ for it = 1:length(split_lines)-1
 end
 
 for it = 1:length(my_tables)
-  % (sbtab_table_load sets a missing TableID to 'unknown')
+  % (sbtab_table_load sets a missing TableID to the TableName, or else to the TableType)
   my_sbtab_table = sbtab_table_load(filename,my_tables{it});
-  table_ids{it,1} = sbtab_clean_table_id(my_sbtab_table.attributes.TableID);
+  table_id = sbtab_clean_table_id(my_sbtab_table.attributes.TableID);
+  if isempty(table_id) || ~isletter(table_id(1))
+    table_id = ['Table_' table_id];
+  end
+  if isfield(my_sbtab_document.tables, table_id)
+    new_table_id = table_id;
+    n = 2;
+    while isfield(my_sbtab_document.tables, new_table_id)
+      new_table_id = sprintf('%s_%d', table_id, n);
+      n = n + 1;
+    end
+    warning('Non-unique table ID %s in file %s; the table is stored as %s', my_sbtab_table.attributes.TableID, filename, new_table_id);
+    my_sbtab_table.attributes.TableID = new_table_id;
+    table_id = new_table_id;
+  end
   my_sbtab_document.table_names{it,1} = my_sbtab_table.attributes.TableID;
-  my_sbtab_document.tables.(table_ids{it}) = my_sbtab_table;
-end
-
-if length(unique(table_ids)) < length(table_ids)
-  error(sprintf('Non-unique Table IDs in file %s',filename));
+  my_sbtab_document.tables.(table_id) = my_sbtab_table;
 end
 
 % -----------------------------------------------------
