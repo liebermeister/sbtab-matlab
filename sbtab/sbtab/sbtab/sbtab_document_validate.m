@@ -231,6 +231,10 @@ end
 for column_name = [column_names, constant_names]
   c = column_name{1};
   is_sbo_header = strncmp(c, 'SBO:', 4);
+  % R33/R34: syntax of !SBO:<quantity> [<unit>:<Scale>]:<ValueType> headers
+  if is_sbo_header && ~strncmp(c, 'SBO:Identifiers:', 16) && isempty(sbtab_parse_sbo_header(c))
+    messages = add(messages, 'Warning', 'R34', label, sprintf('Column !%s: SBO column headers have the form !SBO:<quantity> [<unit>:<Scale>]:<ValueType>', c));
+  end
   % R22: columns must be defined for the table type
   if ~isempty(table_type) && any(strcmp(defs.table_types, table_type)) && isempty(column_format(defs, table_type, c))
     messages = add(messages, 'Warning', 'R22', label, sprintf('Column !%s is not defined for table type %s', c, table_type));

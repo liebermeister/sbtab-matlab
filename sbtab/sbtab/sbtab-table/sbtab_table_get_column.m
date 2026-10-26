@@ -7,6 +7,8 @@ function my_column = sbtab_table_get_column(my_sbtab_table,column_name,flag_numb
 % If the column does not exist, an empty element is returned.
 % A table attribute written with ':' (e.g. ':Unit=''mM''') is treated as a column
 % that contains the attribute value in every row.
+% A column with header !SBO:<quantity> [<unit>:<Scale>]:<ValueType> stands for the columns
+% QuantityType, <ValueType> (default: Value), Unit and Scale (see 'sbtab_table_sbo_columns').
 % If flag_numbers is set to 1, the table entries are returned as numbers (otherwise as strings)
 
 eval(default('flag_numbers','0','verbose','1'));
@@ -33,6 +35,9 @@ else
       nr = size(my_sbtab_table.uncontrolled.data,1);
     end
     my_column = repmat({my_sbtab_table.attributes.(column_name)}, nr, 1);
+  elseif sum(strcmp(sbtab_table_sbo_columns(my_sbtab_table), column_name))
+    [sbo_names, sbo_columns] = sbtab_table_sbo_columns(my_sbtab_table);
+    my_column = sbo_columns{strcmp(sbo_names, column_name)};
   else
     if verbose
       warning(sprintf('Column %s not found in table',column_name));

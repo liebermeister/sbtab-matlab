@@ -21,6 +21,7 @@
 %   sbtab_table_get_element          - get an element
 %   sbtab_table_get_ids              - get the entries of the ID column
 %   sbtab_table_has_column           - check whether a column exists
+%   sbtab_table_sbo_columns          - columns represented by !SBO:... column headers
 %   sbtab_table_remove_column        - remove a column
 %   sbtab_table_check                - check the TableType attribute
 %

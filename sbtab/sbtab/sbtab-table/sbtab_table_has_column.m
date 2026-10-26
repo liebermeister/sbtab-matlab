@@ -12,3 +12,8 @@ res = isfield(my_sbtab_table.column.column,column_name);
 if ~res && isfield(my_sbtab_table.column,'constant_names')
   res = sum(strcmp(my_sbtab_table.column.constant_names,column_name)) > 0;
 end
+
+% columns represented by !SBO:... headers (see sbtab_table_sbo_columns)
+if ~res
+  res = sum(strcmp(sbtab_table_sbo_columns(my_sbtab_table),column_name)) > 0;
+end
