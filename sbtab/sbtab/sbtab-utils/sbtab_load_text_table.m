@@ -4,7 +4,8 @@ function T = sbtab_load_text_table(filename)
 %
 % T = sbtab_load_text_table(filename)
 %
-% The delimiter is taken from the first line that is not empty and does not start with '%':
+% The delimiter is taken from the first column header row (starting with '!', but not '!!'),
+% or, if there is none, from the first line that is not empty and does not start with '%':
 % tab if this line contains a tab; otherwise comma or semicolon (whichever occurs more often
 % outside quotes); if none of them occurs, tab.
 % In comma- and semicolon-separated files, fields may be enclosed in double quotes
@@ -22,20 +23,31 @@ if ~isempty(text) && text(1) == char(65279)
 end
 lines = regexp(text, '\r\n|\n|\r', 'split');
 
-delimiter = sprintf('\t');
+% reference line for the delimiter: the first column header row ('!', but not '!!'),
+% since declaration rows may consist of one cell containing commas (e.g. in TableName);
+% if there is none, the first line that is not empty and not a comment
+reference_line = '';
 for it = 1:length(lines)
   this_line = strtrim(lines{it});
   if ~isempty(this_line) && this_line(1) ~= '%'
-    if ~contains(lines{it}, sprintf('\t'))
-      n_comma     = count_outside_quotes(lines{it}, ',');
-      n_semicolon = count_outside_quotes(lines{it}, ';');
-      if n_semicolon > n_comma
-        delimiter = ';';
-      elseif n_comma > 0
-        delimiter = ',';
-      end
+    if isempty(reference_line)
+      reference_line = lines{it};
     end
-    break
+    if this_line(1) == '!' && ~startsWith(this_line, '!!')
+      reference_line = lines{it};
+      break
+    end
+  end
+end
+
+delimiter = sprintf('\t');
+if ~isempty(reference_line) && ~contains(reference_line, sprintf('\t'))
+  n_comma     = count_outside_quotes(reference_line, ',');
+  n_semicolon = count_outside_quotes(reference_line, ';');
+  if n_semicolon > n_comma
+    delimiter = ';';
+  elseif n_comma > 0
+    delimiter = ',';
   end
 end
 

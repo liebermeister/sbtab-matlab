@@ -64,6 +64,13 @@ write_file(f, ['!!SBtab TableType=''Compound'';TableName=''Compound''' newline .
 t = sbtab_table_load(f);
 assert(isequal(sbtab_table_get_column(t, 'Name'), {'1,5'}));
 
+%% a tab-separated file whose declaration line contains a comma, but no tab
+f = fullfile(d, 'comma_in_declaration.tsv');
+write_file(f, ['!!SBtab TableType=''Compound'' TableName=''Compounds, with charges''' newline ...
+               '!ID' tab '!Charge' newline 'A' tab '1' newline]);
+t = sbtab_table_load(f);
+assert(isequal(sbtab_table_get_column(t, 'Charge'), {'1'}));
+
 %% byte order mark and Windows line endings
 f = fullfile(d, 'bom_crlf.tsv');
 write_file(f, [char(65279) strrep(doc_10, newline, sprintf('\r\n'))]);
