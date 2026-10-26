@@ -4,10 +4,12 @@ function sbtab = options_to_sbtab(s,options)
 %
 % sbtab = options_to_sbtab(s, options)
 %
+% The option names are written in column !ID, the values in column !Value.
 % If an options field contains a struct, these data are stored in JSON string in the SBtab table
 %
 % options.filename:   (string, optional) filename for export to file
 % options.TableName:  (string, optional) TableName attribute, for SBtab
+% options.TableTitle: (string, optional) TableTitle attribute, for SBtab
 % options.TableID:    (string, optional) TableID attribute, for SBtab
 % options.Method:     (string, optional) Method attribute, for SBtab
 %
@@ -33,7 +35,11 @@ for it = 1:length(fn)
 end
 
 
-sbtab = sbtab_table_construct(struct('TableName',options.TableName,'TableID', options.TableID, 'TableType','Config','Method',options.Method), {'Option','Value'},{column_options,column_values});
+attributes = struct('TableName',options.TableName,'TableID', options.TableID, 'TableType','Config','Method',options.Method);
+if isfield(options,'TableTitle')
+  attributes.TableTitle = options.TableTitle;
+end
+sbtab = sbtab_table_construct(attributes, {'ID','Value'},{column_options,column_values});
 
 if isfield(options,'filename') && length(options.filename)
   sbtab_table_save(sbtab,options.filename);
