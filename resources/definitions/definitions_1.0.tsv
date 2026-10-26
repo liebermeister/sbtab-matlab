@@ -1,0 +1,315 @@
+!!SBtab SBtabVersion='1.0' TableType='Definition' TableName='Definitions' TableTitle='Definitions derived from the appendix of the SBtab 1.0 specification'
+!ComponentName	!ComponentType	!IsPartOf	!Format	!Description
+Compound	Table		String	SBtab Compound table
+Enzyme	Table		String	SBtab Enzyme table
+Protein	Table		String	SBtab Protein table
+Gene	Table		String	SBtab Gene table
+Regulator	Table		String	SBtab Regulator table
+Compartment	Table		String	SBtab Compartment table
+Reaction	Table		String	SBtab Reaction table
+ReactionStoichiometry	Table		String	SBtab ReactionStoichiometry table
+Relation	Table		String	SBtab Relation table
+Quantity	Table		String	SBtab Quantity table
+QuantityMatrix	Table		String	SBtab QuantityMatrix table
+Definition	Table		String	SBtab Definition table
+Description	Column	Compound	String	Description of the row element
+Description	Column	Enzyme	String	Description of the row element
+Description	Column	Protein	String	Description of the row element
+Description	Column	Gene	String	Description of the row element
+Description	Column	Regulator	String	Description of the row element
+Description	Column	Compartment	String	Description of the row element
+Description	Column	Reaction	String	Description of the row element
+Description	Column	ReactionStoichiometry	String	Description of the row element
+Description	Column	Relation	String	Description of the row element
+Description	Column	Quantity	String	Description of the row element
+Description	Column	QuantityMatrix	String	Description of the row element
+Description	Column	Definition	String	Description of the row element
+Comment	Column	Compound	String	Comment
+Comment	Column	Enzyme	String	Comment
+Comment	Column	Protein	String	Comment
+Comment	Column	Gene	String	Comment
+Comment	Column	Regulator	String	Comment
+Comment	Column	Compartment	String	Comment
+Comment	Column	Reaction	String	Comment
+Comment	Column	ReactionStoichiometry	String	Comment
+Comment	Column	Relation	String	Comment
+Comment	Column	Quantity	String	Comment
+Comment	Column	QuantityMatrix	String	Comment
+Comment	Column	Definition	String	Comment
+ReferenceName	Column	Compound	String	Reference title, authors, etc. (as free text)
+ReferenceName	Column	Enzyme	String	Reference title, authors, etc. (as free text)
+ReferenceName	Column	Protein	String	Reference title, authors, etc. (as free text)
+ReferenceName	Column	Gene	String	Reference title, authors, etc. (as free text)
+ReferenceName	Column	Regulator	String	Reference title, authors, etc. (as free text)
+ReferenceName	Column	Compartment	String	Reference title, authors, etc. (as free text)
+ReferenceName	Column	Reaction	String	Reference title, authors, etc. (as free text)
+ReferenceName	Column	ReactionStoichiometry	String	Reference title, authors, etc. (as free text)
+ReferenceName	Column	Relation	String	Reference title, authors, etc. (as free text)
+ReferenceName	Column	Quantity	String	Reference title, authors, etc. (as free text)
+ReferenceName	Column	QuantityMatrix	String	Reference title, authors, etc. (as free text)
+ReferenceName	Column	Definition	String	Reference title, authors, etc. (as free text)
+Reference:Identifiers:pubmed	Column	Compound	String	Reference PubMed ID
+Reference:Identifiers:pubmed	Column	Enzyme	String	Reference PubMed ID
+Reference:Identifiers:pubmed	Column	Protein	String	Reference PubMed ID
+Reference:Identifiers:pubmed	Column	Gene	String	Reference PubMed ID
+Reference:Identifiers:pubmed	Column	Regulator	String	Reference PubMed ID
+Reference:Identifiers:pubmed	Column	Compartment	String	Reference PubMed ID
+Reference:Identifiers:pubmed	Column	Reaction	String	Reference PubMed ID
+Reference:Identifiers:pubmed	Column	ReactionStoichiometry	String	Reference PubMed ID
+Reference:Identifiers:pubmed	Column	Relation	String	Reference PubMed ID
+Reference:Identifiers:pubmed	Column	Quantity	String	Reference PubMed ID
+Reference:Identifiers:pubmed	Column	QuantityMatrix	String	Reference PubMed ID
+Reference:Identifiers:pubmed	Column	Definition	String	Reference PubMed ID
+ReferenceDOI	Column	Compound	String	Reference DOI
+ReferenceDOI	Column	Enzyme	String	Reference DOI
+ReferenceDOI	Column	Protein	String	Reference DOI
+ReferenceDOI	Column	Gene	String	Reference DOI
+ReferenceDOI	Column	Regulator	String	Reference DOI
+ReferenceDOI	Column	Compartment	String	Reference DOI
+ReferenceDOI	Column	Reaction	String	Reference DOI
+ReferenceDOI	Column	ReactionStoichiometry	String	Reference DOI
+ReferenceDOI	Column	Relation	String	Reference DOI
+ReferenceDOI	Column	Quantity	String	Reference DOI
+ReferenceDOI	Column	QuantityMatrix	String	Reference DOI
+ReferenceDOI	Column	Definition	String	Reference DOI
+Name	Column	Compound	String	Entity name
+Name	Column	Enzyme	String	Entity name
+Name	Column	Gene	String	Entity name
+Name	Column	Regulator	String	Entity name
+Name	Column	Compartment	String	Entity name
+Name	Column	Reaction	String	Entity name
+Identifiers:*	Column	Compound	String	Entity ID
+Identifiers:*	Column	Enzyme	String	Entity ID
+Identifiers:*	Column	Gene	String	Entity ID
+Identifiers:*	Column	Regulator	String	Entity ID
+Identifiers:*	Column	Compartment	String	Entity ID
+Identifiers:*	Column	Reaction	String	Entity ID
+MiriamAnnotation	Column	Compound	String	Entity ID (JSON string)
+MiriamAnnotation	Column	Enzyme	String	Entity ID (JSON string)
+MiriamAnnotation	Column	Gene	String	Entity ID (JSON string)
+MiriamAnnotation	Column	Regulator	String	Entity ID (JSON string)
+MiriamAnnotation	Column	Compartment	String	Entity ID (JSON string)
+MiriamAnnotation	Column	Reaction	String	Entity ID (JSON string)
+Type	Column	Compound	String	Biochemical type of entity (examples see Table tab:objects)
+Type	Column	Enzyme	String	Biochemical type of entity (examples see Table tab:objects)
+Type	Column	Gene	String	Biochemical type of entity (examples see Table tab:objects)
+Type	Column	Regulator	String	Biochemical type of entity (examples see Table tab:objects)
+Type	Column	Compartment	String	Biochemical type of entity (examples see Table tab:objects)
+Type	Column	Reaction	String	Biochemical type of entity (examples see Table tab:objects)
+Symbol	Column	Compound	String	Short symbol (e.g., gene symbol)
+Symbol	Column	Enzyme	String	Short symbol (e.g., gene symbol)
+Symbol	Column	Gene	String	Short symbol (e.g., gene symbol)
+Symbol	Column	Regulator	String	Short symbol (e.g., gene symbol)
+Symbol	Column	Compartment	String	Short symbol (e.g., gene symbol)
+Symbol	Column	Reaction	String	Short symbol (e.g., gene symbol)
+PositionX	Column	Compound	Number	x coordinate for graphical display
+PositionX	Column	Enzyme	Number	x coordinate for graphical display
+PositionX	Column	Gene	Number	x coordinate for graphical display
+PositionX	Column	Regulator	Number	x coordinate for graphical display
+PositionX	Column	Compartment	Number	x coordinate for graphical display
+PositionX	Column	Reaction	Number	x coordinate for graphical display
+PositionY	Column	Compound	Number	y coordinate for graphical display
+PositionY	Column	Enzyme	Number	y coordinate for graphical display
+PositionY	Column	Gene	Number	y coordinate for graphical display
+PositionY	Column	Regulator	Number	y coordinate for graphical display
+PositionY	Column	Compartment	Number	y coordinate for graphical display
+PositionY	Column	Reaction	Number	y coordinate for graphical display
+ID	Column	Compound	Shortname	Compound shortname
+SBML:species:id	Column	Compound	String	SBML Species ID of the entity
+SBML:speciestype:id	Column	Compound	String	SBML SpeciesType ID of the entity
+InitialValue	Column	Compound	Number	Initial amount or concentration
+Unit	Column	Compound	String	Unit for initial value
+Location	Column	Compound	Shortname	Compartment for localised entities
+State	Column	Compound	Shortname	State of the entity
+CompoundReactionFormula	Column	Compound	String	Chemical sum formula
+StructureFormula	Column	Compound	String	Chemical structure formula
+Charge	Column	Compound	Number	Electrical charge number
+Mass	Column	Compound	Number	Molecular mass
+IsConstant	Column	Compound	Boolean	Substance with fixed concentrations
+HasOnlySubstanceUnit	Column	Compound	Boolean	Numbers represent amounts (not concentrations)
+BoundaryCondition	Column	Compound	Boolean	Dynamics not fully determined by reactions
+EnzymeRole	Column	Compound	Shortname	Enzymatic activity
+RegulatorRole	Column	Compound	Shortname	Regulatory activity
+ID	Column	Enzyme	Shortname	Enzyme shortname
+CatalysedReaction	Column	Enzyme	Shortname	Catalysed reaction
+KineticLaw:Name	Column	Enzyme	String	Rate law (name as in SBO)
+KineticLaw:Identifiers.obo.sbo	Column	Enzyme	Shortname	Rate law SBO identifier
+KineticLaw:Formula	Column	Enzyme	String	Rate law formula
+Pathway	Column	Enzyme	String	Pathway name (free text)
+Gene	Column	Enzyme	Shortname	Gene coding for enzyme (shortname)
+Gene:Name	Column	Enzyme	String	Gene coding for enzyme (name)
+Gene:Symbol	Column	Enzyme	String	Gene coding for enzyme (short symbol)
+ID	Column	Protein	Shortname	Protein shortname
+Name	Column	Protein	String	Protein name
+Symbol	Column	Protein	String	Protein symbol
+Gene	Column	Protein	Shortname	Gene shortname
+Gene:Name	Column	Protein	String	Gene name
+Gene:Symbol	Column	Protein	String	Gene symbol
+Gene:LocusName	Column	Protein	String	Gene locus name
+Mass	Column	Protein	Number	Protein mass
+Size	Column	Protein	Number	Protein size
+ID	Column	Gene	Shortname	Gene shortname
+LocusName	Column	Gene	String	Gene locus name
+GeneProduct	Column	Gene	Shortname	Gene product shortname
+GeneProduct:Name	Column	Gene	String	Gene product name
+GeneProduct:Symbol	Column	Gene	String	Gene product symbol
+GeneProduct:SBML:species:id	Column	Gene	String	SBML ID of protein
+Operon	Column	Gene	Shortname	Operon in which gene is located
+ID	Column	Regulator	Shortname	Regulator shortname
+State	Column	Regulator	Shortname	State of the regulator
+TargetGene	Column	Regulator	Shortname	Target gene
+TargetOperon	Column	Regulator	Shortname	Target operon
+TargetPromoter	Column	Regulator	Shortname	Target promoter
+ID	Column	Compartment	Shortname	Compartment shortname
+Identifiers:obo.sbo	Column	Compartment	Shortname	Compartment SBO term
+SBML:compartment:id	Column	Compartment	String	SBML Compartment ID
+OuterCompartment	Column	Compartment	Shortname	Surrounding compartment (short)
+OuterCompartment:Name	Column	Compartment	String	Surrounding compartment (name)
+OuterCompartment:SBML:compartment:id	Column	Compartment	String	Surrounding compartment
+Size	Column	Compartment	Number	Compartment size
+Unit	Column	Compartment	String	Physical unit
+IsConstant	Column	Compartment	Boolean	Indicates a constant compartment size
+ID	Column	Reaction	Shortname	Reaction shortname
+SBML:reaction:id	Column	Reaction	String	SBML Reaction ID
+ReactionFormula	Column	Reaction	String	Reaction sum formula
+Location	Column	Reaction	Shortname	Compartment for localised reaction
+Enzyme	Column	Reaction	Shortname	Enzyme catalysing the reaction
+Model	Column	Reaction	String	Model(s) in which reaction is involved
+Pathway	Column	Reaction	String	Pathway(s) in which reaction is involved
+SubreactionOf	Column	Reaction	Shortname	Mark as subreaction of a (lumped) reaction
+IsComplete	Column	Reaction	Boolean	Reaction formula includes all cofactors etc.
+IsReversible	Column	Reaction	Boolean	Reaction should be treated as irreversible
+IsInEquilibrium	Column	Reaction	Boolean	Reaction approximately in equilibrium
+IsExchangeReaction	Column	Reaction	Boolean	Some reactants are left out
+IsFast	Column	Reaction	Boolean	Reaction to be treated as fast
+Flux	Column	Reaction	Number	Metabolic flux through the reaction
+IsNonEnzymatic	Column	Reaction	Boolean	Non-catalysed reaction
+KineticLaw:Name	Column	Reaction	String	Rate law (name as in SBO)
+KineticLaw:Identifiers.obo.sbo	Column	Reaction	Shortname	Rate law SBO identifier
+KineticLaw:Formula	Column	Reaction	String	Rate law formula
+Gene	Column	Reaction	Shortname	see table type Enzyme
+Gene:Symbol	Column	Reaction	String	see table type Enzyme
+Operon	Column	Reaction	Shortname	see table type Gene
+Enzyme:Name	Column	Reaction	String	Name of enzyme
+Enzyme:Identifiers:ec-code	Column	Reaction	String	EC number of enzyme
+Enzyme:SBML:species:id	Column	Reaction	String	SBML ID of enzyme
+Enzyme:SBML:parameter:id	Column	Reaction	String	SBML ID of enzyme
+Enzyme:SBML:reaction:parameter:id	Column	Reaction	String	SBML ID of enzyme
+BuildReaction	Column	Reaction	Boolean	Includereaction in SBML model
+BuildEnzyme	Column	Reaction	Boolean	Include enzyme in SBML model
+BuildEnzymeProduction	Column	Reaction	Boolean	Describe enzyme production in SBML model
+Reaction	Column	ReactionStoichiometry	Shortname	Reaction ID
+Stoichiometry	Column	ReactionStoichiometry	Number	Stoichiometric coefficient
+Substrate	Column	ReactionStoichiometry	Shortname	Substrate ID
+Product	Column	ReactionStoichiometry	Shortname	Product ID
+Location	Column	ReactionStoichiometry	Shortname	Compartment ID
+Relation	Column	Relation	String	Type of quantitative relationship
+From	Column	Relation	Shortname	Element at beginning of arrow
+To	Column	Relation	Shortname	Element at arrowhead
+IsSymmetric	Column	Relation	Boolean	Flag indicating non-symmetric relationships
+Value:*	Column	Relation	Number	Numerical value assigned to the relationship
+ID	Column	Quantity	Shortname	Quantity / SBML parameter ID
+QuantityName	Column	Quantity	String	Quantity (name)
+QuantityType	Column	Quantity	Shortname	Quantity type (e.g. from SBO)
+Value	Column	Quantity	Number	Value type Value
+Mean	Column	Quantity	Number	Value type Mean
+Std	Column	Quantity	Number	Value type Std
+Min	Column	Quantity	Number	Value type Min
+Max	Column	Quantity	Number	Value type Max
+Median	Column	Quantity	Number	Value type Median
+GeometricMean	Column	Quantity	Number	Value type GeometricMean
+Sign	Column	Quantity	String	Value type Sign
+ProbDist	Column	Quantity	String	Value type ProbDist
+SBML:parameter:id	Column	Quantity	String	Parameter ID in SBML file
+SBML:reaction:parameter:id	Column	Quantity	String	Parameter ID in SBML file
+Unit	Column	Quantity	String	Physical unit
+Scale	Column	Quantity	String	Scale (e.g. logarithm, see Table tab:quantityvaluetype)
+IsConstant	Column	Quantity	Boolean	Indicates a constant quantity
+Time	Column	Quantity	Number	Time value
+TimePoint	Column	Quantity	String	Time point name or identifier
+Provenance	Column	Quantity	String	Name of data source (free text)
+Condition	Column	Quantity	String	experimental condition name (free text)
+pH	Column	Quantity	Number	pH value in measurement
+Temperature	Column	Quantity	Number	Temperature in measurement
+Location	Column	Quantity	Shortname	Compartment (shortname)
+Location:Name	Column	Quantity	String	Compartment (name)
+Location:SBML:compartment:id	Column	Quantity	String	SBML ID of compartment
+Compound	Column	Quantity	Shortname	Related compound (shortname)
+Compound:Name	Column	Quantity	String	Related compound (name)
+Compound:Identifiers:*	Column	Quantity	String	Compound ID
+Compound:SBML:species:id	Column	Quantity	String	SBML ID of compound
+Reaction	Column	Quantity	Shortname	Related reaction (shortname)
+Reaction:Name	Column	Quantity	String	Related reaction (name)
+Reaction:Identifiers:*	Column	Quantity	String	Reaction ID
+Reaction:SBML:reaction:id	Column	Quantity	String	SBML ID of reaction
+Enzyme	Column	Quantity	Shortname	Related enzyme (shortname)
+Enzyme:Name	Column	Quantity	String	Related enzyme (name)
+Enzyme:Identifiers:*	Column	Quantity	String	Enzyme ID
+Enzyme:SBML:species:id	Column	Quantity	String	SBML ID of enzyme
+Enzyme:SBML:parameter:id	Column	Quantity	String	SBML ID of enzyme
+Enzyme:SBML:reaction:parameter:id	Column	Quantity	String	SBML ID of enzyme
+Protein	Column	Quantity	Shortname	Related enzyme (shortname)
+Protein:Name	Column	Quantity	String	Related enzyme (name)
+Protein:Identifiers:*	Column	Quantity	String	Protein ID
+Protein:SBML:species:id	Column	Quantity	String	SBML ID of enzyme
+Protein:SBML:parameter:id	Column	Quantity	String	SBML ID of enzyme
+Protein:SBML:reaction:parameter:id	Column	Quantity	String	SBML ID of enzyme
+Gene	Column	Quantity	Shortname	Related gene
+Organism	Column	Quantity	Shortname	Related organism
+Time	Column	QuantityMatrix	Number	Time value
+TimePoint	Column	QuantityMatrix	String	Time point name or identifier
+>*:*	Column	QuantityMatrix	String	Pointer to column in anther table
+>*:*:*	Column	QuantityMatrix	String	Pointer to column in anther document
+Quantity	Column	QuantityMatrix	String	Quantity (shortname)
+QuantityName	Column	QuantityMatrix	String	Quantity (name)
+QuantityType	Column	QuantityMatrix	Shortname	Quantity type (e.g. from SBO)
+Value	Column	QuantityMatrix	Number	Value type Value
+Mean	Column	QuantityMatrix	Number	Value type Mean
+Std	Column	QuantityMatrix	Number	Value type Std
+Min	Column	QuantityMatrix	Number	Value type Min
+Max	Column	QuantityMatrix	Number	Value type Max
+Median	Column	QuantityMatrix	Number	Value type Median
+GeometricMean	Column	QuantityMatrix	Number	Value type GeometricMean
+Sign	Column	QuantityMatrix	String	Value type Sign
+ProbDist	Column	QuantityMatrix	String	Value type ProbDist
+SBML:parameter:id	Column	QuantityMatrix	String	Parameter ID in SBML file
+SBML:reaction:parameter:id	Column	QuantityMatrix	String	Parameter ID in SBML file
+Unit	Column	QuantityMatrix	String	Physical unit
+Scale	Column	QuantityMatrix	String	Scale (e.g. logarithm, see Table tab:quantityvaluetype)
+Compound	Column	QuantityMatrix	Shortname	Related compound (shortname)
+Compound:Name	Column	QuantityMatrix	String	Related compound (name)
+Compound:Identifiers:*	Column	QuantityMatrix	String	Compound ID
+Compound:SBML:species:id	Column	QuantityMatrix	String	SBML ID of compound
+Reaction	Column	QuantityMatrix	Shortname	Related reaction (shortname)
+Reaction:Name	Column	QuantityMatrix	String	Related reaction (name)
+Reaction:Identifiers:*	Column	QuantityMatrix	String	Reaction ID
+Reaction:SBML:reaction:id	Column	QuantityMatrix	String	SBML ID of reaction
+Enzyme	Column	QuantityMatrix	Shortname	Related enzyme (shortname)
+Enzyme:Name	Column	QuantityMatrix	String	Related enzyme (name)
+Enzyme:Identifiers:*	Column	QuantityMatrix	String	Enzyme ID
+Enzyme:SBML:species:id	Column	QuantityMatrix	String	SBML ID of enzyme
+Enzyme:SBML:parameter:id	Column	QuantityMatrix	String	SBML ID of enzyme
+Enzyme:SBML:reaction:parameter:id	Column	QuantityMatrix	String	SBML ID of enzyme
+Protein	Column	QuantityMatrix	Shortname	Related enzyme (shortname)
+Protein:Name	Column	QuantityMatrix	String	Related enzyme (name)
+Protein:Identifiers:*	Column	QuantityMatrix	String	Protein ID
+Protein:SBML:species:id	Column	QuantityMatrix	String	SBML ID of enzyme
+Protein:SBML:parameter:id	Column	QuantityMatrix	String	SBML ID of enzyme
+Protein:SBML:reaction:parameter:id	Column	QuantityMatrix	String	SBML ID of enzyme
+Gene	Column	QuantityMatrix	Shortname	Related gene
+ComponentName	Column	Definition	String	Name of component (table, column, attribute to be defined)
+ComponentType	Column	Definition	String	Type of component
+IsPartOf	Column	Definition	String	name of parent component
+Format	Column	Definition	String	Format
+TableType	Attribute	SBtab	String	Table type (as defined in definition table)
+TableName	Attribute	SBtab	Shortname	Table shortname
+TableTitle	Attribute	SBtab	String	Table title (free text)
+SBtabVersion	Attribute	SBtab	String	SBtab version number
+Document	Attribute	SBtab	String	SBtab document name
+SBML:reaction:id	Column	Quantity	String	Used in spec example 5
+SBML:species:id	Column	Quantity	String	Used in spec example 5
+Identifiers:obo.chebi	Column	QuantityMatrix	String	Used in spec example 6
+SBO:Identifiers:obo.sbo	Column	Quantity	String	Used in spec example 12
+SBO:*	Column	Quantity	String	Used in spec example 15
+Identifiers:obo.chebi	Column	Quantity	String	Used in spec example 18
+Value	Column	Relation	String	Used in spec example 22

@@ -1,0 +1,326 @@
+!!SBtab SBtabVersion='1.1' TableType='Definition' TableName='Definitions' TableTitle='Definitions derived from the appendix of the SBtab 1.1 specification'
+!Name	!Type	!Parent	!isShortname	!Format	!Description
+Compound	Table	SBtab	False	Table	SBtab Compound table
+Enzyme	Table	SBtab	False	Table	SBtab Enzyme table
+Protein	Table	SBtab	False	Table	SBtab Protein table
+Gene	Table	SBtab	False	Table	SBtab Gene table
+Regulator	Table	SBtab	False	Table	SBtab Regulator table
+Compartment	Table	SBtab	False	Table	SBtab Compartment table
+Reaction	Table	SBtab	False	Table	SBtab Reaction table
+ReactionStoichiometry	Table	SBtab	False	Table	SBtab ReactionStoichiometry table
+Relation	Table	SBtab	False	Table	SBtab Relation table
+Quantity	Table	SBtab	False	Table	SBtab Quantity table
+QuantityMatrix	Table	SBtab	False	Table	SBtab QuantityMatrix table
+Measurement	Table	SBtab	False	Table	SBtab Measurement table
+Definition	Table	SBtab	False	Table	SBtab Definition table
+Description	Column	Compound	False	String	Description of the row element
+Description	Column	Enzyme	False	String	Description of the row element
+Description	Column	Protein	False	String	Description of the row element
+Description	Column	Gene	False	String	Description of the row element
+Description	Column	Regulator	False	String	Description of the row element
+Description	Column	Compartment	False	String	Description of the row element
+Description	Column	Reaction	False	String	Description of the row element
+Description	Column	ReactionStoichiometry	False	String	Description of the row element
+Description	Column	Relation	False	String	Description of the row element
+Description	Column	Quantity	False	String	Description of the row element
+Description	Column	QuantityMatrix	False	String	Description of the row element
+Description	Column	Measurement	False	String	Description of the row element
+Description	Column	Definition	False	String	Description of the row element
+Comment	Column	Compound	False	String	Comment
+Comment	Column	Enzyme	False	String	Comment
+Comment	Column	Protein	False	String	Comment
+Comment	Column	Gene	False	String	Comment
+Comment	Column	Regulator	False	String	Comment
+Comment	Column	Compartment	False	String	Comment
+Comment	Column	Reaction	False	String	Comment
+Comment	Column	ReactionStoichiometry	False	String	Comment
+Comment	Column	Relation	False	String	Comment
+Comment	Column	Quantity	False	String	Comment
+Comment	Column	QuantityMatrix	False	String	Comment
+Comment	Column	Measurement	False	String	Comment
+Comment	Column	Definition	False	String	Comment
+ReferenceName	Column	Compound	False	String	Reference title, authors, etc. (as free text)
+ReferenceName	Column	Enzyme	False	String	Reference title, authors, etc. (as free text)
+ReferenceName	Column	Protein	False	String	Reference title, authors, etc. (as free text)
+ReferenceName	Column	Gene	False	String	Reference title, authors, etc. (as free text)
+ReferenceName	Column	Regulator	False	String	Reference title, authors, etc. (as free text)
+ReferenceName	Column	Compartment	False	String	Reference title, authors, etc. (as free text)
+ReferenceName	Column	Reaction	False	String	Reference title, authors, etc. (as free text)
+ReferenceName	Column	ReactionStoichiometry	False	String	Reference title, authors, etc. (as free text)
+ReferenceName	Column	Relation	False	String	Reference title, authors, etc. (as free text)
+ReferenceName	Column	Quantity	False	String	Reference title, authors, etc. (as free text)
+ReferenceName	Column	QuantityMatrix	False	String	Reference title, authors, etc. (as free text)
+ReferenceName	Column	Measurement	False	String	Reference title, authors, etc. (as free text)
+ReferenceName	Column	Definition	False	String	Reference title, authors, etc. (as free text)
+Reference:Identifiers:pubmed	Column	Compound	False	String	Reference PubMed ID
+Reference:Identifiers:pubmed	Column	Enzyme	False	String	Reference PubMed ID
+Reference:Identifiers:pubmed	Column	Protein	False	String	Reference PubMed ID
+Reference:Identifiers:pubmed	Column	Gene	False	String	Reference PubMed ID
+Reference:Identifiers:pubmed	Column	Regulator	False	String	Reference PubMed ID
+Reference:Identifiers:pubmed	Column	Compartment	False	String	Reference PubMed ID
+Reference:Identifiers:pubmed	Column	Reaction	False	String	Reference PubMed ID
+Reference:Identifiers:pubmed	Column	ReactionStoichiometry	False	String	Reference PubMed ID
+Reference:Identifiers:pubmed	Column	Relation	False	String	Reference PubMed ID
+Reference:Identifiers:pubmed	Column	Quantity	False	String	Reference PubMed ID
+Reference:Identifiers:pubmed	Column	QuantityMatrix	False	String	Reference PubMed ID
+Reference:Identifiers:pubmed	Column	Measurement	False	String	Reference PubMed ID
+Reference:Identifiers:pubmed	Column	Definition	False	String	Reference PubMed ID
+ReferenceDOI	Column	Compound	False	String	Reference DOI
+ReferenceDOI	Column	Enzyme	False	String	Reference DOI
+ReferenceDOI	Column	Protein	False	String	Reference DOI
+ReferenceDOI	Column	Gene	False	String	Reference DOI
+ReferenceDOI	Column	Regulator	False	String	Reference DOI
+ReferenceDOI	Column	Compartment	False	String	Reference DOI
+ReferenceDOI	Column	Reaction	False	String	Reference DOI
+ReferenceDOI	Column	ReactionStoichiometry	False	String	Reference DOI
+ReferenceDOI	Column	Relation	False	String	Reference DOI
+ReferenceDOI	Column	Quantity	False	String	Reference DOI
+ReferenceDOI	Column	QuantityMatrix	False	String	Reference DOI
+ReferenceDOI	Column	Measurement	False	String	Reference DOI
+ReferenceDOI	Column	Definition	False	String	Reference DOI
+Name	Column	Compound	False	String	Entity name
+Name	Column	Enzyme	False	String	Entity name
+Name	Column	Gene	False	String	Entity name
+Name	Column	Regulator	False	String	Entity name
+Name	Column	Compartment	False	String	Entity name
+Name	Column	Reaction	False	String	Entity name
+Identifiers:*	Column	Compound	False	String	Entity ID
+Identifiers:*	Column	Enzyme	False	String	Entity ID
+Identifiers:*	Column	Gene	False	String	Entity ID
+Identifiers:*	Column	Regulator	False	String	Entity ID
+Identifiers:*	Column	Compartment	False	String	Entity ID
+Identifiers:*	Column	Reaction	False	String	Entity ID
+MiriamAnnotation	Column	Compound	False	String	Entity ID (JSON string)
+MiriamAnnotation	Column	Enzyme	False	String	Entity ID (JSON string)
+MiriamAnnotation	Column	Gene	False	String	Entity ID (JSON string)
+MiriamAnnotation	Column	Regulator	False	String	Entity ID (JSON string)
+MiriamAnnotation	Column	Compartment	False	String	Entity ID (JSON string)
+MiriamAnnotation	Column	Reaction	False	String	Entity ID (JSON string)
+Type	Column	Compound	False	String	Biochemical type of entity (examples see Table tab:objects)
+Type	Column	Enzyme	False	String	Biochemical type of entity (examples see Table tab:objects)
+Type	Column	Gene	False	String	Biochemical type of entity (examples see Table tab:objects)
+Type	Column	Regulator	False	String	Biochemical type of entity (examples see Table tab:objects)
+Type	Column	Compartment	False	String	Biochemical type of entity (examples see Table tab:objects)
+Type	Column	Reaction	False	String	Biochemical type of entity (examples see Table tab:objects)
+Symbol	Column	Compound	False	String	Short symbol (e.g., gene symbol)
+Symbol	Column	Enzyme	False	String	Short symbol (e.g., gene symbol)
+Symbol	Column	Gene	False	String	Short symbol (e.g., gene symbol)
+Symbol	Column	Regulator	False	String	Short symbol (e.g., gene symbol)
+Symbol	Column	Compartment	False	String	Short symbol (e.g., gene symbol)
+Symbol	Column	Reaction	False	String	Short symbol (e.g., gene symbol)
+PositionX	Column	Compound	False	Float	x coordinate for graphical display
+PositionX	Column	Enzyme	False	Float	x coordinate for graphical display
+PositionX	Column	Gene	False	Float	x coordinate for graphical display
+PositionX	Column	Regulator	False	Float	x coordinate for graphical display
+PositionX	Column	Compartment	False	Float	x coordinate for graphical display
+PositionX	Column	Reaction	False	Float	x coordinate for graphical display
+PositionY	Column	Compound	False	Float	y coordinate for graphical display
+PositionY	Column	Enzyme	False	Float	y coordinate for graphical display
+PositionY	Column	Gene	False	Float	y coordinate for graphical display
+PositionY	Column	Regulator	False	Float	y coordinate for graphical display
+PositionY	Column	Compartment	False	Float	y coordinate for graphical display
+PositionY	Column	Reaction	False	Float	y coordinate for graphical display
+ID	Column	Compound	True	String	Compound shortname
+SBML:species:id	Column	Compound	False	String	SBML Species ID of the entity
+SBML:speciestype:id	Column	Compound	False	String	SBML SpeciesType ID of the entity
+InitialValue	Column	Compound	False	Float	Initial amount or concentration
+Unit	Column	Compound	False	String	Unit for initial value
+Location	Column	Compound	True	String	Compartment for localised entities
+State	Column	Compound	True	String	State of the entity
+CompoundReactionFormula	Column	Compound	False	String	Chemical sum formula
+StructureFormula	Column	Compound	False	String	Chemical structure formula
+Charge	Column	Compound	False	Integer	Electrical charge number
+Mass	Column	Compound	False	Float	Molecular mass
+IsConstant	Column	Compound	False	Boolean	Substance with fixed concentrations
+HasOnlySubstanceUnit	Column	Compound	False	Boolean	Numbers represent amounts (not concentrations)
+BoundaryCondition	Column	Compound	False	Boolean	Dynamics not fully determined by reactions
+EnzymeRole	Column	Compound	True	String	Enzymatic activity
+RegulatorRole	Column	Compound	True	String	Regulatory activity
+ID	Column	Enzyme	True	String	Enzyme shortname
+CatalysedReaction	Column	Enzyme	True	String	Catalysed reaction
+KineticLaw:Name	Column	Enzyme	False	String	Rate law (name as in SBO)
+KineticLaw:Identifiers.obo.sbo	Column	Enzyme	True	String	Rate law SBO identifier
+KineticLaw:Formula	Column	Enzyme	False	String	Rate law formula
+Pathway	Column	Enzyme	False	String	Pathway name (free text)
+Gene	Column	Enzyme	True	String	Gene coding for enzyme (shortname)
+Gene:Name	Column	Enzyme	False	String	Gene coding for enzyme (name)
+Gene:Symbol	Column	Enzyme	False	String	Gene coding for enzyme (short symbol)
+ID	Column	Protein	True	String	Protein shortname
+Name	Column	Protein	False	String	Protein name
+Symbol	Column	Protein	False	String	Protein symbol
+Gene	Column	Protein	True	String	Gene shortname
+Gene:Name	Column	Protein	False	String	Gene name
+Gene:Symbol	Column	Protein	False	String	Gene symbol
+Gene:LocusName	Column	Protein	False	String	Gene locus name
+Mass	Column	Protein	False	Float	Protein mass
+Size	Column	Protein	False	Float	Protein size
+ID	Column	Gene	True	String	Gene shortname
+LocusName	Column	Gene	False	String	Gene locus name
+GeneProduct	Column	Gene	True	String	Gene product shortname
+GeneProduct:Name	Column	Gene	False	String	Gene product name
+GeneProduct:Symbol	Column	Gene	False	String	Gene product symbol
+GeneProduct:SBML:species:id	Column	Gene	False	String	SBML ID of protein
+Operon	Column	Gene	True	String	Operon in which gene is located
+ID	Column	Regulator	True	String	Regulator shortname
+State	Column	Regulator	True	String	State of the regulator
+TargetGene	Column	Regulator	True	String	Target gene
+TargetOperon	Column	Regulator	True	String	Target operon
+TargetPromoter	Column	Regulator	True	String	Target promoter
+ID	Column	Compartment	True	String	Compartment shortname
+Identifiers:obo.sbo	Column	Compartment	True	String	Compartment SBO term
+SBML:compartment:id	Column	Compartment	False	String	SBML Compartment ID
+OuterCompartment	Column	Compartment	True	String	Surrounding compartment (short)
+OuterCompartment:Name	Column	Compartment	False	String	Surrounding compartment (name)
+OuterCompartment:SBML:compartment:id	Column	Compartment	False	String	Surrounding compartment
+Size	Column	Compartment	False	Float	Compartment size
+Unit	Column	Compartment	False	String	Physical unit
+IsConstant	Column	Compartment	False	Boolean	Indicates a constant compartment size
+ID	Column	Reaction	True	String	Reaction shortname
+SBML:reaction:id	Column	Reaction	False	String	SBML Reaction ID
+ReactionFormula	Column	Reaction	False	String	Reaction sum formula
+Location	Column	Reaction	True	String	Compartment for localised reaction
+Enzyme	Column	Reaction	True	String	Enzyme catalysing the reaction
+Model	Column	Reaction	False	String	Model(s) in which reaction is involved
+Pathway	Column	Reaction	False	String	Pathway(s) in which reaction is involved
+SubreactionOf	Column	Reaction	True	String	Mark as subreaction of a (lumped) reaction
+IsComplete	Column	Reaction	False	Boolean	Reaction formula includes all cofactors etc.
+IsReversible	Column	Reaction	False	Boolean	Reaction should be treated as irreversible
+IsInEquilibrium	Column	Reaction	False	Boolean	Reaction approximately in equilibrium
+IsExchangeReaction	Column	Reaction	False	Boolean	Some reactants are left out
+IsFast	Column	Reaction	False	Boolean	Reaction to be treated as fast
+Flux	Column	Reaction	False	Float	Metabolic flux through the reaction
+IsNonEnzymatic	Column	Reaction	False	Boolean	Non-catalysed reaction
+KineticLaw:Name	Column	Reaction	False	String	Rate law (name as in SBO)
+KineticLaw:Identifiers.obo.sbo	Column	Reaction	True	String	Rate law SBO identifier
+KineticLaw:Formula	Column	Reaction	False	String	Rate law formula
+Gene	Column	Reaction	True	String	see table type Enzyme
+Gene:Symbol	Column	Reaction	False	String	see table type Enzyme
+Operon	Column	Reaction	True	String	see table type Gene
+Enzyme:Name	Column	Reaction	False	String	Name of enzyme
+Enzyme:Identifiers:ec-code	Column	Reaction	False	String	EC number of enzyme
+Enzyme:SBML:species:id	Column	Reaction	False	String	SBML ID of enzyme
+Enzyme:SBML:parameter:id	Column	Reaction	False	String	SBML ID of enzyme
+Enzyme:SBML:reaction:parameter:id	Column	Reaction	False	String	SBML ID of enzyme
+BuildReaction	Column	Reaction	False	Boolean	Includereaction in SBML model
+BuildEnzyme	Column	Reaction	False	Boolean	Include enzyme in SBML model
+BuildEnzymeProduction	Column	Reaction	False	Boolean	Describe enzyme production in SBML model
+Reaction	Column	ReactionStoichiometry	True	String	Reaction ID
+Stoichiometry	Column	ReactionStoichiometry	False	Float	Stoichiometric coefficient
+Substrate	Column	ReactionStoichiometry	True	String	Substrate ID
+Product	Column	ReactionStoichiometry	True	String	Product ID
+Location	Column	ReactionStoichiometry	True	String	Compartment ID
+Relation	Column	Relation	False	String	Type of quantitative relationship
+From	Column	Relation	True	String	Element at beginning of arrow
+To	Column	Relation	True	String	Element at arrowhead
+IsSymmetric	Column	Relation	False	Boolean	Flag indicating non-symmetric relationships
+Value:*	Column	Relation	False	Float	Numerical value assigned to the relationship
+ID	Column	Quantity	True	String	Quantity / SBML parameter ID
+QuantityName	Column	Quantity	False	String	Quantity (name)
+QuantityType	Column	Quantity	True	String	Quantity type (e.g. from SBO)
+Value	Column	Quantity	False	Float	Value type Value
+Mean	Column	Quantity	False	Float	Value type Mean
+Std	Column	Quantity	False	Float	Value type Std
+Min	Column	Quantity	False	Float	Value type Min
+Max	Column	Quantity	False	Float	Value type Max
+Median	Column	Quantity	False	Float	Value type Median
+GeometricMean	Column	Quantity	False	Float	Value type GeometricMean
+Sign	Column	Quantity	False	Enum('+','-','0')	Value type Sign
+ProbDist	Column	Quantity	False	String	Value type ProbDist
+SBML:parameter:id	Column	Quantity	False	String	Parameter ID in SBML file
+SBML:reaction:parameter:id	Column	Quantity	False	String	Parameter ID in SBML file
+Unit	Column	Quantity	False	String	Physical unit
+Scale	Column	Quantity	False	String	Scale (e.g. logarithm, see Table tab:quantityvaluetype)
+IsConstant	Column	Quantity	False	Boolean	Indicates a constant quantity
+Time	Column	Quantity	False	Float	Time value
+Sample	Column	Quantity	False	String	Sample name or identifier
+Provenance	Column	Quantity	False	String	Name of data source (free text)
+Condition	Column	Quantity	False	String	experimental condition name (free text)
+pH	Column	Quantity	False	Float	pH value in measurement
+Temperature	Column	Quantity	False	Float	Temperature in measurement
+Location	Column	Quantity	True	String	Compartment (shortname)
+Location:Name	Column	Quantity	False	String	Compartment (name)
+Location:SBML:compartment:id	Column	Quantity	False	String	SBML ID of compartment
+Compound	Column	Quantity	True	String	Related compound (shortname)
+Compound:Name	Column	Quantity	False	String	Related compound (name)
+Compound:Identifiers:*	Column	Quantity	False	String	Compound ID
+Compound:SBML:species:id	Column	Quantity	False	String	SBML ID of compound
+Reaction	Column	Quantity	True	String	Related reaction (shortname)
+Reaction:Name	Column	Quantity	False	String	Related reaction (name)
+Reaction:Identifiers:*	Column	Quantity	False	String	Reaction ID
+Reaction:SBML:reaction:id	Column	Quantity	False	String	SBML ID of reaction
+Enzyme	Column	Quantity	True	String	Related enzyme (shortname)
+Enzyme:Name	Column	Quantity	False	String	Related enzyme (name)
+Enzyme:Identifiers:*	Column	Quantity	False	String	Enzyme ID
+Enzyme:SBML:species:id	Column	Quantity	False	String	SBML ID of enzyme
+Enzyme:SBML:parameter:id	Column	Quantity	False	String	SBML ID of enzyme
+Enzyme:SBML:reaction:parameter:id	Column	Quantity	False	String	SBML ID of enzyme
+Protein	Column	Quantity	True	String	Related enzyme (shortname)
+Protein:Name	Column	Quantity	False	String	Related enzyme (name)
+Protein:Identifiers:*	Column	Quantity	False	String	Protein ID
+Protein:SBML:species:id	Column	Quantity	False	String	SBML ID of enzyme
+Protein:SBML:parameter:id	Column	Quantity	False	String	SBML ID of enzyme
+Protein:SBML:reaction:parameter:id	Column	Quantity	False	String	SBML ID of enzyme
+Gene	Column	Quantity	True	String	Related gene
+Organism	Column	Quantity	True	String	Related organism
+Time	Column	QuantityMatrix	False	Float	Time value
+Sample	Column	QuantityMatrix	False	String	Sample name or identifier
+>*:*	Column	QuantityMatrix	False	String	Pointer to a row in another table
+>*:*:*	Column	QuantityMatrix	False	String	Pointer to a row in another document
+Quantity	Column	QuantityMatrix	False	String	Quantity (shortname)
+QuantityName	Column	QuantityMatrix	False	String	Quantity (name)
+QuantityType	Column	QuantityMatrix	True	String	Quantity type (e.g. from SBO)
+Value	Column	QuantityMatrix	False	Float	Value type Value
+Mean	Column	QuantityMatrix	False	Float	Value type Mean
+Std	Column	QuantityMatrix	False	Float	Value type Std
+Min	Column	QuantityMatrix	False	Float	Value type Min
+Max	Column	QuantityMatrix	False	Float	Value type Max
+Median	Column	QuantityMatrix	False	Float	Value type Median
+GeometricMean	Column	QuantityMatrix	False	Float	Value type GeometricMean
+Sign	Column	QuantityMatrix	False	Enum('+','-','0')	Value type Sign
+ProbDist	Column	QuantityMatrix	False	String	Value type ProbDist
+SBML:parameter:id	Column	QuantityMatrix	False	String	Parameter ID in SBML file
+SBML:reaction:parameter:id	Column	QuantityMatrix	False	String	Parameter ID in SBML file
+Unit	Column	QuantityMatrix	False	String	Physical unit
+Scale	Column	QuantityMatrix	False	String	Scale (e.g. logarithm, see Table tab:quantityvaluetype)
+Compound	Column	QuantityMatrix	True	String	Related compound (shortname)
+Compound:Name	Column	QuantityMatrix	False	String	Related compound (name)
+Compound:Identifiers:*	Column	QuantityMatrix	False	String	Compound ID
+Compound:SBML:species:id	Column	QuantityMatrix	False	String	SBML ID of compound
+Reaction	Column	QuantityMatrix	True	String	Related reaction (shortname)
+Reaction:Name	Column	QuantityMatrix	False	String	Related reaction (name)
+Reaction:Identifiers:*	Column	QuantityMatrix	False	String	Reaction ID
+Reaction:SBML:reaction:id	Column	QuantityMatrix	False	String	SBML ID of reaction
+Enzyme	Column	QuantityMatrix	True	String	Related enzyme (shortname)
+Enzyme:Name	Column	QuantityMatrix	False	String	Related enzyme (name)
+Enzyme:Identifiers:*	Column	QuantityMatrix	False	String	Enzyme ID
+Enzyme:SBML:species:id	Column	QuantityMatrix	False	String	SBML ID of enzyme
+Enzyme:SBML:parameter:id	Column	QuantityMatrix	False	String	SBML ID of enzyme
+Enzyme:SBML:reaction:parameter:id	Column	QuantityMatrix	False	String	SBML ID of enzyme
+Protein	Column	QuantityMatrix	True	String	Related enzyme (shortname)
+Protein:Name	Column	QuantityMatrix	False	String	Related enzyme (name)
+Protein:Identifiers:*	Column	QuantityMatrix	False	String	Protein ID
+Protein:SBML:species:id	Column	QuantityMatrix	False	String	SBML ID of enzyme
+Protein:SBML:parameter:id	Column	QuantityMatrix	False	String	SBML ID of enzyme
+Protein:SBML:reaction:parameter:id	Column	QuantityMatrix	False	String	SBML ID of enzyme
+Gene	Column	QuantityMatrix	True	String	Related gene
+Sample	Column	Measurement	True	String	Sample shortname
+Time	Column	Measurement	False	Float	Time point
+Unit	Column	Measurement	False	String	Measurement unit
+ValueType	Column	Measurement	False	String	Mean, Std, etc
+Name	Column	Definition	False	String	Name of component (table, column, attribute to be defined)
+Type	Column	Definition	False	String	Type of component
+Parent	Column	Definition	False	String	Name of parent component
+isShortname	Column	Definition	False	String	Entries are shortnames of SBtab elements (True/False)
+Format	Column	Definition	False	String	Format of the entries (see Section sec:DefinitionTable)
+TableType	Attribute	SBtab	False	String	Table type (as defined in definition table)
+TableName	Attribute	SBtab	True	String	Table shortname
+TableTitle	Attribute	SBtab	False	String	Table title (free text)
+SBtabVersion	Attribute	SBtab	False	String	SBtab version number
+Document	Attribute	SBtab	False	String	SBtab document name
+SBML:reaction:id	Column	Quantity	False	String	Used in spec example 5
+SBML:species:id	Column	Quantity	False	String	Used in spec example 5
+Identifiers:obo.chebi	Column	QuantityMatrix	False	String	Used in spec example 6
+SBO:Identifiers:obo.sbo	Column	Quantity	False	String	Used in spec example 12
+SBO:*	Column	Quantity	False	String	Used in spec example 13
+Identifiers:obo.chebi	Column	Quantity	False	String	Used in spec example 17
+Value	Column	Relation	False	String	Used in spec example 21
