@@ -27,12 +27,16 @@ assert(isequal(doc.table_names, {'Reaction'; 'Compound'}));
 assert(strcmp(doc.tables.Compound.attributes.TableID, 'Compound'));
 assert(isempty(lastwarn));
 
-%% a TableID that only repeats the TableName is not written when saving
+%% the table key is written as TableID (SBtab 1.1) or TableName (SBtab 1.0)
 f = fullfile(d, 'doc_10.tsv');
 write_file(f, doc_10);
 f2 = fullfile(d, 'doc_10_saved.tsv');
 sbtab_document_save_to_one(sbtab_document_load(f), f2, 0);
-assert(~contains(fileread(f2), 'TableID'));
+assert(contains(fileread(f2), 'TableID=''Compound''') && ~contains(fileread(f2), 'TableName'));
+doc2 = sbtab_document_load(f2);
+assert(isequal(doc2.table_names, {'Reaction'; 'Compound'}));
+sbtab_document_save_to_one(sbtab_document_load(f), f2, 0, 0, '1.0');
+assert(contains(fileread(f2), 'TableName=''Compound''') && ~contains(fileread(f2), 'TableID'));
 doc2 = sbtab_document_load(f2);
 assert(isequal(doc2.table_names, {'Reaction'; 'Compound'}));
 

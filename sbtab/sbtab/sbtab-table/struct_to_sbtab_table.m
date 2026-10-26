@@ -12,8 +12,12 @@ if ~isfield(attributes,'TableType')
 end
 
 if ~isfield(attributes,'TableID')
-  warning('Table ID missing');
-  attributes.TableID = 'unknown';
+  if isfield(attributes,'TableName') && ~isempty(attributes.TableName)
+    attributes.TableID = attributes.TableName;
+  else
+    warning('Table ID missing');
+    attributes.TableID = 'unknown';
+  end
 end
 
 my_sbtab_table.attributes   = attributes;

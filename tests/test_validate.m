@@ -12,6 +12,8 @@ compounds = ['!!SBtab SBtabVersion=''1.0'' TableType=''Compound'' TableName=''C'
              '!ID' tab '!Name' newline 'A' tab 'a' newline 'B' tab 'b' newline];
 reaction  = @(formula) ['!!SBtab SBtabVersion=''1.0'' TableType=''Reaction'' TableName=''R''' newline ...
                         '!ID' tab '!ReactionFormula' newline 'R1' tab formula newline];
+% the same table in SBtab 1.1 (the table key is TableID)
+compounds_11 = strrep(strrep(compounds, '''1.0''', '''1.1'''), 'TableName=', 'TableID=');
 
 %% a valid document gives no messages
 m = validate([reaction('A <=> 2 B') compounds], '');
@@ -33,11 +35,14 @@ assert(any(strcmp(rules(m), 'Error:R06')));
 m = validate([reaction('A <=> B') strrep(compounds, '''C''', '''R''')], '');
 assert(any(strcmp(rules(m), 'Error:R08')));
 
-%% TableName must be a shortname: a warning in 1.0, an error in 1.1
+%% the table key must be a shortname: a warning in 1.0 (TableName), an error in 1.1 (TableID)
 m = validate(strrep(compounds, '''C''', '''My compounds'''), '');
 assert(any(strcmp(rules(m), 'Warning:R07')));
-m = validate(strrep(strrep(compounds, '''C''', '''My compounds'''), '''1.0''', '''1.1'''), '');
+m = validate(strrep(compounds_11, '''C''', '''My compounds'''), '');
 assert(any(strcmp(rules(m), 'Error:R07')));
+assert(isempty(validate(compounds_11, '')));
+m = validate(strrep(compounds_11, 'TableID=', 'TableName='), '');
+assert(any(strcmp(rules(m), 'Error:R06')));
 
 %% columns and keys
 m = validate(strrep(compounds, '!Name', '!Colour'), '');
@@ -49,7 +54,7 @@ m = validate(strrep(compounds, [newline 'B' tab], [newline tab]), '');
 assert(any(strcmp(rules(m), 'Error:R61')));
 m = validate(strrep(compounds, [newline 'B' tab], [newline '1B' tab]), '');
 assert(any(strcmp(rules(m), 'Warning:R41')));
-m = validate(strrep(compounds, '!ID', '!Compound'), '1.1');
+m = validate(strrep(compounds_11, '!ID', '!Compound'), '');
 assert(any(strcmp(rules(m), 'Warning:R50')) && ~any(strcmp({m.severity}, 'Error')));
 
 %% reaction formulae
@@ -79,9 +84,9 @@ custom = ['!!SBtab SBtabVersion=''1.0'' TableType=''MyType'' TableName=''M''' ne
 assert(isempty(validate(custom, '')));
 
 %% pointers in version 1.1
-matrix = ['!!SBtab SBtabVersion=''1.1'' TableType=''QuantityMatrix'' TableName=''Data''' newline ...
+matrix = ['!!SBtab SBtabVersion=''1.1'' TableType=''QuantityMatrix'' TableID=''Data''' newline ...
           '!Compound' tab 'POINTER' newline 'A' tab '1.1' newline ...
-          '!!SBtab SBtabVersion=''1.1'' TableType=''Measurement'' TableName=''Sample''' newline ...
+          '!!SBtab SBtabVersion=''1.1'' TableType=''Measurement'' TableID=''Sample''' newline ...
           '!Sample' tab '!Time' newline 's1' tab '0' newline];
 assert(isempty(validate(strrep(matrix, 'POINTER', '!>Sample:s1'), '')));
 assert(any(strcmp(rules(validate(strrep(matrix, 'POINTER', '!>Sample:s9'), '')), 'Error:R31')));

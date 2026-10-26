@@ -65,7 +65,8 @@ if ~isfield(attributes,'TableType')
 end
 
 % The table ID (used to identify the table in an SBtab document) is the attribute TableID
-% (in SBtab files before version 1.0) or, otherwise, the attribute TableName
+% (in SBtab 1.1 files and in files before version 1.0) or, otherwise, the attribute TableName
+% (SBtab 1.0)
 
 if ~isfield(attributes,'TableID')
   if isfield(attributes,'TableName') && ~isempty(attributes.TableName)

@@ -11,8 +11,15 @@ function my_sbtab_table = sbtab_table_convert_version(my_sbtab_table, v)
 %    from v, the columns are renamed
 %      1.0: !ComponentName !ComponentType !IsPartOf
 %      1.1: !Name          !Type          !Parent
-%  - for version 1.1, a warning is issued if the TableName is not a shortname
-%    (letters, digits and '_', not starting with a digit); a longer name belongs in TableTitle
+%  - the table key (shortname) is TableName in 1.0 and TableID in 1.1:
+%      1.1: a missing TableID is set to the TableName; a TableName that only
+%           repeats the TableID is removed
+%      1.0: a TableID that only repeats the TableName is removed. If the table's
+%           SBtabVersion is missing or differs from 1.0, TableName is set to the
+%           TableID (a different TableName is kept as TableTitle, unless there is
+%           a TableTitle) and TableID is removed
+%  - for version 1.1, a warning is issued if the TableID is missing or not a shortname
+%    (letters, digits and '_', not starting with a digit)
 % Other differences between the versions (e.g. pointers '>Table:Column' in 1.0 and
 % '!>Table:Row' in 1.1) are not converted.
 
@@ -36,12 +43,32 @@ if ~version_unchanged && isfield(my_sbtab_table.attributes, 'TableType') && strc
   end
 end
 
-if strcmp(v, '1.1') && isfield(my_sbtab_table.attributes, 'TableName')
-  table_name = my_sbtab_table.attributes.TableName;
-  if ischar(table_name) && isempty(regexp(table_name, '^[A-Za-z_][A-Za-z0-9_]*$', 'once'))
-    warning('SBtab 1.1: TableName ''%s'' is not a shortname (a longer name can be given in TableTitle)', table_name);
-  end
+a = my_sbtab_table.attributes;
+switch v
+  case '1.1'
+    if ~isfield(a, 'TableID') && isfield(a, 'TableName')
+      a.TableID = a.TableName;
+    end
+    if isfield(a, 'TableID') && isfield(a, 'TableName') && strcmp(a.TableID, a.TableName)
+      a = rmfield(a, 'TableName');
+    end
+    if ~isfield(a, 'TableID')
+      warning('SBtab 1.1: the table has no TableID');
+    elseif ischar(a.TableID) && isempty(regexp(a.TableID, '^[A-Za-z_][A-Za-z0-9_]*$', 'once'))
+      warning('SBtab 1.1: TableID ''%s'' is not a shortname', a.TableID);
+    end
+  case '1.0'
+    if isfield(a, 'TableID') && isfield(a, 'TableName') && strcmp(a.TableID, a.TableName)
+      a = rmfield(a, 'TableID');
+    elseif isfield(a, 'TableID') && ~version_unchanged
+      if isfield(a, 'TableName') && ~isfield(a, 'TableTitle')
+        a.TableTitle = a.TableName;
+      end
+      a.TableName = a.TableID;
+      a = rmfield(a, 'TableID');
+    end
 end
+my_sbtab_table.attributes = a;
 
 
 % -----------------------------------------------------

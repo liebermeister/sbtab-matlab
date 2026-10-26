@@ -7,7 +7,9 @@ function messages = sbtab_document_validate(sbtab_document, options)
 % sbtab_document: SBtab document object, SBtab table object, or file name
 % options (struct, optional):
 %   options.version     : SBtab version whose rules are applied ('1.0' or '1.1'); default: the
-%                         SBtabVersion attribute of the document or of its first table, else '1.0'
+%                         SBtabVersion attribute of the document or of its first table, else
+%                         options.default_version
+%   options.default_version : version for documents without SBtabVersion attribute (default '1.0')
 %   options.definitions : definitions table (SBtab table object or file name); default: the
 %                         definitions table of this version (see sbtab_definitions)
 %   options.verbose     : 1 (default): issue a Matlab warning for each problem found
@@ -25,7 +27,7 @@ function messages = sbtab_document_validate(sbtab_document, options)
 % columns and attributes).
 
 if ~exist('options','var'), options = struct; end
-options = join_struct(struct('version', [], 'definitions', [], 'verbose', 1), options);
+options = join_struct(struct('version', [], 'default_version', '1.0', 'definitions', [], 'verbose', 1), options);
 
 messages = struct('severity', {}, 'rule', {}, 'table', {}, 'message', {});
 filename = '';
@@ -46,7 +48,7 @@ try
 
   version = options.version;
   if isempty(version)
-    version = document_version(sbtab_document);
+    version = document_version(sbtab_document, options.default_version);
   end
   switch version
     case {'1.0', '1.1'}
@@ -162,7 +164,7 @@ end
 duplicates = unique(table_names(setdiff(1:length(table_names), ind_unique)));
 for it_name = 1:length(duplicates)
   name = duplicates(it_name);
-  messages = add(messages, 'Error', 'R08', '', sprintf('Several tables have the TableName %s', name{1}));
+  messages = add(messages, 'Error', 'R08', '', sprintf('Several tables have the %s %s', key_attribute(version), name{1}));
 end
 
 % R40: keys (column !ID) are unique within the document
@@ -196,12 +198,14 @@ else
   end
 end
 
-if ~isfield(declared, 'TableName') || isempty(declared.TableName)
-  messages = add(messages, 'Error', 'R06', label, 'The attribute TableName is missing');
+% R06/R07: the table key is TableName in SBtab 1.0 and TableID in SBtab 1.1
+key = key_attribute(version);
+if ~isfield(declared, key) || isempty(declared.(key))
+  messages = add(messages, 'Error', 'R06', label, sprintf('The attribute %s is missing', key));
 else
-  name = declared.TableName;
+  name = declared.(key);
   if ~is_shortname(name, 'strict')
-    messages = add(messages, severity(version, 'Warning', 'Error'), 'R07', label, sprintf('The TableName %s is not a shortname (letters, digits and _, starting with a letter)', name));
+    messages = add(messages, severity(version, 'Warning', 'Error'), 'R07', label, sprintf('The %s %s is not a shortname (letters, digits and _, starting with a letter)', key, name));
   end
 end
 
@@ -494,7 +498,7 @@ function s = severity(version, severity_10, severity_11)
 if strcmp(version, '1.0'), s = severity_10; else, s = severity_11; end
 
 
-function version = document_version(sbtab_document)
+function version = document_version(sbtab_document, default_version)
 
 version = '';
 if isfield(sbtab_document.attributes, 'SBtabVersion')
@@ -505,7 +509,7 @@ else
     version = sbtab_document.tables.(fn{1}).attributes.SBtabVersion;
   end
 end
-if isempty(version), version = '1.0'; end
+if isempty(version), version = default_version; end
 
 
 function ok = is_shortname(s, mode)
@@ -525,11 +529,20 @@ res = isequal(declared, t.attributes);
 
 function label = table_label(t)
 
-if isfield(t.attributes, 'TableName')
+if isfield(t.attributes, 'TableID')
+  label = t.attributes.TableID;
+elseif isfield(t.attributes, 'TableName')
   label = t.attributes.TableName;
 else
-  label = t.attributes.TableID;
+  label = '';
 end
+
+
+function key = key_attribute(version)
+
+% attribute that holds the table key (shortname)
+
+if strcmp(version, '1.0'), key = 'TableName'; else, key = 'TableID'; end
 
 
 function res = has_column(t, column_name)
@@ -560,7 +573,7 @@ function t = find_table(sbtab_document, table_name)
 t = [];
 for fn = fieldnames(sbtab_document.tables)'
   tt = sbtab_document.tables.(fn{1});
-  if isfield(tt.attributes, 'TableName') && strcmp(tt.attributes.TableName, table_name)
+  if strcmp(table_label(tt), table_name)
     t = tt;
     return
   end
