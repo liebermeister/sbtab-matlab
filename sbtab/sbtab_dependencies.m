@@ -12,11 +12,3 @@ end
 if exist('package_version_check','file')
   package_version_check('The Matlab utility functions', 'matlab_utils_version', '1.0.0');
 end
-
-if ~exist('network_construct','file')
-  warning('Please install the Metabolic Network Toolbox (https://github.com/liebermeister/metabolic-network-toolbox) - Otherwise the functions in sbtab-formats will not work.');
-end
-
-if ~exist('TranslateSBML','file')
-  warning('Please install the Matlab interface of libSBML (https://sbml.org/software/libsbml/) - Otherwise the SBML conversion functions will not work.');
-end

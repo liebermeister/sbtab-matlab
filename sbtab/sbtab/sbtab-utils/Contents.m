@@ -9,6 +9,7 @@
 % sbtab_load_text_table         - read a tab-, comma- or semicolon-separated file into a cell array
 % sbtab_parse_attributes        - read the attributes from a declaration line
 % sbtab_parse_sbo_header        - parse a column header !SBO:<quantity> [<unit>:<Scale>]:<ValueType>
+% annotate_list                 - load a table of annotations and map a list of names
 % sbtab_definitions             - definitions table of an SBtab version
 % sbtab_clean_column_headers    - convert column names into Matlab field names
 % sbtab_clean_table_id          - convert table IDs into Matlab field names
