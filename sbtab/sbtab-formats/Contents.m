@@ -1,11 +1,6 @@
-% Conversion between SBtab and other formats
+% Conversion between SBtab and matlab formats
 %
-% Most functions require the Metabolic Network Toolbox
-% (https://github.com/liebermeister/metabolic-network-toolbox)
-%
-% mnt-network    - networks of the Metabolic Network Toolbox
-% mnt-omics-data - omics data (biotable data structure)
-% sbml           - SBML models (also requires libSBML)
-% cobra          - COBRA models
 % options-struct - Matlab structs with tool options
-% sbtab-toolkit  - display SBtab models
+%
+% Conversion between SBtab and network models, omics data, SBML and COBRA
+% is part of the Metabolic Network Toolbox (folder mnt_sbtab_conversion)

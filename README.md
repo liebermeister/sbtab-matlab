@@ -27,14 +27,9 @@ To check which of the other packages are installed, run `sbtab_dependencies`.
 - Matlab (tested with R2025b)
 - [Matlab utility functions](https://github.com/liebermeister/matlab-utils) (required)
 
-The functions in the folder `sbtab-formats` require further packages:
-
-| Package | Needed for |
-|---------|------------|
-| [Metabolic Network Toolbox](https://github.com/liebermeister/metabolic-network-toolbox) | conversion between SBtab and network models (`network_to_sbtab`, `sbtab_to_network`, ...) and SBML or COBRA models |
-| [libSBML](https://sbml.org/software/libsbml/) (Matlab interface) | conversion between SBtab and SBML (`sbml_to_sbtab`, `sbtab_to_sbml`) |
-| [Replicate regression](https://github.com/liebermeister/replicate-regression) | `biotable_combine_replicates` |
-| [Parameter balancing](https://github.com/liebermeister/parameter-balancing-matlab) and [Model balancing](https://github.com/liebermeister/model-balancing) | `sbtab_load_network_model_and_data` |
+Conversion between SBtab and network models, omics data, SBML and COBRA is part of the
+[Metabolic Network Toolbox](https://github.com/liebermeister/metabolic-network-toolbox)
+(folder `mnt_sbtab_conversion`).
 
 ## Usage
 
@@ -51,9 +46,7 @@ sbtab_document_save(sbtab_document, 'my_model.tsv');     % save the document to 
 
 - **`sbtab/sbtab`**: SBtab tables (`sbtab-table`) and documents (`sbtab-document`), functions for both
   (`sbtab`), and utility functions (`sbtab-utils`)
-- **`sbtab/sbtab-formats`**: conversion between SBtab and other formats: network models of the
-  Metabolic Network Toolbox, omics data ("biotable" data structure), SBML and COBRA models, and
-  Matlab structs with tool options
+- **`sbtab/sbtab-formats`**: conversion between SBtab and Matlab structs with tool options
 - **`resources/examples`**: example files (SBtab, SBML, COBRA)
 
 Each folder contains a `Contents.m` file with an overview (type, e.g., `help sbtab-table`).
