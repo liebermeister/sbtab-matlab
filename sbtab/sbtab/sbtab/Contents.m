@@ -1,4 +1,4 @@
-% Functions for both SBtab tables and documents
+% Functions for SBtab tables and documents
 %
 % sbtab_get                - load an SBtab document from a file, if a file name is given
 % sbtab_object_type        - 'document' or 'table'
