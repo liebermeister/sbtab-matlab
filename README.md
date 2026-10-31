@@ -50,7 +50,6 @@ sbtab_document_save(sbtab_document, 'my_model.tsv');     % save the document to 
 - **`resources/examples`**: example files (SBtab, SBML, COBRA)
 
 Each folder contains a `Contents.m` file with an overview (type, e.g., `help sbtab-table`).
-HTML documentation is available in the folder `doc`.
 
 ## Tests
 
