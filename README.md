@@ -29,7 +29,7 @@ To check which of the other packages are installed, run `sbtab_dependencies`.
 
 Conversion between SBtab and network models, omics data, SBML and COBRA is part of the
 [Metabolic Network Toolbox](https://github.com/liebermeister/metabolic-network-toolbox)
-(folder `mnt_sbtab_conversion`).
+(folder `mnt/io`).
 
 ## Usage
 
