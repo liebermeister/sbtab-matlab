@@ -1,7 +1,7 @@
 % Tests for SBtab documents
 
 setup_test_path;
-example_file = fullfile(sbtab_resourcedir, 'examples', 'sbtab', 'ecoli', 'ecoli_noor_2016_model.tsv');
+example_file = fullfile(sbtab_resourcedir, 'examples', 'sbtab', 'escherichia-coli', 'escherichia-coli_noor_2016_model.tsv');
 
 d = sbtab_document_load(example_file);
 reaction_table = sbtab_document_get_table(d, 'Reaction');

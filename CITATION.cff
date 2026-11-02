@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the article below."
+title: "SBtab for Matlab"
+type: software
+authors:
+  - family-names: Liebermeister
+    given-names: Wolfram
+version: 1.0.0
+date-released: 2026-10-31
+license: GPL-2.0-or-later
+repository-code: "https://github.com/liebermeister/sbtab-matlab"
+preferred-citation:
+  type: article
+  authors:
+    - family-names: Lubitz
+      given-names: Timo
+    - family-names: Hahn
+      given-names: Jens
+    - family-names: Bergmann
+      given-names: Frank T.
+    - family-names: Noor
+      given-names: Elad
+    - family-names: Klipp
+      given-names: Edda
+    - family-names: Liebermeister
+      given-names: Wolfram
+  title: "SBtab: A flexible table format for data exchange in systems biology"
+  journal: Bioinformatics
+  year: 2016
+  volume: 32
+  issue: 16
+  start: 2559
+  end: 2561

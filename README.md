@@ -5,6 +5,19 @@ Matlab code for SBtab file format
 
 This repository contains Matlab code for SBtab. For python code and a larger collection of example files, please see the [main SBtab repository](https://github.com/tlubitz/SBtab).
 
+## Quick start
+
+After the installation (see below), try this in Matlab:
+
+```matlab
+filename = fullfile(sbtab_resourcedir, 'examples', 'sbtab', 'escherichia-coli', 'escherichia-coli_noor_2016_model.tsv');
+sbtab_document = sbtab_document_load(filename);         % load an SBtab document (several tables)
+sbtab_print(sbtab_document)                              % show its structure
+reaction_table = sbtab_document_get_table(sbtab_document, 'Reaction');
+ids = sbtab_table_get_column(reaction_table, 'ID');      % get a column
+sbtab_document_save(sbtab_document, 'my_model.tsv');     % save the document to one file
+```
+
 ## Installation
 
 Download or clone the repository and add the `sbtab` folder, with its subfolders, to your Matlab path:
@@ -20,7 +33,7 @@ Then install the required packages (see below) and run the demo:
 demo_sbtab
 ```
 
-To check which of the other packages are installed, run `sbtab_dependencies`.
+To check which of the other packages are installed, run `sbtab_dependencies`. For common tasks, see [GUIDE.md](GUIDE.md).
 
 ## Requirements
 
@@ -30,17 +43,6 @@ To check which of the other packages are installed, run `sbtab_dependencies`.
 Conversion between SBtab and network models, omics data, SBML and COBRA is part of the
 [Metabolic Network Toolbox](https://github.com/liebermeister/metabolic-network-toolbox)
 (folder `mnt/io`).
-
-## Usage
-
-```matlab
-filename = fullfile(sbtab_resourcedir, 'examples', 'sbtab', 'ecoli', 'ecoli_noor_2016_model.tsv');
-sbtab_document = sbtab_document_load(filename);         % load an SBtab document (several tables)
-sbtab_print(sbtab_document)                              % show its structure
-reaction_table = sbtab_document_get_table(sbtab_document, 'Reaction');
-ids = sbtab_table_get_column(reaction_table, 'ID');      % get a column
-sbtab_document_save(sbtab_document, 'my_model.tsv');     % save the document to one file
-```
 
 ## Contents
 
@@ -69,7 +71,9 @@ This package is released under the [GNU General Public License](LICENSE), versio
 ## Contact
 Please contact [Wolfram Liebermeister](mailto:wolfram.liebermeister@gmail.com) with any questions or comments.
 
-## Reference
+## How to cite
+If you use SBtab, please cite the article below. Citation information is also provided in the file `CITATION.cff`.
+
 Lubitz T., Hahn J., Bergmann F.T., Noor E., Klipp E., Liebermeister W. (2016),
 *SBtab: A flexible table format for data exchange in systems biology*.
 [Bioinformatics 32 (16) 2559–2561](https://academic.oup.com/bioinformatics/article/32/16/2559/1743291)

@@ -28,7 +28,7 @@ end
 delete(filename);
 
 %% print and convert all tables of an example document
-example_file = fullfile(sbtab_resourcedir, 'examples', 'sbtab', 'ecoli', 'ecoli_wortel_2018_model.tsv');
+example_file = fullfile(sbtab_resourcedir, 'examples', 'sbtab', 'escherichia-coli', 'escherichia-coli_wortel_2018_model.tsv');
 d = sbtab_document_load(example_file);
 evalc('sbtab_print(d)');
 evalc('sbtab_print(d, ''all'')');

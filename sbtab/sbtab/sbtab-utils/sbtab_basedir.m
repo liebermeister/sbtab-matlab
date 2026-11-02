@@ -4,4 +4,4 @@
 
 function d = sbtab_basedir()
 
-d = [fileparts(which(mfilename)) filesep '..' filesep '..' ];
+d = fileparts(fileparts(fileparts(fileparts(which(mfilename)))));

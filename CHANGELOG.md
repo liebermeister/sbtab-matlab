@@ -2,6 +2,12 @@
 
 Version numbers have the form MAJOR.MINOR.PATCH. MAJOR changes when existing calls may stop working.
 
+## Not released yet
+
+- `sbtab_basedir` now returns the main directory of the repository
+- New `GUIDE.md` and `CITATION.cff`; `README.md` has a Quick start section
+- Example files with `e_coli` or `ecoli` in their names renamed to `escherichia-coli` (`escherichia_coli` in Matlab function and script names)
+
 ## 1.0.0 (2026-10-31)
 
 First numbered version.

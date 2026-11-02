@@ -10,7 +10,7 @@ sbtab_print(S)
 
 % -- Read an SBtab document (several tables)
 
-filename = [ sbtab_resourcedir '/examples/sbtab/ecoli/ecoli_noor_2016_model.tsv'];
+filename = [ sbtab_resourcedir '/examples/sbtab/escherichia-coli/escherichia-coli_noor_2016_model.tsv'];
 S = sbtab_document_load(filename);
 sbtab_print(S)
 
@@ -22,7 +22,7 @@ sbtab_print(S)
 
 % -- Convert SBtab document into matlab struct
 
-filename = [ sbtab_resourcedir '/examples/sbtab/ecoli/ecoli_wortel_2018_model.tsv'];
+filename = [ sbtab_resourcedir '/examples/sbtab/escherichia-coli/escherichia-coli_wortel_2018_model.tsv'];
 sbtab_doc = sbtab_document_load(filename);
 sbtab_print(sbtab_doc)
 
