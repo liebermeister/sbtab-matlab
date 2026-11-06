@@ -14,7 +14,7 @@ function [my_struct,id_counter] = sbtab_to_struct(my_sbtab_object,structure,opti
 %
 % Usage example:
 %
-% filename = [ sbtab_resourcedir '/examples/sbtab/escherichia-coli/escherichia-coli_wortel_2018_model.tsv'];
+% filename = [ sbtab_resourcedir '/examples/sbtab-1.1/escherichia-coli/escherichia-coli_wortel_2018_model.tsv'];
 % s = sbtab_document_load(filename);
 % t = sbtab_to_struct(s);
 %

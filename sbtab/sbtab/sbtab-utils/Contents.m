@@ -2,6 +2,7 @@
 %
 % sbtab_version                 - default SBtab version for writing files ('1.1')
 % sbtab_check_version           - check an SBtab version number for writing files
+% sbtab_required_version        - SBtab version required by table types ('1.2' for 1.2-only types)
 % sbtab_basedir                 - main folder of the repository
 % sbtab_resourcedir             - folder with resources (example files)
 % sbtab_load_example            - load an example file

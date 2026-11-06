@@ -10,7 +10,7 @@ This repository contains Matlab code for SBtab. For python code and a larger col
 After the installation (see below), try this in Matlab:
 
 ```matlab
-filename = fullfile(sbtab_resourcedir, 'examples', 'sbtab', 'escherichia-coli', 'escherichia-coli_noor_2016_model.tsv');
+filename = fullfile(sbtab_resourcedir, 'examples', 'sbtab-1.1', 'escherichia-coli', 'escherichia-coli_noor_2016_model.tsv');
 sbtab_document = sbtab_document_load(filename);         % load an SBtab document (several tables)
 sbtab_print(sbtab_document)                              % show its structure
 reaction_table = sbtab_document_get_table(sbtab_document, 'Reaction');

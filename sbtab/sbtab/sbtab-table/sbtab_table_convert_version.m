@@ -4,23 +4,23 @@ function my_sbtab_table = sbtab_table_convert_version(my_sbtab_table, v)
 %
 % my_sbtab_table = sbtab_table_convert_version(my_sbtab_table, v)
 %
-% v: SBtab version ('1.0' or '1.1'; default: see 'sbtab_version')
+% v: SBtab version ('1.0', '1.1' or '1.2'; default: see 'sbtab_version')
 %
 % The attribute SBtabVersion is set to v. In addition, the following changes are made:
 %  - in tables of type 'Definition' whose SBtabVersion attribute is missing or differs
 %    from v, the columns are renamed
 %      1.0: !ComponentName !ComponentType !IsPartOf
-%      1.1: !Name          !Type          !Parent
-%  - the table key (shortname) is TableName in 1.0 and TableID in 1.1:
-%      1.1: a missing TableID is set to the TableName; a TableName that only
+%      1.1, 1.2: !Name     !Type          !Parent
+%  - the table key (shortname) is TableName in 1.0 and TableID in 1.1 and 1.2:
+%      1.1, 1.2: a missing TableID is set to the TableName; a TableName that only
 %           repeats the TableID is removed. If the table's SBtabVersion is missing
-%           or differs from 1.1 and there is no other TableName, the TableTitle
+%           or differs from v and there is no other TableName, the TableTitle
 %           (1.0) becomes the TableName (free text)
 %      1.0: a TableID that only repeats the TableName is removed. If the table's
 %           SBtabVersion is missing or differs from 1.0, TableName is set to the
 %           TableID (a different TableName is kept as TableTitle, unless there is
 %           a TableTitle) and TableID is removed
-%  - for version 1.1, a warning is issued if the TableID is missing or not a shortname
+%  - for versions 1.1 and 1.2, a warning is issued if the TableID is missing or not a shortname
 %    (letters, digits and '_', not starting with a digit)
 % Other differences between the versions (e.g. pointers '>Table:Column' in 1.0 and
 % '!>Table:Row' in 1.1) are not converted.
@@ -36,7 +36,7 @@ if ~version_unchanged && isfield(my_sbtab_table.attributes, 'TableType') && strc
   names_11 = {'Name', 'Type', 'Parent'};
   switch v
     case '1.0', [names_old, names_new] = deal(names_11, names_10);
-    case '1.1', [names_old, names_new] = deal(names_10, names_11);
+    case {'1.1','1.2'}, [names_old, names_new] = deal(names_10, names_11);
   end
   for it = 1:length(names_old)
     if sbtab_table_has_column(my_sbtab_table, names_old{it}) && ~sbtab_table_has_column(my_sbtab_table, names_new{it})
@@ -47,7 +47,7 @@ end
 
 a = my_sbtab_table.attributes;
 switch v
-  case '1.1'
+  case {'1.1','1.2'}
     if ~isfield(a, 'TableID') && isfield(a, 'TableName')
       a.TableID = a.TableName;
     end
@@ -59,9 +59,9 @@ switch v
       a = rmfield(a, 'TableTitle');
     end
     if ~isfield(a, 'TableID')
-      warning('SBtab 1.1: the table has no TableID');
+      warning('SBtab %s: the table has no TableID', v);
     elseif ischar(a.TableID) && isempty(regexp(a.TableID, '^[A-Za-z_][A-Za-z0-9_]*$', 'once'))
-      warning('SBtab 1.1: TableID ''%s'' is not a shortname', a.TableID);
+      warning('SBtab %s: TableID ''%s'' is not a shortname', v, a.TableID);
     end
   case '1.0'
     if isfield(a, 'TableID') && isfield(a, 'TableName') && strcmp(a.TableID, a.TableName)

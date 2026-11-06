@@ -7,11 +7,14 @@ function sbtab_document_save(sbtab_document,filename,flag_latex,verbose,to_one_f
 % If to_one_file==1 (default), the document is saved to one file [filename].tsv;
 % otherwise, each table is saved to a file [filename]_[TableID].tsv
 % (or .tex, if flag_latex==1). The extension .tsv in filename is optional.
-% sbtab_version: SBtab version to be written ('1.0' or '1.1'; default: see 'sbtab_version');
-%                it is always written in the declaration lines
+% sbtab_version: SBtab version to be written ('1.0', '1.1' or '1.2'; default: '1.1', or '1.2' if
+%                the document contains table types that exist only in SBtab 1.2, see
+%                'sbtab_required_version'). In one file, it is written in the document
+%                declaration line (and in SBtab 1.0 also in the table declaration lines);
+%                in separate files, in the table declaration lines.
 
 eval(default('flag_latex','0','verbose','1','to_one_file','1','sbtab_version','[]'));
-sbtab_version = sbtab_check_version(sbtab_version);
+sbtab_version = sbtab_document_version(sbtab_document, sbtab_version);
 add_date_and_sbtab_version = 1;
 
 if endsWith(filename,'.tsv')

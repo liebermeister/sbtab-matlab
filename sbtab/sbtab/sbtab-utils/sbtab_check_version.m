@@ -7,10 +7,10 @@ function v = sbtab_check_version(v)
 % v: version number (string, like '1.1', or number, like 1.1); if empty, the
 %    default version (see 'sbtab_version') is returned
 %
-% Supported versions: '1.0' and '1.1'. For other versions, a warning is issued
+% Supported versions: '1.0', '1.1' and '1.2'. For other versions, a warning is issued
 % and the default version is returned.
 
-supported_versions = {'1.0', '1.1'};
+supported_versions = {'1.0', '1.1', '1.2'};
 
 if isempty(v)
   v = sbtab_version;

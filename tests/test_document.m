@@ -1,7 +1,7 @@
 % Tests for SBtab documents
 
 setup_test_path;
-example_file = fullfile(sbtab_resourcedir, 'examples', 'sbtab', 'escherichia-coli', 'escherichia-coli_noor_2016_model.tsv');
+example_file = fullfile(sbtab_resourcedir, 'examples', 'sbtab-1.1', 'escherichia-coli', 'escherichia-coli_noor_2016_model.tsv');
 
 d = sbtab_document_load(example_file);
 reaction_table = sbtab_document_get_table(d, 'Reaction');
@@ -39,7 +39,7 @@ assert(isequal(d4.table_names, {'Compound';'Reaction'}));
 delete([basename '_Compound.tsv']); delete([basename '_Reaction.tsv']);
 
 %% table IDs that are not valid Matlab names
-filename = fullfile(sbtab_resourcedir, 'examples', 'sbtab', 'hynne', 'hynne_quantity_concentration.tsv');
+filename = fullfile(sbtab_resourcedir, 'examples', 'sbtab-1.1', 'hynne', 'hynne_quantity_concentration.tsv');
 d5 = sbtab_document_load(filename);
 assert(~isempty(sbtab_document_get_table(d5, d5.table_names{1})));
 

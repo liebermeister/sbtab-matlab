@@ -7,11 +7,15 @@ function my_table = sbtab_table_save(my_sbtab_table, options)
 % options.filename
 % options.omit_declarations
 % options.flag_latex
-% options.sbtab_version              SBtab version to be written ('1.0' or '1.1'; default: see 'sbtab_version')
+% options.sbtab_version              SBtab version to be written ('1.0', '1.1' or '1.2'; default:
+%                                    '1.1', or '1.2' for table types that exist only in SBtab 1.2,
+%                                    see 'sbtab_required_version')
 % options.add_date_and_sbtab_version add the attribute Date
+% options.omit_sbtab_version         (default 0) omit the attribute SBtabVersion (used for tables
+%                                    in a document whose declaration line contains the version)
 %
-% The attribute SBtabVersion is always written in the declaration line; for the
-% changes made to adapt the table to the SBtab version, see 'sbtab_table_convert_version'.
+% The attribute SBtabVersion is written in the declaration line (unless omit_sbtab_version==1);
+% for the changes made to adapt the table to the SBtab version, see 'sbtab_table_convert_version'.
 %
 % OR: options itself contains the filename
 
@@ -21,7 +25,7 @@ if isstr(options)
   options = struct('filename',options);
 end
 
-options_default = struct('filename',[],'omit_declarations',0,'flag_latex',0,'verbose',0,'add_date_and_sbtab_version',0,'sbtab_version',[]);
+options_default = struct('filename',[],'omit_declarations',0,'flag_latex',0,'verbose',0,'add_date_and_sbtab_version',0,'sbtab_version',[],'omit_sbtab_version',0);
 options         = join_struct(options_default,options);
 
 if options.flag_latex
@@ -40,7 +44,13 @@ if options.add_date_and_sbtab_version
   my_sbtab_table.attributes.Date = datestr(date,29);
 end
 
+if isempty(options.sbtab_version) && isfield(my_sbtab_table.attributes, 'TableType')
+  options.sbtab_version = sbtab_required_version(my_sbtab_table.attributes.TableType);
+end
 my_sbtab_table = sbtab_table_convert_version(my_sbtab_table, options.sbtab_version);
+if options.omit_sbtab_version
+  my_sbtab_table.attributes = rmfield(my_sbtab_table.attributes, 'SBtabVersion');
+end
 
 attribute_types  = fieldnames(my_sbtab_table.attributes);
 for it = 1:length(attribute_types)

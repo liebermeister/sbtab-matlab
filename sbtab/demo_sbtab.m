@@ -4,25 +4,25 @@ sbtab_dependencies;
 
 % -- Read an SBtab file (single table, uncontrolled columns)
 
-filename = [ sbtab_resourcedir '/examples/sbtab/sbtab_omics/sbtab_omics_row_example.tsv'];
+filename = [ sbtab_resourcedir '/examples/sbtab-1.1/sbtab_omics/sbtab_omics_row_example.tsv'];
 S = sbtab_table_load(filename);
 sbtab_print(S)
 
 % -- Read an SBtab document (several tables)
 
-filename = [ sbtab_resourcedir '/examples/sbtab/escherichia-coli/escherichia-coli_noor_2016_model.tsv'];
+filename = [ sbtab_resourcedir '/examples/sbtab-1.1/escherichia-coli/escherichia-coli_noor_2016_model.tsv'];
 S = sbtab_document_load(filename);
 sbtab_print(S)
 
 % -- Read an SBtab document with one table
 
-filename = [ sbtab_resourcedir '/examples/sbtab/sbtab_omics/sbtab_omics_row_example_document.tsv'];
+filename = [ sbtab_resourcedir '/examples/sbtab-1.1/sbtab_omics/sbtab_omics_row_example_document.tsv'];
 S = sbtab_document_load(filename);
 sbtab_print(S)
 
 % -- Convert SBtab document into matlab struct
 
-filename = [ sbtab_resourcedir '/examples/sbtab/escherichia-coli/escherichia-coli_wortel_2018_model.tsv'];
+filename = [ sbtab_resourcedir '/examples/sbtab-1.1/escherichia-coli/escherichia-coli_wortel_2018_model.tsv'];
 sbtab_doc = sbtab_document_load(filename);
 sbtab_print(sbtab_doc)
 

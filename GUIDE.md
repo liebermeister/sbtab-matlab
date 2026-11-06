@@ -7,7 +7,7 @@ An SBtab table is stored in a Matlab struct, and an SBtab document (several tabl
 ## First steps
 
 ```matlab
-filename = fullfile(sbtab_resourcedir, 'examples', 'sbtab', 'escherichia-coli', 'escherichia-coli_noor_2016_model.tsv');
+filename = fullfile(sbtab_resourcedir, 'examples', 'sbtab-1.1', 'escherichia-coli', 'escherichia-coli_noor_2016_model.tsv');
 sbtab_document = sbtab_document_load(filename);
 reaction_table = sbtab_document_get_table(sbtab_document, 'Reaction');
 ids = sbtab_table_get_column(reaction_table, 'ID');

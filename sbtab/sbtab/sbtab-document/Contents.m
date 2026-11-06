@@ -5,6 +5,7 @@
 % sbtab_document_load_from_one   - load an SBtab document from one file
 % sbtab_document_save            - save an SBtab document (to one or several files)
 % sbtab_document_save_to_one     - save an SBtab document to one file
+% sbtab_document_version         - SBtab version in which a document is written
 % sbtab_document_print           - display an SBtab document
 % sbtab_document_add_attribute   - add a document attribute
 % sbtab_document_get_attributes  - get the document attributes

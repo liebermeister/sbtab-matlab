@@ -25,9 +25,18 @@ assert(contains(c{1,1}, 'SBtabVersion=''1.1''') && ~contains(c{1,1}, 'SBtabVersi
 
 %% unsupported versions give a warning, and the default version is written
 lastwarn('');
-c = evalc('cc = sbtab_table_save(t, struct(''sbtab_version'',''1.2''));');
+c = evalc('cc = sbtab_table_save(t, struct(''sbtab_version'',''0.9''));');
 assert(contains(lastwarn, 'not supported'));
 assert(contains(cc{1,1}, 'SBtabVersion=''1.1'''));
+c = sbtab_table_save(t, struct('sbtab_version','1.2'));
+assert(contains(c{1,1}, 'SBtabVersion=''1.2'''));
+
+%% table types that exist only in SBtab 1.2: written as 1.2 by default
+assert(strcmp(sbtab_required_version({'Compound','SBMLlayout'}), '1.2'));
+assert(strcmp(sbtab_required_version({'Compound','Layout','Position'}), '1.1'));
+layout = sbtab_table_construct(struct('TableID','L','TableType','SBMLlayout'), {'ID'}, {{'Layout_1'}});
+c = sbtab_table_save(layout);
+assert(contains(c{1,1}, 'SBtabVersion=''1.2'''));
 
 %% definition tables: column names of version 1.0 and 1.1
 c = sbtab_table_save(definitions_10);
@@ -61,16 +70,34 @@ lastwarn('');
 evalc('sbtab_table_save(sbtab_table_add_attribute(t,''TableID'',''Compound table''), struct(''sbtab_version'',''1.0''));');
 assert(isempty(lastwarn));
 
-%% documents in one file: version in all declaration lines
-for v = {'1.0', '1.1'}
+%% documents in one file: version in the document declaration line
+%% (in version 1.0 also in the table declaration lines)
+for v = {'1.0', '1.1', '1.2'}
   filename = [tempname '.tsv'];
   sbtab_document_save(d, filename, 0, 0, 1, v{1});
   lines = regexp(fileread(filename), '\r?\n', 'split');
   declarations = lines(startsWith(lines, '!!'));
   assert(length(declarations) == 3);
-  assert(all(contains(declarations, ['SBtabVersion=''' v{1} ''''])));
+  assert(contains(declarations{1}, ['!!!SBtab']) && contains(declarations{1}, ['SBtabVersion=''' v{1} '''']));
+  if strcmp(v{1}, '1.0')
+    assert(all(contains(declarations, 'SBtabVersion=''1.0''')));
+  else
+    assert(~any(contains(declarations(2:end), 'SBtabVersion')));
+  end
   delete(filename);
 end
+
+%% documents with table types that exist only in SBtab 1.2 are written as 1.2
+layout = sbtab_table_construct(struct('TableID','L','TableType','SBMLlayout'), {'ID'}, {{'Layout_1'}});
+d12 = sbtab_document_add_table(d, 'L', layout);
+filename = [tempname '.tsv'];
+sbtab_document_save(d12, filename, 0, 0, 1);
+lines = regexp(fileread(filename), '\r?\n', 'split');
+assert(contains(lines{1}, 'SBtabVersion=''1.2'''));
+lastwarn('');
+evalc('sbtab_document_save(d12, filename, 0, 0, 1, ''1.1'')');
+assert(contains(lastwarn, 'only in SBtab 1.2'));
+delete(filename);
 
 %% documents in separate files: version in all declaration lines (default 1.1)
 basename = tempname;
