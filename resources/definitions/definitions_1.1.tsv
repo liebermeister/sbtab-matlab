@@ -257,6 +257,12 @@ SBMLElementType	Column	QuantityInfo	False	String	Corresponding SBML element type
 Abbreviation	Column	QuantityInfo	False	String	Abbreviation of quantity type
 ID	Column	QuantityInfo	False	String	Abbreviation of quantity type
 MatrixInfo	Column	QuantityInfo	False	String	Description of parameter dependencies
+BiologicalElement	Column	QuantityInfo	False	String	Element type the quantity refers to (e.g. Species, Reaction, Reaction/Species, None)
+PhysicalType	Column	QuantityInfo	False	String	Physical type of the quantity (e.g. Thermodynamic, Kinetic, Dynamic)
+MathematicalType	Column	QuantityInfo	False	String	Additive or Multiplicative (multiplicative quantities are described on log scale)
+PriorGeometricStd	Column	QuantityInfo	False	Float	Geometric standard deviation of the prior (multiplicative quantities)
+DataGeometricStd	Column	QuantityInfo	False	Float	Default geometric standard deviation of data values (multiplicative quantities)
+UseAsPriorInformation	Column	QuantityInfo	False	Integer	Use the prior of this quantity type (1) or not (0)
 ID	Column	Quantity	True	String	Quantity / SBML parameter ID
 QuantityName	Column	Quantity	False	String	Quantity (name)
 QuantityType	Column	Quantity	True	String	Quantity type (e.g. from SBO)

@@ -11,7 +11,11 @@
 % sbtab_parse_attributes        - read the attributes from a declaration line
 % sbtab_parse_sbo_header        - parse a column header !SBO:<quantity> [<unit>:<Scale>]:<ValueType>
 % annotate_list                 - load a table of annotations and map a list of names
-% sbtab_definitions             - definitions table of an SBtab version
+% sbtab_definitions             - definitions table of an SBtab version (optionally extended by extra definitions)
+% sbtab_definitions_merge       - extend a definitions table by the rows of other definitions tables
+% sbtab_definitions_read        - extra definitions (files, documents, tables) as definitions table objects
+% sbtab_document_set_definitions - set extra definitions tables for an SBtab document object
+% sbtab_document_get_definitions - definitions table used for an SBtab document object
 % sbtab_clean_column_headers    - convert column names into Matlab field names
 % sbtab_clean_table_id          - convert table IDs into Matlab field names
 % sbtab_cell_to_numbers         - convert table entries into numbers

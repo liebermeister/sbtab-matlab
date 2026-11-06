@@ -10,8 +10,11 @@ function messages = sbtab_document_validate(sbtab_document, options)
 %                         SBtabVersion attribute of the document or of its first table, else
 %                         options.default_version
 %   options.default_version : version for documents without SBtabVersion attribute (default '1.1')
-%   options.definitions : definitions table (SBtab table object or file name); default: the
-%                         definitions table of this version (see sbtab_definitions)
+%   options.definitions : extra definitions (definitions table object, file name, or a cell
+%                         array of these; see sbtab_definitions); default: the extra
+%                         definitions of the document (see sbtab_document_set_definitions)
+%   options.definitions_mode : 'extend' (default): the extra definitions extend the definitions
+%                         table of the SBtab version; 'replace': they are used instead of it
 %   options.verbose     : 1 (default): issue a Matlab warning for each problem found
 %
 % messages: struct array with fields
@@ -27,7 +30,7 @@ function messages = sbtab_document_validate(sbtab_document, options)
 % columns and attributes).
 
 if ~exist('options','var'), options = struct; end
-options = join_struct(struct('version', [], 'default_version', '1.1', 'definitions', [], 'verbose', 1), options);
+options = join_struct(struct('version', [], 'default_version', '1.1', 'definitions', [], 'definitions_mode', [], 'verbose', 1), options);
 
 messages = struct('severity', {}, 'rule', {}, 'table', {}, 'message', {});
 filename = '';
@@ -72,12 +75,14 @@ try
       end
   end
 
-  definitions = options.definitions;
-  if isempty(definitions)
-    definitions = sbtab_definitions(definitions_version);
-  elseif ischar(definitions)
-    definitions = sbtab_table_load(definitions);
+  % definitions table of the version, extended or replaced by the extra definitions
+  extra = options.definitions;
+  mode  = options.definitions_mode;
+  if isempty(extra) && isfield(sbtab_document, 'definitions')
+    extra = sbtab_document.definitions.extra;
+    if isempty(mode), mode = sbtab_document.definitions.mode; end
   end
+  definitions = sbtab_definitions(definitions_version, extra, mode);
   defs = read_definitions(definitions);
   [defs, messages] = add_document_definitions(defs, sbtab_document, version, messages);
 
