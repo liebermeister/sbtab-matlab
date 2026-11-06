@@ -1,0 +1,47 @@
+!!SBtab TableID='ToolTypes' TableType='Definition' SBtabVersion='1.1' TableName='Table types used by tools, not defined in the SBtab specifications'
+!Name	!Type	!Parent	!isShortname	!Format	!Description
+Options	Table	SBtab	False	Table	SBtab Options Table
+Option	Column	Options	False	String	Which option is addressed
+Value	Column	Options	False	String	What value is the option set to
+rxnconContingencyList	Table	SBtab	False	Table	SBtab rxnconContingencyList Table
+UID:Contingency	Column	rxnconContingencyList	False	Integer	ID for contingency
+Target	Column	rxnconContingencyList	True	String	Contingency target
+Contingency	Column	rxnconContingencyList	True	String	Contingency type
+Modifier	Column	rxnconContingencyList	True	String	Target modifier
+Reference:Identifiers:pubmed	Column	rxnconContingencyList	False	String	Pubmed ID
+Quality	Column	rxnconContingencyList	False	String	Contingency quality
+Comment	Column	rxnconContingencyList	False	String	Comment
+InternalComplexID	Column	rxnconContingencyList	False	String	Internal ID for processing
+rxnconReactionList	Table	SBtab	False	Table	SBtab rxnconReactionList Table
+ID	Column	rxnconReactionList	False	Integer	ID for reaction
+UID:Reaction	Column	rxnconReactionList	True	String	Reaction String
+ComponentA:Name	Column	rxnconReactionList	True	String	Name for Component A
+ComponentA:Domain	Column	rxnconReactionList	False	String	Domain of Component A
+ComponentA:Residue	Column	rxnconReactionList	False	String	Residue of Component A
+Reaction	Column	rxnconReactionList	True	String	Reaction type
+ComponentB:Name	Column	rxnconReactionList	True	String	Name for Component B
+ComponentB:Domain	Column	rxnconReactionList	False	String	Domain of Component B
+ComponentB:Residue	Column	rxnconReactionList	False	String	Residue of Component B
+Quality	Column	rxnconReactionList	False	String	Quality of reaction
+Literature:Identifiers:pubmed	Column	rxnconReactionList	False	String	Pubmed ID
+Comment	Column	rxnconReactionList	False	String	Comment
+FbcObjective	Table	SBtab	False	Table	SBtab FbcObjective Table (older name of SBMLfbcObjective)
+ID	Column	FbcObjective	False	String	Unique identifier of objective in FBC package
+Name	Column	FbcObjective	False	String	Name of objective in FBC package
+SBML:fbc:type	Column	FbcObjective	False	String	Type of objective in FBC package
+SBML:fbc:active	Column	FbcObjective	False	Boolean	Flag indicating if the objective is active
+SBML:fbc:objective	Column	FbcObjective	False	String	FBC objective as sum of coefficients times reaction IDs
+Layout	Table	SBtab	False	Table	SBtab Layout Table (older name of SBMLlayout)
+ID	Column	Layout	False	String	Unique identifier of layout package
+Name	Column	Layout	False	String	Name of layout in plugin
+SBML:layout:modelEntity	Column	Layout	False	String	Declares the SBML model entity
+SBML:layout:compartment:id	Column	Layout	False	String	SBML identifier of the compartment
+SBML:layout:reaction:id	Column	Layout	False	String	SBML identifier of the reaction
+SBML:layout:species:id	Column	Layout	False	String	SBML identifier of the species
+SBML:layout:curveSegment	Column	Layout	False	String	Type of curve segment (Start, End, BasePoints)
+SBML:layout:X	Column	Layout	False	Float	Coordinate on X axis
+SBML:layout:Y	Column	Layout	False	Float	Coordinate on Y axis
+SBML:layout:width	Column	Layout	False	Float	Width of the element
+SBML:layout:height	Column	Layout	False	Float	Height of the element
+SBML:layout:text	Column	Layout	False	String	Text label of the element
+SBML:layout:speciesRole	Column	Layout	False	String	Role of the species in the reaction (Reactant, Product)

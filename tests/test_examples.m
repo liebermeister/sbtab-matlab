@@ -12,8 +12,10 @@ assert(numel(files) > 0);
 filename = [tempname '.tsv'];
 for i = 1:numel(files)
   example_file = fullfile(files(i).folder, files(i).name);
+  % save in the SBtab version of the example folder (sbtab-1.0, sbtab-1.1, sbtab-1.2)
+  version = regexp(example_file, 'sbtab-(1\.\d)', 'tokens', 'once');
   [~, d] = evalc('sbtab_document_load(example_file)');
-  evalc('sbtab_document_save(d, filename, 0, 0)');
+  evalc('sbtab_document_save(d, filename, 0, 0, 1, version{1})');
   [~, d2] = evalc('sbtab_document_load(filename)');
   table_ids = fieldnames(d.tables);
   assert(isequal(fieldnames(d2.tables), table_ids), 'Tables differ in %s', files(i).name);

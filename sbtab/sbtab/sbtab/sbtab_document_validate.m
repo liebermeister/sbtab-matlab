@@ -454,8 +454,11 @@ formats = get_column(definitions, 'Format');
 if isempty(formats), formats = repmat({''}, size(names)); end
 if isempty(parents), parents = repmat({''}, size(names)); end
 
-defs.table_types = names(strcmp(types, 'Table'));
 is_column        = strcmp(types, 'Column');
+% table types: entries of type 'Table' and the tables that contain columns
+% (the SBtab 1.0 table published on www.sbtab.net has no entries of type 'Table')
+column_parents   = parents(is_column);
+defs.table_types = unique([names(strcmp(types, 'Table')); column_parents(~cellfun('isempty', column_parents) & ~strcmpi(column_parents, 'SBtab'))], 'stable');
 defs.columns     = names(is_column);
 defs.parents     = parents(is_column);
 defs.formats     = formats(is_column);

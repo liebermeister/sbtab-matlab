@@ -49,7 +49,7 @@ Conversion between SBtab and network models, omics data, SBML and COBRA is part 
 - **`sbtab/sbtab`**: SBtab tables (`sbtab-table`) and documents (`sbtab-document`), functions for both
   (`sbtab`), and utility functions (`sbtab-utils`)
 - **`sbtab/sbtab-formats`**: conversion between SBtab and Matlab structs with tool options
-- **`resources/examples`**: example files (SBtab, SBML, COBRA)
+- **`resources/examples`**: example files (SBtab 1.0, 1.1, 1.2; SBML; an options table)
 
 Each folder contains a `Contents.m` file with an overview (type, e.g., `help sbtab-table`).
 
