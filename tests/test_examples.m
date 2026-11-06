@@ -1,12 +1,22 @@
 % Tests with the example files in resources/examples/sbtab-1.0, sbtab-1.1, sbtab-1.2:
 % each file can be loaded, saved and loaded again without changes
+%
+% By default only the examples of SBtab 1.1 are tested; the environment variable
+% SBTAB_TEST_VERSIONS selects others, e.g. SBTAB_TEST_VERSIONS=1.0,1.1 or SBTAB_TEST_VERSIONS=all
 
 setup_test_path;
 
 %% load, save and reload all example files
+versions = getenv('SBTAB_TEST_VERSIONS');
+if isempty(versions), versions = '1.1'; end
+if strcmp(versions, 'all')
+  versions = {'1.0', '1.1', '1.2'};
+else
+  versions = strtrim(strsplit(versions, ','));
+end
 files = [];
-for v = {'sbtab-1.0', 'sbtab-1.1', 'sbtab-1.2'}
-  files = [files; dir(fullfile(sbtab_resourcedir, 'examples', v{1}, '**', '*.tsv'))];
+for v = versions
+  files = [files; dir(fullfile(sbtab_resourcedir, 'examples', ['sbtab-' v{1}], '**', '*.tsv'))];
 end
 assert(numel(files) > 0);
 filename = [tempname '.tsv'];

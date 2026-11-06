@@ -9,7 +9,7 @@ function messages = sbtab_document_validate(sbtab_document, options)
 %   options.version     : SBtab version whose rules are applied ('1.0' or '1.1'); default: the
 %                         SBtabVersion attribute of the document or of its first table, else
 %                         options.default_version
-%   options.default_version : version for documents without SBtabVersion attribute (default '1.0')
+%   options.default_version : version for documents without SBtabVersion attribute (default '1.1')
 %   options.definitions : definitions table (SBtab table object or file name); default: the
 %                         definitions table of this version (see sbtab_definitions)
 %   options.verbose     : 1 (default): issue a Matlab warning for each problem found
@@ -27,17 +27,19 @@ function messages = sbtab_document_validate(sbtab_document, options)
 % columns and attributes).
 
 if ~exist('options','var'), options = struct; end
-options = join_struct(struct('version', [], 'default_version', '1.0', 'definitions', [], 'verbose', 1), options);
+options = join_struct(struct('version', [], 'default_version', '1.1', 'definitions', [], 'verbose', 1), options);
 
 messages = struct('severity', {}, 'rule', {}, 'table', {}, 'message', {});
 filename = '';
 raw_declarations = {};
+raw_document = [];
 
 warning_state = warning('off', 'all');
 try
   if ischar(sbtab_document)
     filename = sbtab_document;
     raw_declarations = read_declarations(filename);
+    raw_document = read_document_declaration(filename);
     messages = check_file(filename, messages);
     sbtab_document = sbtab_document_load(filename);
   elseif isfield(sbtab_document, 'column')
@@ -50,6 +52,7 @@ try
   if isempty(version)
     version = document_version(sbtab_document, options.default_version);
   end
+  declared_version = version;
   definitions_version = version;
   switch version
     case {'1.0', '1.1'}
@@ -79,6 +82,7 @@ try
   [defs, messages] = add_document_definitions(defs, sbtab_document, version, messages);
 
   messages = check_document(sbtab_document, raw_declarations, defs, version, messages);
+  messages = check_versions(sbtab_document, raw_document, raw_declarations, declared_version, messages);
 
 catch err
   warning(warning_state);
@@ -126,6 +130,47 @@ for it = 1:size(my_table,1)
   end
 end
 messages = add(messages, 'Error', 'R01', '', 'The file contains no declaration row (!!SBtab)');
+
+
+function declaration = read_document_declaration(filename)
+
+% attributes of the document declaration row (!!!SBtab) as written in the file ([] if there is none)
+
+declaration = [];
+my_table = sbtab_load_text_table(filename);
+ind = find(strncmp(strtrim(my_table(:,1)), '!!!', 3), 1);
+if ~isempty(ind)
+  declaration = sbtab_parse_attributes(my_table(ind,:));
+end
+
+
+function messages = check_versions(sbtab_document, raw_document, raw_declarations, version, messages)
+
+% R16: in SBtab 1.1 and 1.2, a version given in the document row is not repeated in the table rows
+% R17: table types that exist only in SBtab 1.2 require SBtab 1.2
+
+doc_version = '';
+if isstruct(raw_document) && isfield(raw_document, 'SBtabVersion')
+  doc_version = raw_document.SBtabVersion;
+end
+table_ids = fieldnames(sbtab_document.tables);
+for it = 1:length(table_ids)
+  t = sbtab_document.tables.(table_ids{it});
+  table_version = '';
+  if length(raw_declarations) == length(table_ids) && isfield(raw_declarations{it}, 'SBtabVersion')
+    table_version = raw_declarations{it}.SBtabVersion;
+  end
+  if ismember(doc_version, {'1.1', '1.2'}) && strcmp(table_version, doc_version)
+    messages = add(messages, 'Warning', 'R16', table_label(t), sprintf('The SBtabVersion of the document is repeated in the table declaration row; in SBtab %s it is given only in the document row', doc_version));
+  end
+  this_version = table_version;
+  if isempty(this_version), this_version = doc_version; end
+  if isempty(this_version), this_version = version; end
+  if isfield(t.attributes, 'TableType') && ~strcmp(this_version, '1.2') ...
+      && strcmp(sbtab_required_version(t.attributes.TableType), '1.2')
+    messages = add(messages, 'Warning', 'R17', table_label(t), sprintf('The table type %s exists only in SBtab 1.2, but the table is declared as SBtab %s', t.attributes.TableType, this_version));
+  end
+end
 
 
 function declarations = read_declarations(filename)
@@ -201,7 +246,14 @@ if ~isfield(declared, 'TableType') || isempty(declared.TableType) || (declared_f
 else
   table_type = declared.TableType;
   if ~any(strcmp(defs.table_types, table_type))
-    messages = add(messages, 'Error', 'R05', label, sprintf('Unknown table type %s (not defined in the definitions table)', table_type));
+    if strcmp(version, '1.0') && strcmp(table_type, 'ReactionStoichiometry')
+      % predefined in SBtab 1.0 (spec, Table 1), but not in the definitions table published with it
+      messages = add(messages, 'Warning', 'R05', label, 'Table type ReactionStoichiometry (SBtab 1.0 spec, Table 1) is not in the definitions table; its columns are not checked');
+    elseif ~strcmp(version, '1.2') && strcmp(sbtab_required_version(table_type), '1.2')
+      % a table type of SBtab 1.2 (reported by R17)
+    else
+      messages = add(messages, 'Error', 'R05', label, sprintf('Unknown table type %s (not defined in the definitions table)', table_type));
+    end
   end
 end
 
@@ -463,6 +515,9 @@ defs.columns     = names(is_column);
 defs.parents     = parents(is_column);
 defs.formats     = formats(is_column);
 defs.patterns    = cellfun(@(c) regexptranslate('wildcard', c), defs.columns, 'UniformOutput', false);
+% the SBtab 1.0 table published on www.sbtab.net writes Identifiers for the columns !Identifiers:<resource>
+is_identifiers   = strcmp(defs.columns, 'Identifiers');
+defs.patterns(is_identifiers) = {'Identifiers(:.*)?'};
 
 
 function [defs, messages] = add_document_definitions(defs, sbtab_document, version, messages)

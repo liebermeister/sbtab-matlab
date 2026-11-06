@@ -6,6 +6,8 @@ Version numbers have the form MAJOR.MINOR.PATCH. MAJOR changes when existing cal
 
 - `sbtab_basedir` now returns the main directory of the repository
 - New `GUIDE.md` and `CITATION.cff`; `README.md` has a Quick start section
+- `sbtab_document_validate`: the default version for documents without `SBtabVersion` is 1.1; new rules R16 (SBtabVersion of the document repeated in a table declaration row: warning) and R17 (table type of SBtab 1.2 in a 1.0/1.1 document: warning); in SBtab 1.0, `!Identifiers:<resource>` columns are accepted with the published definitions table and `ReactionStoichiometry` gives a warning instead of an error
+- `tests/test_examples.m` tests only the SBtab 1.1 examples by default (environment variable `SBTAB_TEST_VERSIONS`, e.g. `1.0,1.1` or `all`)
 - Example files with `e_coli` or `ecoli` in their names renamed to `escherichia-coli` (`escherichia_coli` in Matlab function and script names)
 
 ## 1.0.0 (2026-10-31)

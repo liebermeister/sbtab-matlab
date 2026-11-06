@@ -4,7 +4,7 @@ SBtab definitions tables
 These tables define the predefined table types of SBtab and their columns.
 They are used to check which table types can be read, to validate SBtab files
 and to describe the columns (e.g. in html output). The same files are used in
-sbtabpy (`src/sbtab/data/definitions`) and in sbtab-matlab
+sbtabpy (`src/sbtab/definitions`) and in sbtab-matlab
 (`resources/definitions`).
 
 - `definitions_0.9.1_published.tsv`: SBtab 1.0, the definitions table offered

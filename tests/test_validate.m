@@ -92,6 +92,18 @@ assert(isempty(validate(strrep(matrix, 'POINTER', '!>Sample:s1'), '')));
 assert(any(strcmp(rules(validate(strrep(matrix, 'POINTER', '!>Sample:s9'), '')), 'Error:R31')));
 assert(any(strcmp(rules(validate(strrep(matrix, 'POINTER', '>Sample:s1'), '')), 'Warning:R30')));
 
+%% SBtabVersion in the document row only (R16) and table types of SBtab 1.2 (R17)
+doc_11 = ['!!!SBtab Document=''d'' SBtabVersion=''1.1''' newline];
+compounds_doc = strrep(compounds_11, ' SBtabVersion=''1.1''', '');
+assert(isempty(validate([doc_11 compounds_doc], '')));
+assert(any(strcmp(rules(validate([doc_11 compounds_11], '')), 'Warning:R16')));
+assert(~any(strcmp(rules(validate(compounds_11, '')), 'Warning:R16')));
+regulation = ['!!SBtab TableType=''Regulation'' TableID=''Reg''' newline ...
+              '!ID' tab '!Regulator' newline 'Reg1' tab 'A' newline];
+assert(any(strcmp(rules(validate([doc_11 compounds_doc regulation], '')), 'Warning:R17')));
+doc_12 = strrep(doc_11, '''1.1''', '''1.2''');
+assert(~any(strcmp(rules(validate([doc_12 compounds_doc regulation], '')), 'Warning:R17')));
+
 %% a document object can be validated, too
 f = fullfile(d, 'doc.tsv');
 write_text(f, [reaction('A <=> B') compounds]);
