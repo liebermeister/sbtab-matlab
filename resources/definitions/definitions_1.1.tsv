@@ -1,4 +1,4 @@
-!!SBtab SBtabVersion='1.1' TableType='Definition' TableName='Definitions' TableTitle='Definitions derived from the appendix of the SBtab 1.1 specification'
+!!SBtab SBtabVersion='1.1' TableType='Definition' TableID='Definitions' TableName='Definitions derived from the appendix of the SBtab 1.1 specification'
 !Name	!Type	!Parent	!isShortname	!Format	!Description
 Compound	Table	SBtab	False	Table	SBtab Compound table
 Enzyme	Table	SBtab	False	Table	SBtab Enzyme table
@@ -9,6 +9,9 @@ Compartment	Table	SBtab	False	Table	SBtab Compartment table
 Reaction	Table	SBtab	False	Table	SBtab Reaction table
 ReactionStoichiometry	Table	SBtab	False	Table	SBtab ReactionStoichiometry table
 Relation	Table	SBtab	False	Table	SBtab Relation table
+Position	Table	SBtab	False	Table	SBtab Position table
+Config	Table	SBtab	False	Table	SBtab Config table
+QuantityInfo	Table	SBtab	False	Table	SBtab QuantityInfo table
 Quantity	Table	SBtab	False	Table	SBtab Quantity table
 QuantityMatrix	Table	SBtab	False	Table	SBtab QuantityMatrix table
 Measurement	Table	SBtab	False	Table	SBtab Measurement table
@@ -22,6 +25,9 @@ Description	Column	Compartment	False	String	Description of the row element
 Description	Column	Reaction	False	String	Description of the row element
 Description	Column	ReactionStoichiometry	False	String	Description of the row element
 Description	Column	Relation	False	String	Description of the row element
+Description	Column	Position	False	String	Description of the row element
+Description	Column	Config	False	String	Description of the row element
+Description	Column	QuantityInfo	False	String	Description of the row element
 Description	Column	Quantity	False	String	Description of the row element
 Description	Column	QuantityMatrix	False	String	Description of the row element
 Description	Column	Measurement	False	String	Description of the row element
@@ -35,6 +41,9 @@ Comment	Column	Compartment	False	String	Comment
 Comment	Column	Reaction	False	String	Comment
 Comment	Column	ReactionStoichiometry	False	String	Comment
 Comment	Column	Relation	False	String	Comment
+Comment	Column	Position	False	String	Comment
+Comment	Column	Config	False	String	Comment
+Comment	Column	QuantityInfo	False	String	Comment
 Comment	Column	Quantity	False	String	Comment
 Comment	Column	QuantityMatrix	False	String	Comment
 Comment	Column	Measurement	False	String	Comment
@@ -48,6 +57,9 @@ ReferenceName	Column	Compartment	False	String	Reference title, authors, etc. (as
 ReferenceName	Column	Reaction	False	String	Reference title, authors, etc. (as free text)
 ReferenceName	Column	ReactionStoichiometry	False	String	Reference title, authors, etc. (as free text)
 ReferenceName	Column	Relation	False	String	Reference title, authors, etc. (as free text)
+ReferenceName	Column	Position	False	String	Reference title, authors, etc. (as free text)
+ReferenceName	Column	Config	False	String	Reference title, authors, etc. (as free text)
+ReferenceName	Column	QuantityInfo	False	String	Reference title, authors, etc. (as free text)
 ReferenceName	Column	Quantity	False	String	Reference title, authors, etc. (as free text)
 ReferenceName	Column	QuantityMatrix	False	String	Reference title, authors, etc. (as free text)
 ReferenceName	Column	Measurement	False	String	Reference title, authors, etc. (as free text)
@@ -61,6 +73,9 @@ Reference:Identifiers:pubmed	Column	Compartment	False	String	Reference PubMed ID
 Reference:Identifiers:pubmed	Column	Reaction	False	String	Reference PubMed ID
 Reference:Identifiers:pubmed	Column	ReactionStoichiometry	False	String	Reference PubMed ID
 Reference:Identifiers:pubmed	Column	Relation	False	String	Reference PubMed ID
+Reference:Identifiers:pubmed	Column	Position	False	String	Reference PubMed ID
+Reference:Identifiers:pubmed	Column	Config	False	String	Reference PubMed ID
+Reference:Identifiers:pubmed	Column	QuantityInfo	False	String	Reference PubMed ID
 Reference:Identifiers:pubmed	Column	Quantity	False	String	Reference PubMed ID
 Reference:Identifiers:pubmed	Column	QuantityMatrix	False	String	Reference PubMed ID
 Reference:Identifiers:pubmed	Column	Measurement	False	String	Reference PubMed ID
@@ -74,6 +89,9 @@ ReferenceDOI	Column	Compartment	False	String	Reference DOI
 ReferenceDOI	Column	Reaction	False	String	Reference DOI
 ReferenceDOI	Column	ReactionStoichiometry	False	String	Reference DOI
 ReferenceDOI	Column	Relation	False	String	Reference DOI
+ReferenceDOI	Column	Position	False	String	Reference DOI
+ReferenceDOI	Column	Config	False	String	Reference DOI
+ReferenceDOI	Column	QuantityInfo	False	String	Reference DOI
 ReferenceDOI	Column	Quantity	False	String	Reference DOI
 ReferenceDOI	Column	QuantityMatrix	False	String	Reference DOI
 ReferenceDOI	Column	Measurement	False	String	Reference DOI
@@ -214,6 +232,31 @@ From	Column	Relation	True	String	Element at beginning of arrow
 To	Column	Relation	True	String	Element at arrowhead
 IsSymmetric	Column	Relation	False	Boolean	Flag indicating non-symmetric relationships
 Value:*	Column	Relation	False	Float	Numerical value assigned to the relationship
+Element	Column	Position	True	String	Element displayed
+PositionX	Column	Position	False	Float	x coordinate for graphical display
+PositionY	Column	Position	False	Float	y coordinate for graphical display
+Label	Column	Position	False	String	Name to be displayed in graphics
+ID	Column	Config	False	String	Tool option
+Value	Column	Config	False	String	Tool option value
+QuantityType	Column	QuantityInfo	False	String	Quantity type (e.g. from SBO)
+Symbol	Column	QuantityInfo	False	String	Symbol for the quantity type
+Unit	Column	QuantityInfo	False	String	Unit for the median value
+Constant	Column	QuantityInfo	False	String	Is this value constant
+Element	Column	QuantityInfo	False	String	A related element
+RelatedElement	Column	QuantityInfo	False	String	A related element
+Scaling	Column	QuantityInfo	False	String	A scaling factor
+Dependence	Column	QuantityInfo	False	String	Is this value dependent on others
+PriorMedian	Column	QuantityInfo	False	Float	Prior median value
+PriorStd	Column	QuantityInfo	False	Float	Prior standard deviation
+LowerBound	Column	QuantityInfo	False	Float	Lower bound for this quantity type
+UpperBound	Column	QuantityInfo	False	Float	Upper bound for this quantity type
+ErrorStd	Column	QuantityInfo	False	Float	Error standard deviation
+DataStd	Column	QuantityInfo	False	Float	Data standard deviation
+SBMLElement	Column	QuantityInfo	False	String	Corresponding SBML element
+SBMLElementType	Column	QuantityInfo	False	String	Corresponding SBML element type
+Abbreviation	Column	QuantityInfo	False	String	Abbreviation of quantity type
+ID	Column	QuantityInfo	False	String	Abbreviation of quantity type
+MatrixInfo	Column	QuantityInfo	False	String	Description of parameter dependencies
 ID	Column	Quantity	True	String	Quantity / SBML parameter ID
 QuantityName	Column	Quantity	False	String	Quantity (name)
 QuantityType	Column	Quantity	True	String	Quantity type (e.g. from SBO)
@@ -313,8 +356,8 @@ Parent	Column	Definition	False	String	Name of parent component
 isShortname	Column	Definition	False	String	Entries are shortnames of SBtab elements (True/False)
 Format	Column	Definition	False	String	Format of the entries (see Section sec:DefinitionTable)
 TableType	Attribute	SBtab	False	String	Table type (as defined in definition table)
-TableName	Attribute	SBtab	True	String	Table shortname
-TableTitle	Attribute	SBtab	False	String	Table title (free text)
+TableID	Attribute	SBtab	True	String	Table shortname
+TableName	Attribute	SBtab	False	String	Table name (free text)
 SBtabVersion	Attribute	SBtab	False	String	SBtab version number
 Document	Attribute	SBtab	False	String	SBtab document name
 SBML:reaction:id	Column	Quantity	False	String	Used in spec example 5

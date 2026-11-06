@@ -50,21 +50,28 @@ try
   if isempty(version)
     version = document_version(sbtab_document, options.default_version);
   end
+  definitions_version = version;
   switch version
     case {'1.0', '1.1'}
     otherwise
       if strncmp(version, '1.', 2) && str2double(version) > 1.1
-        messages = add(messages, 'Info', '', '', sprintf('SBtab version %s is checked with the rules of version 1.1', version));
+        if exist(fullfile(sbtab_resourcedir, 'definitions', ['definitions_' version '.tsv']), 'file')
+          messages = add(messages, 'Info', '', '', sprintf('SBtab version %s is checked with the rules of version 1.1 and the definitions table of version %s', version, version));
+        else
+          messages = add(messages, 'Info', '', '', sprintf('SBtab version %s is checked with the rules of version 1.1', version));
+          definitions_version = '1.1';
+        end
         version = '1.1';
       else
         messages = add(messages, 'Info', '', '', sprintf('SBtab version %s is checked with the rules of version 1.0', version));
         version = '1.0';
+        definitions_version = '1.0';
       end
   end
 
   definitions = options.definitions;
   if isempty(definitions)
-    definitions = sbtab_definitions(version);
+    definitions = sbtab_definitions(definitions_version);
   elseif ischar(definitions)
     definitions = sbtab_table_load(definitions);
   end
