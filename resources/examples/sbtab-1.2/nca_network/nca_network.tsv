@@ -1,0 +1,27 @@
+!!!SBtab Document='nca_network' SBtabVersion='1.2' Date='2026-11-08'
+%/ Transcription network for network component analysis (NCA): 3 genes, 2 transcription factors, regulation arrows with signs (Reg3: sign unknown), and NCA weights (SBtab 1.2 specification, section Regulation) /%
+
+!!SBtab TableID='Gene' TableType='Gene'
+!ID	!Name
+geneA	gene A
+geneB	gene B
+geneC	gene C
+
+!!SBtab TableID='Regulator' TableType='Regulator'
+!ID	!Name	!Type
+TF1	transcription factor 1	transcriptional regulator
+TF2	transcription factor 2	transcriptional regulator
+
+!!SBtab TableID='Regulation' TableType='Regulation'
+!ID	!Regulator	!Target	!RegulatorType	!TargetType	!RegulationType
+Reg1	TF1	geneA	transcriptional regulator	gene	activation
+Reg2	TF1	geneB	transcriptional regulator	gene	inhibition
+Reg3	TF2	geneB	transcriptional regulator	gene	unknown
+Reg4	TF2	geneC	transcriptional regulator	gene	activation
+
+!!SBtab TableID='RegulationWeight' TableType='SparseMatrix' RowTable='Gene' ColumnTable='Regulator' QuantityType='regulation weight (log scale)'
+!RowID	!ColumnID	!Value
+geneA	TF1	0.8
+geneB	TF1	-0.5
+geneB	TF2	0.3
+geneC	TF2	1.2

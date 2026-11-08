@@ -1,0 +1,8 @@
+!!!SBtab Document='Boolean_example' SBtabVersion='1.2'
+%/ Regulation arrows between the elements A, B, C (converted from the SBtab 1.1 example feed_forward_loop_Relationship.tsv, a Relation table) /%
+
+!!SBtab TableID='Regulation' TableType='Regulation'
+!ID	!Regulator	!Target	!RegulationType	!RegulatoryCoefficient
+R1	A	B	activation	1
+R2	B	C	activation	1
+R3	C	A	inhibition	-1

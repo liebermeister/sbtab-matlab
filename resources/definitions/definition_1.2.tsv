@@ -201,8 +201,7 @@ Symbol	Column	Reaction	False	String	Short symbol (e.g., gene symbol)
 Name	Column	Definition	False	String	Name of component (table, column, attribute to be defined)
 Type	Column	Definition	False	String	Type of component
 Parent	Column	Definition	False	String	name of parent component
-isShortname	Column	Definition	False	String	True if the entries of a column are shortnames
-	Column	Definition	False	String	of SBtab elements (defined in another table), else False
+isShortname	Column	Definition	False	String	True if the entries of a column are shortnames of SBtab elements (defined in another table), else False
 Format	Column	Definition	False	String	Format
 SBML:species:id	Column	Compound	False	String	SBML Species ID of the entity
 SBML:speciestype:id	Column	Compound	False	String	SBML SpeciesType ID of the entity
@@ -224,7 +223,7 @@ SBML:reaction:id	Column	Reaction	False	String	SBML Reaction ID
 ReactionFormula	Column	Reaction	False	String	Reaction sum formula
 Location	Column	Reaction	True	String	Compartment for localised reaction
 Enzyme	Column	Reaction	True	String	Enzyme catalysing the reaction
-KineticRegulation	Column	Reaction	False	String	Kinetic regulation of the enzyme by compounds, e.g. '+ ADP - PEP' (+ activation, - inhibition, +- dual effect)
+KineticRegulation	Column	Reaction	False	String	Kinetic regulation of the enzyme by compounds, e.g. '+ ADP - PEP' (+ activation, - inhibition, +- dual effect, ? unknown effect)
 Model	Column	Reaction	False	String	Model(s) in which reaction is involved
 Pathway	Column	Reaction	False	String	Pathway(s) in which reaction is involved
 SubreactionOf	Column	Reaction	True	String	Mark as subreaction of a (lumped) reaction
@@ -286,14 +285,15 @@ SBML:fbc:Name	Column	Gene	False	String	Gene name in package
 SBML:fbc:GeneProduct	Column	Gene	False	String	Boolean flag indicating if the gene is an FBC gene product
 SBML:fbc:GeneAssociation	Column	Gene	False	String	Boolean flag indicating if the gene is an FBC gene association
 SBML:fbc:Label	Column	Gene	False	String	Gene label in the package
+ActivityCondition	Column	Gene	False	String	Regulators of the gene's expression, e.g. '+ TF1 - TF2 ? TF3' (+ activation, - inhibition, ? unknown; syntax as in !KineticRegulation)
 ActivityCondition	Column	Regulator	False	String	Compounds that activate (+) or inhibit (-) the regulator, e.g. '+ FBP' (syntax as in !KineticRegulation)
 ID	Column	Regulation	False	String	Regulation shortname
 Regulator	Column	Regulation	True	String	Regulating compound (or other regulator)
 Target	Column	Regulation	True	String	Regulated reaction (or other target)
 RegulatorType	Column	Regulation	False	String	Type of the regulator: SBO name of a physical entity type (SBtab specification, table of physical entity types, e.g. 'metabolite')
 TargetType	Column	Regulation	False	String	Type of the target: SBO name of a physical entity type (SBtab specification, table of physical entity types, e.g. 'enzyme')
-RegulationType	Column	Regulation	False	String	Type of regulation (activation, inhibition, or dual)
-RegulationType:SBO	Column	Regulation	False	String	SBO term of the regulation type (e.g. SBO:0000459 stimulator, SBO:0000020 inhibitor, SBO:0000595 dual-activity modifier)
+RegulationType	Column	Regulation	False	String	Type of regulation (activation, inhibition, dual, or unknown)
+RegulationType:SBO	Column	Regulation	False	String	SBO term of the regulation type (e.g. SBO:0000459 stimulator, SBO:0000020 inhibitor, SBO:0000595 dual-activity modifier, SBO:0000596 modifier of unknown activity)
 RegulatoryCoefficient	Column	Regulation	False	Float	Signed Hill coefficient (dimensionless; positive: activation, negative: inhibition; NaN: unknown or dual; e.g. -2: inhibition with Hill coefficient 2)
 Identifiers:obo.sbo	Column	Compartment	True	String	Compartment SBO term
 SBML:compartment:id	Column	Compartment	False	String	SBML Compartment ID
@@ -479,3 +479,6 @@ TableID	Attribute	SBtab	True	String	Table shortname
 TableType	Attribute	SBtab	False	String	Table type (as defined in definition table)
 TableName	Attribute	SBtab	False	String	Table name
 Document	Attribute	SBtab	False	String	SBtab document name
+RowTable	Attribute	SBtab	False	String	Sparse matrices: table type of the row elements
+ColumnTable	Attribute	SBtab	False	String	Sparse matrices: table type of the column elements
+QuantityType	Attribute	SBtab	False	String	Sparse matrices: physical meaning of the values (quantity type, e.g. 'regulation weight (log scale)')

@@ -11,6 +11,10 @@
   TableName is free text; in documents with a `!!!SBtab` row, the
   SBtabVersion is given only there).
 - `sbtab-1.2/`: example files that need SBtab 1.2: models with the SBML
-  packages fbc (`SBMLfbcObjective` table) and layout (`SBMLlayout` table).
+  packages fbc (`SBMLfbcObjective` table) and layout (`SBMLlayout` table), and a
+  transcription network for network component analysis (`nca_network`: `Regulation`
+  table and NCA weights in a `SparseMatrix` table), and the regulation networks
+  `feed_forward_loop` and `yeast_transcription_network_chang_2008` with `Regulation` tables
+  (in the 1.0 and 1.1 folders, they are given as `Relation` tables).
 - `sbml/`: SBML models, among them the models of the SBtab examples.
 - `options/`: an options table (`ecm_options.tsv`).

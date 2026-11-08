@@ -150,13 +150,12 @@ t0:std	0	s	Std
 t1:mean	0.5	s	Mean		
 t1:std	0.5	s	Std		
 					
-!!SBtab TableID='t_24' SBtabVersion='1.1' TableName='Ex 21 - LittleGraph' TableType='Relation'		
+!!SBtab TableID='t_24' SBtabVersion='1.1' TableName='Ex 21 - Protein interactions' TableType='Relation'		
 !From	!To	!Relation	!Value		
-A	A	regulates	1		
-A	B	regulates	-1		
-B	A	regulates	1		
-B	C	regulates	2		
-C	D	regulates	1		
+ProtA	ProtB	binds	0.9		
+ProtA	ProtC	binds	0.4		
+ProtB	ProtD	binds	0.7		
+ProtC	ProtD	binds	0.2		
 					
 !!SBtab TableID='t_25' SBtabVersion='1.1' TableType='Definition' TableName='Ex 22 - Def'			
 !ID	!ComponentType	!IsPartOf	!Format	!Description	

@@ -1,3 +1,3 @@
 !!SBtab SBtabVersion='1.1' Document='lac_Operon' TableType='Regulator' TableID='Regulator'			
-!ID	!TargetOperon	!TargetPromoter	!Description
-lac1	lac	lacP	Repressor
+!ID	!Target	!TargetType	!Description
+lac1	lacP	promoter	Repressor of the lac operon

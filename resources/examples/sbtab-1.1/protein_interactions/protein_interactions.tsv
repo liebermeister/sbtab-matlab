@@ -1,0 +1,15 @@
+!!!SBtab Document='protein_interactions' SBtabVersion='1.1'
+
+!!SBtab TableID='Protein' TableType='Protein' TableName='Proteins'
+!ID	!Name
+ProtA	Protein A
+ProtB	Protein B
+ProtC	Protein C
+ProtD	Protein D
+
+!!SBtab TableID='ProteinInteraction' TableType='Relation' TableName='Protein interactions (with confidence scores)'
+!From	!To	!Relation	!Value	!IsSymmetric
+ProtA	ProtB	binds	0.9	True
+ProtA	ProtC	binds	0.4	True
+ProtB	ProtD	binds	0.7	True
+ProtC	ProtD	binds	0.2	True
