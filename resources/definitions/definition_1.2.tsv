@@ -288,11 +288,13 @@ SBML:fbc:GeneAssociation	Column	Gene	False	String	Boolean flag indicating if the
 SBML:fbc:Label	Column	Gene	False	String	Gene label in the package
 ActivityCondition	Column	Regulator	False	String	Compounds that activate (+) or inhibit (-) the regulator, e.g. '+ FBP' (syntax as in !KineticRegulation)
 ID	Column	Regulation	False	String	Regulation shortname
-Target	Column	Regulation	True	String	Regulated reaction
-Regulator	Column	Regulation	True	String	Regulating compound
+Regulator	Column	Regulation	True	String	Regulating compound (or other regulator)
+Target	Column	Regulation	True	String	Regulated reaction (or other target)
+RegulatorType	Column	Regulation	False	String	Type of the regulator: SBO name of a physical entity type (SBtab specification, table of physical entity types, e.g. 'metabolite')
+TargetType	Column	Regulation	False	String	Type of the target: SBO name of a physical entity type (SBtab specification, table of physical entity types, e.g. 'enzyme')
 RegulationType	Column	Regulation	False	String	Type of regulation (activation, inhibition, or dual)
 RegulationType:SBO	Column	Regulation	False	String	SBO term of the regulation type (e.g. SBO:0000459 stimulator, SBO:0000020 inhibitor, SBO:0000595 dual-activity modifier)
-RegulatoryCoefficient	Column	Regulation	False	Float	Signed Hill coefficient (dimensionless; positive: activation, negative: inhibition; e.g. -2: inhibition with Hill coefficient 2)
+RegulatoryCoefficient	Column	Regulation	False	Float	Signed Hill coefficient (dimensionless; positive: activation, negative: inhibition; NaN: unknown or dual; e.g. -2: inhibition with Hill coefficient 2)
 Identifiers:obo.sbo	Column	Compartment	True	String	Compartment SBO term
 SBML:compartment:id	Column	Compartment	False	String	SBML Compartment ID
 OuterCompartment	Column	Compartment	True	String	Surrounding compartment (short)

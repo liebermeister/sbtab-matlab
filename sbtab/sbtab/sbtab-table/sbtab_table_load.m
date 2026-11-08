@@ -120,7 +120,7 @@ for it = 1:size(my_table,2)
   column_header = my_table{1,it};
   if strcmp('!',column_header(1))
     column_header = column_header(2:end);
-    column_names{it,1} = column_header;
+    column_names{end+1,1} = column_header;  % one entry per SBtab column, in the order of ind_column (before: indexed by the file column, with gaps for columns without "!")
     if strfind(column_header,'ID')  % compatibility to older SBtab files
       column_header = strrep(column_header,'MiriamID::urn:miriam:','Identifiers:');
       column_header = strrep(column_header,'SBML::reaction::ID','SBML:reaction:ID');

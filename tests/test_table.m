@@ -87,3 +87,10 @@ c = sbtab_table_to_cell(t);
 assert(isequal(c(2,:), {'!ID','!Name','!Identifiers:kegg.compound'}));
 m = sbtab_table_to_matrix(matrix_to_sbtab_table([1 2; 3 4], 'M'));
 assert(isequal(m, [1 2; 3 4]));
+
+%% columns without "!" between SBtab columns: column names are kept when the table is saved
+c_in = {'!!SBtab TableID=''T'' TableType=''QuantityMatrix''', '', '', ''; '!Reaction', 'S1', 'S2', '!Comment'; 'R1', '1', '2', 'x'};
+t11 = sbtab_table_load([], c_in);
+assert(isequal(t11.column.column_names, {'Reaction'; 'Comment'}));
+c_out = sbtab_table_to_cell(t11);
+assert(isequal(c_out(2,:), {'!Reaction', 'S1', 'S2', '!Comment'}));
