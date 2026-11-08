@@ -18,7 +18,7 @@ function sbtab_document = sbtab_document_set_definitions(sbtab_document, extra, 
 %
 % Example:
 %   d = sbtab_document_load('my_model.tsv');
-%   d = sbtab_document_set_definitions(d, 'ecm_definitions.tsv');
+%   d = sbtab_document_set_definitions(d, 'ecm_definition.tsv');
 %   messages = sbtab_document_validate(d);
 %
 % See also sbtab_document_get_definitions, sbtab_definitions

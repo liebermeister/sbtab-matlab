@@ -2789,7 +2789,7 @@ M_xan_x	xan_x	x	0	False		nan	False		0
 M_thr__L_m	thr__L_m	m	0	False		nan	False		0
 
 !!SBtab SBtabVersion='1.2' Document='MODEL1507180055' TableType='Reaction' TableID='Reaction'
-!ID	!Name	!ReactionFormula	!Location	!Regulator	!KineticLaw	!SBOTerm	!IsReversible	!SBML:fbc:GeneAssociation	!SBML:fbc:LowerBound	!SBML:fbc:UpperBound
+!ID	!Name	!ReactionFormula	!Location	!KineticRegulation	!KineticLaw	!SBOTerm	!IsReversible	!SBML:fbc:GeneAssociation	!SBML:fbc:LowerBound	!SBML:fbc:UpperBound
 R_DM_13__cis__oretn_n	DM_13__cis__oretn_n	M_13__cis__oretn_n <=> 					False		cobra_0_bound	cobra_0_bound
 R_DM_13__cis__retn_n	DM_13__cis__retn_n	M_13__cis__retn_n <=> 					False		cobra_0_bound	cobra_0_bound
 R_DM_Asn__X__Ser_FSLASH_Thr_LPAREN_ly_RPAREN_	DM_Asn__X__Ser_FSLASH_Thr_LPAREN_ly_RPAREN_	M_Asn__X__Ser_FSLASH_Thr_l <=> 					False		cobra_0_bound	cobra_default_ub

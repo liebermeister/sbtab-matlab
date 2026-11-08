@@ -58,7 +58,7 @@ SUCC_ext	extracellular succinate	external	False		0.0	False
 XYL_5_P	xylulose-5-phosphate	Cell	False		0.0	False
 
 !!SBtab Document='ecoli_wortel_2018' TableType='Reaction' TableID='Reaction' SBtabVersion='1.1' Date='2019-1-4'
-!ID	!Name	!ReactionFormula	!Location	!Regulator	!KineticLaw	!SBOTerm	!IsReversible
+!ID	!Name	!ReactionFormula	!Location	!KineticRegulation	!KineticLaw	!SBOTerm	!IsReversible
 R54ra	R54ra	ACETYL_CoA + NADH <=> ACALD + NAD + CoASH					True
 R54rb	R54rb	ACALD + NADH <=> ETOH + NAD					True
 R13r	R13r	RIBOSE_5_P + XYL_5_P <=> SED_7_P + GA_3P					True

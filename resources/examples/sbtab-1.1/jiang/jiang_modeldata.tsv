@@ -68,7 +68,7 @@ Cytc3p	ferrocytochrome c	MT_IMS	0	False	0	False	C00126
 Cytc2p	ferricytochrome c	MT_IMS	0	False	0	False	C00125							
 														
 !!SBtab SBtabVersion='1.1' Document='BIOMD0000000239' TableType='Reaction' TableID='Reaction'														
-!ID	!Name	!ReactionFormula	!Regulator	!KineticLaw	!IsReversible	!Identifiers:ec-code								
+!ID	!Name	!ReactionFormula	!KineticRegulation	!KineticLaw	!IsReversible	!Identifiers:ec-code								
 GLCflow		 <=> GLC		CYTOPLASM * (Glc_F * pow(10, -3) - GLC) * flow	True									
 LACflow		LAC <=>		CYTOPLASM * LAC * flow	False									
 GAPflow		GAP <=>		CYTOPLASM * GAP * flow	False									

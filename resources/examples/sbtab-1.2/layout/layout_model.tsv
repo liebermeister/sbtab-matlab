@@ -9,7 +9,7 @@ Species_1		Compartment_1	False		nan	False
 Species_2		Compartment_1	False		nan	False
 
 !!SBtab Document='layout' TableType='Reaction' TableID='Reaction' Date='2018-11-23'
-!ID	!Name	!ReactionFormula	!Location	!Regulator	!KineticLaw	!SBOTerm	!IsReversible
+!ID	!Name	!ReactionFormula	!Location	!KineticRegulation	!KineticLaw	!SBOTerm	!IsReversible
 Reaction_1		1 Species_1 <=> 1 Species_2 <=> 					False
 Reaction_2		1 Species_2 <=> 1 Species_1 <=> 					False
 

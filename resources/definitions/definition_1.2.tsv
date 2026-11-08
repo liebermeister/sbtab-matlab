@@ -21,6 +21,8 @@ SparseMatrixColumn	Table	SBtab	False	Table	SBtab SparseMatrixColumn table
 Vector	Table	SBtab	False	Table	SBtab Vector table
 Matrix	Table	SBtab	False	Table	SBtab Matrix table
 Config	Table	SBtab	False	Table	SBtab Config table
+ToolInputOutput	Table	SBtab	False	Table	SBtab ToolInputOutput table
+Workflow	Table	SBtab	False	Table	SBtab Workflow table
 Quantity	Table	SBtab	False	Table	SBtab Quantity table
 QuantityMatrix	Table	SBtab	False	Table	SBtab QuantityMatrix table
 QuantityInfo	Table	SBtab	False	Table	SBtab QuantityInfo table
@@ -46,6 +48,8 @@ Description	Column	SparseMatrixColumn	False	String	Description of the row elemen
 Description	Column	Vector	False	String	Description of the row element
 Description	Column	Matrix	False	String	Description of the row element
 Description	Column	Config	False	String	Description of the row element
+Description	Column	ToolInputOutput	False	String	Description of the row element
+Description	Column	Workflow	False	String	Description of the row element
 Description	Column	Quantity	False	String	Description of the row element
 Description	Column	QuantityMatrix	False	String	Description of the row element
 Description	Column	QuantityInfo	False	String	Description of the row element
@@ -71,6 +75,8 @@ Comment	Column	SparseMatrixColumn	False	String	Comment
 Comment	Column	Vector	False	String	Comment
 Comment	Column	Matrix	False	String	Comment
 Comment	Column	Config	False	String	Comment
+Comment	Column	ToolInputOutput	False	String	Comment
+Comment	Column	Workflow	False	String	Comment
 Comment	Column	Quantity	False	String	Comment
 Comment	Column	QuantityMatrix	False	String	Comment
 Comment	Column	QuantityInfo	False	String	Comment
@@ -96,6 +102,8 @@ ReferenceName	Column	SparseMatrixColumn	False	String	Reference title, authors, e
 ReferenceName	Column	Vector	False	String	Reference title, authors, etc. (as free text)
 ReferenceName	Column	Matrix	False	String	Reference title, authors, etc. (as free text)
 ReferenceName	Column	Config	False	String	Reference title, authors, etc. (as free text)
+ReferenceName	Column	ToolInputOutput	False	String	Reference title, authors, etc. (as free text)
+ReferenceName	Column	Workflow	False	String	Reference title, authors, etc. (as free text)
 ReferenceName	Column	Quantity	False	String	Reference title, authors, etc. (as free text)
 ReferenceName	Column	QuantityMatrix	False	String	Reference title, authors, etc. (as free text)
 ReferenceName	Column	QuantityInfo	False	String	Reference title, authors, etc. (as free text)
@@ -121,6 +129,8 @@ Reference:Identifiers:pubmed	Column	SparseMatrixColumn	False	String	Reference Pu
 Reference:Identifiers:pubmed	Column	Vector	False	String	Reference PubMed ID
 Reference:Identifiers:pubmed	Column	Matrix	False	String	Reference PubMed ID
 Reference:Identifiers:pubmed	Column	Config	False	String	Reference PubMed ID
+Reference:Identifiers:pubmed	Column	ToolInputOutput	False	String	Reference PubMed ID
+Reference:Identifiers:pubmed	Column	Workflow	False	String	Reference PubMed ID
 Reference:Identifiers:pubmed	Column	Quantity	False	String	Reference PubMed ID
 Reference:Identifiers:pubmed	Column	QuantityMatrix	False	String	Reference PubMed ID
 Reference:Identifiers:pubmed	Column	QuantityInfo	False	String	Reference PubMed ID
@@ -146,6 +156,8 @@ ReferenceDOI	Column	SparseMatrixColumn	False	String	Reference DOI
 ReferenceDOI	Column	Vector	False	String	Reference DOI
 ReferenceDOI	Column	Matrix	False	String	Reference DOI
 ReferenceDOI	Column	Config	False	String	Reference DOI
+ReferenceDOI	Column	ToolInputOutput	False	String	Reference DOI
+ReferenceDOI	Column	Workflow	False	String	Reference DOI
 ReferenceDOI	Column	Quantity	False	String	Reference DOI
 ReferenceDOI	Column	QuantityMatrix	False	String	Reference DOI
 ReferenceDOI	Column	QuantityInfo	False	String	Reference DOI
@@ -206,14 +218,13 @@ IsConstant	Column	Compound	False	Boolean	Substance with fixed concentrations
 HasOnlySubstanceUnit	Column	Compound	False	Boolean	Numbers represent amounts (not concentrations)
 BoundaryCondition	Column	Compound	False	Boolean	Dynamics not fully determined by reactions
 EnzymeRole	Column	Compound	True	String	Enzymatic activity
-RegulatorRole	Column	Compound	True	String	Regulatory activity
 SBML:fbc:ChemicalFormula	Column	Compound	False	String	Chemical formula of the species
 SBML:fbc:Charge	Column	Compound	False	Float	Charge of the SBML species
 SBML:reaction:id	Column	Reaction	False	String	SBML Reaction ID
 ReactionFormula	Column	Reaction	False	String	Reaction sum formula
 Location	Column	Reaction	True	String	Compartment for localised reaction
 Enzyme	Column	Reaction	True	String	Enzyme catalysing the reaction
-Regulator	Column	Reaction	True	String	Regulator controlling the reaction
+KineticRegulation	Column	Reaction	False	String	Kinetic regulation of the enzyme by compounds, e.g. '+ ADP - PEP' (+ activation, - inhibition, +- dual effect)
 Model	Column	Reaction	False	String	Model(s) in which reaction is involved
 Pathway	Column	Reaction	False	String	Pathway(s) in which reaction is involved
 SubreactionOf	Column	Reaction	True	String	Mark as subreaction of a (lumped) reaction
@@ -275,17 +286,12 @@ SBML:fbc:Name	Column	Gene	False	String	Gene name in package
 SBML:fbc:GeneProduct	Column	Gene	False	String	Boolean flag indicating if the gene is an FBC gene product
 SBML:fbc:GeneAssociation	Column	Gene	False	String	Boolean flag indicating if the gene is an FBC gene association
 SBML:fbc:Label	Column	Gene	False	String	Gene label in the package
-RegulationType	Column	Regulator	True	String	+ (activation), - (inhibition), +- (dual)
-Cooperativity	Column	Regulator	False	Float	Cooperativity coefficient
-TargetReaction	Column	Regulator	True	String	Target reaction
-TargetEnzyme	Column	Regulator	True	String	Target enzyme
-TargetGene	Column	Regulator	True	String	Target gene
-TargetOperon	Column	Regulator	True	String	Target operon
-TargetPromoter	Column	Regulator	True	String	Target promoter
-State	Column	Regulator	True	String	State of the regulator
-RegulationType	Column	Regulation	False	String	Type of regulation (e.g. SBO:0000020 - inhibitor)
-Reaction	Column	Regulation	True	String	Regulated reaction
-Compound	Column	Regulation	True	String	Regulating compound
+ID	Column	Regulation	False	String	Regulation shortname
+TargetReaction	Column	Regulation	True	String	Regulated reaction
+Regulator	Column	Regulation	True	String	Regulating compound
+RegulationType	Column	Regulation	False	String	Type of regulation (activation, inhibition, or dual)
+RegulationType:SBO	Column	Regulation	False	String	SBO term of the regulation type (e.g. SBO:0000459 stimulator, SBO:0000020 inhibitor, SBO:0000595 dual-activity modifier)
+RegulatoryCoefficient	Column	Regulation	False	Float	Signed Hill coefficient (dimensionless; positive: activation, negative: inhibition; e.g. -2: inhibition with Hill coefficient 2)
 Identifiers:obo.sbo	Column	Compartment	True	String	Compartment SBO term
 SBML:compartment:id	Column	Compartment	False	String	SBML Compartment ID
 OuterCompartment	Column	Compartment	True	String	Surrounding compartment (short)
@@ -337,6 +343,17 @@ RowID	Column	Matrix	True	String	Row element (format with indices)
 >*	Column	Matrix	False	Float	Matrix elements in the column of this element
 ID	Column	Config	False	String	Tool option
 Value	Column	Config	False	String	Tool option value
+RequiredIn	Column	ToolInputOutput	False	String	Role of the table for the tool: Input or Output
+RequiredTable	Column	ToolInputOutput	False	String	Table type (TableType) of the input or output table
+TableID	Column	ToolInputOutput	False	String	TableID of the input or output table, as expected or written by the tool
+File	Column	ToolInputOutput	False	String	Input or output file (SBtab document) containing the table
+IsOptional	Column	ToolInputOutput	False	Boolean	Table is optional (True) or mandatory (False)
+RequiredColumns	Column	ToolInputOutput	False	String	Columns read or written by the tool (comma-separated list)
+StepNumber	Column	Workflow	False	Integer	Number of the workflow step (steps are run in the order of their numbers)
+Tool	Column	Workflow	False	String	Tool used in this step (the value of the table attribute Method in its Config and ToolInputOutput tables)
+InputFile	Column	Workflow	False	String	Input file(s) of the step (SBtab documents; comma-separated list)
+OutputFile	Column	Workflow	False	String	Output file(s) of the step (SBtab documents; comma-separated list)
+ConfigFile	Column	Workflow	False	String	File with the Config table holding the tool options for this step (optional)
 ID	Column	Quantity	True	String	Quantity / SBML parameter ID
 QuantityName	Column	Quantity	False	String	Quantity (name)
 QuantityType	Column	Quantity	True	String	Quantity type (e.g. from SBO)

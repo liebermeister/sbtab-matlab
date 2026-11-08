@@ -153,7 +153,6 @@ IsConstant	Column	Compound	False	Boolean	Substance with fixed concentrations
 HasOnlySubstanceUnit	Column	Compound	False	Boolean	Numbers represent amounts (not concentrations)
 BoundaryCondition	Column	Compound	False	Boolean	Dynamics not fully determined by reactions
 EnzymeRole	Column	Compound	True	String	Enzymatic activity
-RegulatorRole	Column	Compound	True	String	Regulatory activity
 ID	Column	Enzyme	True	String	Enzyme shortname
 CatalysedReaction	Column	Enzyme	True	String	Catalysed reaction
 KineticLaw:Name	Column	Enzyme	False	String	Rate law (name as in SBO)
@@ -180,7 +179,6 @@ GeneProduct:Symbol	Column	Gene	False	String	Gene product symbol
 GeneProduct:SBML:species:id	Column	Gene	False	String	SBML ID of protein
 Operon	Column	Gene	True	String	Operon in which gene is located
 ID	Column	Regulator	True	String	Regulator shortname
-State	Column	Regulator	True	String	State of the regulator
 TargetGene	Column	Regulator	True	String	Target gene
 TargetOperon	Column	Regulator	True	String	Target operon
 TargetPromoter	Column	Regulator	True	String	Target promoter
@@ -198,6 +196,7 @@ SBML:reaction:id	Column	Reaction	False	String	SBML Reaction ID
 ReactionFormula	Column	Reaction	False	String	Reaction sum formula
 Location	Column	Reaction	True	String	Compartment for localised reaction
 Enzyme	Column	Reaction	True	String	Enzyme catalysing the reaction
+KineticRegulation	Column	Reaction	False	String	Kinetic regulation of the enzyme by compounds, e.g. '+ ADP - PEP' (+ activation, - inhibition, +- dual effect)
 Model	Column	Reaction	False	String	Model(s) in which reaction is involved
 Pathway	Column	Reaction	False	String	Pathway(s) in which reaction is involved
 SubreactionOf	Column	Reaction	True	String	Mark as subreaction of a (lumped) reaction

@@ -4,6 +4,7 @@
 %   sbtab_table_construct            - construct an SBtab table
 %   sbtab_table_load                 - load an SBtab table from a file or a cell array
 %   sbtab_table_load_from_document   - load one table from a document file
+%   sbtab_table_from_input           - get a table from a file name, a table object, or a document object
 %   sbtab_table_save                 - save an SBtab table (or convert it into a cell array)
 %   sbtab_table_print                - display an SBtab table
 %   sbtab_table_convert_version      - adapt a table to an SBtab version (used when saving)
@@ -17,6 +18,7 @@
 %   sbtab_table_add_column           - add a column
 %   sbtab_table_add_annotation       - add a column with annotations for the entries of another column
 %   sbtab_table_get_column           - get a column
+%   sbtab_table_get_values_by_id     - get numerical values, matched to a list of element IDs (row order does not matter)
 %   sbtab_table_get_all_columns      - get all SBtab columns (as a struct)
 %   sbtab_table_get_element          - get an element
 %   sbtab_table_get_ids              - get the entries of the ID column
