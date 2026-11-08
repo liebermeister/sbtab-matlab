@@ -6,7 +6,7 @@ function messages = sbtab_document_validate(sbtab_document, options)
 %
 % sbtab_document: SBtab document object, SBtab table object, or file name
 % options (struct, optional):
-%   options.version     : SBtab version whose rules are applied ('1.0' or '1.1'); default: the
+%   options.version     : SBtab version whose rules are applied ('1.0', '1.1' or '1.2'); default: the
 %                         SBtabVersion attribute of the document or of its first table, else
 %                         options.default_version
 %   options.default_version : version for documents without SBtabVersion attribute (default '1.1')
@@ -28,6 +28,10 @@ function messages = sbtab_document_validate(sbtab_document, options)
 %
 % Definition tables contained in the document extend the definitions (custom table types,
 % columns and attributes).
+%
+% SBtab 1.2 documents are checked with the rules of SBtab 1.2 (the rules of 1.1 and the rules
+% R73-R77 of conformance/1.2/rules.md) and the definitions table of SBtab 1.2. SBtab 1.2 is
+% still a draft, so these rules will change.
 
 if ~exist('options','var'), options = struct; end
 options = join_struct(struct('version', [], 'default_version', '1.1', 'definitions', [], 'definitions_mode', [], 'verbose', 1), options);
@@ -58,16 +62,16 @@ try
   declared_version = version;
   definitions_version = version;
   switch version
-    case {'1.0', '1.1'}
+    case {'1.0', '1.1', '1.2'}
     otherwise
-      if strncmp(version, '1.', 2) && str2double(version) > 1.1
-        if exist(fullfile(sbtab_resourcedir, 'definitions', ['definitions_' version '.tsv']), 'file')
-          messages = add(messages, 'Info', '', '', sprintf('SBtab version %s is checked with the rules of version 1.1 and the definitions table of version %s', version, version));
-        else
-          messages = add(messages, 'Info', '', '', sprintf('SBtab version %s is checked with the rules of version 1.1', version));
-          definitions_version = '1.1';
-        end
+      if strncmp(version, '1.', 2) && str2double(version) > 1.2
+        messages = add(messages, 'Info', '', '', sprintf('SBtab version %s is checked with the rules and the definitions table of version 1.2', version));
+        version = '1.2';
+        definitions_version = '1.2';
+      elseif strncmp(version, '1.', 2) && str2double(version) > 1.1
+        messages = add(messages, 'Info', '', '', sprintf('SBtab version %s is checked with the rules and the definitions table of version 1.1', version));
         version = '1.1';
+        definitions_version = '1.1';
       else
         messages = add(messages, 'Info', '', '', sprintf('SBtab version %s is checked with the rules of version 1.0', version));
         version = '1.0';
@@ -87,6 +91,9 @@ try
   [defs, messages] = add_document_definitions(defs, sbtab_document, version, messages);
 
   messages = check_document(sbtab_document, raw_declarations, defs, version, messages);
+  if ~isempty(filename) && strcmp(version, '1.2')
+    messages = check_declaration_syntax(filename, messages);
+  end
   messages = check_versions(sbtab_document, raw_document, raw_declarations, declared_version, messages);
 
 catch err
@@ -135,6 +142,27 @@ for it = 1:size(my_table,1)
   end
 end
 messages = add(messages, 'Error', 'R01', '', 'The file contains no declaration row (!!SBtab)');
+
+
+function messages = check_declaration_syntax(filename, messages)
+
+% SBtab 1.2, R76: document and table attributes are given in the first cell of the
+% declaration row; R77: attribute values are written in simple quotation marks ('...')
+
+my_table = sbtab_load_text_table(filename);
+for it = 1:size(my_table,1)
+  first = strtrim(my_table{it,1});
+  if ~strncmp(first, '!!', 2), continue; end
+  row_label = sprintf('declaration row %d', it);
+  if size(my_table,2) > 1 && any(~cellfun('isempty', strtrim(my_table(it,2:end))))
+    messages = add(messages, 'Error', 'R76', '', sprintf('In SBtab 1.2, all attributes are given in the first cell of the declaration row (%s: %s)', row_label, strjoin(my_table(it,~cellfun('isempty', my_table(it,:))), ' | ')));
+  end
+  values = regexp(strjoin(my_table(it,:), ' '), '[A-Za-z][\w:.>]*=(\S)', 'tokens');
+  values = [values{:}];
+  if any(~strcmp(values, ''''))
+    messages = add(messages, 'Error', 'R77', '', sprintf('In SBtab 1.2, attribute values are written in simple quotation marks (''...'') (%s: %s)', row_label, first));
+  end
+end
 
 
 function declaration = read_document_declaration(filename)
@@ -283,12 +311,12 @@ if isfield(t.column, 'constant_names')
   constant_names = t.column.constant_names(:)';
 end
 
-if strcmp(version, '1.1')
-  % R30: pointers are written !>Table:Row in version 1.1
+if ~strcmp(version, '1.0')
+  % R30: pointers are written !>Table:Row since version 1.1
   headers = t.uncontrolled.headers;
   if isempty(headers), headers = {}; end
   for header = reshape(headers(strncmp(headers, '>', 1)), 1, [])
-    messages = add(messages, 'Warning', 'R30', label, sprintf('Column %s: pointers are written !>Table:Row in SBtab 1.1', header{1}));
+    messages = add(messages, 'Warning', 'R30', label, sprintf('Column %s: pointers are written !>Table:Row in SBtab %s', header{1}, version));
   end
 end
 
@@ -317,7 +345,7 @@ for c = reshape(unique(identifiers(setdiff(1:length(identifiers), ind_unique))),
 end
 
 % R24: keys in !ID, which should be the first column
-if strcmp(version, '1.1') && has_column(t, 'ID') && ~strcmp(column_names{1}, 'ID')
+if ~strcmp(version, '1.0') && has_column(t, 'ID') && ~strcmp(column_names{1}, 'ID')
   messages = add(messages, 'Warning', 'R24', label, 'The column !ID should be the first column');
 end
 
@@ -378,13 +406,60 @@ if ~isempty(table_type)
     c = column_name{1};
     format = column_format(defs, table_type, c);
     if ~isempty(format)
-      messages = check_values(get_column(t, c), format, c, label, messages);
+      messages = check_values(get_column(t, c), format, c, label, messages, version);
     end
   end
 end
 
+% R73 (SBtab 1.1 and 1.2): kinetic regulation formulae
+if ~strcmp(version, '1.0')
+  formula_columns = {};
+  switch table_type
+    case 'Reaction',          formula_columns = {'KineticRegulation'};
+    case {'Regulator','Gene'}, formula_columns = {'ActivityCondition'};
+  end
+  for c = formula_columns(cellfun(@(x) has_column(t, x), formula_columns))
+    messages = check_regulation_formulae(get_column(t, c{1}), c{1}, sbtab_document, label, messages);
+  end
+end
+
+% R74, R75 (SBtab 1.2): Regulation tables and sparse matrices
+if strcmp(version, '1.2')
+  switch table_type
+    case 'Regulation'
+      missing = {'Regulator', 'Target'};
+      missing = missing(~cellfun(@(x) has_column(t, x), missing));
+      if ~isempty(missing)
+        messages = add(messages, 'Error', 'R74', label, sprintf('Regulation tables need the columns !Regulator and !Target (missing: %s)', strjoin(strcat('!', missing), ', ')));
+      end
+      if has_column(t, 'RegulationType')
+        types = strtrim(get_column(t, 'RegulationType'));
+        bad = unique(types(~cellfun('isempty', types) & ~ismember(lower(types), {'activation', 'inhibition', 'dual', 'unknown'})));
+        if ~isempty(bad)
+          messages = add(messages, 'Warning', 'R74', label, sprintf('Column !RegulationType: the types of regulation are activation, inhibition, dual, or unknown (found: %s)', strjoin(bad(:)', ', ')));
+        end
+      end
+    case 'SparseMatrix'
+      for attribute = {'RowTable', 'ColumnTable'; 'RowID', 'ColumnID'}
+        if ~isfield(t.attributes, attribute{1}) || ~has_column(t, attribute{2}), continue; end
+        targets = find_tables_of_type(sbtab_document, t.attributes.(attribute{1}));
+        if isempty(targets)
+          messages = add(messages, 'Warning', 'R75', label, sprintf('The attribute %s=''%s'' names a table type that is not in the document', attribute{1}, t.attributes.(attribute{1})));
+          continue
+        end
+        keys = {};
+        for it = 1:length(targets), my_keys = table_keys(targets{it}); keys = [keys; my_keys(:)]; end
+        entries = get_column(t, attribute{2});
+        unknown = unique(entries(~cellfun('isempty', entries) & ~ismember(entries, keys)));
+        if ~isempty(unknown)
+          messages = add(messages, 'Warning', 'R75', label, sprintf('Column !%s: elements not found in the %s table: %s', attribute{2}, t.attributes.(attribute{1}), strjoin(unknown(:)', ', ')));
+        end
+      end
+  end
+end
+
 % R31: pointers !>Table:Row refer to existing rows
-if strcmp(version, '1.1')
+if ~strcmp(version, '1.0')
   for c = column_names(strncmp(column_names, '>', 1))
     parts = regexp(c{1}(2:end), ':', 'split');
     if length(parts) == 2
@@ -450,7 +525,44 @@ if ~isempty(undefined)
 end
 
 
-function messages = check_values(values, format, column_name, label, messages)
+function messages = check_regulation_formulae(formulae, column_name, sbtab_document, label, messages)
+
+% R73: in kinetic regulation formulae (e.g. '+ ADP - PEP ? ATP'), each element has a sign
+% (+, -, +-, or ?) and is defined in a table of the document
+
+all_keys = {};
+table_ids = fieldnames(sbtab_document.tables);
+for it = 1:length(table_ids)
+  my_keys = table_keys(sbtab_document.tables.(table_ids{it}));
+  all_keys = [all_keys; my_keys(:)];
+end
+unsigned = {}; undefined = {};
+for it = 1:length(formulae)
+  if ~ischar(formulae{it}), continue; end
+  tokens = strsplit(strtrim(strrep(formulae{it}, '|', ' ')));
+  my_sign = '';
+  for token = tokens
+    tk = token{1};
+    if isempty(tk), continue; end
+    if any(strcmp(tk, {'+', '-', '+-', '?'})), my_sign = tk; continue; end
+    if strncmp(tk, '+-', 2) && length(tk) > 2, my_sign = '+-'; tk = tk(3:end);
+    elseif any(tk(1) == '+-?') && length(tk) > 1, my_sign = tk(1); tk = tk(2:end);
+    end
+    if isempty(my_sign), unsigned{end+1} = tk; end
+    if ~any(strcmp(all_keys, tk)), undefined{end+1} = tk; end
+    my_sign = '';
+  end
+end
+if ~isempty(unsigned)
+  messages = add(messages, 'Warning', 'R73', label, sprintf('Column !%s: elements without sign (write ''? X'' for an unknown effect): %s', column_name, strjoin(unique(unsigned), ', ')));
+end
+if ~isempty(undefined)
+  % (as for undefined reactants, R42, only for information)
+  messages = add(messages, 'Info', 'R73', label, sprintf('Column !%s: elements not defined in the document: %s', column_name, strjoin(unique(undefined), ', ')));
+end
+
+
+function messages = check_values(values, format, column_name, label, messages, version)
 
 if isnumeric(values), return; end
 bad = {};
@@ -484,7 +596,9 @@ for it = 1:length(values)
   end
 end
 if decimal_comma
-  messages = add(messages, 'Warning', 'R62', label, sprintf('Column !%s: use decimal points, not decimal commas', column_name));
+  % R62: decimal points are recommended (SBtab 1.0, 1.1) or mandatory (SBtab 1.2)
+  if strcmp(version, '1.2'), my_severity = 'Error'; else, my_severity = 'Warning'; end
+  messages = add(messages, my_severity, 'R62', label, sprintf('Column !%s: use decimal points, not decimal commas', column_name));
 end
 if ~isempty(bad)
   messages = add(messages, 'Error', 'R60', label, sprintf('Column !%s (format %s) contains invalid values: %s', column_name, format, strjoin(unique(bad), ', ')));
