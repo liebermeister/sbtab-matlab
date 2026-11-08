@@ -286,8 +286,9 @@ SBML:fbc:Name	Column	Gene	False	String	Gene name in package
 SBML:fbc:GeneProduct	Column	Gene	False	String	Boolean flag indicating if the gene is an FBC gene product
 SBML:fbc:GeneAssociation	Column	Gene	False	String	Boolean flag indicating if the gene is an FBC gene association
 SBML:fbc:Label	Column	Gene	False	String	Gene label in the package
+ActivityCondition	Column	Regulator	False	String	Compounds that activate (+) or inhibit (-) the regulator, e.g. '+ FBP' (syntax as in !KineticRegulation)
 ID	Column	Regulation	False	String	Regulation shortname
-TargetReaction	Column	Regulation	True	String	Regulated reaction
+Target	Column	Regulation	True	String	Regulated reaction
 Regulator	Column	Regulation	True	String	Regulating compound
 RegulationType	Column	Regulation	False	String	Type of regulation (activation, inhibition, or dual)
 RegulationType:SBO	Column	Regulation	False	String	SBO term of the regulation type (e.g. SBO:0000459 stimulator, SBO:0000020 inhibitor, SBO:0000595 dual-activity modifier)

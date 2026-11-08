@@ -182,6 +182,7 @@ ID	Column	Regulator	True	String	Regulator shortname
 TargetGene	Column	Regulator	True	String	Target gene
 TargetOperon	Column	Regulator	True	String	Target operon
 TargetPromoter	Column	Regulator	True	String	Target promoter
+ActivityCondition	Column	Regulator	False	String	Compounds that activate (+) or inhibit (-) the regulator, e.g. '+ FBP' (syntax as in !KineticRegulation)
 ID	Column	Compartment	True	String	Compartment shortname
 Identifiers:obo.sbo	Column	Compartment	True	String	Compartment SBO term
 SBML:compartment:id	Column	Compartment	False	String	SBML Compartment ID
