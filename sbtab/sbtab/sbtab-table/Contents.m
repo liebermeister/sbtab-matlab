@@ -25,10 +25,12 @@
 %   sbtab_table_has_column           - check whether a column exists
 %   sbtab_table_sbo_columns          - columns represented by !SBO:... column headers
 %   sbtab_table_remove_column        - remove a column
+%   sbtab_table_set_column           - replace the entries of a column (or add the column)
 %   sbtab_table_check                - check the TableType attribute
 %
 % Rows and tables
 %   sbtab_table_remove_comment_lines - remove rows starting with '%'
+%   sbtab_table_n_rows               - number of rows
 %   sbtab_table_subselect_items      - select rows
 %   sbtab_table_combine_horizontally - combine two tables with the same rows
 %   sbtab_table_combine_vertically   - combine two tables with the same columns
