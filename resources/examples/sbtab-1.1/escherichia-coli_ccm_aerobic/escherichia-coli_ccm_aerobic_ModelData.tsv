@@ -73,7 +73,7 @@ _2_Phospho_D_glycerate	2-Phospho-D-glycerate	C00631	False
 Succinate	Succinate	C00042	False			
 Sedoheptulose_7_phosphate	Sedoheptulose 7-phosphate	C05382	False			
 %						
-!!SBtab SBtabVersion='1.1' TableID='Parameter' TableType='Quantity' Document='Model'						
+!!SBtab SBtabVersion='1.1' TableID='Parameter' TableType='Quantity' Document='Model' StandardConcentration='1mM'						
 !QuantityType	!Value	!Unit	!Compound	!Reaction	!Compound:Identifiers:kegg.compound	!Reaction:Identifiers:kegg.reaction
 equilibrium constant	51340046			PTS_RPTSsy		RPTSsy
 equilibrium constant	0.36576352			PGI_R02740		R02740

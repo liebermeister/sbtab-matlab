@@ -10,7 +10,7 @@ ADP_c	ADP	c	0	False		-435.1	False	C00008
 beta_D_fructofuranose_1_6_bisphosphate_c	beta-D-fructofuranose 1_6-bisphosphate	c	0	False		-435.1	False	C05378						
 enzyme_R04779_c	enzyme_R04779	c	0	False		0	False							
 														
-!!SBtab SBtabVersion='1.1' Document='pfk_reaction' TableType='Quantity' TableID='Quantity'														
+!!SBtab SBtabVersion='1.1' Document='pfk_reaction' TableType='Quantity' TableID='Quantity' StandardConcentration='1mM'														
 !ID	!QuantityType	!Reaction:SBML:reaction:id	!Compound:SBML:species:id	!Mean	!Std	!Unit	!pH	!Temperature	!Organism	!Reaction:Identifiers:kegg.reaction	!Compound:Identifiers:kegg.compound	!Reference		
 k_1	concentration of enzyme	R04779	nan	89800	nan	molecules/cell	nan	nan	Saccharomyces cerevisiae	R04779	nan	yeastGFP		
 k_2	concentration of enzyme	R04779	nan	90200	nan	molecules/cell	nan	nan	Saccharomyces cerevisiae	R04779	nan	yeastGFP		
