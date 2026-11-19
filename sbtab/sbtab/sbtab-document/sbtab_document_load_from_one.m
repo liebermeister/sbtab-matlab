@@ -62,6 +62,10 @@ end
 for it = 1:length(my_tables)
   % (sbtab_table_load sets a missing TableID to the TableName, or else to the TableType)
   my_sbtab_table = sbtab_table_load(filename,my_tables{it});
+  % a table without SBtabVersion has the version of its document (rule R16, SBtab 1.1 and 1.2)
+  if isfield(attributes, 'SBtabVersion') && ~isfield(my_sbtab_table.attributes, 'SBtabVersion')
+    my_sbtab_table.attributes.SBtabVersion = attributes.SBtabVersion;
+  end
   table_id = sbtab_clean_table_id(my_sbtab_table.attributes.TableID);
   if isempty(table_id) || ~isletter(table_id(1))
     table_id = ['Table_' table_id];

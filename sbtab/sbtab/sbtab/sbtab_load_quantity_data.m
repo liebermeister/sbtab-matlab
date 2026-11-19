@@ -7,7 +7,9 @@ function [M, ids_out, data_columns_out, unit] = sbtab_load_quantity_data(data_fi
 %  data_file:            SBtab file name, document, or table
 %  table_name:           table ID (optional if the document contains only one table)
 %  quantity_type:        if not empty, use only rows with this entry in column 'QuantityType'
-%  id_column:            column containing the element IDs
+%  id_column:            column containing the element IDs (in reaction identifier columns, e.g.
+%                        !Reaction:Identifiers:kegg.reaction, entries ["ID","orientation-equal"]
+%                        are matched by their IDs; the orientation is ignored)
 %  ids:                  if not empty, return the values for these element IDs (in this order)
 %  data_columns:         list of data columns to be read
 %  as_numbers:           flag: convert the table entries to numbers (default 0)
@@ -83,7 +85,18 @@ data_columns_out = strrep(data_columns_out,'SAMPLE_','');
 
 % filter for rows with the quantity type specified in function argument quantity_type
 
+% older files: data collection bigg.compound instead of bigg.metabolite (Identifiers.org name)
+if ~isempty(strfind(id_column, 'bigg.metabolite')) && ~sbtab_table_has_column(T, strrep(id_column, '!', '')) ...
+    && sbtab_table_has_column(T, strrep(strrep(id_column, '!', ''), 'bigg.metabolite', 'bigg.compound'))
+  id_column = strrep(id_column, 'bigg.metabolite', 'bigg.compound');
+end
 id_list     = sbtab_table_get_column(T,id_column);
+% reaction identifier columns (!Reaction:Identifiers:<DataCollection>, !ReactionIdentifiers:<DataCollection>)
+% contain plain IDs (orientation-equal) or JSON strings ["ID","orientation-reversed"]; the IDs are matched
+% (the orientation is ignored here, see sbtab_reaction_orientation in the Metabolic Network Toolbox)
+if ~isempty(regexp(strrep(id_column, '!', ''), '^(Reaction:Identifiers|ReactionIdentifiers):', 'once'))
+  id_list = sbtab_reaction_identifiers_parse(id_list);
+end
 row_indices = 1:length(id_list);
 
 if length(quantity_type)

@@ -23,3 +23,7 @@
 % sbtab_remove_keys             - remove rows with given keys
 % sbtab_substructure            - convert a struct of columns into a struct of rows
 % sbtab_regulationFormula_parse - parse a regulation formula
+% sbtab_reaction_identifiers_parse  - parse entries of columns !ReactionIdentifiers:<DataCollection>, !Reaction:Identifiers:<DataCollection> (ID and reaction orientation)
+% sbtab_reaction_identifiers_format - entries of columns !ReactionIdentifiers:<DataCollection>, !Reaction:Identifiers:<DataCollection>
+% sbtab_miriam_annotation_parse     - parse entries of columns !MiriamAnnotation, !ReactionMiriamAnnotation, !Reaction:MiriamAnnotation
+% sbtab_miriam_annotation_format    - entries of columns !MiriamAnnotation, !ReactionMiriamAnnotation, !Reaction:MiriamAnnotation

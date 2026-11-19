@@ -84,9 +84,10 @@ custom = ['!!SBtab SBtabVersion=''1.0'' TableType=''MyType'' TableName=''M''' ne
 assert(isempty(validate(custom, '')));
 
 %% pointers in version 1.1
-matrix = ['!!SBtab SBtabVersion=''1.1'' TableType=''QuantityMatrix'' TableID=''Data''' newline ...
+matrix = ['!!!SBtab Document=''d'' SBtabVersion=''1.1''' newline ...
+          '!!SBtab TableType=''QuantityMatrix'' TableID=''Data''' newline ...
           '!Compound' tab 'POINTER' newline 'A' tab '1.1' newline ...
-          '!!SBtab SBtabVersion=''1.1'' TableType=''Measurement'' TableID=''Sample''' newline ...
+          '!!SBtab TableType=''Measurement'' TableID=''Sample''' newline ...
           '!Sample' tab '!Time' newline 's1' tab '0' newline];
 assert(isempty(validate(strrep(matrix, 'POINTER', '!>Sample:s1'), '')));
 assert(any(strcmp(rules(validate(strrep(matrix, 'POINTER', '!>Sample:s9'), '')), 'Error:R31')));
@@ -103,6 +104,22 @@ regulation = ['!!SBtab TableType=''Regulation'' TableID=''Reg''' newline ...
 assert(any(strcmp(rules(validate([doc_11 compounds_doc regulation], '')), 'Warning:R17')));
 doc_12 = strrep(doc_11, '''1.1''', '''1.2''');
 assert(~any(strcmp(rules(validate([doc_12 compounds_doc regulation], '')), 'Warning:R17')));
+
+%% a file with several tables begins with a document row (R79, SBtab 1.1 and 1.2)
+compounds_c2 = strrep(compounds_11, 'TableID=''C''', 'TableID=''C2''');
+assert(any(strcmp(rules(validate([compounds_11 compounds_c2], '')), 'Warning:R79')));
+assert(~any(strcmp(rules(validate([doc_11 strrep([compounds_11 compounds_c2], ' SBtabVersion=''1.1''', '')], '')), 'Warning:R79')));
+assert(~any(strcmp(rules(validate(compounds_11, '')), 'Warning:R79')));
+compounds_c2_10 = strrep(compounds, 'TableName=''C''', 'TableName=''C2''');
+assert(~any(strcmp(rules(validate([compounds compounds_c2_10], '')), 'Warning:R79')));   % SBtab 1.0: no document row
+
+%% a missing SBtabVersion gives a warning (R10, SBtab 1.1 and 1.2, since 2026-11-19)
+no_version = strrep(compounds_11, ' SBtabVersion=''1.1''', '');
+assert(any(strcmp(rules(validate(no_version, '')), 'Warning:R10')));
+assert(any(strcmp(rules(validate(['!!!SBtab Document=''d''' newline no_version], '')), 'Warning:R10')));
+assert(~any(strcmp(rules(validate(compounds_11, '')), 'Warning:R10')));
+assert(~any(strcmp(rules(validate([doc_11 no_version], '')), 'Warning:R10')));
+assert(~any(strcmp(rules(validate(no_version, '1.0')), 'Warning:R10')));   % checked as SBtab 1.0
 
 %% a document object can be validated, too
 f = fullfile(d, 'doc.tsv');

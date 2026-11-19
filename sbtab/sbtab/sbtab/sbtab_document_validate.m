@@ -95,6 +95,10 @@ try
     messages = check_declaration_syntax(filename, messages);
   end
   messages = check_versions(sbtab_document, raw_document, raw_declarations, declared_version, messages);
+  % R79 (SBtab 1.1 and 1.2): a file with several tables begins with a document declaration row
+  if ~isempty(filename) && ~strcmp(version, '1.0') && length(raw_declarations) > 1 && isempty(raw_document)
+    messages = add(messages, 'Warning', 'R79', '', sprintf('The file contains %d tables but no document declaration row (!!!SBtab); in SBtab %s, a file with several tables begins with a document row, e.g. !!!SBtab Document=''MyDocument'' SBtabVersion=''%s''', length(raw_declarations), version, version));
+  end
 
 catch err
   warning(warning_state);
@@ -179,6 +183,7 @@ end
 
 function messages = check_versions(sbtab_document, raw_document, raw_declarations, version, messages)
 
+% R10: in SBtab 1.1 and 1.2, the version is declared (document row or table declaration row)
 % R16: in SBtab 1.1 and 1.2, a version given in the document row is not repeated in the table rows
 % R17: table types that exist only in SBtab 1.2 require SBtab 1.2
 
@@ -195,6 +200,11 @@ for it = 1:length(table_ids)
   end
   if ismember(doc_version, {'1.1', '1.2'}) && strcmp(table_version, doc_version)
     messages = add(messages, 'Warning', 'R16', table_label(t), sprintf('The SBtabVersion of the document is repeated in the table declaration row; in SBtab %s it is given only in the document row', doc_version));
+  end
+  % R10 (SBtab 1.1 and 1.2, since 2026-11-19): the version is declared in the document row or in
+  % the table declaration row (only for files: raw declarations are known)
+  if ~isempty(raw_declarations) && isempty(table_version) && isempty(doc_version) && ~strcmp(version, '1.0')
+    messages = add(messages, 'Warning', 'R10', table_label(t), sprintf('No SBtabVersion is declared (neither in the document row !!!SBtab nor in the table declaration row); the table is read as SBtab %s', version));
   end
   this_version = table_version;
   if isempty(this_version), this_version = doc_version; end
@@ -380,7 +390,7 @@ switch table_type
     if ~has_column(t, 'ID')
       messages = add(messages, 'Warning', 'R51', label, 'Reaction tables must contain the column !ID');
     end
-    if ~has_column(t, 'ReactionFormula') && ~any(~cellfun('isempty', regexp(column_names, '^Identifiers:', 'once')))
+    if ~has_column(t, 'ReactionFormula') && ~any(~cellfun('isempty', regexp(column_names, '^(Reaction)?Identifiers:|^ReactionMiriamAnnotation$', 'once')))
       messages = add(messages, 'Error', 'R51', label, 'The Reaction table contains neither !ReactionFormula nor an !Identifiers column');
     end
     if has_column(t, 'ReactionFormula')
@@ -421,6 +431,11 @@ if ~strcmp(version, '1.0')
   for c = formula_columns(cellfun(@(x) has_column(t, x), formula_columns))
     messages = check_regulation_formulae(get_column(t, c{1}), c{1}, sbtab_document, label, messages);
   end
+end
+
+% R78 (SBtab 1.1 and 1.2): reaction annotations with reaction orientation
+if ~strcmp(version, '1.0')
+  messages = check_reaction_annotations(t, column_names, label, messages);
 end
 
 % R74, R75 (SBtab 1.2): Regulation tables and sparse matrices
@@ -607,6 +622,43 @@ end
 
 % =====================================================================
 % Definitions
+
+function messages = check_reaction_annotations(t, column_names, label, messages)
+
+% R78: entries of reaction identifier columns (!ReactionIdentifiers:<DataCollection> in Reaction
+% tables, !Reaction:Identifiers:<DataCollection> in Quantity and QuantityMatrix tables) are plain
+% IDs (orientation-equal) or JSON strings [ID, orientation], entries of !ReactionMiriamAnnotation
+% and !Reaction:MiriamAnnotation are lists of annotations [qualifier, URN, orientation] (the
+% orientation may be omitted for orientation-equal); orientations are 'orientation-equal' or
+% 'orientation-reversed'. A table should not contain !ReactionIdentifiers:X together with
+% !Identifiers:X.
+
+is_reaction_identifiers = strncmp(column_names, 'ReactionIdentifiers:', 20) | strncmp(column_names, 'Reaction:Identifiers:', 21);
+for column_name = column_names(is_reaction_identifiers)
+  c = column_name{1};
+  if strncmp(c, 'ReactionIdentifiers:', 20) && any(strcmp(column_names, ['Identifiers:' c(21:end)]))
+    messages = add(messages, 'Warning', 'R78', label, sprintf('The columns !%s and !Identifiers:%s refer to the same data resource', c, c(21:end)));
+  end
+  entries = get_column(t, c);
+  [~, ~, ok] = sbtab_reaction_identifiers_parse(entries);
+  bad = unique(entries(~ok));
+  if ~isempty(bad)
+    messages = add(messages, 'Warning', 'R78', label, sprintf('Column !%s: entries must be plain IDs or JSON strings ["ID","orientation-reversed"] or ["ID","orientation-equal"] (found: %s)', c, strjoin(bad(:)', ', ')));
+  end
+end
+
+for c = intersect(column_names, {'ReactionMiriamAnnotation', 'Reaction:MiriamAnnotation'})
+  entries = get_column(t, c{1});
+  ok = true(size(entries));
+  for it = 1:numel(entries)
+    [~, ok(it)] = sbtab_miriam_annotation_parse(entries{it}, 1);
+  end
+  bad = unique(entries(~ok));
+  if ~isempty(bad)
+    messages = add(messages, 'Warning', 'R78', label, sprintf('Column !%s: entries must be JSON lists of annotations [qualifier, URN, orientation] or [qualifier, URN] (found: %s)', c{1}, strjoin(bad(:)', ', ')));
+  end
+end
+
 
 function defs = read_definitions(definitions)
 

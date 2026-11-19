@@ -150,219 +150,219 @@ equilibrium constant	v5	nan	6.3	nan	dimensionless	nan	R01518	nan	NIST
 equilibrium constant	v5	nan	6.6	nan	dimensionless	nan	R01518	nan	NIST
 equilibrium constant	v5	nan	6.8	nan	dimensionless	nan	R01518	nan	NIST
 equilibrium constant	v5	nan	9.8	nan	dimensionless	nan	R01518	nan	NIST
-concentration of enzyme	v6	nan	291000	24100	molecules/cell	Saccharomyces cerevisiae	R00200	nan	yeastGFP
-concentration of enzyme	v6	nan	2130	nan	molecules/cell	Saccharomyces cerevisiae	R00200	nan	yeastGFP
-inhibitory constant	v6	Cit_cyt	0.8	nan	mM	Plasmodium falciparum	R00200	C00158	Brenda
-inhibitory constant	v6	Glu_cyt	3.7	nan	mM	nan	R00200	C00025	Brenda
-inhibitory constant	v6	Glu_cyt	4.4	nan	mM	nan	R00200	C00025	Brenda
-inhibitory constant	v6	Glu_cyt	13.6	nan	mM	nan	R00200	C00025	Brenda
-inhibitory constant	v6	Glu_cyt	19.2	nan	mM	nan	R00200	C00025	Brenda
-equilibrium constant	v6	nan	0	nan	dimensionless	nan	R00200	nan	NIST
-concentration of enzyme	v24	nan	7130	nan	molecules/cell	Saccharomyces cerevisiae	R00331	nan	yeastGFP
-inhibitory constant	v24	GDP	1.9	nan	mM	Mycobacterium tuberculosis	R00331	C00035	Brenda
+concentration of enzyme	v6	nan	291000	24100	molecules/cell	Saccharomyces cerevisiae	["R00200","orientation-reversed"]	nan	yeastGFP
+concentration of enzyme	v6	nan	2130	nan	molecules/cell	Saccharomyces cerevisiae	["R00200","orientation-reversed"]	nan	yeastGFP
+inhibitory constant	v6	Cit_cyt	0.8	nan	mM	Plasmodium falciparum	["R00200","orientation-reversed"]	C00158	Brenda
+inhibitory constant	v6	Glu_cyt	3.7	nan	mM	nan	["R00200","orientation-reversed"]	C00025	Brenda
+inhibitory constant	v6	Glu_cyt	4.4	nan	mM	nan	["R00200","orientation-reversed"]	C00025	Brenda
+inhibitory constant	v6	Glu_cyt	13.6	nan	mM	nan	["R00200","orientation-reversed"]	C00025	Brenda
+inhibitory constant	v6	Glu_cyt	19.2	nan	mM	nan	["R00200","orientation-reversed"]	C00025	Brenda
+equilibrium constant	v6	nan	0	nan	dimensionless	nan	["R00200","orientation-reversed"]	nan	NIST
+concentration of enzyme	v24	nan	7130	nan	molecules/cell	Saccharomyces cerevisiae	["R02163","orientation-reversed"]	nan	yeastGFP
+inhibitory constant	v24	GDP	1.9	nan	mM	Mycobacterium tuberculosis	["R02163","orientation-reversed"]	C00035	Brenda
 concentration of enzyme	hidden_1	nan	123000	nan	molecules/cell	Saccharomyces cerevisiae	R00127	nan	yeastGFP
 concentration of enzyme	hidden_1	nan	704	nan	molecules/cell	Saccharomyces cerevisiae	R00127	nan	yeastGFP
 inhibitory constant	hidden_1	AMP	3.3	nan	mM	Oryctolagus cuniculus	R00127	C00020	Brenda
 inhibitory constant	hidden_1	AMP	0.6	nan	mM	Mycobacterium tuberculosis	R00127	C00020	Brenda
-concentration of enzyme	v31	nan	3300	nan	molecules/cell	Saccharomyces cerevisiae	R00342	nan	yeastGFP
-concentration of enzyme	v31	nan	28100	nan	molecules/cell	Saccharomyces cerevisiae	R00342	nan	yeastGFP
-concentration of enzyme	v31	nan	5260	nan	molecules/cell	Saccharomyces cerevisiae	R00342	nan	yeastGFP
-product catalytic rate constant	v31	nan	2.6	nan	1/s	Sulfolobus acidocaldarius	R00342	C00036	Brenda
-product catalytic rate constant	v31	nan	1.8	nan	1/s	Thermoplasma acidophilum	R00342	C00036	Brenda
-inhibitory constant	v31	AMP	1	nan	mM	Sus scrofa	R00342	C00020	Brenda
-inhibitory constant	v31	Mal_cyt	3.7	nan	mM	Beggiatoa leptomitiformis	R00342	C00149	Brenda
-inhibitory constant	v31	OXA_cyt	0.6	nan	mM	Aptenia cordifolia	R00342	C00036	Brenda
-inhibitory constant	v31	OXA_cyt	0.2	nan	mM	Aptenia cordifolia	R00342	C00036	Brenda
-inhibitory constant	v31	OXA_cyt	0.2	nan	mM	Mesembryanthemum crystallinum	R00342	C00036	Brenda
-inhibitory constant	v31	OXA_cyt	0.8	nan	mM	Mesembryanthemum crystallinum	R00342	C00036	Brenda
+concentration of enzyme	v31	nan	3300	nan	molecules/cell	Saccharomyces cerevisiae	["R00342","orientation-reversed"]	nan	yeastGFP
+concentration of enzyme	v31	nan	28100	nan	molecules/cell	Saccharomyces cerevisiae	["R00342","orientation-reversed"]	nan	yeastGFP
+concentration of enzyme	v31	nan	5260	nan	molecules/cell	Saccharomyces cerevisiae	["R00342","orientation-reversed"]	nan	yeastGFP
+product catalytic rate constant	v31	nan	2.6	nan	1/s	Sulfolobus acidocaldarius	["R00342","orientation-reversed"]	C00036	Brenda
+product catalytic rate constant	v31	nan	1.8	nan	1/s	Thermoplasma acidophilum	["R00342","orientation-reversed"]	C00036	Brenda
+inhibitory constant	v31	AMP	1	nan	mM	Sus scrofa	["R00342","orientation-reversed"]	C00020	Brenda
+inhibitory constant	v31	Mal_cyt	3.7	nan	mM	Beggiatoa leptomitiformis	["R00342","orientation-reversed"]	C00149	Brenda
+inhibitory constant	v31	OXA_cyt	0.6	nan	mM	Aptenia cordifolia	["R00342","orientation-reversed"]	C00036	Brenda
+inhibitory constant	v31	OXA_cyt	0.2	nan	mM	Aptenia cordifolia	["R00342","orientation-reversed"]	C00036	Brenda
+inhibitory constant	v31	OXA_cyt	0.2	nan	mM	Mesembryanthemum crystallinum	["R00342","orientation-reversed"]	C00036	Brenda
+inhibitory constant	v31	OXA_cyt	0.8	nan	mM	Mesembryanthemum crystallinum	["R00342","orientation-reversed"]	C00036	Brenda
 substrate catalytic rate constant	nan	Mal_cyt	76.7	nan	1/s	Sus scrofa	R00342	C00149	Brenda
-equilibrium constant	v31	nan	0	nan	dimensionless	nan	R00342	nan	NIST
-Michaelis constant	v31	OXA_cyt	0.1	nan	mM	nan	R00342	C00036	Brenda
-Michaelis constant	v31	Mal_cyt	4	nan	mM	nan	R00342	C00149	Brenda
-Michaelis constant	v31	NAD	1.1	nan	mM	nan	R00342	C00003	Brenda
-Michaelis constant	v31	OXA_cyt	0	nan	mM	Aquaspirillum arcticum	R00342	C00036	Brenda
-Michaelis constant	v31	OXA_cyt	0	nan	mM	Aquaspirillum arcticum	R00342	C00036	Brenda
-Michaelis constant	v31	NAD	0.1	nan	mM	Trichomonas gallinae	R00342	C00003	Brenda
-Michaelis constant	v31	Mal_cyt	0.2	nan	mM	Trichomonas gallinae	R00342	C00149	Brenda
-Michaelis constant	v31	NADH_cyt	0	nan	mM	Trichomonas gallinae	R00342	C00004	Brenda
-Michaelis constant	v31	OXA_cyt	0	nan	mM	Sus scrofa	R00342	C00036	Brenda
-Michaelis constant	v31	NADH_cyt	0	nan	mM	Sus scrofa	R00342	C00004	Brenda
-Michaelis constant	v31	NADH_cyt	0	nan	mM	Sus scrofa	R00342	C00004	Brenda
-Michaelis constant	v31	OXA_cyt	0	nan	mM	Sus scrofa	R00342	C00036	Brenda
-Michaelis constant	v31	OXA_cyt	0	nan	mM	Sus scrofa	R00342	C00036	Brenda
-Michaelis constant	v31	OXA_cyt	0	nan	mM	Sus scrofa	R00342	C00036	Brenda
-Michaelis constant	v31	OXA_cyt	0	nan	mM	Sus scrofa	R00342	C00036	Brenda
-Michaelis constant	v31	Mal_cyt	0.7	nan	mM	Beggiatoa leptomitiformis	R00342	C00149	Brenda
-Michaelis constant	v31	NAD	0.5	nan	mM	Beggiatoa leptomitiformis	R00342	C00003	Brenda
-Michaelis constant	v31	NADH_cyt	0	nan	mM	Beggiatoa leptomitiformis	R00342	C00004	Brenda
-Michaelis constant	v31	NADH_cyt	0	nan	mM	Salinibacter ruber	R00342	C00004	Brenda
-Michaelis constant	v31	NADH_cyt	0	nan	mM	Plasmodium falciparum	R00342	C00004	Brenda
-Michaelis constant	v31	NAD	0.2	nan	mM	Plasmodium falciparum	R00342	C00003	Brenda
-Michaelis constant	v31	OXA_cyt	0	nan	mM	Hoplias malabaricus	R00342	C00036	Brenda
-Michaelis constant	v31	OXA_cyt	0.1	nan	mM	Aptenia cordifolia	R00342	C00036	Brenda
-Michaelis constant	v31	NADH_cyt	0	nan	mM	Aptenia cordifolia	R00342	C00004	Brenda
-Michaelis constant	v31	Mal_cyt	2.3	nan	mM	Aptenia cordifolia	R00342	C00149	Brenda
-Michaelis constant	v31	OXA_cyt	0	nan	mM	Aptenia cordifolia	R00342	C00036	Brenda
-Michaelis constant	v31	NAD	0.1	nan	mM	Aptenia cordifolia	R00342	C00003	Brenda
-Michaelis constant	v31	NAD	0.1	nan	mM	Aptenia cordifolia	R00342	C00003	Brenda
-Michaelis constant	v31	Mal_cyt	2.1	nan	mM	Aptenia cordifolia	R00342	C00149	Brenda
-Michaelis constant	v31	NADH_cyt	0.1	nan	mM	Corynebacterium glutamicum	R00342	C00004	Brenda
-Michaelis constant	v31	OXA_cyt	0.6	nan	mM	Corynebacterium glutamicum	R00342	C00036	Brenda
-Michaelis constant	v31	OXA_cyt	0	nan	mM	Corynebacterium glutamicum	R00342	C00036	Brenda
-Michaelis constant	v31	NADH_cyt	0.1	nan	mM	Corynebacterium glutamicum	R00342	C00004	Brenda
-Michaelis constant	v31	OXA_cyt	0.2	nan	mM	Corynebacterium glutamicum	R00342	C00036	Brenda
-Michaelis constant	v31	NAD	0.4	nan	mM	Corynebacterium glutamicum	R00342	C00003	Brenda
-Michaelis constant	v31	NADPH	0.3	nan	mM	Corynebacterium glutamicum	R00342	C00005	Brenda
-Michaelis constant	v31	Mal_cyt	0.8	nan	mM	Corynebacterium glutamicum	R00342	C00149	Brenda
-Michaelis constant	v31	OXA_cyt	0	nan	mM	Talaromyces emersonii	R00342	C00036	Brenda
-Michaelis constant	v31	NAD	0.1	nan	mM	Talaromyces emersonii	R00342	C00003	Brenda
-Michaelis constant	v31	NAD	0.1	nan	mM	Talaromyces emersonii	R00342	C00003	Brenda
-Michaelis constant	v31	Mal_cyt	1.3	nan	mM	Talaromyces emersonii	R00342	C00149	Brenda
-Michaelis constant	v31	OXA_cyt	0	nan	mM	Sphyraena idiastes	R00342	C00036	Brenda
-Michaelis constant	v31	NADH_cyt	0	nan	mM	Sphyraena idiastes	R00342	C00004	Brenda
-Michaelis constant	v31	NADH_cyt	0	nan	mM	Sphyraena idiastes	R00342	C00004	Brenda
-Michaelis constant	v31	OXA_cyt	0	nan	mM	Sphyraena idiastes	R00342	C00036	Brenda
-Michaelis constant	v31	OXA_cyt	0	nan	mM	Sphyraena idiastes	R00342	C00036	Brenda
-Michaelis constant	v31	NADH_cyt	0	nan	mM	Sphyraena idiastes	R00342	C00004	Brenda
-Michaelis constant	v31	NADH_cyt	0	nan	mM	Sphyraena idiastes	R00342	C00004	Brenda
-Michaelis constant	v31	OXA_cyt	0	nan	mM	Sphyraena idiastes	R00342	C00036	Brenda
-Michaelis constant	v31	NAD	0.1	nan	mM	Saccharomyces cerevisiae	R00342	C00003	Brenda
-Michaelis constant	v31	Mal_cyt	0.3	nan	mM	Saccharomyces cerevisiae	R00342	C00149	Brenda
-Michaelis constant	v31	Mal_cyt	0	nan	mM	Saccharomyces cerevisiae	R00342	C00149	Brenda
-Michaelis constant	v31	Mal_cyt	0.1	nan	mM	Saccharomyces cerevisiae	R00342	C00149	Brenda
-Michaelis constant	v31	Mal_cyt	0	nan	mM	Saccharomyces cerevisiae	R00342	C00149	Brenda
-Michaelis constant	v31	OXA_cyt	0	nan	mM	Saccharomyces cerevisiae	R00342	C00036	Brenda
-Michaelis constant	v31	NAD	0.3	nan	mM	Saccharomyces cerevisiae	R00342	C00003	Brenda
-Michaelis constant	v31	NADH_cyt	0	nan	mM	Saccharomyces cerevisiae	R00342	C00004	Brenda
-Michaelis constant	v31	NADH_cyt	0	nan	mM	Saccharomyces cerevisiae	R00342	C00004	Brenda
-Michaelis constant	v31	NADH_cyt	0	nan	mM	Moritella sp.	R00342	C00004	Brenda
-Michaelis constant	v31	NADH_cyt	0.4	nan	mM	Triticum aestivum	R00342	C00004	Brenda
-Michaelis constant	v31	NAD	0.7	nan	mM	Triticum aestivum	R00342	C00003	Brenda
-Michaelis constant	v31	OXA_cyt	3.2	nan	mM	Triticum aestivum	R00342	C00036	Brenda
-Michaelis constant	v31	OXA_cyt	0	nan	mM	Euglena gracilis	R00342	C00036	Brenda
-Michaelis constant	v31	NAD	0.7	nan	mM	Euglena gracilis	R00342	C00003	Brenda
-Michaelis constant	v31	Mal_cyt	0.7	nan	mM	Euglena gracilis	R00342	C00149	Brenda
-Michaelis constant	v31	NADH_cyt	0	nan	mM	Euglena gracilis	R00342	C00004	Brenda
-Michaelis constant	v31	OXA_cyt	0.1	nan	mM	Aspergillus niger	R00342	C00036	Brenda
-Michaelis constant	v31	OXA_cyt	0.1	nan	mM	Aspergillus niger	R00342	C00036	Brenda
-Michaelis constant	v31	NADH_cyt	0.1	nan	mM	Aspergillus niger	R00342	C00004	Brenda
-Michaelis constant	v31	NADH_cyt	0.2	nan	mM	Aspergillus niger	R00342	C00004	Brenda
-Michaelis constant	v31	NAD	0.1	nan	mM	Dictyostelium discoideum	R00342	C00003	Brenda
-Michaelis constant	v31	OXA_cyt	0.2	nan	mM	Dictyostelium discoideum	R00342	C00036	Brenda
-Michaelis constant	v31	NADH_cyt	0	nan	mM	Dictyostelium discoideum	R00342	C00004	Brenda
-Michaelis constant	v31	Mal_cyt	1.3	nan	mM	Dictyostelium discoideum	R00342	C00149	Brenda
-Michaelis constant	v31	OXA_cyt	0.3	nan	mM	Dictyostelium discoideum	R00342	C00036	Brenda
-Michaelis constant	v31	Mal_cyt	5	nan	mM	Dictyostelium discoideum	R00342	C00149	Brenda
-Michaelis constant	v31	NADPH	0.2	nan	mM	Sulfolobus acidocaldarius	R00342	C00005	Brenda
-Michaelis constant	v31	OXA_cyt	0.1	nan	mM	Sulfolobus acidocaldarius	R00342	C00036	Brenda
-Michaelis constant	v31	NADH_cyt	0	nan	mM	Sulfolobus acidocaldarius	R00342	C00004	Brenda
-Michaelis constant	v31	OXA_cyt	0	nan	mM	Thermoplasma acidophilum	R00342	C00036	Brenda
-Michaelis constant	v31	NADH_cyt	0	nan	mM	Thermoplasma acidophilum	R00342	C00004	Brenda
-Michaelis constant	v31	NADH_cyt	0	nan	mM	Trichomonas vaginalis	R00342	C00004	Brenda
-Michaelis constant	v31	NAD	0	nan	mM	Trichomonas vaginalis	R00342	C00003	Brenda
-Michaelis constant	v31	Mal_cyt	1.4	nan	mM	Trichomonas vaginalis	R00342	C00149	Brenda
-Michaelis constant	v31	OXA_cyt	0	nan	mM	Trichomonas vaginalis	R00342	C00036	Brenda
-Michaelis constant	v31	OXA_cyt	0	nan	mM	Trichomonas vaginalis	R00342	C00036	Brenda
-Michaelis constant	v31	Mal_cyt	1.2	nan	mM	Trichomonas vaginalis	R00342	C00149	Brenda
-Michaelis constant	v31	NAD	0.1	nan	mM	Trichomonas vaginalis	R00342	C00003	Brenda
-Michaelis constant	v31	NADH_cyt	0	nan	mM	Trichomonas vaginalis	R00342	C00004	Brenda
-Michaelis constant	v31	Mal_cyt	1	nan	mM	Trichomonas vaginalis	R00342	C00149	Brenda
-Michaelis constant	v31	OXA_cyt	0	nan	mM	Trichomonas vaginalis	R00342	C00036	Brenda
-Michaelis constant	v31	Mal_cyt	0.1	nan	mM	Thermus thermophilus	R00342	C00149	Brenda
-Michaelis constant	v31	OXA_cyt	0	nan	mM	Thermus thermophilus	R00342	C00036	Brenda
-Michaelis constant	v31	OXA_cyt	0	nan	mM	Thermus thermophilus	R00342	C00036	Brenda
-Michaelis constant	v31	NAD	0	nan	mM	Thermus thermophilus	R00342	C00003	Brenda
-Michaelis constant	v31	Mal_cyt	0	nan	mM	Thermus thermophilus	R00342	C00149	Brenda
-Michaelis constant	v31	NADH_cyt	0	nan	mM	Thermus thermophilus	R00342	C00004	Brenda
-Michaelis constant	v31	OXA_cyt	0.1	nan	mM	Rhodobacter capsulatus	R00342	C00036	Brenda
-Michaelis constant	v31	NAD	0	nan	mM	Rhodobacter capsulatus	R00342	C00003	Brenda
-Michaelis constant	v31	NADH_cyt	0	nan	mM	Rhodobacter capsulatus	R00342	C00004	Brenda
-Michaelis constant	v31	Mal_cyt	2.1	nan	mM	Rhodobacter capsulatus	R00342	C00149	Brenda
-Michaelis constant	v31	NADH_cyt	0	nan	mM	Haloarcula marismortui	R00342	C00004	Brenda
-Michaelis constant	v31	NADH_cyt	0	nan	mM	Mycobacterium phlei	R00342	C00004	Brenda
-Michaelis constant	v31	Mal_cyt	0.8	nan	mM	Mycobacterium phlei	R00342	C00149	Brenda
-Michaelis constant	v31	OXA_cyt	0	nan	mM	Mycobacterium phlei	R00342	C00036	Brenda
-Michaelis constant	v31	NAD	0.5	nan	mM	Mycobacterium phlei	R00342	C00003	Brenda
-Michaelis constant	v31	OXA_cyt	0.1	nan	mM	Physarum polycephalum	R00342	C00036	Brenda
-Michaelis constant	v31	NADH_cyt	0.2	nan	mM	Physarum polycephalum	R00342	C00004	Brenda
-Michaelis constant	v31	NAD	0.2	nan	mM	Physarum polycephalum	R00342	C00003	Brenda
-Michaelis constant	v31	NADH_cyt	0	nan	mM	Physarum polycephalum	R00342	C00004	Brenda
-Michaelis constant	v31	NAD	0.8	nan	mM	Physarum polycephalum	R00342	C00003	Brenda
-Michaelis constant	v31	OXA_cyt	0.1	nan	mM	Physarum polycephalum	R00342	C00036	Brenda
-Michaelis constant	v31	NAD	0.1	nan	mM	Comamonas testosteroni	R00342	C00003	Brenda
-Michaelis constant	v31	NADH_cyt	0	nan	mM	Comamonas testosteroni	R00342	C00004	Brenda
-Michaelis constant	v31	NAD	0.2	nan	mM	Comamonas testosteroni	R00342	C00003	Brenda
-Michaelis constant	v31	NAD	0.1	nan	mM	Comamonas testosteroni	R00342	C00003	Brenda
-Michaelis constant	v31	Mal_cyt	0.1	nan	mM	Comamonas testosteroni	R00342	C00149	Brenda
-Michaelis constant	v31	Mal_cyt	0.3	nan	mM	Comamonas testosteroni	R00342	C00149	Brenda
-Michaelis constant	v31	OXA_cyt	0.1	nan	mM	Comamonas testosteroni	R00342	C00036	Brenda
-Michaelis constant	v31	OXA_cyt	0	nan	mM	Echinococcus granulosus	R00342	C00036	Brenda
-Michaelis constant	v31	OXA_cyt	0	nan	mM	Echinococcus granulosus	R00342	C00036	Brenda
-Michaelis constant	v31	OXA_cyt	0	nan	mM	Echinococcus granulosus	R00342	C00036	Brenda
-Michaelis constant	v31	NAD	0	nan	mM	Echinococcus granulosus	R00342	C00003	Brenda
-Michaelis constant	v31	NADH_cyt	0	nan	mM	Echinococcus granulosus	R00342	C00004	Brenda
-Michaelis constant	v31	Mal_cyt	0	nan	mM	Echinococcus granulosus	R00342	C00149	Brenda
-Michaelis constant	v31	NAD	0	nan	mM	Echinococcus granulosus	R00342	C00003	Brenda
-Michaelis constant	v31	NAD	0	nan	mM	Echinococcus granulosus	R00342	C00003	Brenda
-Michaelis constant	v31	NADH_cyt	0	nan	mM	Echinococcus granulosus	R00342	C00004	Brenda
-Michaelis constant	v31	Mal_cyt	0	nan	mM	Echinococcus granulosus	R00342	C00149	Brenda
-Michaelis constant	v31	Mal_cyt	0.1	nan	mM	Echinococcus granulosus	R00342	C00149	Brenda
-Michaelis constant	v31	NADH_cyt	0	nan	mM	Echinococcus granulosus	R00342	C00004	Brenda
-Michaelis constant	v31	OXA_cyt	0	nan	mM	Mesembryanthemum crystallinum	R00342	C00036	Brenda
-Michaelis constant	v31	OXA_cyt	0	nan	mM	Mesembryanthemum crystallinum	R00342	C00036	Brenda
-Michaelis constant	v31	Mal_cyt	0	nan	mM	Mesembryanthemum crystallinum	R00342	C00149	Brenda
-Michaelis constant	v31	NAD	0.3	nan	mM	Mesembryanthemum crystallinum	R00342	C00003	Brenda
-Michaelis constant	v31	NADH_cyt	0	nan	mM	Mesembryanthemum crystallinum	R00342	C00004	Brenda
-Michaelis constant	v31	OXA_cyt	0	nan	mM	Methanospirillum hungatei	R00342	C00036	Brenda
-Michaelis constant	v31	NADH_cyt	0.1	nan	mM	Methanospirillum hungatei	R00342	C00004	Brenda
-Michaelis constant	v31	NADH_cyt	0.1	nan	mM	Methanospirillum hungatei	R00342	C00004	Brenda
-Michaelis constant	v31	NAD	0	nan	mM	nan	R00342	C00003	Brenda
-Michaelis constant	v31	Mal_cyt	5.6	nan	mM	nan	R00342	C00149	Brenda
-Michaelis constant	v31	NADP_p	0.2	nan	mM	nan	R00342	C00006	Brenda
-Michaelis constant	v31	NADH_cyt	0.1	nan	mM	Bacillus subtilis	R00342	C00004	Brenda
-Michaelis constant	v31	NADH_cyt	0	nan	mM	Bacillus subtilis	R00342	C00004	Brenda
-Michaelis constant	v31	OXA_cyt	0.1	nan	mM	Bacillus subtilis	R00342	C00036	Brenda
-Michaelis constant	v31	NAD	0.1	nan	mM	Bacillus subtilis	R00342	C00003	Brenda
-Michaelis constant	v31	Mal_cyt	0.9	nan	mM	Bacillus subtilis	R00342	C00149	Brenda
-Michaelis constant	v31	NAD	0.3	nan	mM	Ananas comosus	R00342	C00003	Brenda
-Michaelis constant	v31	NAD	0.2	nan	mM	Ananas comosus	R00342	C00003	Brenda
-Michaelis constant	v31	Mal_cyt	0.5	nan	mM	Ananas comosus	R00342	C00149	Brenda
-Michaelis constant	v31	OXA_cyt	0.3	nan	mM	Ananas comosus	R00342	C00036	Brenda
-Michaelis constant	v31	NADH_cyt	0	nan	mM	Ananas comosus	R00342	C00004	Brenda
-Michaelis constant	v31	OXA_cyt	0.1	nan	mM	Ananas comosus	R00342	C00036	Brenda
-Michaelis constant	v31	NADH_cyt	0	nan	mM	Ananas comosus	R00342	C00004	Brenda
-Michaelis constant	v31	NAD	0.6	nan	mM	Anthocidaris crassispina	R00342	C00003	Brenda
-Michaelis constant	v31	Mal_cyt	7	nan	mM	Anthocidaris crassispina	R00342	C00149	Brenda
-Michaelis constant	v31	NADH_cyt	0	nan	mM	nan	R00342	C00004	Brenda
-Michaelis constant	v31	OXA_cyt	0	nan	mM	nan	R00342	C00036	Brenda
-Michaelis constant	v31	OXA_cyt	0	nan	mM	Gallus sp.	R00342	C00036	Brenda
-Michaelis constant	v31	Mal_cyt	8	nan	mM	Drosophila virilis	R00342	C00149	Brenda
-Michaelis constant	v31	Mal_cyt	20	nan	mM	Drosophila virilis	R00342	C00149	Brenda
-Michaelis constant	v31	OXA_cyt	0	nan	mM	Drosophila virilis	R00342	C00036	Brenda
-Michaelis constant	v31	OXA_cyt	0.1	nan	mM	Haemophilus parasuis	R00342	C00036	Brenda
-Michaelis constant	v31	NADH_cyt	0	nan	mM	Haemophilus parasuis	R00342	C00004	Brenda
-Michaelis constant	v31	NAD	0.1	nan	mM	Haemophilus parasuis	R00342	C00003	Brenda
-Michaelis constant	v31	NAD	0.3	nan	mM	Escherichia coli	R00342	C00003	Brenda
-Michaelis constant	v31	OXA_cyt	0	nan	mM	Escherichia coli	R00342	C00036	Brenda
-Michaelis constant	v31	NAD	0.5	nan	mM	Escherichia coli	R00342	C00003	Brenda
-Michaelis constant	v31	Mal_cyt	5.3	nan	mM	Escherichia coli	R00342	C00149	Brenda
-Michaelis constant	v31	OXA_cyt	0.3	nan	mM	Escherichia coli	R00342	C00036	Brenda
-Michaelis constant	v31	Mal_cyt	6.8	nan	mM	Escherichia coli	R00342	C00149	Brenda
-Michaelis constant	v31	OXA_cyt	0	nan	mM	Escherichia coli	R00342	C00036	Brenda
-Michaelis constant	v31	NAD	0.4	nan	mM	Escherichia coli	R00342	C00003	Brenda
-Michaelis constant	v31	NADH_cyt	0.1	nan	mM	Escherichia coli	R00342	C00004	Brenda
-Michaelis constant	v31	OXA_cyt	0.6	nan	mM	Escherichia coli	R00342	C00036	Brenda
-Michaelis constant	v31	OXA_cyt	0.1	nan	mM	Escherichia coli	R00342	C00036	Brenda
-Michaelis constant	v31	NADH_cyt	0.1	nan	mM	Escherichia coli	R00342	C00004	Brenda
-Michaelis constant	v31	Mal_cyt	2.6	nan	mM	Escherichia coli	R00342	C00149	Brenda
-Michaelis constant	v31	OXA_cyt	0	nan	mM	Escherichia coli	R00342	C00036	Brenda
-Michaelis constant	v31	NADH_cyt	0.1	nan	mM	Escherichia coli	R00342	C00004	Brenda
-Michaelis constant	v31	OXA_cyt	0	nan	mM	Escherichia coli	R00342	C00036	Brenda
-Michaelis constant	v31	NADH_cyt	0.1	nan	mM	Escherichia coli	R00342	C00004	Brenda
-Michaelis constant	v31	Mal_cyt	0.2	nan	mM	Acinetobacter lwoffii	R00342	C00149	Brenda
-Michaelis constant	v31	NAD	0.4	nan	mM	Acinetobacter lwoffii	R00342	C00003	Brenda
-Michaelis constant	v31	OXA_cyt	0	nan	mM	Acinetobacter lwoffii	R00342	C00036	Brenda
-Michaelis constant	v31	NADH_cyt	0	nan	mM	Acinetobacter lwoffii	R00342	C00004	Brenda
+equilibrium constant	v31	nan	0	nan	dimensionless	nan	["R00342","orientation-reversed"]	nan	NIST
+Michaelis constant	v31	OXA_cyt	0.1	nan	mM	nan	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	Mal_cyt	4	nan	mM	nan	["R00342","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v31	NAD	1.1	nan	mM	nan	["R00342","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v31	OXA_cyt	0	nan	mM	Aquaspirillum arcticum	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	OXA_cyt	0	nan	mM	Aquaspirillum arcticum	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	NAD	0.1	nan	mM	Trichomonas gallinae	["R00342","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v31	Mal_cyt	0.2	nan	mM	Trichomonas gallinae	["R00342","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v31	NADH_cyt	0	nan	mM	Trichomonas gallinae	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	OXA_cyt	0	nan	mM	Sus scrofa	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	NADH_cyt	0	nan	mM	Sus scrofa	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	NADH_cyt	0	nan	mM	Sus scrofa	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	OXA_cyt	0	nan	mM	Sus scrofa	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	OXA_cyt	0	nan	mM	Sus scrofa	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	OXA_cyt	0	nan	mM	Sus scrofa	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	OXA_cyt	0	nan	mM	Sus scrofa	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	Mal_cyt	0.7	nan	mM	Beggiatoa leptomitiformis	["R00342","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v31	NAD	0.5	nan	mM	Beggiatoa leptomitiformis	["R00342","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v31	NADH_cyt	0	nan	mM	Beggiatoa leptomitiformis	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	NADH_cyt	0	nan	mM	Salinibacter ruber	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	NADH_cyt	0	nan	mM	Plasmodium falciparum	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	NAD	0.2	nan	mM	Plasmodium falciparum	["R00342","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v31	OXA_cyt	0	nan	mM	Hoplias malabaricus	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	OXA_cyt	0.1	nan	mM	Aptenia cordifolia	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	NADH_cyt	0	nan	mM	Aptenia cordifolia	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	Mal_cyt	2.3	nan	mM	Aptenia cordifolia	["R00342","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v31	OXA_cyt	0	nan	mM	Aptenia cordifolia	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	NAD	0.1	nan	mM	Aptenia cordifolia	["R00342","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v31	NAD	0.1	nan	mM	Aptenia cordifolia	["R00342","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v31	Mal_cyt	2.1	nan	mM	Aptenia cordifolia	["R00342","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v31	NADH_cyt	0.1	nan	mM	Corynebacterium glutamicum	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	OXA_cyt	0.6	nan	mM	Corynebacterium glutamicum	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	OXA_cyt	0	nan	mM	Corynebacterium glutamicum	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	NADH_cyt	0.1	nan	mM	Corynebacterium glutamicum	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	OXA_cyt	0.2	nan	mM	Corynebacterium glutamicum	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	NAD	0.4	nan	mM	Corynebacterium glutamicum	["R00342","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v31	NADPH	0.3	nan	mM	Corynebacterium glutamicum	["R00342","orientation-reversed"]	C00005	Brenda
+Michaelis constant	v31	Mal_cyt	0.8	nan	mM	Corynebacterium glutamicum	["R00342","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v31	OXA_cyt	0	nan	mM	Talaromyces emersonii	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	NAD	0.1	nan	mM	Talaromyces emersonii	["R00342","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v31	NAD	0.1	nan	mM	Talaromyces emersonii	["R00342","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v31	Mal_cyt	1.3	nan	mM	Talaromyces emersonii	["R00342","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v31	OXA_cyt	0	nan	mM	Sphyraena idiastes	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	NADH_cyt	0	nan	mM	Sphyraena idiastes	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	NADH_cyt	0	nan	mM	Sphyraena idiastes	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	OXA_cyt	0	nan	mM	Sphyraena idiastes	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	OXA_cyt	0	nan	mM	Sphyraena idiastes	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	NADH_cyt	0	nan	mM	Sphyraena idiastes	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	NADH_cyt	0	nan	mM	Sphyraena idiastes	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	OXA_cyt	0	nan	mM	Sphyraena idiastes	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	NAD	0.1	nan	mM	Saccharomyces cerevisiae	["R00342","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v31	Mal_cyt	0.3	nan	mM	Saccharomyces cerevisiae	["R00342","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v31	Mal_cyt	0	nan	mM	Saccharomyces cerevisiae	["R00342","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v31	Mal_cyt	0.1	nan	mM	Saccharomyces cerevisiae	["R00342","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v31	Mal_cyt	0	nan	mM	Saccharomyces cerevisiae	["R00342","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v31	OXA_cyt	0	nan	mM	Saccharomyces cerevisiae	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	NAD	0.3	nan	mM	Saccharomyces cerevisiae	["R00342","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v31	NADH_cyt	0	nan	mM	Saccharomyces cerevisiae	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	NADH_cyt	0	nan	mM	Saccharomyces cerevisiae	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	NADH_cyt	0	nan	mM	Moritella sp.	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	NADH_cyt	0.4	nan	mM	Triticum aestivum	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	NAD	0.7	nan	mM	Triticum aestivum	["R00342","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v31	OXA_cyt	3.2	nan	mM	Triticum aestivum	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	OXA_cyt	0	nan	mM	Euglena gracilis	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	NAD	0.7	nan	mM	Euglena gracilis	["R00342","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v31	Mal_cyt	0.7	nan	mM	Euglena gracilis	["R00342","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v31	NADH_cyt	0	nan	mM	Euglena gracilis	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	OXA_cyt	0.1	nan	mM	Aspergillus niger	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	OXA_cyt	0.1	nan	mM	Aspergillus niger	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	NADH_cyt	0.1	nan	mM	Aspergillus niger	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	NADH_cyt	0.2	nan	mM	Aspergillus niger	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	NAD	0.1	nan	mM	Dictyostelium discoideum	["R00342","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v31	OXA_cyt	0.2	nan	mM	Dictyostelium discoideum	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	NADH_cyt	0	nan	mM	Dictyostelium discoideum	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	Mal_cyt	1.3	nan	mM	Dictyostelium discoideum	["R00342","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v31	OXA_cyt	0.3	nan	mM	Dictyostelium discoideum	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	Mal_cyt	5	nan	mM	Dictyostelium discoideum	["R00342","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v31	NADPH	0.2	nan	mM	Sulfolobus acidocaldarius	["R00342","orientation-reversed"]	C00005	Brenda
+Michaelis constant	v31	OXA_cyt	0.1	nan	mM	Sulfolobus acidocaldarius	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	NADH_cyt	0	nan	mM	Sulfolobus acidocaldarius	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	OXA_cyt	0	nan	mM	Thermoplasma acidophilum	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	NADH_cyt	0	nan	mM	Thermoplasma acidophilum	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	NADH_cyt	0	nan	mM	Trichomonas vaginalis	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	NAD	0	nan	mM	Trichomonas vaginalis	["R00342","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v31	Mal_cyt	1.4	nan	mM	Trichomonas vaginalis	["R00342","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v31	OXA_cyt	0	nan	mM	Trichomonas vaginalis	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	OXA_cyt	0	nan	mM	Trichomonas vaginalis	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	Mal_cyt	1.2	nan	mM	Trichomonas vaginalis	["R00342","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v31	NAD	0.1	nan	mM	Trichomonas vaginalis	["R00342","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v31	NADH_cyt	0	nan	mM	Trichomonas vaginalis	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	Mal_cyt	1	nan	mM	Trichomonas vaginalis	["R00342","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v31	OXA_cyt	0	nan	mM	Trichomonas vaginalis	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	Mal_cyt	0.1	nan	mM	Thermus thermophilus	["R00342","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v31	OXA_cyt	0	nan	mM	Thermus thermophilus	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	OXA_cyt	0	nan	mM	Thermus thermophilus	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	NAD	0	nan	mM	Thermus thermophilus	["R00342","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v31	Mal_cyt	0	nan	mM	Thermus thermophilus	["R00342","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v31	NADH_cyt	0	nan	mM	Thermus thermophilus	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	OXA_cyt	0.1	nan	mM	Rhodobacter capsulatus	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	NAD	0	nan	mM	Rhodobacter capsulatus	["R00342","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v31	NADH_cyt	0	nan	mM	Rhodobacter capsulatus	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	Mal_cyt	2.1	nan	mM	Rhodobacter capsulatus	["R00342","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v31	NADH_cyt	0	nan	mM	Haloarcula marismortui	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	NADH_cyt	0	nan	mM	Mycobacterium phlei	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	Mal_cyt	0.8	nan	mM	Mycobacterium phlei	["R00342","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v31	OXA_cyt	0	nan	mM	Mycobacterium phlei	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	NAD	0.5	nan	mM	Mycobacterium phlei	["R00342","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v31	OXA_cyt	0.1	nan	mM	Physarum polycephalum	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	NADH_cyt	0.2	nan	mM	Physarum polycephalum	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	NAD	0.2	nan	mM	Physarum polycephalum	["R00342","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v31	NADH_cyt	0	nan	mM	Physarum polycephalum	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	NAD	0.8	nan	mM	Physarum polycephalum	["R00342","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v31	OXA_cyt	0.1	nan	mM	Physarum polycephalum	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	NAD	0.1	nan	mM	Comamonas testosteroni	["R00342","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v31	NADH_cyt	0	nan	mM	Comamonas testosteroni	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	NAD	0.2	nan	mM	Comamonas testosteroni	["R00342","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v31	NAD	0.1	nan	mM	Comamonas testosteroni	["R00342","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v31	Mal_cyt	0.1	nan	mM	Comamonas testosteroni	["R00342","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v31	Mal_cyt	0.3	nan	mM	Comamonas testosteroni	["R00342","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v31	OXA_cyt	0.1	nan	mM	Comamonas testosteroni	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	OXA_cyt	0	nan	mM	Echinococcus granulosus	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	OXA_cyt	0	nan	mM	Echinococcus granulosus	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	OXA_cyt	0	nan	mM	Echinococcus granulosus	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	NAD	0	nan	mM	Echinococcus granulosus	["R00342","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v31	NADH_cyt	0	nan	mM	Echinococcus granulosus	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	Mal_cyt	0	nan	mM	Echinococcus granulosus	["R00342","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v31	NAD	0	nan	mM	Echinococcus granulosus	["R00342","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v31	NAD	0	nan	mM	Echinococcus granulosus	["R00342","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v31	NADH_cyt	0	nan	mM	Echinococcus granulosus	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	Mal_cyt	0	nan	mM	Echinococcus granulosus	["R00342","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v31	Mal_cyt	0.1	nan	mM	Echinococcus granulosus	["R00342","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v31	NADH_cyt	0	nan	mM	Echinococcus granulosus	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	OXA_cyt	0	nan	mM	Mesembryanthemum crystallinum	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	OXA_cyt	0	nan	mM	Mesembryanthemum crystallinum	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	Mal_cyt	0	nan	mM	Mesembryanthemum crystallinum	["R00342","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v31	NAD	0.3	nan	mM	Mesembryanthemum crystallinum	["R00342","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v31	NADH_cyt	0	nan	mM	Mesembryanthemum crystallinum	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	OXA_cyt	0	nan	mM	Methanospirillum hungatei	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	NADH_cyt	0.1	nan	mM	Methanospirillum hungatei	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	NADH_cyt	0.1	nan	mM	Methanospirillum hungatei	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	NAD	0	nan	mM	nan	["R00342","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v31	Mal_cyt	5.6	nan	mM	nan	["R00342","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v31	NADP_p	0.2	nan	mM	nan	["R00342","orientation-reversed"]	C00006	Brenda
+Michaelis constant	v31	NADH_cyt	0.1	nan	mM	Bacillus subtilis	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	NADH_cyt	0	nan	mM	Bacillus subtilis	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	OXA_cyt	0.1	nan	mM	Bacillus subtilis	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	NAD	0.1	nan	mM	Bacillus subtilis	["R00342","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v31	Mal_cyt	0.9	nan	mM	Bacillus subtilis	["R00342","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v31	NAD	0.3	nan	mM	Ananas comosus	["R00342","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v31	NAD	0.2	nan	mM	Ananas comosus	["R00342","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v31	Mal_cyt	0.5	nan	mM	Ananas comosus	["R00342","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v31	OXA_cyt	0.3	nan	mM	Ananas comosus	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	NADH_cyt	0	nan	mM	Ananas comosus	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	OXA_cyt	0.1	nan	mM	Ananas comosus	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	NADH_cyt	0	nan	mM	Ananas comosus	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	NAD	0.6	nan	mM	Anthocidaris crassispina	["R00342","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v31	Mal_cyt	7	nan	mM	Anthocidaris crassispina	["R00342","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v31	NADH_cyt	0	nan	mM	nan	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	OXA_cyt	0	nan	mM	nan	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	OXA_cyt	0	nan	mM	Gallus sp.	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	Mal_cyt	8	nan	mM	Drosophila virilis	["R00342","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v31	Mal_cyt	20	nan	mM	Drosophila virilis	["R00342","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v31	OXA_cyt	0	nan	mM	Drosophila virilis	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	OXA_cyt	0.1	nan	mM	Haemophilus parasuis	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	NADH_cyt	0	nan	mM	Haemophilus parasuis	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	NAD	0.1	nan	mM	Haemophilus parasuis	["R00342","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v31	NAD	0.3	nan	mM	Escherichia coli	["R00342","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v31	OXA_cyt	0	nan	mM	Escherichia coli	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	NAD	0.5	nan	mM	Escherichia coli	["R00342","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v31	Mal_cyt	5.3	nan	mM	Escherichia coli	["R00342","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v31	OXA_cyt	0.3	nan	mM	Escherichia coli	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	Mal_cyt	6.8	nan	mM	Escherichia coli	["R00342","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v31	OXA_cyt	0	nan	mM	Escherichia coli	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	NAD	0.4	nan	mM	Escherichia coli	["R00342","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v31	NADH_cyt	0.1	nan	mM	Escherichia coli	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	OXA_cyt	0.6	nan	mM	Escherichia coli	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	OXA_cyt	0.1	nan	mM	Escherichia coli	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	NADH_cyt	0.1	nan	mM	Escherichia coli	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	Mal_cyt	2.6	nan	mM	Escherichia coli	["R00342","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v31	OXA_cyt	0	nan	mM	Escherichia coli	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	NADH_cyt	0.1	nan	mM	Escherichia coli	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	OXA_cyt	0	nan	mM	Escherichia coli	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	NADH_cyt	0.1	nan	mM	Escherichia coli	["R00342","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v31	Mal_cyt	0.2	nan	mM	Acinetobacter lwoffii	["R00342","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v31	NAD	0.4	nan	mM	Acinetobacter lwoffii	["R00342","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v31	OXA_cyt	0	nan	mM	Acinetobacter lwoffii	["R00342","orientation-reversed"]	C00036	Brenda
+Michaelis constant	v31	NADH_cyt	0	nan	mM	Acinetobacter lwoffii	["R00342","orientation-reversed"]	C00004	Brenda
 concentration of enzyme	v34	nan	3320	nan	molecules/cell	Saccharomyces cerevisiae	R04433	nan	yeastGFP
 substrate catalytic rate constant	v34	nan	6.6	nan	1/s	Homo sapiens	R04433	C05377	Brenda
 substrate catalytic rate constant	v34	nan	74.3	nan	1/s	Homo sapiens	R04433	C15494	Brenda
@@ -439,9 +439,9 @@ concentration of enzyme	v26	nan	672	nan	molecules/cell	Saccharomyces cerevisiae	
 concentration of enzyme	v26	nan	639	nan	molecules/cell	Saccharomyces cerevisiae	R00081	nan	yeastGFP
 concentration of enzyme	v26	nan	3670	nan	molecules/cell	Saccharomyces cerevisiae	R00081	nan	yeastGFP
 substrate catalytic rate constant	v26	nan	24.3	nan	1/s	Micrococcus luteus	R00081	C00200	Brenda
-inhibitory constant	v26	Cytc2p	0	nan	mM	Eukaryota	R00081	C00125	Brenda
-inhibitory constant	v26	Cytc2p	0	nan	mM	Eukaryota	R00081	C00125	Brenda
-inhibitory constant	v26	Cytc2p	0	nan	mM	Eukaryota	R00081	C00125	Brenda
+inhibitory constant	v26	Cytc3p	0	nan	mM	Eukaryota	R00081	C00125	Brenda
+inhibitory constant	v26	Cytc3p	0	nan	mM	Eukaryota	R00081	C00125	Brenda
+inhibitory constant	v26	Cytc3p	0	nan	mM	Eukaryota	R00081	C00125	Brenda
 substrate catalytic rate constant	v26	nan	53	nan	1/s	nan	R00081	C00524	Brenda
 substrate catalytic rate constant	v26	nan	3.9	nan	1/s	nan	R00081	C00524	Brenda
 substrate catalytic rate constant	v26	nan	8.3	nan	1/s	nan	R00081	C00524	Brenda
@@ -508,11 +508,11 @@ substrate catalytic rate constant	v26	nan	13.3	nan	1/s	Bacillus subtilis	R00081	
 substrate catalytic rate constant	v26	nan	8	nan	1/s	Bacillus subtilis	R00081	C00524	Brenda
 substrate catalytic rate constant	v26	nan	4	nan	1/s	Bacillus subtilis	R00081	C00524	Brenda
 substrate catalytic rate constant	v26	nan	5	nan	1/s	Bacillus subtilis	R00081	C00524	Brenda
-Michaelis constant	v26	Cytc3p	0	nan	mM	Bos taurus	R00081	C00126	Brenda
-Michaelis constant	v26	Cytc3p	0	nan	mM	Bos taurus	R00081	C00126	Brenda
-Michaelis constant	v26	Cytc3p	0.1	nan	mM	Sulfolobus acidocaldarius	R00081	C00126	Brenda
-Michaelis constant	v26	Cytc3p	0.1	nan	mM	Nitrobacter winogradskyi	R00081	C00126	Brenda
-Michaelis constant	v26	Cytc3p	0	nan	mM	Nitrobacter winogradskyi	R00081	C00126	Brenda
+Michaelis constant	v26	Cytc2p	0	nan	mM	Bos taurus	R00081	C00126	Brenda
+Michaelis constant	v26	Cytc2p	0	nan	mM	Bos taurus	R00081	C00126	Brenda
+Michaelis constant	v26	Cytc2p	0.1	nan	mM	Sulfolobus acidocaldarius	R00081	C00126	Brenda
+Michaelis constant	v26	Cytc2p	0.1	nan	mM	Nitrobacter winogradskyi	R00081	C00126	Brenda
+Michaelis constant	v26	Cytc2p	0	nan	mM	Nitrobacter winogradskyi	R00081	C00126	Brenda
 concentration of enzyme	v41	nan	2620	nan	molecules/cell	Saccharomyces cerevisiae	R00267	nan	yeastGFP
 inhibitory constant	v41	OXA	0.4	nan	mM	Chlorobium limicola	R00267	C00036	Brenda
 inhibitory constant	v41	NADPH_cyt	0	nan	mM	Pisum sativum	R00267	C00005	Brenda
@@ -528,7 +528,7 @@ inhibitory constant	v41	OG_cyt	0.1	nan	mM	Fomitopsis palustris	R00267	C00026	Bre
 inhibitory constant	v41	NAD	11	nan	mM	Sus scrofa	R00267	C00003	Brenda
 inhibitory constant	v41	NAD	12	nan	mM	Sus scrofa	R00267	C00003	Brenda
 inhibitory constant	v41	NAD	8	nan	mM	Sus scrofa	R00267	C00003	Brenda
-concentration of enzyme	v28	nan	450	nan	molecules/cell	Saccharomyces cerevisiae	R00085	nan	yeastGFP
+concentration of enzyme	v28	nan	450	nan	molecules/cell	Saccharomyces cerevisiae	["R00086","orientation-reversed"]	nan	yeastGFP
 concentration of enzyme	v36	nan	17000	nan	molecules/cell	Saccharomyces cerevisiae	R00344	nan	yeastGFP
 concentration of enzyme	v36	nan	12500	nan	molecules/cell	Saccharomyces cerevisiae	R00344	nan	yeastGFP
 substrate catalytic rate constant	v36	nan	0.1	nan	1/s	Saccharomyces cerevisiae	R00344	C00169	Brenda
@@ -838,35 +838,35 @@ Michaelis constant	v27	Acetyl_CoA_cyt	0.1	nan	mM	nan	R00351	C00024	Brenda
 Michaelis constant	v27	CoA_cyt	0	nan	mM	nan	R00351	C00010	Brenda
 Michaelis constant	v27	OXA_cyt	0	nan	mM	nan	R00351	C00036	Brenda
 Michaelis constant	v27	CoA_cyt	0	nan	mM	nan	R00351	C00010	Brenda
-concentration of enzyme	v17	nan	6920	nan	molecules/cell	Saccharomyces cerevisiae	R01082	nan	yeastGFP
-product catalytic rate constant	v17	nan	690	nan	1/s	nan	R01082	C00122	Brenda
-product catalytic rate constant	v17	nan	51.7	nan	1/s	Escherichia coli	R01082	C00122	Brenda
-substrate catalytic rate constant	v17	nan	540	nan	1/s	nan	R01082	C00711	Brenda
-substrate catalytic rate constant	v17	nan	11.2	nan	1/s	Escherichia coli	R01082	C00711	Brenda
-equilibrium constant	v17	nan	0.5	nan	dimensionless	nan	R01082	nan	NIST
-equilibrium constant	v17	nan	0.4	nan	dimensionless	nan	R01082	nan	NIST
-equilibrium constant	v17	nan	0.3	nan	dimensionless	nan	R01082	nan	NIST
-equilibrium constant	v17	nan	0.2	nan	dimensionless	nan	R01082	nan	NIST
-equilibrium constant	v17	nan	0.2	nan	dimensionless	nan	R01082	nan	NIST
-equilibrium constant	v17	nan	0.1	nan	dimensionless	nan	R01082	nan	NIST
-Michaelis constant	v17	Fum	0.3	nan	mM	nan	R01082	C00122	Brenda
-Michaelis constant	v17	Mal	2.4	nan	mM	nan	R01082	C00149	Brenda
-Michaelis constant	v17	Fum	0.1	nan	mM	Sulfolobus solfataricus	R01082	C00122	Brenda
-Michaelis constant	v17	Mal	0.1	nan	mM	Escherichia coli	R01082	C00149	Brenda
-Michaelis constant	v17	Fum	0.6	nan	mM	Escherichia coli	R01082	C00122	Brenda
-Michaelis constant	v17	Mal	0	nan	mM	Escherichia coli	R01082	C00149	Brenda
-Michaelis constant	v17	Fum	1.7	nan	mM	Escherichia coli	R01082	C00122	Brenda
-Michaelis constant	v17	Fum	0.2	nan	mM	Escherichia coli	R01082	C00122	Brenda
-Michaelis constant	v17	Fum	0.4	nan	mM	Escherichia coli	R01082	C00122	Brenda
-Michaelis constant	v17	Mal	2.9	nan	mM	Escherichia coli	R01082	C00149	Brenda
-Michaelis constant	v17	Fum	8.8	nan	mM	Campylobacter jejuni	R01082	C00122	Brenda
-Michaelis constant	v17	Fum	0	nan	mM	Rattus norvegicus	R01082	C00122	Brenda
-Michaelis constant	v17	Fum	0	nan	mM	Sus scrofa	R01082	C00122	Brenda
-Michaelis constant	v17	Fum	0	nan	mM	Sus scrofa	R01082	C00122	Brenda
-Michaelis constant	v17	Mal	0	nan	mM	Sus scrofa	R01082	C00149	Brenda
-Michaelis constant	v17	Fum	0.1	nan	mM	Sus scrofa	R01082	C00122	Brenda
-Michaelis constant	v17	Fum	0.1	nan	mM	Sus scrofa	R01082	C00122	Brenda
-Michaelis constant	v17	Fum	0	nan	mM	Euglena gracilis	R01082	C00122	Brenda
+concentration of enzyme	v17	nan	6920	nan	molecules/cell	Saccharomyces cerevisiae	["R01082","orientation-reversed"]	nan	yeastGFP
+product catalytic rate constant	v17	nan	690	nan	1/s	nan	["R01082","orientation-reversed"]	C00122	Brenda
+product catalytic rate constant	v17	nan	51.7	nan	1/s	Escherichia coli	["R01082","orientation-reversed"]	C00122	Brenda
+substrate catalytic rate constant	v17	nan	540	nan	1/s	nan	["R01082","orientation-reversed"]	C00711	Brenda
+substrate catalytic rate constant	v17	nan	11.2	nan	1/s	Escherichia coli	["R01082","orientation-reversed"]	C00711	Brenda
+equilibrium constant	v17	nan	0.5	nan	dimensionless	nan	["R01082","orientation-reversed"]	nan	NIST
+equilibrium constant	v17	nan	0.4	nan	dimensionless	nan	["R01082","orientation-reversed"]	nan	NIST
+equilibrium constant	v17	nan	0.3	nan	dimensionless	nan	["R01082","orientation-reversed"]	nan	NIST
+equilibrium constant	v17	nan	0.2	nan	dimensionless	nan	["R01082","orientation-reversed"]	nan	NIST
+equilibrium constant	v17	nan	0.2	nan	dimensionless	nan	["R01082","orientation-reversed"]	nan	NIST
+equilibrium constant	v17	nan	0.1	nan	dimensionless	nan	["R01082","orientation-reversed"]	nan	NIST
+Michaelis constant	v17	Fum	0.3	nan	mM	nan	["R01082","orientation-reversed"]	C00122	Brenda
+Michaelis constant	v17	Mal	2.4	nan	mM	nan	["R01082","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v17	Fum	0.1	nan	mM	Sulfolobus solfataricus	["R01082","orientation-reversed"]	C00122	Brenda
+Michaelis constant	v17	Mal	0.1	nan	mM	Escherichia coli	["R01082","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v17	Fum	0.6	nan	mM	Escherichia coli	["R01082","orientation-reversed"]	C00122	Brenda
+Michaelis constant	v17	Mal	0	nan	mM	Escherichia coli	["R01082","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v17	Fum	1.7	nan	mM	Escherichia coli	["R01082","orientation-reversed"]	C00122	Brenda
+Michaelis constant	v17	Fum	0.2	nan	mM	Escherichia coli	["R01082","orientation-reversed"]	C00122	Brenda
+Michaelis constant	v17	Fum	0.4	nan	mM	Escherichia coli	["R01082","orientation-reversed"]	C00122	Brenda
+Michaelis constant	v17	Mal	2.9	nan	mM	Escherichia coli	["R01082","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v17	Fum	8.8	nan	mM	Campylobacter jejuni	["R01082","orientation-reversed"]	C00122	Brenda
+Michaelis constant	v17	Fum	0	nan	mM	Rattus norvegicus	["R01082","orientation-reversed"]	C00122	Brenda
+Michaelis constant	v17	Fum	0	nan	mM	Sus scrofa	["R01082","orientation-reversed"]	C00122	Brenda
+Michaelis constant	v17	Fum	0	nan	mM	Sus scrofa	["R01082","orientation-reversed"]	C00122	Brenda
+Michaelis constant	v17	Mal	0	nan	mM	Sus scrofa	["R01082","orientation-reversed"]	C00149	Brenda
+Michaelis constant	v17	Fum	0.1	nan	mM	Sus scrofa	["R01082","orientation-reversed"]	C00122	Brenda
+Michaelis constant	v17	Fum	0.1	nan	mM	Sus scrofa	["R01082","orientation-reversed"]	C00122	Brenda
+Michaelis constant	v17	Fum	0	nan	mM	Euglena gracilis	["R01082","orientation-reversed"]	C00122	Brenda
 concentration of enzyme	v35	nan	7600	nan	molecules/cell	Saccharomyces cerevisiae	R00115	nan	yeastGFP
 inhibitory constant	v35	NADP_p	0.1	nan	mM	Homo sapiens	R00115	C00006	Brenda
 inhibitory constant	v35	FAD	0.1	nan	mM	Homo sapiens	R00115	C00016	Brenda
@@ -1002,31 +1002,31 @@ Michaelis constant	v25	QH2	0.1	nan	mM	Rhodopseudomonas palustris	R02161	C00390	B
 Michaelis constant	v25	QH2	0	nan	mM	Helianthus tuberosus	R02161	C00390	Brenda
 Michaelis constant	v25	QH2	0	nan	mM	Rhodobacter sphaeroides	R02161	C00390	Brenda
 Michaelis constant	v25	QH2	0	nan	mM	Homo sapiens	R02161	C00390	Brenda
-concentration of enzyme	v15	nan	18400	nan	molecules/cell	Saccharomyces cerevisiae	R00432	nan	yeastGFP
-equilibrium constant	v15	nan	0.5	nan	dimensionless	nan	R00432	nan	NIST
-equilibrium constant	v15	nan	0.5	nan	dimensionless	nan	R00432	nan	NIST
-equilibrium constant	v15	nan	0.5	nan	dimensionless	nan	R00432	nan	NIST
-equilibrium constant	v15	nan	0.6	nan	dimensionless	nan	R00432	nan	NIST
-equilibrium constant	v15	nan	0.6	nan	dimensionless	nan	R00432	nan	NIST
-equilibrium constant	v15	nan	0.6	nan	dimensionless	nan	R00432	nan	NIST
-equilibrium constant	v15	nan	0.7	nan	dimensionless	nan	R00432	nan	NIST
-equilibrium constant	v15	nan	0.7	nan	dimensionless	nan	R00432	nan	NIST
-equilibrium constant	v15	nan	0.7	nan	dimensionless	nan	R00432	nan	NIST
-equilibrium constant	v15	nan	0.8	nan	dimensionless	nan	R00432	nan	NIST
-equilibrium constant	v15	nan	0.8	nan	dimensionless	nan	R00432	nan	NIST
-equilibrium constant	v15	nan	0.8	nan	dimensionless	nan	R00432	nan	NIST
-equilibrium constant	v15	nan	1	nan	dimensionless	nan	R00432	nan	NIST
-equilibrium constant	v15	nan	1.3	nan	dimensionless	nan	R00432	nan	NIST
-equilibrium constant	v15	nan	1.5	nan	dimensionless	nan	R00432	nan	NIST
-equilibrium constant	v15	nan	1.6	nan	dimensionless	nan	R00432	nan	NIST
-equilibrium constant	v15	nan	1.7	nan	dimensionless	nan	R00432	nan	NIST
-equilibrium constant	v15	nan	1.7	nan	dimensionless	nan	R00432	nan	NIST
-equilibrium constant	v15	nan	1.7	nan	dimensionless	nan	R00432	nan	NIST
-inhibitory constant	v7	PYR_cyt	57	nan	mM	Plasmodium falciparum	R00703	C00022	Brenda
-inhibitory constant	v7	PYR_cyt	66	nan	mM	Plasmodium berghei	R00703	C00022	Brenda
-inhibitory constant	v7	PYR_cyt	1.6	nan	mM	Gadus morhua	R00703	C00022	Brenda
-inhibitory constant	v7	NADPH	0.4	nan	mM	Thermoanaerobacter ethanolicus	R00703	C00005	Brenda
-equilibrium constant	v7	nan	0	nan	dimensionless	nan	R00703	nan	NIST
+concentration of enzyme	v15	nan	18400	nan	molecules/cell	Saccharomyces cerevisiae	["R00432","orientation-reversed"]	nan	yeastGFP
+equilibrium constant	v15	nan	0.5	nan	dimensionless	nan	["R00432","orientation-reversed"]	nan	NIST
+equilibrium constant	v15	nan	0.5	nan	dimensionless	nan	["R00432","orientation-reversed"]	nan	NIST
+equilibrium constant	v15	nan	0.5	nan	dimensionless	nan	["R00432","orientation-reversed"]	nan	NIST
+equilibrium constant	v15	nan	0.6	nan	dimensionless	nan	["R00432","orientation-reversed"]	nan	NIST
+equilibrium constant	v15	nan	0.6	nan	dimensionless	nan	["R00432","orientation-reversed"]	nan	NIST
+equilibrium constant	v15	nan	0.6	nan	dimensionless	nan	["R00432","orientation-reversed"]	nan	NIST
+equilibrium constant	v15	nan	0.7	nan	dimensionless	nan	["R00432","orientation-reversed"]	nan	NIST
+equilibrium constant	v15	nan	0.7	nan	dimensionless	nan	["R00432","orientation-reversed"]	nan	NIST
+equilibrium constant	v15	nan	0.7	nan	dimensionless	nan	["R00432","orientation-reversed"]	nan	NIST
+equilibrium constant	v15	nan	0.8	nan	dimensionless	nan	["R00432","orientation-reversed"]	nan	NIST
+equilibrium constant	v15	nan	0.8	nan	dimensionless	nan	["R00432","orientation-reversed"]	nan	NIST
+equilibrium constant	v15	nan	0.8	nan	dimensionless	nan	["R00432","orientation-reversed"]	nan	NIST
+equilibrium constant	v15	nan	1	nan	dimensionless	nan	["R00432","orientation-reversed"]	nan	NIST
+equilibrium constant	v15	nan	1.3	nan	dimensionless	nan	["R00432","orientation-reversed"]	nan	NIST
+equilibrium constant	v15	nan	1.5	nan	dimensionless	nan	["R00432","orientation-reversed"]	nan	NIST
+equilibrium constant	v15	nan	1.6	nan	dimensionless	nan	["R00432","orientation-reversed"]	nan	NIST
+equilibrium constant	v15	nan	1.7	nan	dimensionless	nan	["R00432","orientation-reversed"]	nan	NIST
+equilibrium constant	v15	nan	1.7	nan	dimensionless	nan	["R00432","orientation-reversed"]	nan	NIST
+equilibrium constant	v15	nan	1.7	nan	dimensionless	nan	["R00432","orientation-reversed"]	nan	NIST
+inhibitory constant	v7	PYR_cyt	57	nan	mM	Plasmodium falciparum	["R00703","orientation-reversed"]	C00022	Brenda
+inhibitory constant	v7	PYR_cyt	66	nan	mM	Plasmodium berghei	["R00703","orientation-reversed"]	C00022	Brenda
+inhibitory constant	v7	PYR_cyt	1.6	nan	mM	Gadus morhua	["R00703","orientation-reversed"]	C00022	Brenda
+inhibitory constant	v7	NADPH	0.4	nan	mM	Thermoanaerobacter ethanolicus	["R00703","orientation-reversed"]	C00005	Brenda
+equilibrium constant	v7	nan	0	nan	dimensionless	nan	["R00703","orientation-reversed"]	nan	NIST
 concentration of enzyme	v16	nan	7920	nan	molecules/cell	Saccharomyces cerevisiae	R02164	nan	yeastGFP
 concentration of enzyme	v16	nan	9540	nan	molecules/cell	Saccharomyces cerevisiae	R02164	nan	yeastGFP
 concentration of enzyme	v16	nan	238	nan	molecules/cell	Saccharomyces cerevisiae	R02164	nan	yeastGFP
@@ -1087,65 +1087,65 @@ Michaelis constant	v16	Fum	0.4	nan	mM	Escherichia coli	R02164	C00122	Brenda
 Michaelis constant	v16	Q	0	nan	mM	Escherichia coli	R02164	C00399	Brenda
 Michaelis constant	v16	Q	0	nan	mM	Escherichia coli	R02164	C00399	Brenda
 Michaelis constant	v16	Q	0	nan	mM	Escherichia coli	R02164	C00399	Brenda
-concentration of enzyme	v38	nan	807	nan	molecules/cell	Saccharomyces cerevisiae	R00842	nan	yeastGFP
-concentration of enzyme	v38	nan	8970	nan	molecules/cell	Saccharomyces cerevisiae	R00842	nan	yeastGFP
-product catalytic rate constant	v38	nan	188	nan	1/s	Ceratitis capitata	R00842	C00111	Brenda
-equilibrium constant	v38	nan	0	nan	dimensionless	nan	R00842	nan	NIST
-Michaelis constant	v38	NAD	0.5	nan	mM	Gallus gallus	R00842	C00003	Brenda
-Michaelis constant	v38	G3P	2	nan	mM	Gallus gallus	R00842	C00093	Brenda
-Michaelis constant	v38	NADH_cyt	0	nan	mM	Gallus gallus	R00842	C00004	Brenda
-Michaelis constant	v38	DHAP	0.2	nan	mM	Gallus gallus	R00842	C00111	Brenda
-Michaelis constant	v38	NAD	0.1	nan	mM	Oryctolagus cuniculus	R00842	C00003	Brenda
-Michaelis constant	v38	NADH_cyt	0	nan	mM	Oryctolagus cuniculus	R00842	C00004	Brenda
-Michaelis constant	v38	DHAP	0.2	nan	mM	Oryctolagus cuniculus	R00842	C00111	Brenda
-Michaelis constant	v38	DHAP	0.3	nan	mM	Oryctolagus cuniculus	R00842	C00111	Brenda
-Michaelis constant	v38	NAD	0	nan	mM	Oryctolagus cuniculus	R00842	C00003	Brenda
-Michaelis constant	v38	DHAP	0.2	nan	mM	Oryctolagus cuniculus	R00842	C00111	Brenda
-Michaelis constant	v38	DHAP	0.1	nan	mM	Oryctolagus cuniculus	R00842	C00111	Brenda
-Michaelis constant	v38	NADH_cyt	0	nan	mM	Oryctolagus cuniculus	R00842	C00004	Brenda
-Michaelis constant	v38	NAD	0	nan	mM	Oryctolagus cuniculus	R00842	C00003	Brenda
-Michaelis constant	v38	DHAP	0.5	nan	mM	Oryctolagus cuniculus	R00842	C00111	Brenda
-Michaelis constant	v38	G3P	0.9	nan	mM	Oryctolagus cuniculus	R00842	C00093	Brenda
-Michaelis constant	v38	DHAP	0.3	nan	mM	Spinacia oleracea	R00842	C00111	Brenda
-Michaelis constant	v38	NAD	0.2	nan	mM	Spinacia oleracea	R00842	C00003	Brenda
-Michaelis constant	v38	DHAP	0.1	nan	mM	Trypanosoma brucei	R00842	C00111	Brenda
-Michaelis constant	v38	NAD	0.3	nan	mM	Trypanosoma brucei	R00842	C00003	Brenda
-Michaelis constant	v38	G3P	2.3	nan	mM	Trypanosoma brucei	R00842	C00093	Brenda
-Michaelis constant	v38	G3P	1.7	nan	mM	Leishmania mexicana	R00842	C00093	Brenda
-Michaelis constant	v38	DHAP	0.1	nan	mM	Leishmania mexicana	R00842	C00111	Brenda
-Michaelis constant	v38	NADH_cyt	0	nan	mM	Leishmania mexicana	R00842	C00004	Brenda
-Michaelis constant	v38	NAD	0.4	nan	mM	Leishmania mexicana	R00842	C00003	Brenda
-Michaelis constant	v38	NAD	0.3	nan	mM	Ceratitis capitata	R00842	C00003	Brenda
-Michaelis constant	v38	NADH_cyt	0	nan	mM	Ceratitis capitata	R00842	C00004	Brenda
-Michaelis constant	v38	DHAP	0.3	nan	mM	Ceratitis capitata	R00842	C00111	Brenda
-Michaelis constant	v38	NAD	0.3	nan	mM	Debaryomyces hansenii	R00842	C00003	Brenda
-Michaelis constant	v38	DHAP	0.1	nan	mM	Debaryomyces hansenii	R00842	C00111	Brenda
-Michaelis constant	v38	NADH_cyt	0	nan	mM	Debaryomyces hansenii	R00842	C00004	Brenda
-Michaelis constant	v38	G3P	1.9	nan	mM	Drosophila virilis	R00842	C00093	Brenda
-Michaelis constant	v38	NADH_cyt	0	nan	mM	Drosophila virilis	R00842	C00004	Brenda
-Michaelis constant	v38	DHAP	0.2	nan	mM	Drosophila virilis	R00842	C00111	Brenda
-Michaelis constant	v38	NAD	0.1	nan	mM	Drosophila virilis	R00842	C00003	Brenda
-Michaelis constant	v38	NADH_cyt	0	nan	mM	Jaculus orientalis	R00842	C00004	Brenda
-Michaelis constant	v38	NAD	0.3	nan	mM	Jaculus orientalis	R00842	C00003	Brenda
-Michaelis constant	v38	G3P	0.5	nan	mM	Jaculus orientalis	R00842	C00093	Brenda
-Michaelis constant	v38	DHAP	0.3	nan	mM	Eidolon helvum	R00842	C00111	Brenda
-Michaelis constant	v38	NAD	0.2	nan	mM	Eidolon helvum	R00842	C00003	Brenda
-Michaelis constant	v38	NAD	0.7	nan	mM	Eidolon helvum	R00842	C00003	Brenda
-Michaelis constant	v38	NADH_cyt	0.1	nan	mM	Drosophila melanogaster	R00842	C00004	Brenda
-Michaelis constant	v38	G3P	0.6	nan	mM	Drosophila melanogaster	R00842	C00093	Brenda
-Michaelis constant	v38	DHAP	0.5	nan	mM	Drosophila melanogaster	R00842	C00111	Brenda
-Michaelis constant	v38	NAD	0.4	nan	mM	Drosophila melanogaster	R00842	C00003	Brenda
-Michaelis constant	v38	DHAP	0	nan	mM	Chlamydomonas reinhardtii	R00842	C00111	Brenda
-Michaelis constant	v38	NADH_cyt	0	nan	mM	Chlamydomonas reinhardtii	R00842	C00004	Brenda
-Michaelis constant	v38	DHAP	0	nan	mM	Homo sapiens	R00842	C00111	Brenda
-Michaelis constant	v38	NAD	0	nan	mM	Homo sapiens	R00842	C00003	Brenda
-Michaelis constant	v38	NADH_cyt	0	nan	mM	Homo sapiens	R00842	C00004	Brenda
-Michaelis constant	v38	NAD	0	nan	mM	Rattus norvegicus	R00842	C00003	Brenda
-Michaelis constant	v38	DHAP	0.2	nan	mM	Rattus norvegicus	R00842	C00111	Brenda
-Michaelis constant	v38	NADH_cyt	0	nan	mM	Rattus norvegicus	R00842	C00004	Brenda
-Michaelis constant	v38	NADH_cyt	0	nan	mM	Saccharomyces cerevisiae	R00842	C00004	Brenda
-Michaelis constant	v38	DHAP	0.5	nan	mM	Saccharomyces cerevisiae	R00842	C00111	Brenda
-Michaelis constant	v38	G3P	34	nan	mM	Saccharomyces cerevisiae	R00842	C00093	Brenda
+concentration of enzyme	v38	nan	807	nan	molecules/cell	Saccharomyces cerevisiae	["R00842","orientation-reversed"]	nan	yeastGFP
+concentration of enzyme	v38	nan	8970	nan	molecules/cell	Saccharomyces cerevisiae	["R00842","orientation-reversed"]	nan	yeastGFP
+product catalytic rate constant	v38	nan	188	nan	1/s	Ceratitis capitata	["R00842","orientation-reversed"]	C00111	Brenda
+equilibrium constant	v38	nan	0	nan	dimensionless	nan	["R00842","orientation-reversed"]	nan	NIST
+Michaelis constant	v38	NAD	0.5	nan	mM	Gallus gallus	["R00842","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v38	G3P	2	nan	mM	Gallus gallus	["R00842","orientation-reversed"]	C00093	Brenda
+Michaelis constant	v38	NADH_cyt	0	nan	mM	Gallus gallus	["R00842","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v38	DHAP	0.2	nan	mM	Gallus gallus	["R00842","orientation-reversed"]	C00111	Brenda
+Michaelis constant	v38	NAD	0.1	nan	mM	Oryctolagus cuniculus	["R00842","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v38	NADH_cyt	0	nan	mM	Oryctolagus cuniculus	["R00842","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v38	DHAP	0.2	nan	mM	Oryctolagus cuniculus	["R00842","orientation-reversed"]	C00111	Brenda
+Michaelis constant	v38	DHAP	0.3	nan	mM	Oryctolagus cuniculus	["R00842","orientation-reversed"]	C00111	Brenda
+Michaelis constant	v38	NAD	0	nan	mM	Oryctolagus cuniculus	["R00842","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v38	DHAP	0.2	nan	mM	Oryctolagus cuniculus	["R00842","orientation-reversed"]	C00111	Brenda
+Michaelis constant	v38	DHAP	0.1	nan	mM	Oryctolagus cuniculus	["R00842","orientation-reversed"]	C00111	Brenda
+Michaelis constant	v38	NADH_cyt	0	nan	mM	Oryctolagus cuniculus	["R00842","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v38	NAD	0	nan	mM	Oryctolagus cuniculus	["R00842","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v38	DHAP	0.5	nan	mM	Oryctolagus cuniculus	["R00842","orientation-reversed"]	C00111	Brenda
+Michaelis constant	v38	G3P	0.9	nan	mM	Oryctolagus cuniculus	["R00842","orientation-reversed"]	C00093	Brenda
+Michaelis constant	v38	DHAP	0.3	nan	mM	Spinacia oleracea	["R00842","orientation-reversed"]	C00111	Brenda
+Michaelis constant	v38	NAD	0.2	nan	mM	Spinacia oleracea	["R00842","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v38	DHAP	0.1	nan	mM	Trypanosoma brucei	["R00842","orientation-reversed"]	C00111	Brenda
+Michaelis constant	v38	NAD	0.3	nan	mM	Trypanosoma brucei	["R00842","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v38	G3P	2.3	nan	mM	Trypanosoma brucei	["R00842","orientation-reversed"]	C00093	Brenda
+Michaelis constant	v38	G3P	1.7	nan	mM	Leishmania mexicana	["R00842","orientation-reversed"]	C00093	Brenda
+Michaelis constant	v38	DHAP	0.1	nan	mM	Leishmania mexicana	["R00842","orientation-reversed"]	C00111	Brenda
+Michaelis constant	v38	NADH_cyt	0	nan	mM	Leishmania mexicana	["R00842","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v38	NAD	0.4	nan	mM	Leishmania mexicana	["R00842","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v38	NAD	0.3	nan	mM	Ceratitis capitata	["R00842","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v38	NADH_cyt	0	nan	mM	Ceratitis capitata	["R00842","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v38	DHAP	0.3	nan	mM	Ceratitis capitata	["R00842","orientation-reversed"]	C00111	Brenda
+Michaelis constant	v38	NAD	0.3	nan	mM	Debaryomyces hansenii	["R00842","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v38	DHAP	0.1	nan	mM	Debaryomyces hansenii	["R00842","orientation-reversed"]	C00111	Brenda
+Michaelis constant	v38	NADH_cyt	0	nan	mM	Debaryomyces hansenii	["R00842","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v38	G3P	1.9	nan	mM	Drosophila virilis	["R00842","orientation-reversed"]	C00093	Brenda
+Michaelis constant	v38	NADH_cyt	0	nan	mM	Drosophila virilis	["R00842","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v38	DHAP	0.2	nan	mM	Drosophila virilis	["R00842","orientation-reversed"]	C00111	Brenda
+Michaelis constant	v38	NAD	0.1	nan	mM	Drosophila virilis	["R00842","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v38	NADH_cyt	0	nan	mM	Jaculus orientalis	["R00842","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v38	NAD	0.3	nan	mM	Jaculus orientalis	["R00842","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v38	G3P	0.5	nan	mM	Jaculus orientalis	["R00842","orientation-reversed"]	C00093	Brenda
+Michaelis constant	v38	DHAP	0.3	nan	mM	Eidolon helvum	["R00842","orientation-reversed"]	C00111	Brenda
+Michaelis constant	v38	NAD	0.2	nan	mM	Eidolon helvum	["R00842","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v38	NAD	0.7	nan	mM	Eidolon helvum	["R00842","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v38	NADH_cyt	0.1	nan	mM	Drosophila melanogaster	["R00842","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v38	G3P	0.6	nan	mM	Drosophila melanogaster	["R00842","orientation-reversed"]	C00093	Brenda
+Michaelis constant	v38	DHAP	0.5	nan	mM	Drosophila melanogaster	["R00842","orientation-reversed"]	C00111	Brenda
+Michaelis constant	v38	NAD	0.4	nan	mM	Drosophila melanogaster	["R00842","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v38	DHAP	0	nan	mM	Chlamydomonas reinhardtii	["R00842","orientation-reversed"]	C00111	Brenda
+Michaelis constant	v38	NADH_cyt	0	nan	mM	Chlamydomonas reinhardtii	["R00842","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v38	DHAP	0	nan	mM	Homo sapiens	["R00842","orientation-reversed"]	C00111	Brenda
+Michaelis constant	v38	NAD	0	nan	mM	Homo sapiens	["R00842","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v38	NADH_cyt	0	nan	mM	Homo sapiens	["R00842","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v38	NAD	0	nan	mM	Rattus norvegicus	["R00842","orientation-reversed"]	C00003	Brenda
+Michaelis constant	v38	DHAP	0.2	nan	mM	Rattus norvegicus	["R00842","orientation-reversed"]	C00111	Brenda
+Michaelis constant	v38	NADH_cyt	0	nan	mM	Rattus norvegicus	["R00842","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v38	NADH_cyt	0	nan	mM	Saccharomyces cerevisiae	["R00842","orientation-reversed"]	C00004	Brenda
+Michaelis constant	v38	DHAP	0.5	nan	mM	Saccharomyces cerevisiae	["R00842","orientation-reversed"]	C00111	Brenda
+Michaelis constant	v38	G3P	34	nan	mM	Saccharomyces cerevisiae	["R00842","orientation-reversed"]	C00093	Brenda
 concentration	nan	Glu_cyt	17.4	nan	mM	Escherichia coli	nan	C00025	nan
 concentration	nan	Glu_cyt	1.2	nan	mM	Dictyostelium discoideum	nan	C00025	nan
 concentration	nan	Glu_cyt	3.5	nan	mM	Rattus sp.	nan	C00025	nan

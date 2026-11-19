@@ -85,51 +85,51 @@ equilibrium constant	vPGI	nan	0.41	nan	dimensionless	nan	R00771	nan	NIST
 equilibrium constant	vPGI	nan	0.45	nan	dimensionless	nan	R00771	nan	NIST
 equilibrium constant	vPGI	nan	0.54	nan	dimensionless	nan	R00771	nan	NIST
 equilibrium constant	vPGI	nan	0.67	nan	dimensionless	nan	R00771	nan	NIST
-concentration of enzyme	vPGM	nan	2020	nan	molecules/cell	Saccharomyces cerevisiae	R01518	nan	yeastGFP
-concentration of enzyme	vPGM	nan	172000	nan	molecules/cell	Saccharomyces cerevisiae	R01518	nan	yeastGFP
-concentration of enzyme	vPGM	nan	3730	nan	molecules/cell	Saccharomyces cerevisiae	R01518	nan	yeastGFP
-equilibrium constant	vPGM	nan	8.65	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	9.81	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	10.02	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	10.3	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	10.4	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	10.43	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	10.45	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	10.5	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	10.6	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	10.7	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	10.72	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	10.8	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	10.84	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	10.9	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	11	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	11.1	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	11.11	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	11.14	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	11.28	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	11.3	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	11.31	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	11.36	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	11.4	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	11.47	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	11.59	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	11.64	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	11.65	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	11.74	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	4.9	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	5	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	5.1	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	5.25	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	5.3	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	5.35	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	5.8	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	6	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	6.1	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	6.2	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	6.3	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	6.6	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	6.8	nan	dimensionless	nan	R01518	nan	NIST
-equilibrium constant	vPGM	nan	9.8	nan	dimensionless	nan	R01518	nan	NIST
+concentration of enzyme	vPGM	nan	2020	nan	molecules/cell	Saccharomyces cerevisiae	["R01518","orientation-reversed"]	nan	yeastGFP
+concentration of enzyme	vPGM	nan	172000	nan	molecules/cell	Saccharomyces cerevisiae	["R01518","orientation-reversed"]	nan	yeastGFP
+concentration of enzyme	vPGM	nan	3730	nan	molecules/cell	Saccharomyces cerevisiae	["R01518","orientation-reversed"]	nan	yeastGFP
+equilibrium constant	vPGM	nan	8.65	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	9.81	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	10.02	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	10.3	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	10.4	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	10.43	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	10.45	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	10.5	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	10.6	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	10.7	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	10.72	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	10.8	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	10.84	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	10.9	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	11	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	11.1	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	11.11	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	11.14	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	11.28	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	11.3	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	11.31	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	11.36	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	11.4	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	11.47	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	11.59	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	11.64	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	11.65	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	11.74	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	4.9	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	5	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	5.1	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	5.25	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	5.3	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	5.35	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	5.8	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	6	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	6.1	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	6.2	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	6.3	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	6.6	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	6.8	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGM	nan	9.8	nan	dimensionless	nan	["R01518","orientation-reversed"]	nan	NIST
 concentration of enzyme	vALD	nan	1020000	358000	molecules/cell	Saccharomyces cerevisiae	R01070	nan	yeastGFP
 inhibitory constant	vALD	TRIO	0.13	nan	mM	Escherichia coli	R01070	C00111	Brenda
 inhibitory constant	vALD	TRIO	1.7	nan	mM	Escherichia coli	R01070	C00111	Brenda
@@ -203,30 +203,30 @@ equilibrium constant	vENO	nan	4.55	nan	dimensionless	nan	R00658	nan	NIST
 equilibrium constant	vENO	nan	4.6	nan	dimensionless	nan	R00658	nan	NIST
 equilibrium constant	vENO	nan	4.68	nan	dimensionless	nan	R00658	nan	NIST
 equilibrium constant	vENO	nan	5.15	nan	dimensionless	nan	R00658	nan	NIST
-concentration of enzyme	vPYK	nan	291000	24100	molecules/cell	Saccharomyces cerevisiae	R00200	nan	yeastGFP
-concentration of enzyme	vPYK	nan	2130	nan	molecules/cell	Saccharomyces cerevisiae	R00200	nan	yeastGFP
-inhibitory constant	vPYK	ATP	1.77	nan	mM	Toxoplasma gondii	R00200	C00002	Brenda
-inhibitory constant	vPYK	ATP	10	nan	mM	nan	R00200	C00002	Brenda
-inhibitory constant	vPYK	ATP	4	nan	mM	nan	R00200	C00002	Brenda
-inhibitory constant	vPYK	ATP	3.9	nan	mM	nan	R00200	C00002	Brenda
-inhibitory constant	vPYK	ATP	9.6	nan	mM	nan	R00200	C00002	Brenda
-equilibrium constant	vPYK	nan	0.0011	nan	dimensionless	nan	R00200	nan	NIST
-equilibrium constant	vPYK	nan	0.00152	nan	dimensionless	nan	R00200	nan	NIST
-equilibrium constant	vPYK	nan	0.000155	nan	dimensionless	nan	R00200	nan	NIST
-equilibrium constant	vPYK	nan	0.000179	nan	dimensionless	nan	R00200	nan	NIST
-equilibrium constant	vPYK	nan	0.00208	nan	dimensionless	nan	R00200	nan	NIST
-equilibrium constant	vPYK	nan	0.00272	nan	dimensionless	nan	R00200	nan	NIST
-equilibrium constant	vPYK	nan	0.000386	nan	dimensionless	nan	R00200	nan	NIST
-equilibrium constant	vPYK	nan	0.0003	nan	dimensionless	nan	R00200	nan	NIST
-equilibrium constant	vPYK	nan	0.00413	nan	dimensionless	nan	R00200	nan	NIST
-equilibrium constant	vPYK	nan	0.000429	nan	dimensionless	nan	R00200	nan	NIST
-equilibrium constant	vPYK	nan	0.00045	nan	dimensionless	nan	R00200	nan	NIST
-equilibrium constant	vPYK	nan	0.000451	nan	dimensionless	nan	R00200	nan	NIST
-equilibrium constant	vPYK	nan	0.00049	nan	dimensionless	nan	R00200	nan	NIST
-equilibrium constant	vPYK	nan	0.00495	nan	dimensionless	nan	R00200	nan	NIST
-equilibrium constant	vPYK	nan	0.000552	nan	dimensionless	nan	R00200	nan	NIST
-equilibrium constant	vPYK	nan	0.000685	nan	dimensionless	nan	R00200	nan	NIST
-equilibrium constant	vPYK	nan	0.000735	nan	dimensionless	nan	R00200	nan	NIST
+concentration of enzyme	vPYK	nan	291000	24100	molecules/cell	Saccharomyces cerevisiae	["R00200","orientation-reversed"]	nan	yeastGFP
+concentration of enzyme	vPYK	nan	2130	nan	molecules/cell	Saccharomyces cerevisiae	["R00200","orientation-reversed"]	nan	yeastGFP
+inhibitory constant	vPYK	ATP	1.77	nan	mM	Toxoplasma gondii	["R00200","orientation-reversed"]	C00002	Brenda
+inhibitory constant	vPYK	ATP	10	nan	mM	nan	["R00200","orientation-reversed"]	C00002	Brenda
+inhibitory constant	vPYK	ATP	4	nan	mM	nan	["R00200","orientation-reversed"]	C00002	Brenda
+inhibitory constant	vPYK	ATP	3.9	nan	mM	nan	["R00200","orientation-reversed"]	C00002	Brenda
+inhibitory constant	vPYK	ATP	9.6	nan	mM	nan	["R00200","orientation-reversed"]	C00002	Brenda
+equilibrium constant	vPYK	nan	0.0011	nan	dimensionless	nan	["R00200","orientation-reversed"]	nan	NIST
+equilibrium constant	vPYK	nan	0.00152	nan	dimensionless	nan	["R00200","orientation-reversed"]	nan	NIST
+equilibrium constant	vPYK	nan	0.000155	nan	dimensionless	nan	["R00200","orientation-reversed"]	nan	NIST
+equilibrium constant	vPYK	nan	0.000179	nan	dimensionless	nan	["R00200","orientation-reversed"]	nan	NIST
+equilibrium constant	vPYK	nan	0.00208	nan	dimensionless	nan	["R00200","orientation-reversed"]	nan	NIST
+equilibrium constant	vPYK	nan	0.00272	nan	dimensionless	nan	["R00200","orientation-reversed"]	nan	NIST
+equilibrium constant	vPYK	nan	0.000386	nan	dimensionless	nan	["R00200","orientation-reversed"]	nan	NIST
+equilibrium constant	vPYK	nan	0.0003	nan	dimensionless	nan	["R00200","orientation-reversed"]	nan	NIST
+equilibrium constant	vPYK	nan	0.00413	nan	dimensionless	nan	["R00200","orientation-reversed"]	nan	NIST
+equilibrium constant	vPYK	nan	0.000429	nan	dimensionless	nan	["R00200","orientation-reversed"]	nan	NIST
+equilibrium constant	vPYK	nan	0.00045	nan	dimensionless	nan	["R00200","orientation-reversed"]	nan	NIST
+equilibrium constant	vPYK	nan	0.000451	nan	dimensionless	nan	["R00200","orientation-reversed"]	nan	NIST
+equilibrium constant	vPYK	nan	0.00049	nan	dimensionless	nan	["R00200","orientation-reversed"]	nan	NIST
+equilibrium constant	vPYK	nan	0.00495	nan	dimensionless	nan	["R00200","orientation-reversed"]	nan	NIST
+equilibrium constant	vPYK	nan	0.000552	nan	dimensionless	nan	["R00200","orientation-reversed"]	nan	NIST
+equilibrium constant	vPYK	nan	0.000685	nan	dimensionless	nan	["R00200","orientation-reversed"]	nan	NIST
+equilibrium constant	vPYK	nan	0.000735	nan	dimensionless	nan	["R00200","orientation-reversed"]	nan	NIST
 concentration of enzyme	vPDC	nan	2140	nan	molecules/cell	Saccharomyces cerevisiae	R00224	nan	yeastGFP
 concentration of enzyme	vPDC	nan	6560	nan	molecules/cell	Saccharomyces cerevisiae	R00224	nan	yeastGFP
 concentration of enzyme	vPDC	nan	1520	nan	molecules/cell	Saccharomyces cerevisiae	R00224	nan	yeastGFP
@@ -239,133 +239,133 @@ inhibitory constant	vPDC	PYR	136	nan	mM	Saccharomyces cerevisiae	R00224	C00022	B
 inhibitory constant	vPDC	PYR	433	nan	mM	Saccharomyces cerevisiae	R00224	C00022	Brenda
 inhibitory constant	vPDC	PYR	112.2	nan	mM	Saccharomyces cerevisiae	R00224	C00022	Brenda
 inhibitory constant	vPDC	PYR	1200	nan	mM	Kluyveromyces lactis	R00224	C00022	Brenda
-concentration of enzyme	vPGK	nan	314000	132000	molecules/cell	Saccharomyces cerevisiae	R01512	nan	yeastGFP
-substrate catalytic rate constant	vPGK	nan	10	nan	1/s	Homo sapiens	R01512	C00063	Brenda
-inhibitory constant	vPGK	AMP	1.5	nan	mM	Saccharomyces cerevisiae	R01512	C00020	Brenda
-inhibitory constant	vPGK	ADP	0.17	nan	mM	Saccharomyces cerevisiae	R01512	C00008	Brenda
-inhibitory constant	vPGK	AMP	2	nan	mM	Saccharomyces cerevisiae	R01512	C00020	Brenda
-inhibitory constant	vPGK	ADP	0.22	nan	mM	Saccharomyces cerevisiae	R01512	C00008	Brenda
-inhibitory constant	vPGK	ADP	0.08	nan	mM	Mus musculus	R01512	C00008	Brenda
-inhibitory constant	vPGK	ADP	0.175	nan	mM	Mus musculus	R01512	C00008	Brenda
-inhibitory constant	vPGK	ADP	0.039	nan	mM	Sus scrofa	R01512	C00008	Brenda
-substrate catalytic rate constant	vPGK	P3G	570	nan	1/s	Hippoglossus stenolepis	R01512	C00197	Brenda
-substrate catalytic rate constant	vPGK	ATP	570	nan	1/s	Hippoglossus stenolepis	R01512	C00002	Brenda
-substrate catalytic rate constant	vPGK	ATP	411	nan	1/s	Pseudomonas sp.	R01512	C00002	Brenda
-substrate catalytic rate constant	vPGK	ATP	500	nan	1/s	Pseudomonas sp.	R01512	C00002	Brenda
-substrate catalytic rate constant	vPGK	P3G	540	nan	1/s	Pseudomonas sp.	R01512	C00197	Brenda
-substrate catalytic rate constant	vPGK	ATP	519	nan	1/s	Pseudomonas sp.	R01512	C00002	Brenda
-substrate catalytic rate constant	vPGK	P3G	362	nan	1/s	Pseudomonas sp.	R01512	C00197	Brenda
-substrate catalytic rate constant	vPGK	P3G	537	nan	1/s	Pseudomonas sp.	R01512	C00197	Brenda
-substrate catalytic rate constant	vPGK	ATP	500	nan	1/s	Homo sapiens	R01512	C00002	Brenda
-substrate catalytic rate constant	vPGK	ATP	100	nan	1/s	Homo sapiens	R01512	C00002	Brenda
-equilibrium constant	vPGK	nan	0.00102	nan	dimensionless	nan	R01512	nan	NIST
-equilibrium constant	vPGK	nan	0.00143	nan	dimensionless	nan	R01512	nan	NIST
-equilibrium constant	vPGK	nan	0.00015	nan	dimensionless	nan	R01512	nan	NIST
-equilibrium constant	vPGK	nan	0.000225	nan	dimensionless	nan	R01512	nan	NIST
-equilibrium constant	vPGK	nan	0.000241	nan	dimensionless	nan	R01512	nan	NIST
-equilibrium constant	vPGK	nan	0.000242	nan	dimensionless	nan	R01512	nan	NIST
-equilibrium constant	vPGK	nan	0.000251	nan	dimensionless	nan	R01512	nan	NIST
-equilibrium constant	vPGK	nan	0.000272	nan	dimensionless	nan	R01512	nan	NIST
-equilibrium constant	vPGK	nan	0.000274	nan	dimensionless	nan	R01512	nan	NIST
-equilibrium constant	vPGK	nan	0.000278	nan	dimensionless	nan	R01512	nan	NIST
-equilibrium constant	vPGK	nan	0.0003	nan	dimensionless	nan	R01512	nan	NIST
-equilibrium constant	vPGK	nan	0.000318	nan	dimensionless	nan	R01512	nan	NIST
-equilibrium constant	vPGK	nan	0.00031	nan	dimensionless	nan	R01512	nan	NIST
-equilibrium constant	vPGK	nan	0.000349	nan	dimensionless	nan	R01512	nan	NIST
-equilibrium constant	vPGK	nan	0.000392	nan	dimensionless	nan	R01512	nan	NIST
-equilibrium constant	vPGK	nan	0.0004	nan	dimensionless	nan	R01512	nan	NIST
-equilibrium constant	vPGK	nan	0.000529	nan	dimensionless	nan	R01512	nan	NIST
-equilibrium constant	vPGK	nan	0.000548	nan	dimensionless	nan	R01512	nan	NIST
-equilibrium constant	vPGK	nan	0.000549	nan	dimensionless	nan	R01512	nan	NIST
-equilibrium constant	vPGK	nan	0.00008	nan	nan	nan	R01512	nan	NIST
-Michaelis constant	vPGK	ATP	0.04	nan	mM	Saccharomyces cerevisiae	R01512	C00002	Brenda
-Michaelis constant	vPGK	ADP	0.2	nan	mM	Saccharomyces cerevisiae	R01512	C00008	Brenda
-Michaelis constant	vPGK	P3G	2.5	nan	mM	Saccharomyces cerevisiae	R01512	C00197	Brenda
-Michaelis constant	vPGK	P3G	1.28	nan	mM	Saccharomyces cerevisiae	R01512	C00197	Brenda
-Michaelis constant	vPGK	ATP	1.25	nan	mM	Saccharomyces cerevisiae	R01512	C00002	Brenda
-Michaelis constant	vPGK	ATP	3.45	nan	mM	Saccharomyces cerevisiae	R01512	C00002	Brenda
-Michaelis constant	vPGK	ATP	0.33	nan	mM	Saccharomyces cerevisiae	R01512	C00002	Brenda
-Michaelis constant	vPGK	P3G	0.77	nan	mM	Saccharomyces cerevisiae	R01512	C00197	Brenda
-Michaelis constant	vPGK	ATP	0.48	nan	mM	Saccharomyces cerevisiae	R01512	C00002	Brenda
-Michaelis constant	vPGK	ATP	0.35	nan	mM	Oryctolagus cuniculus	R01512	C00002	Brenda
-Michaelis constant	vPGK	P3G	0.0022	nan	mM	Oryctolagus cuniculus	R01512	C00197	Brenda
-Michaelis constant	vPGK	ATP	0.095	nan	mM	Ovis aries	R01512	C00002	Brenda
-Michaelis constant	vPGK	ATP	0.09	nan	mM	Ovis aries	R01512	C00002	Brenda
-Michaelis constant	vPGK	ATP	0.3	nan	mM	Spinacia oleracea	R01512	C00002	Brenda
-Michaelis constant	vPGK	ADP	0.27	nan	mM	Spinacia oleracea	R01512	C00008	Brenda
-Michaelis constant	vPGK	ATP	4.1	nan	mM	Pisum sativum	R01512	C00002	Brenda
-Michaelis constant	vPGK	P3G	7.6	nan	mM	Pisum sativum	R01512	C00197	Brenda
-Michaelis constant	vPGK	P3G	2	nan	mM	Trypanosoma brucei	R01512	C00197	Brenda
-Michaelis constant	vPGK	ATP	0.12	nan	mM	Trypanosoma brucei	R01512	C00002	Brenda
-Michaelis constant	vPGK	ATP	0.29	nan	mM	Trypanosoma brucei	R01512	C00002	Brenda
-Michaelis constant	vPGK	P3G	2.4	nan	mM	Trypanosoma brucei	R01512	C00197	Brenda
-Michaelis constant	vPGK	ATP	0.46	nan	mM	Trypanosoma brucei	R01512	C00002	Brenda
-Michaelis constant	vPGK	P3G	11.9	nan	mM	Trypanosoma brucei	R01512	C00197	Brenda
-Michaelis constant	vPGK	P3G	1.25	nan	mM	Trypanosoma brucei	R01512	C00197	Brenda
-Michaelis constant	vPGK	P3G	1.55	nan	mM	Trypanosoma brucei	R01512	C00197	Brenda
-Michaelis constant	vPGK	ATP	0.21	nan	mM	Trypanosoma brucei	R01512	C00002	Brenda
-Michaelis constant	vPGK	P3G	0.52	nan	mM	Plasmodium falciparum	R01512	C00197	Brenda
-Michaelis constant	vPGK	ATP	0.63	nan	mM	Plasmodium falciparum	R01512	C00002	Brenda
-Michaelis constant	vPGK	ATP	1.1	nan	mM	Zymomonas mobilis	R01512	C00002	Brenda
-Michaelis constant	vPGK	P3G	1.5	nan	mM	Zymomonas mobilis	R01512	C00197	Brenda
-Michaelis constant	vPGK	ATP	0.32	nan	mM	Selenastrum minutum	R01512	C00002	Brenda
-Michaelis constant	vPGK	P3G	0.46	nan	mM	Selenastrum minutum	R01512	C00197	Brenda
-Michaelis constant	vPGK	ATP	0.73	nan	mM	Methanothermus fervidus	R01512	C00002	Brenda
-Michaelis constant	vPGK	P3G	0.75	nan	mM	Methanothermus fervidus	R01512	C00197	Brenda
-Michaelis constant	vPGK	P3G	0.6	nan	mM	Beta vulgaris	R01512	C00197	Brenda
-Michaelis constant	vPGK	ATP	0.15	nan	mM	Beta vulgaris	R01512	C00002	Brenda
-Michaelis constant	vPGK	ATP	0.9	nan	mM	Fasciola hepatica	R01512	C00002	Brenda
-Michaelis constant	vPGK	P3G	1.26	nan	mM	Fasciola hepatica	R01512	C00197	Brenda
-Michaelis constant	vPGK	P3G	2.2	nan	mM	nan	R01512	C00197	Brenda
-Michaelis constant	vPGK	ATP	2.9	nan	mM	nan	R01512	C00002	Brenda
-Michaelis constant	vPGK	ATP	0.038	nan	mM	Mus musculus	R01512	C00002	Brenda
-Michaelis constant	vPGK	ATP	0.11	nan	mM	Mus musculus	R01512	C00002	Brenda
-Michaelis constant	vPGK	P3G	0.2	nan	mM	Mus musculus	R01512	C00197	Brenda
-Michaelis constant	vPGK	ADP	0.19	nan	mM	Mus musculus	R01512	C00008	Brenda
-Michaelis constant	vPGK	ATP	0.22	nan	mM	Mus musculus	R01512	C00002	Brenda
-Michaelis constant	vPGK	ADP	0.23	nan	mM	Mus musculus	R01512	C00008	Brenda
-Michaelis constant	vPGK	P3G	0.028	nan	mM	Mus musculus	R01512	C00197	Brenda
-Michaelis constant	vPGK	P3G	0.15	nan	mM	Mus musculus	R01512	C00197	Brenda
-Michaelis constant	vPGK	ATP	0.42	nan	mM	Mus musculus	R01512	C00002	Brenda
-Michaelis constant	vPGK	ADP	0.039	nan	mM	Mus musculus	R01512	C00008	Brenda
-Michaelis constant	vPGK	ATP	0.37	nan	mM	Mus musculus	R01512	C00002	Brenda
-Michaelis constant	vPGK	P3G	1.79	nan	mM	nan	R01512	C00197	Brenda
-Michaelis constant	vPGK	ATP	0.28	nan	mM	nan	R01512	C00002	Brenda
-Michaelis constant	vPGK	ATP	4.8	nan	mM	Pyrococcus woesei	R01512	C00002	Brenda
-Michaelis constant	vPGK	ATP	4.05	nan	mM	Pyrococcus woesei	R01512	C00002	Brenda
-Michaelis constant	vPGK	P3G	0.89	nan	mM	Pseudomonas sp.	R01512	C00197	Brenda
-Michaelis constant	vPGK	ATP	0.38	nan	mM	Pseudomonas sp.	R01512	C00002	Brenda
-Michaelis constant	vPGK	P3G	0.53	nan	mM	Pseudomonas sp.	R01512	C00197	Brenda
-Michaelis constant	vPGK	P3G	0.48	nan	mM	Pseudomonas sp.	R01512	C00197	Brenda
-Michaelis constant	vPGK	ATP	0.7	nan	mM	Lactobacillus delbrueckii subsp. lactis	R01512	C00002	Brenda
-Michaelis constant	vPGK	P3G	2.6	nan	mM	Lactobacillus delbrueckii subsp. lactis	R01512	C00197	Brenda
-Michaelis constant	vPGK	ATP	0.59	nan	mM	Nitrosospira sp. TYM9	R01512	C00002	Brenda
-Michaelis constant	vPGK	P3G	0.72	nan	mM	Nitrosospira sp. TYM9	R01512	C00197	Brenda
-Michaelis constant	vPGK	ATP	2.11	nan	mM	Nitrosospira sp. PJA1	R01512	C00002	Brenda
-Michaelis constant	vPGK	P3G	0.57	nan	mM	Nitrosospira sp. PJA1	R01512	C00197	Brenda
-Michaelis constant	vPGK	P3G	0.8	nan	mM	Nitrosospira sp. TCH716	R01512	C00197	Brenda
-Michaelis constant	vPGK	ATP	0.57	nan	mM	Nitrosospira sp. TCH716	R01512	C00002	Brenda
-Michaelis constant	vPGK	ATP	0.76	nan	mM	Nitrosospira sp. KAN8	R01512	C00002	Brenda
-Michaelis constant	vPGK	P3G	1.02	nan	mM	Nitrosospira sp. KAN8	R01512	C00197	Brenda
-Michaelis constant	vPGK	P3G	0.5	nan	mM	nan	R01512	C00197	Brenda
-Michaelis constant	vPGK	ATP	0.53	nan	mM	nan	R01512	C00002	Brenda
-Michaelis constant	vPGK	ATP	1.96	nan	mM	Nitrosovibrio sp. RY3C	R01512	C00002	Brenda
-Michaelis constant	vPGK	P3G	0.81	nan	mM	Nitrosovibrio sp. RY6A	R01512	C00197	Brenda
-Michaelis constant	vPGK	ATP	1.58	nan	mM	Nitrosovibrio sp. RY6A	R01512	C00002	Brenda
-Michaelis constant	vPGK	ATP	0.3	nan	mM	Homo sapiens	R01512	C00002	Brenda
-Michaelis constant	vPGK	ATP	0.5	nan	mM	Homo sapiens	R01512	C00002	Brenda
-Michaelis constant	vPGK	P3G	1.1	nan	mM	Homo sapiens	R01512	C00197	Brenda
-Michaelis constant	vPGK	P3G	0.59	nan	mM	Homo sapiens	R01512	C00197	Brenda
-Michaelis constant	vPGK	P3G	1.41	nan	mM	Nitrosovibrio sp. FJI82	R01512	C00197	Brenda
-Michaelis constant	vPGK	ATP	0.66	nan	mM	Nitrosovibrio sp. FJI82	R01512	C00002	Brenda
-Michaelis constant	vPGK	ATP	0.51	nan	mM	Nitrosospira sp. GS833	R01512	C00002	Brenda
-Michaelis constant	vPGK	P3G	1.39	nan	mM	Nitrosospira sp. GS833	R01512	C00197	Brenda
-Michaelis constant	vPGK	P3G	0.9	nan	mM	Nitrosospira sp. NRS527	R01512	C00197	Brenda
-Michaelis constant	vPGK	ATP	0.77	nan	mM	Nitrosospira sp. NRS527	R01512	C00002	Brenda
-Michaelis constant	vPGK	P3G	1.65	nan	mM	Rattus norvegicus	R01512	C00197	Brenda
-Michaelis constant	vPGK	P3G	1.66	nan	mM	Rattus norvegicus	R01512	C00197	Brenda
-Michaelis constant	vPGK	P3G	1.4	nan	mM	Rattus norvegicus	R01512	C00197	Brenda
-Michaelis constant	vPGK	ATP	0.24	nan	mM	Rattus norvegicus	R01512	C00002	Brenda
+concentration of enzyme	vPGK	nan	314000	132000	molecules/cell	Saccharomyces cerevisiae	["R01512","orientation-reversed"]	nan	yeastGFP
+substrate catalytic rate constant	vPGK	nan	10	nan	1/s	Homo sapiens	["R01512","orientation-reversed"]	C00063	Brenda
+inhibitory constant	vPGK	AMP	1.5	nan	mM	Saccharomyces cerevisiae	["R01512","orientation-reversed"]	C00020	Brenda
+inhibitory constant	vPGK	ADP	0.17	nan	mM	Saccharomyces cerevisiae	["R01512","orientation-reversed"]	C00008	Brenda
+inhibitory constant	vPGK	AMP	2	nan	mM	Saccharomyces cerevisiae	["R01512","orientation-reversed"]	C00020	Brenda
+inhibitory constant	vPGK	ADP	0.22	nan	mM	Saccharomyces cerevisiae	["R01512","orientation-reversed"]	C00008	Brenda
+inhibitory constant	vPGK	ADP	0.08	nan	mM	Mus musculus	["R01512","orientation-reversed"]	C00008	Brenda
+inhibitory constant	vPGK	ADP	0.175	nan	mM	Mus musculus	["R01512","orientation-reversed"]	C00008	Brenda
+inhibitory constant	vPGK	ADP	0.039	nan	mM	Sus scrofa	["R01512","orientation-reversed"]	C00008	Brenda
+substrate catalytic rate constant	vPGK	P3G	570	nan	1/s	Hippoglossus stenolepis	["R01512","orientation-reversed"]	C00197	Brenda
+substrate catalytic rate constant	vPGK	ATP	570	nan	1/s	Hippoglossus stenolepis	["R01512","orientation-reversed"]	C00002	Brenda
+substrate catalytic rate constant	vPGK	ATP	411	nan	1/s	Pseudomonas sp.	["R01512","orientation-reversed"]	C00002	Brenda
+substrate catalytic rate constant	vPGK	ATP	500	nan	1/s	Pseudomonas sp.	["R01512","orientation-reversed"]	C00002	Brenda
+substrate catalytic rate constant	vPGK	P3G	540	nan	1/s	Pseudomonas sp.	["R01512","orientation-reversed"]	C00197	Brenda
+substrate catalytic rate constant	vPGK	ATP	519	nan	1/s	Pseudomonas sp.	["R01512","orientation-reversed"]	C00002	Brenda
+substrate catalytic rate constant	vPGK	P3G	362	nan	1/s	Pseudomonas sp.	["R01512","orientation-reversed"]	C00197	Brenda
+substrate catalytic rate constant	vPGK	P3G	537	nan	1/s	Pseudomonas sp.	["R01512","orientation-reversed"]	C00197	Brenda
+substrate catalytic rate constant	vPGK	ATP	500	nan	1/s	Homo sapiens	["R01512","orientation-reversed"]	C00002	Brenda
+substrate catalytic rate constant	vPGK	ATP	100	nan	1/s	Homo sapiens	["R01512","orientation-reversed"]	C00002	Brenda
+equilibrium constant	vPGK	nan	0.00102	nan	dimensionless	nan	["R01512","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGK	nan	0.00143	nan	dimensionless	nan	["R01512","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGK	nan	0.00015	nan	dimensionless	nan	["R01512","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGK	nan	0.000225	nan	dimensionless	nan	["R01512","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGK	nan	0.000241	nan	dimensionless	nan	["R01512","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGK	nan	0.000242	nan	dimensionless	nan	["R01512","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGK	nan	0.000251	nan	dimensionless	nan	["R01512","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGK	nan	0.000272	nan	dimensionless	nan	["R01512","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGK	nan	0.000274	nan	dimensionless	nan	["R01512","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGK	nan	0.000278	nan	dimensionless	nan	["R01512","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGK	nan	0.0003	nan	dimensionless	nan	["R01512","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGK	nan	0.000318	nan	dimensionless	nan	["R01512","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGK	nan	0.00031	nan	dimensionless	nan	["R01512","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGK	nan	0.000349	nan	dimensionless	nan	["R01512","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGK	nan	0.000392	nan	dimensionless	nan	["R01512","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGK	nan	0.0004	nan	dimensionless	nan	["R01512","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGK	nan	0.000529	nan	dimensionless	nan	["R01512","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGK	nan	0.000548	nan	dimensionless	nan	["R01512","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGK	nan	0.000549	nan	dimensionless	nan	["R01512","orientation-reversed"]	nan	NIST
+equilibrium constant	vPGK	nan	0.00008	nan	nan	nan	["R01512","orientation-reversed"]	nan	NIST
+Michaelis constant	vPGK	ATP	0.04	nan	mM	Saccharomyces cerevisiae	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	ADP	0.2	nan	mM	Saccharomyces cerevisiae	["R01512","orientation-reversed"]	C00008	Brenda
+Michaelis constant	vPGK	P3G	2.5	nan	mM	Saccharomyces cerevisiae	["R01512","orientation-reversed"]	C00197	Brenda
+Michaelis constant	vPGK	P3G	1.28	nan	mM	Saccharomyces cerevisiae	["R01512","orientation-reversed"]	C00197	Brenda
+Michaelis constant	vPGK	ATP	1.25	nan	mM	Saccharomyces cerevisiae	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	ATP	3.45	nan	mM	Saccharomyces cerevisiae	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	ATP	0.33	nan	mM	Saccharomyces cerevisiae	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	P3G	0.77	nan	mM	Saccharomyces cerevisiae	["R01512","orientation-reversed"]	C00197	Brenda
+Michaelis constant	vPGK	ATP	0.48	nan	mM	Saccharomyces cerevisiae	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	ATP	0.35	nan	mM	Oryctolagus cuniculus	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	P3G	0.0022	nan	mM	Oryctolagus cuniculus	["R01512","orientation-reversed"]	C00197	Brenda
+Michaelis constant	vPGK	ATP	0.095	nan	mM	Ovis aries	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	ATP	0.09	nan	mM	Ovis aries	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	ATP	0.3	nan	mM	Spinacia oleracea	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	ADP	0.27	nan	mM	Spinacia oleracea	["R01512","orientation-reversed"]	C00008	Brenda
+Michaelis constant	vPGK	ATP	4.1	nan	mM	Pisum sativum	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	P3G	7.6	nan	mM	Pisum sativum	["R01512","orientation-reversed"]	C00197	Brenda
+Michaelis constant	vPGK	P3G	2	nan	mM	Trypanosoma brucei	["R01512","orientation-reversed"]	C00197	Brenda
+Michaelis constant	vPGK	ATP	0.12	nan	mM	Trypanosoma brucei	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	ATP	0.29	nan	mM	Trypanosoma brucei	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	P3G	2.4	nan	mM	Trypanosoma brucei	["R01512","orientation-reversed"]	C00197	Brenda
+Michaelis constant	vPGK	ATP	0.46	nan	mM	Trypanosoma brucei	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	P3G	11.9	nan	mM	Trypanosoma brucei	["R01512","orientation-reversed"]	C00197	Brenda
+Michaelis constant	vPGK	P3G	1.25	nan	mM	Trypanosoma brucei	["R01512","orientation-reversed"]	C00197	Brenda
+Michaelis constant	vPGK	P3G	1.55	nan	mM	Trypanosoma brucei	["R01512","orientation-reversed"]	C00197	Brenda
+Michaelis constant	vPGK	ATP	0.21	nan	mM	Trypanosoma brucei	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	P3G	0.52	nan	mM	Plasmodium falciparum	["R01512","orientation-reversed"]	C00197	Brenda
+Michaelis constant	vPGK	ATP	0.63	nan	mM	Plasmodium falciparum	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	ATP	1.1	nan	mM	Zymomonas mobilis	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	P3G	1.5	nan	mM	Zymomonas mobilis	["R01512","orientation-reversed"]	C00197	Brenda
+Michaelis constant	vPGK	ATP	0.32	nan	mM	Selenastrum minutum	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	P3G	0.46	nan	mM	Selenastrum minutum	["R01512","orientation-reversed"]	C00197	Brenda
+Michaelis constant	vPGK	ATP	0.73	nan	mM	Methanothermus fervidus	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	P3G	0.75	nan	mM	Methanothermus fervidus	["R01512","orientation-reversed"]	C00197	Brenda
+Michaelis constant	vPGK	P3G	0.6	nan	mM	Beta vulgaris	["R01512","orientation-reversed"]	C00197	Brenda
+Michaelis constant	vPGK	ATP	0.15	nan	mM	Beta vulgaris	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	ATP	0.9	nan	mM	Fasciola hepatica	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	P3G	1.26	nan	mM	Fasciola hepatica	["R01512","orientation-reversed"]	C00197	Brenda
+Michaelis constant	vPGK	P3G	2.2	nan	mM	nan	["R01512","orientation-reversed"]	C00197	Brenda
+Michaelis constant	vPGK	ATP	2.9	nan	mM	nan	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	ATP	0.038	nan	mM	Mus musculus	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	ATP	0.11	nan	mM	Mus musculus	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	P3G	0.2	nan	mM	Mus musculus	["R01512","orientation-reversed"]	C00197	Brenda
+Michaelis constant	vPGK	ADP	0.19	nan	mM	Mus musculus	["R01512","orientation-reversed"]	C00008	Brenda
+Michaelis constant	vPGK	ATP	0.22	nan	mM	Mus musculus	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	ADP	0.23	nan	mM	Mus musculus	["R01512","orientation-reversed"]	C00008	Brenda
+Michaelis constant	vPGK	P3G	0.028	nan	mM	Mus musculus	["R01512","orientation-reversed"]	C00197	Brenda
+Michaelis constant	vPGK	P3G	0.15	nan	mM	Mus musculus	["R01512","orientation-reversed"]	C00197	Brenda
+Michaelis constant	vPGK	ATP	0.42	nan	mM	Mus musculus	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	ADP	0.039	nan	mM	Mus musculus	["R01512","orientation-reversed"]	C00008	Brenda
+Michaelis constant	vPGK	ATP	0.37	nan	mM	Mus musculus	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	P3G	1.79	nan	mM	nan	["R01512","orientation-reversed"]	C00197	Brenda
+Michaelis constant	vPGK	ATP	0.28	nan	mM	nan	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	ATP	4.8	nan	mM	Pyrococcus woesei	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	ATP	4.05	nan	mM	Pyrococcus woesei	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	P3G	0.89	nan	mM	Pseudomonas sp.	["R01512","orientation-reversed"]	C00197	Brenda
+Michaelis constant	vPGK	ATP	0.38	nan	mM	Pseudomonas sp.	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	P3G	0.53	nan	mM	Pseudomonas sp.	["R01512","orientation-reversed"]	C00197	Brenda
+Michaelis constant	vPGK	P3G	0.48	nan	mM	Pseudomonas sp.	["R01512","orientation-reversed"]	C00197	Brenda
+Michaelis constant	vPGK	ATP	0.7	nan	mM	Lactobacillus delbrueckii subsp. lactis	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	P3G	2.6	nan	mM	Lactobacillus delbrueckii subsp. lactis	["R01512","orientation-reversed"]	C00197	Brenda
+Michaelis constant	vPGK	ATP	0.59	nan	mM	Nitrosospira sp. TYM9	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	P3G	0.72	nan	mM	Nitrosospira sp. TYM9	["R01512","orientation-reversed"]	C00197	Brenda
+Michaelis constant	vPGK	ATP	2.11	nan	mM	Nitrosospira sp. PJA1	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	P3G	0.57	nan	mM	Nitrosospira sp. PJA1	["R01512","orientation-reversed"]	C00197	Brenda
+Michaelis constant	vPGK	P3G	0.8	nan	mM	Nitrosospira sp. TCH716	["R01512","orientation-reversed"]	C00197	Brenda
+Michaelis constant	vPGK	ATP	0.57	nan	mM	Nitrosospira sp. TCH716	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	ATP	0.76	nan	mM	Nitrosospira sp. KAN8	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	P3G	1.02	nan	mM	Nitrosospira sp. KAN8	["R01512","orientation-reversed"]	C00197	Brenda
+Michaelis constant	vPGK	P3G	0.5	nan	mM	nan	["R01512","orientation-reversed"]	C00197	Brenda
+Michaelis constant	vPGK	ATP	0.53	nan	mM	nan	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	ATP	1.96	nan	mM	Nitrosovibrio sp. RY3C	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	P3G	0.81	nan	mM	Nitrosovibrio sp. RY6A	["R01512","orientation-reversed"]	C00197	Brenda
+Michaelis constant	vPGK	ATP	1.58	nan	mM	Nitrosovibrio sp. RY6A	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	ATP	0.3	nan	mM	Homo sapiens	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	ATP	0.5	nan	mM	Homo sapiens	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	P3G	1.1	nan	mM	Homo sapiens	["R01512","orientation-reversed"]	C00197	Brenda
+Michaelis constant	vPGK	P3G	0.59	nan	mM	Homo sapiens	["R01512","orientation-reversed"]	C00197	Brenda
+Michaelis constant	vPGK	P3G	1.41	nan	mM	Nitrosovibrio sp. FJI82	["R01512","orientation-reversed"]	C00197	Brenda
+Michaelis constant	vPGK	ATP	0.66	nan	mM	Nitrosovibrio sp. FJI82	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	ATP	0.51	nan	mM	Nitrosospira sp. GS833	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	P3G	1.39	nan	mM	Nitrosospira sp. GS833	["R01512","orientation-reversed"]	C00197	Brenda
+Michaelis constant	vPGK	P3G	0.9	nan	mM	Nitrosospira sp. NRS527	["R01512","orientation-reversed"]	C00197	Brenda
+Michaelis constant	vPGK	ATP	0.77	nan	mM	Nitrosospira sp. NRS527	["R01512","orientation-reversed"]	C00002	Brenda
+Michaelis constant	vPGK	P3G	1.65	nan	mM	Rattus norvegicus	["R01512","orientation-reversed"]	C00197	Brenda
+Michaelis constant	vPGK	P3G	1.66	nan	mM	Rattus norvegicus	["R01512","orientation-reversed"]	C00197	Brenda
+Michaelis constant	vPGK	P3G	1.4	nan	mM	Rattus norvegicus	["R01512","orientation-reversed"]	C00197	Brenda
+Michaelis constant	vPGK	ATP	0.24	nan	mM	Rattus norvegicus	["R01512","orientation-reversed"]	C00002	Brenda
 concentration	nan	CO2	69.6	62.6	mM	nan	nan	C00011	nan
 standard chemical potential	nan	CO2	-394.36	nan	kJ/mol	nan	nan	C00011	Alberty
 standard chemical potential	nan	CO2	-547.13	nan	kJ/mol	nan	nan	C00011	Alberty

@@ -221,6 +221,8 @@ SBML:fbc:ChemicalFormula	Column	Compound	False	String	Chemical formula of the sp
 SBML:fbc:Charge	Column	Compound	False	Float	Charge of the SBML species
 SBML:reaction:id	Column	Reaction	False	String	SBML Reaction ID
 ReactionFormula	Column	Reaction	False	String	Reaction sum formula
+ReactionIdentifiers:*	Column	Reaction	False	String	Reaction ID and orientation (JSON string)
+ReactionMiriamAnnotation	Column	Reaction	False	String	Reaction annotations with orientations (JSON string)
 Location	Column	Reaction	True	String	Compartment for localised reaction
 Enzyme	Column	Reaction	True	String	Enzyme catalysing the reaction
 KineticRegulation	Column	Reaction	False	String	Kinetic regulation of the enzyme by compounds, e.g. '+ ADP - PEP' (+ activation, - inhibition, +- dual effect, ? unknown effect)
@@ -389,7 +391,8 @@ Compound:Identifiers:*	Column	Quantity	False	String	Compound ID
 Compound:SBML:species:id	Column	Quantity	False	String	SBML ID of compound
 Reaction	Column	Quantity	True	String	Related reaction (shortname)
 Reaction:Name	Column	Quantity	False	String	Related reaction (name)
-Reaction:Identifiers:*	Column	Quantity	False	String	Reaction ID
+Reaction:Identifiers:*	Column	Quantity	False	String	Reaction ID and orientation (JSON string)
+Reaction:MiriamAnnotation	Column	Quantity	False	String	Reaction annotations with orientations (JSON string)
 Reaction:SBML:reaction:id	Column	Quantity	False	String	SBML ID of reaction
 Enzyme	Column	Quantity	True	String	Related enzyme (shortname)
 Enzyme:Name	Column	Quantity	False	String	Related enzyme (name)
@@ -431,7 +434,8 @@ Compound:Identifiers:*	Column	QuantityMatrix	False	String	Compound ID
 Compound:SBML:species:id	Column	QuantityMatrix	False	String	SBML ID of compound
 Reaction	Column	QuantityMatrix	True	String	Related reaction (shortname)
 Reaction:Name	Column	QuantityMatrix	False	String	Related reaction (name)
-Reaction:Identifiers:*	Column	QuantityMatrix	False	String	Reaction ID
+Reaction:Identifiers:*	Column	QuantityMatrix	False	String	Reaction ID and orientation (JSON string)
+Reaction:MiriamAnnotation	Column	QuantityMatrix	False	String	Reaction annotations with orientations (JSON string)
 Reaction:SBML:reaction:id	Column	QuantityMatrix	False	String	SBML ID of reaction
 Enzyme	Column	QuantityMatrix	True	String	Related enzyme (shortname)
 Enzyme:Name	Column	QuantityMatrix	False	String	Related enzyme (name)

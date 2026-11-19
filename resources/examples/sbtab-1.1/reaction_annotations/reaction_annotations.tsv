@@ -1,0 +1,19 @@
+!!!SBtab Document='reaction_annotations' SBtabVersion='1.1' DocumentName='Reaction annotations with reaction orientation'
+
+!!SBtab TableID='Compound' TableType='Compound' TableName='Compounds'
+!ID	!Name	!Identifiers:kegg.compound	!Identifiers:bigg.metabolite
+G6P	D-glucose 6-phosphate	C00092	g6p
+F6P	D-fructose 6-phosphate	C00085	f6p
+FBP	D-fructose 1,6-bisphosphate	C00354	fdp
+DHAP	dihydroxyacetone phosphate	C00111	dhap
+GAP	D-glyceraldehyde 3-phosphate	C00118	g3p
+
+!!SBtab TableID='Reaction' TableType='Reaction' TableName='Reactions (FBA in the opposite orientation as in KEGG and BiGG)'
+!ID	!ReactionFormula	!ReactionIdentifiers:kegg.reaction	!ReactionIdentifiers:bigg.reaction	!ReactionMiriamAnnotation
+PGI	G6P <=> F6P	R00771	PGI	[["bqbiol:is","urn:miriam:kegg.reaction:R00771"]]
+FBA	DHAP + GAP <=> FBP	["R01068","orientation-reversed"]	["FBA","orientation-reversed"]	[["bqbiol:is","urn:miriam:bigg.reaction:FBA","orientation-reversed"]]
+
+!!SBtab TableID='Flux' TableType='Quantity' TableName='Fluxes (in the orientation of the Reaction table)' Unit='mM/s'
+!ID	!QuantityType	!Reaction	!Reaction:Identifiers:kegg.reaction	!Value
+flux_PGI	rate of reaction	PGI	R00771	0.5
+flux_FBA	rate of reaction	FBA	["R01068","orientation-reversed"]	-0.5

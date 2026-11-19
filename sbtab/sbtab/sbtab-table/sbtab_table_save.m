@@ -152,6 +152,16 @@ for it = 1:length(attribute_types)
    end
  end
 
+ % fields that start with a double quote or contain a tab or a line break are enclosed in double
+ % quotes (with "" for each double quote inside), so that they are read back unchanged
+ % (see sbtab_load_text_table); all other fields are written as they are
+ if ~options.flag_latex
+   is_char = cellfun(@ischar, my_table);
+   needs_quotes = false(size(my_table));
+   needs_quotes(is_char) = cellfun(@(x) ~isempty(x) && (x(1) == '"' || any(x == sprintf('\t')) || any(x == sprintf('\n'))), my_table(is_char));
+   my_table(needs_quotes) = cellfun(@(x) ['"' strrep(x, '"', '""') '"'], my_table(needs_quotes), 'UniformOutput', false);
+ end
+
  if length(options.filename)
    if options.flag_latex
      for it = 1:size(my_table,2), my_table{1,it} = [ '\bf{' strrep(my_table{1,it},'!','') '}']; end

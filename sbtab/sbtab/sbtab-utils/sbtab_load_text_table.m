@@ -8,8 +8,11 @@ function T = sbtab_load_text_table(filename)
 % or, if there is none, from the first line that is not empty and does not start with '%':
 % tab if this line contains a tab; otherwise comma or semicolon (whichever occurs more often
 % outside quotes); if none of them occurs, tab.
-% In comma- and semicolon-separated files, fields may be enclosed in double quotes
-% ("" stands for a double quote inside a field); in tab-separated files, quotes are kept as they are.
+% Fields may be enclosed in double quotes ("" stands for a double quote inside a field), as written
+% by spreadsheet programs; this holds for all delimiters (tab, comma, semicolon). Quotation marks
+% inside other fields (e.g. in JSON strings like ["R01068","orientation-reversed"]) are kept as they
+% are. (Until 2026-11, quotes in tab-separated files were always kept.) The Python reader of sbtabpy
+% reads files in the same way.
 % A byte order mark and Windows or Mac line endings are accepted.
 % Empty rows and columns are removed; missing cells are filled with ''.
 
@@ -53,7 +56,7 @@ end
 
 rows = cell(length(lines), 1);
 for it = 1:length(lines)
-  if strcmp(delimiter, sprintf('\t'))
+  if strcmp(delimiter, sprintf('\t')) && ~any(lines{it} == '"')
     % regexp instead of strsplit, which is shadowed by other toolboxes on some paths
     rows{it} = regexp(lines{it}, '\t', 'split');
   else
