@@ -81,33 +81,60 @@ Comment	Column	Quantity	False	String	Comment
 Comment	Column	QuantityMatrix	False	String	Comment
 Comment	Column	QuantityInfo	False	String	Comment
 Comment	Column	Measurement	False	String	Comment
-ReferenceName	Column	Definition	False	String	Reference title, authors, etc. (as free text)
-ReferenceName	Column	Compound	False	String	Reference title, authors, etc. (as free text)
-ReferenceName	Column	Reaction	False	String	Reference title, authors, etc. (as free text)
-ReferenceName	Column	ReactionStoichiometry	False	String	Reference title, authors, etc. (as free text)
-ReferenceName	Column	Enzyme	False	String	Reference title, authors, etc. (as free text)
-ReferenceName	Column	Protein	False	String	Reference title, authors, etc. (as free text)
-ReferenceName	Column	Gene	False	String	Reference title, authors, etc. (as free text)
-ReferenceName	Column	Regulator	False	String	Reference title, authors, etc. (as free text)
-ReferenceName	Column	Regulation	False	String	Reference title, authors, etc. (as free text)
-ReferenceName	Column	Compartment	False	String	Reference title, authors, etc. (as free text)
-ReferenceName	Column	SBMLfbcObjective	False	String	Reference title, authors, etc. (as free text)
-ReferenceName	Column	Position	False	String	Reference title, authors, etc. (as free text)
-ReferenceName	Column	SBMLlayout	False	String	Reference title, authors, etc. (as free text)
-ReferenceName	Column	Relation	False	String	Reference title, authors, etc. (as free text)
-ReferenceName	Column	SparseMatrix	False	String	Reference title, authors, etc. (as free text)
-ReferenceName	Column	SparseMatrixOrdered	False	String	Reference title, authors, etc. (as free text)
-ReferenceName	Column	SparseMatrixRow	False	String	Reference title, authors, etc. (as free text)
-ReferenceName	Column	SparseMatrixColumn	False	String	Reference title, authors, etc. (as free text)
-ReferenceName	Column	Vector	False	String	Reference title, authors, etc. (as free text)
-ReferenceName	Column	Matrix	False	String	Reference title, authors, etc. (as free text)
-ReferenceName	Column	Config	False	String	Reference title, authors, etc. (as free text)
-ReferenceName	Column	ToolInputOutput	False	String	Reference title, authors, etc. (as free text)
-ReferenceName	Column	Workflow	False	String	Reference title, authors, etc. (as free text)
-ReferenceName	Column	Quantity	False	String	Reference title, authors, etc. (as free text)
-ReferenceName	Column	QuantityMatrix	False	String	Reference title, authors, etc. (as free text)
-ReferenceName	Column	QuantityInfo	False	String	Reference title, authors, etc. (as free text)
-ReferenceName	Column	Measurement	False	String	Reference title, authors, etc. (as free text)
+Reference	Column	Definition	False	String	Reference (free text, e.g. a citation)
+Reference:Name	Column	Definition	False	String	Reference name (free text; recommended: publication title)
+Reference	Column	Compound	False	String	Reference (free text, e.g. a citation)
+Reference:Name	Column	Compound	False	String	Reference name (free text; recommended: publication title)
+Reference	Column	Reaction	False	String	Reference (free text, e.g. a citation)
+Reference:Name	Column	Reaction	False	String	Reference name (free text; recommended: publication title)
+Reference	Column	ReactionStoichiometry	False	String	Reference (free text, e.g. a citation)
+Reference:Name	Column	ReactionStoichiometry	False	String	Reference name (free text; recommended: publication title)
+Reference	Column	Enzyme	False	String	Reference (free text, e.g. a citation)
+Reference:Name	Column	Enzyme	False	String	Reference name (free text; recommended: publication title)
+Reference	Column	Protein	False	String	Reference (free text, e.g. a citation)
+Reference:Name	Column	Protein	False	String	Reference name (free text; recommended: publication title)
+Reference	Column	Gene	False	String	Reference (free text, e.g. a citation)
+Reference:Name	Column	Gene	False	String	Reference name (free text; recommended: publication title)
+Reference	Column	Regulator	False	String	Reference (free text, e.g. a citation)
+Reference:Name	Column	Regulator	False	String	Reference name (free text; recommended: publication title)
+Reference	Column	Regulation	False	String	Reference (free text, e.g. a citation)
+Reference:Name	Column	Regulation	False	String	Reference name (free text; recommended: publication title)
+Reference	Column	Compartment	False	String	Reference (free text, e.g. a citation)
+Reference:Name	Column	Compartment	False	String	Reference name (free text; recommended: publication title)
+Reference	Column	SBMLfbcObjective	False	String	Reference (free text, e.g. a citation)
+Reference:Name	Column	SBMLfbcObjective	False	String	Reference name (free text; recommended: publication title)
+Reference	Column	Position	False	String	Reference (free text, e.g. a citation)
+Reference:Name	Column	Position	False	String	Reference name (free text; recommended: publication title)
+Reference	Column	SBMLlayout	False	String	Reference (free text, e.g. a citation)
+Reference:Name	Column	SBMLlayout	False	String	Reference name (free text; recommended: publication title)
+Reference	Column	Relation	False	String	Reference (free text, e.g. a citation)
+Reference:Name	Column	Relation	False	String	Reference name (free text; recommended: publication title)
+Reference	Column	SparseMatrix	False	String	Reference (free text, e.g. a citation)
+Reference:Name	Column	SparseMatrix	False	String	Reference name (free text; recommended: publication title)
+Reference	Column	SparseMatrixOrdered	False	String	Reference (free text, e.g. a citation)
+Reference:Name	Column	SparseMatrixOrdered	False	String	Reference name (free text; recommended: publication title)
+Reference	Column	SparseMatrixRow	False	String	Reference (free text, e.g. a citation)
+Reference:Name	Column	SparseMatrixRow	False	String	Reference name (free text; recommended: publication title)
+Reference	Column	SparseMatrixColumn	False	String	Reference (free text, e.g. a citation)
+Reference:Name	Column	SparseMatrixColumn	False	String	Reference name (free text; recommended: publication title)
+Reference	Column	Vector	False	String	Reference (free text, e.g. a citation)
+Reference:Name	Column	Vector	False	String	Reference name (free text; recommended: publication title)
+Reference	Column	Matrix	False	String	Reference (free text, e.g. a citation)
+Reference:Name	Column	Matrix	False	String	Reference name (free text; recommended: publication title)
+Reference	Column	Config	False	String	Reference (free text, e.g. a citation)
+Reference:Name	Column	Config	False	String	Reference name (free text; recommended: publication title)
+Reference	Column	ToolInputOutput	False	String	Reference (free text, e.g. a citation)
+Reference:Name	Column	ToolInputOutput	False	String	Reference name (free text; recommended: publication title)
+Reference	Column	Workflow	False	String	Reference (free text, e.g. a citation)
+Reference:Name	Column	Workflow	False	String	Reference name (free text; recommended: publication title)
+Reference	Column	Quantity	False	String	Reference (free text, e.g. a citation)
+Reference:Name	Column	Quantity	False	String	Reference name (free text; recommended: publication title)
+Reference	Column	QuantityMatrix	False	String	Reference (free text, e.g. a citation)
+Reference:Name	Column	QuantityMatrix	False	String	Reference name (free text; recommended: publication title)
+Reference	Column	QuantityInfo	False	String	Reference (free text, e.g. a citation)
+Reference:Name	Column	QuantityInfo	False	String	Reference name (free text; recommended: publication title)
+Reference	Column	Measurement	False	String	Reference (free text, e.g. a citation)
+Reference:Name	Column	Measurement	False	String	Reference name (free text; recommended: publication title)
 Reference:Identifiers:pubmed	Column	Definition	False	String	Reference PubMed ID
 Reference:Identifiers:pubmed	Column	Compound	False	String	Reference PubMed ID
 Reference:Identifiers:pubmed	Column	Reaction	False	String	Reference PubMed ID
@@ -135,33 +162,33 @@ Reference:Identifiers:pubmed	Column	Quantity	False	String	Reference PubMed ID
 Reference:Identifiers:pubmed	Column	QuantityMatrix	False	String	Reference PubMed ID
 Reference:Identifiers:pubmed	Column	QuantityInfo	False	String	Reference PubMed ID
 Reference:Identifiers:pubmed	Column	Measurement	False	String	Reference PubMed ID
-ReferenceDOI	Column	Definition	False	String	Reference DOI
-ReferenceDOI	Column	Compound	False	String	Reference DOI
-ReferenceDOI	Column	Reaction	False	String	Reference DOI
-ReferenceDOI	Column	ReactionStoichiometry	False	String	Reference DOI
-ReferenceDOI	Column	Enzyme	False	String	Reference DOI
-ReferenceDOI	Column	Protein	False	String	Reference DOI
-ReferenceDOI	Column	Gene	False	String	Reference DOI
-ReferenceDOI	Column	Regulator	False	String	Reference DOI
-ReferenceDOI	Column	Regulation	False	String	Reference DOI
-ReferenceDOI	Column	Compartment	False	String	Reference DOI
-ReferenceDOI	Column	SBMLfbcObjective	False	String	Reference DOI
-ReferenceDOI	Column	Position	False	String	Reference DOI
-ReferenceDOI	Column	SBMLlayout	False	String	Reference DOI
-ReferenceDOI	Column	Relation	False	String	Reference DOI
-ReferenceDOI	Column	SparseMatrix	False	String	Reference DOI
-ReferenceDOI	Column	SparseMatrixOrdered	False	String	Reference DOI
-ReferenceDOI	Column	SparseMatrixRow	False	String	Reference DOI
-ReferenceDOI	Column	SparseMatrixColumn	False	String	Reference DOI
-ReferenceDOI	Column	Vector	False	String	Reference DOI
-ReferenceDOI	Column	Matrix	False	String	Reference DOI
-ReferenceDOI	Column	Config	False	String	Reference DOI
-ReferenceDOI	Column	ToolInputOutput	False	String	Reference DOI
-ReferenceDOI	Column	Workflow	False	String	Reference DOI
-ReferenceDOI	Column	Quantity	False	String	Reference DOI
-ReferenceDOI	Column	QuantityMatrix	False	String	Reference DOI
-ReferenceDOI	Column	QuantityInfo	False	String	Reference DOI
-ReferenceDOI	Column	Measurement	False	String	Reference DOI
+Reference:DOI	Column	Definition	False	String	Reference DOI
+Reference:DOI	Column	Compound	False	String	Reference DOI
+Reference:DOI	Column	Reaction	False	String	Reference DOI
+Reference:DOI	Column	ReactionStoichiometry	False	String	Reference DOI
+Reference:DOI	Column	Enzyme	False	String	Reference DOI
+Reference:DOI	Column	Protein	False	String	Reference DOI
+Reference:DOI	Column	Gene	False	String	Reference DOI
+Reference:DOI	Column	Regulator	False	String	Reference DOI
+Reference:DOI	Column	Regulation	False	String	Reference DOI
+Reference:DOI	Column	Compartment	False	String	Reference DOI
+Reference:DOI	Column	SBMLfbcObjective	False	String	Reference DOI
+Reference:DOI	Column	Position	False	String	Reference DOI
+Reference:DOI	Column	SBMLlayout	False	String	Reference DOI
+Reference:DOI	Column	Relation	False	String	Reference DOI
+Reference:DOI	Column	SparseMatrix	False	String	Reference DOI
+Reference:DOI	Column	SparseMatrixOrdered	False	String	Reference DOI
+Reference:DOI	Column	SparseMatrixRow	False	String	Reference DOI
+Reference:DOI	Column	SparseMatrixColumn	False	String	Reference DOI
+Reference:DOI	Column	Vector	False	String	Reference DOI
+Reference:DOI	Column	Matrix	False	String	Reference DOI
+Reference:DOI	Column	Config	False	String	Reference DOI
+Reference:DOI	Column	ToolInputOutput	False	String	Reference DOI
+Reference:DOI	Column	Workflow	False	String	Reference DOI
+Reference:DOI	Column	Quantity	False	String	Reference DOI
+Reference:DOI	Column	QuantityMatrix	False	String	Reference DOI
+Reference:DOI	Column	QuantityInfo	False	String	Reference DOI
+Reference:DOI	Column	Measurement	False	String	Reference DOI
 ID	Column	Compound	False	String	Element shortname
 ID	Column	Enzyme	False	String	Element shortname
 ID	Column	Gene	False	String	Element shortname
